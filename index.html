@@ -1364,9 +1364,64 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "10. Sep. 2026, 08:06 Uhr";
+const SNAP_DATE = "10. Sept. 2026, 08:29 Uhr";
 const SNAP_STATUS = "neu";
-const STUDIES = [];
+const STUDIES = [
+  {
+    journal:"J Clin Oncol", year:"2026", pmid:"42715516",
+    author:"Tumuluru S et al.", pubdate:"09.09.2026",
+    added:"09.09.2026",
+    title:"LGsig-Klassifikation verbessert Therapievorhersage beim Diffusen großzelligen B-Zell-Lymphom",
+    sum:"Eine neue Klassifikationsmethode (LGsig) integriert genetische und Genexpressions-Profile, um Patienten mit diffusem großzelligem B-Zell-Lymphom in biologisch relevante Subtypen einzuordnen und deren Ansprechen auf gezielte Therapien besser vorherzusagen.",
+    result:"LGsig klassifizierte alle DLBCL-Fälle, einschließlich zuvor unklassifizierbarer Tumoren. In der POLARIX-Studie zeigte sich ein signifikanter Überlebensvorteil für Patienten mit bestimmten LGsig-Subtypen unter Polatuzumab vedotin-R-CHP versus R-CHOP in sowohl genetisch klassifizierten als auch unklassifizierten Fällen.",
+    transfer:"Plattformübergreifend einsetzbare Genexpressions-Technik; Anwendbarkeit auf archivale Proben erleichtert klinische Integration in deutschen Tumorzentren."
+  },
+  {
+    journal:"Clin Cancer Res", year:"2026", pmid:"42714834",
+    author:"Klümper N et al.", pubdate:"09.09.2026",
+    added:"09.09.2026",
+    title:"NECTIN4-Scoring-System und Amplifikation vorhersagen Ansprechen auf Enfortumab vedotin beim Urothelkarzinom",
+    sum:"Eine deutsche und internationale Studie entwickelte ein kombiniertes Scoring-System, das NECTIN4-Gen-Amplifikation und membranöse Proteinexpression integriert, um Patienten mit metastasiertem Urothelkarzinom zu identifizieren, die von Enfortumab vedotin profitieren werden.",
+    result:"Das integrierte Drei-Strata-Modell (amplifiziert, nicht-amplifiziert/hohe membranöse Expression, nicht-amplifiziert/niedrige membranöse Expression) erreichte Ansprechquoten von 77,2%, 42,9% und 26,1% (p&lt;0,001). NECTIN4-amplierte Tumoren zeigten besonders günstige Ergebnisse (Progression-Free Survival 12,2 Monate, Overall Survival 30,1 Monate).",
+    transfer:"Deutschlandweite Multizenterstudie mit 39 Zentren; direkt transferierbar auf Zertifizierungsanforderungen und Tumorboard-Entscheidungen."
+  },
+  {
+    journal:"Strahlenther Onkol", year:"2026", pmid:"42714572",
+    author:"Elsayad K et al.", pubdate:"09.09.2026",
+    added:"09.09.2026",
+    title:"DEGRO-Empfehlungen zur Strahlentherapie des Merkelzellkarzinoms mit Fokus auf Hypofraktionierung",
+    sum:"Eine Arbeitsgruppe der Deutschen Gesellschaft für Radioonkologie (DEGRO) formulierte evidenzbasierte Empfehlungen zur Strahlentherapie von Merkelzellkarzinomen, einschließlich Optionen für moderate und ultrahypofraktionierte Regime.",
+    result:"Adjuvante Strahlentherapie nach Chirurgie sollte idealerweise innerhalb von 8 Wochen eingeleitet werden. Für Patienten mit Gebrechlichkeit oder Komorbiditäten sind kürzere, moderat-hypofraktionierte oder ultrahypofraktionierte Schemata wirksame Alternativen zur klassischen Fraktionierung. Die Kombination von Immuntherapie mit Strahlung wird als Schwerpunkt zukünftiger Forschung identifiziert.",
+    transfer:"Deutsche Fachgesellschafts-Leitlinie; direkte Implementierbarkeit in Zertifizierungsprozesse und klinische Routine."
+  },
+  {
+    journal:"Lancet Oncol", year:"2026", pmid:"42705254",
+    author:"Vergote I et al.", pubdate:"07.09.2026",
+    added:"07.09.2026",
+    title:"Pembrolizumab-Olaparib verbessert Progression-Free Survival bei BRCA-wildtyp-Ovarialkarzinom um 29%",
+    sum:"Eine internationale Phase-3-Studie (ENGOT-OV43) untersuchte Pembrolizumab plus Chemotherapie gefolgt von Pembrolizumab-Olaparib-Erhaltungstherapie versus Chemotherapie allein bei BRCA-wildtyp-fortgeschrittenem Ovarialkarzinom.",
+    result:"Pembrolizumab-Olaparib zeigte signifikante Verbesserung der Progression-Free Survival gegenüber Kontrolle in der CPS≥10-Population (Hazard Ratio 0,63; p&lt;0,0001) und in der Intention-to-treat-Population (HR 0,68; p&lt;0,0001), mit Erhaltung der Effekte beim finalen Follow-up nach median 49,6 Monaten (HR 0,71). Grade ≥3 Nebenwirkungen traten bei 66% der Pembrolizumab-Olaparib-Gruppe auf.",
+    transfer:"Europäische und globale Studie mit vergleichbarer Patientenselektion; Registerzulassung und AMNOG-Bewertung folgen regulärem Prozess in Deutschland."
+  },
+  {
+    journal:"Leukemia", year:"2026", pmid:"42697931",
+    author:"Zinz R et al.", pubdate:"04.09.2026",
+    added:"05.09.2026",
+    title:"snoRNA-abgeleitete RNAs steuern Stress-Resilienz in AML und erlauben Risikoschichtung",
+    sum:"Eine mechanistische Grundlagenstudie identifiziert snoRNA-abgeleitete RNAs (sdRNAs) als regulatorische Moleküle in akuter myeloischer Leukämie; hohe sd3'-RNA/snoRNA-Verhältnisse prognostizieren ungünstige Outcomes und könnten therapeutische Angriffspunkte darstellen.",
+    result:"Hochgradig sd3'-RNA-Verhältnisse waren mit inversem Patientenoutcome assoziiert. Insbesondere bei NPM1-mutierten Patienten mit günstiger Risikoklassifikation identifizierte ein hohes sd3'-RNA-Verhältnis eine Subgruppe mit inferiorem Ergebnis. Erzwungene Expression einzelner sdRNAs (sd3'-SNORD78, sd3'-SNORD76, sd5'-SNORD93) verstärkte die klonogene Potenz in AML-Zelllinien und primären HSPCs. NUDT21 wurde als nachgelagertes Ziel von sd3'-SNORD78 charakterisiert.",
+    transfer:"Deutsche Multizenterstudie (Heidelberg, Kiel, Dresden, Frankfurt); Mechanismus öffnet Wege zu klinischen Interventionen in der AML-Stratifikation."
+  },
+  {
+    journal:"J Clin Oncol", year:"2026", pmid:"42691436",
+    author:"Krämer A et al.", pubdate:"03.09.2026",
+    added:"03.09.2026",
+    title:"Genomische Profilierung erhöht Progression-Free Survival beim Karzinom unbekannten Primärtumors um 38%",
+    sum:"Die CUPISCO-Studie vergleicht molekular geführte Therapie basierend auf umfassender genomischer Profilierung mit Standardchemotherapie bei Patienten mit ungünstigem Karzinom unbekannten Primärtumors nach Initial-Chemotherapie-Ansprechen.",
+    result:"Molekular geführte Therapie (n=326) versus fortgesetzte Chemotherapie (n=110): mediane Progression-Free Survival 6,1 Monate (95%-KI 4,7–6,5) versus 4,4 Monate (KI 4,2–6,4; HR 0,75; p=0,017). Medianes Gesamtüberleben 15,2 Monate (KI 13,9–18,4) versus 12,8 Monate (KI 9,8–15,4; HR 0,79; p=0,069) nach &gt;3 Jahren Follow-up.",
+    transfer:"Deutschlandweite Zentren beteiligt; Molekular-Tumorboard-Ansatz etabliert in deutschen Krebszentren."
+  },
+];
 // === STUDIES-BLOCK-ENDE ===
 
 // Offene Foerderausschreibungen zum Thema — taeglich von scripts/radar_hinweis.py
@@ -1380,18 +1435,26 @@ const RADAR_FRISTEN = [];
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "10. Sep. 2026, 08:06 Uhr";
-const NEWS = [];
+const NEWS_STAND = "10.09.2026";
+const NEWS = [
+  {titel:"Angriffspunkt bei kleinzelligem Lungenkrebs: Studie der Uni Köln", datum:"2026-09-09", url:"https://www.monitor-versorgungsforschung.de/news/angriffspunkt-bei-kleinzelligem-lungenkrebs-studie-der-uni-koeln/"},
+  {titel:"MV: Landesbeirat Onkologie berät Landespolitik und stärkt den Kampf gegen Krebs", datum:"2026-08-27", url:"https://www.monitor-versorgungsforschung.de/news/mv-landesbeirat-onkologie-beraet-landespolitik-und-staerkt-den-kampf-gegen-krebs/"},
+];
 // === NEWS-BLOCK-ENDE ===
 
 // Fremde Pressemeldungen zum Thema — taeglich von scripts/newsfeed.py
 // === PRESSE-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const PRESSE = [];
+const PRESSE = [
+  {titel:"Tumorzellen: Unordnung kann Streuen fördern", datum:"2026-09-09", url:"http://idw-online.de/de/news876982", quelle:"idw"},
+  {titel:"Gesundheitsprävention geht alle Ministerien an", datum:"2026-09-09", url:"http://idw-online.de/de/news877103", quelle:"idw"},
+];
 // === PRESSE-BLOCK-ENDE ===
 
 // Meldungen des G-BA — taeglich von scripts/newsfeed.py
 // === SELBST-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const SELBST = [];
+const SELBST = [
+  {titel:"GBA: Keine belastbare Evidenz für Ausweitung der organisierten Darmkrebs-Früherkennung auf jüngere Personen mit familiärem Risiko", datum:"2026-08-20", url:"/presse/pressemitteilungen-meldungen/1349/", quelle:"G-BA"},
+];
 // === SELBST-BLOCK-ENDE ===
 
 // === CHIPS-BLOCK-START (themenspezifisch) ===
