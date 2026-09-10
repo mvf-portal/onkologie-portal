@@ -1,0 +1,3355 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Rechercheportal zur Onkologie: gebuendelte Live-Suchen ueber Fachdatenbanken, Register und Leitlinien - und taeglich neue Studien aus den Kernzeitschriften des Fachs, auf Deutsch zusammengefasst.">
+<title>Knowledge-Hub Onkologie</title>
+<!-- Ohne Icon zeigt die Tableiste nur den Anfangsbuchstaben des Titels. Das
+     Zeichen ist in allen zwoelf Portalen dasselbe; gebaut wird es mit
+     icon_bauen.py in der Portal-Vorlage. -->
+<link rel="icon" href="/logo/hub-icon.svg" type="image/svg+xml">
+<link rel="icon" href="/logo/hub-icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/logo/hub-icon-180.png">
+<meta name="theme-color" content="#0051A1">
+<style>
+  /* ---------- Lato: die Hausschrift von Monitor Versorgungsforschung ----------
+     Selbst gehostet wie auf m-vf.de. Bewusst kein Google Fonts: Der Hub baut
+     keine Verbindung zu Dritten auf - das steht so in seinen Datenschutzhinweisen.
+     font-display:swap zeigt sofort die Systemschrift und tauscht dann. */
+  @font-face{ font-family:"Lato"; font-style:normal; font-weight:300;
+    src:url("fonts/lato-300.woff2") format("woff2"); font-display:swap; }
+  @font-face{ font-family:"Lato"; font-style:normal; font-weight:400;
+    src:url("fonts/lato-400.woff2") format("woff2"); font-display:swap; }
+  @font-face{ font-family:"Lato"; font-style:normal; font-weight:700;
+    src:url("fonts/lato-700.woff2") format("woff2"); font-display:swap; }
+
+  :root{
+    --paper:#EDF2FA; --card:#FFFFFF; --card-2:#F7FAFD;
+    --ink:#111111; --ink-soft:#444A50; --ink-faint:#545C63;
+    --line:#D0D8E4; --line-soft:#E3EAF3;
+    --brand:#0051A1; --brand-deep:#003B77; --brand-tint:#E1EAF6;
+    /* Gold ist bei MVF die Handlungsfarbe: Abonnieren, Alle News, Spende. */
+    --action:#BE9E53; --action-deep:#A5873F; --on-action:#2A2207;
+    --on-brand:#FFFFFF;
+    --accent:#8A6E28;
+    --shadow:0 1px 2px rgba(16,40,38,.05), 0 8px 24px -16px rgba(16,40,38,.28);
+    --shadow-hover:0 2px 4px rgba(16,40,38,.06), 0 18px 40px -20px rgba(16,40,38,.40);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#0A1120; --card:#111B2E; --card-2:#0E1728;
+      --ink:#E9EEF6; --ink-soft:#A9B7CA; --ink-faint:#8FA0B7;
+      --line:#22314A; --line-soft:#1A2639;
+      --brand:#6FA8E8; --brand-deep:#9CC6F4; --brand-tint:#152742;
+      --action:#D4B878; --action-deep:#E3CB94; --on-action:#221A08;
+    --on-brand:#081726;
+      --accent:#D9BE82;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px -18px rgba(0,0,0,.7);
+      --shadow-hover:0 2px 6px rgba(0,0,0,.4), 0 22px 46px -22px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#EDF2FA; --card:#FFFFFF; --card-2:#F7FAFD;
+    --ink:#111111; --ink-soft:#444A50; --ink-faint:#545C63;
+    --line:#D0D8E4; --line-soft:#E3EAF3;
+    --brand:#0051A1; --brand-deep:#003B77; --brand-tint:#E1EAF6;
+    /* Gold ist bei MVF die Handlungsfarbe: Abonnieren, Alle News, Spende. */
+    --action:#BE9E53; --action-deep:#A5873F; --on-action:#2A2207;
+    --on-brand:#FFFFFF;
+    --accent:#8A6E28;
+    --shadow:0 1px 2px rgba(16,40,38,.05), 0 8px 24px -16px rgba(16,40,38,.28);
+    --shadow-hover:0 2px 4px rgba(16,40,38,.06), 0 18px 40px -20px rgba(16,40,38,.40);
+  }
+  :root[data-theme="dark"]{
+    --paper:#0A1120; --card:#111B2E; --card-2:#0E1728;
+    --ink:#E9EEF6; --ink-soft:#A9B7CA; --ink-faint:#8FA0B7;
+    --line:#22314A; --line-soft:#1A2639;
+    --brand:#6FA8E8; --brand-deep:#9CC6F4; --brand-tint:#152742;
+    --action:#D4B878; --action-deep:#E3CB94; --on-action:#221A08;
+    --on-brand:#081726;
+    --accent:#D9BE82;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px -18px rgba(0,0,0,.7);
+    --shadow-hover:0 2px 6px rgba(0,0,0,.4), 0 22px 46px -22px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Lato", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size:16px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{ font-family:inherit; font-weight:700; letter-spacing:-.005em; }  /* MVF nutzt durchgaengig Lato */
+  /* Keine zweite Schriftfamilie: m-vf.de fuehrt ausschliesslich Lato.
+     Der technische Charakter kommt ueber gleichbreite Ziffern. */
+  .mono{ font-family:inherit; font-variant-numeric:tabular-nums; letter-spacing:.015em; }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 22px; }
+
+  /* ---------- Header ---------- */
+  header.masthead{
+    background:
+      radial-gradient(120% 140% at 88% -20%, var(--brand-tint) 0%, transparent 55%),
+      var(--card);
+    border-bottom:1px solid var(--line);
+  }
+  .masthead-inner{ padding:34px 0 30px; }
+  /* Kopfzeile: Titelblock links, MVF-Logo rechts. Ab 760 px untereinander. */
+  .masthead-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:26px; }
+  .masthead-text{ min-width:0; }
+  .brand-link{ flex:0 0 auto; display:block; line-height:0; }
+  .brand-link img{ width:210px; max-width:38vw; height:auto; display:block; }
+  .brand-link:focus-visible{ outline:2px solid var(--brand); outline-offset:4px; border-radius:3px; }
+  /* Das Logo besteht aus genau zwei Farben: Blau #0060A0 und Gold #C0A060.
+     Auf dunklem Grund waere es kaum sichtbar - es wird deshalb NICHT umgefaerbt
+     (das zerstoerte den Goldanteil der Wortmarke), sondern auf eine helle
+     Flaeche gestellt. So bleibt die Marke unveraendert. */
+  .brand-link{ border-radius:5px; }
+  @media (prefers-color-scheme:dark){
+    .brand-link{ background:#FFFFFF; padding:10px 13px; }
+  }
+  :root[data-theme="dark"] .brand-link{ background:#FFFFFF; padding:10px 13px; }
+  :root[data-theme="light"] .brand-link{ background:none; padding:0; }
+  @media (max-width:760px){
+    .masthead-top{ flex-direction:column-reverse; align-items:flex-start; gap:16px; }
+    .brand-link img{ width:170px; max-width:60vw; }
+  }
+  /* Ein durchgehender Titel in der Hausfarbe, Lato 700. Kein max-width und
+     kein text-wrap:balance mehr - beides erzwaenge einen Umbruch. Erst wenn
+     der Platz wirklich nicht reicht, bricht die Zeile (siehe Media Query). */
+  /* Der Titel soll auf EINER Zeile stehen. Gemessen: bei 3,7vw fuellt er die
+     Restbreite neben dem Logo exakt aus - 3,4vw laesst rund 10 % Reserve.
+     Die Untergrenze 18px haelt ihn auch auf 375px-Displays einzeilig.
+     Bewusst kein white-space:nowrap: darunter soll er umbrechen, nicht ueberlaufen. */
+  h1{
+    font-size:clamp(18px,3.4vw,46px); line-height:1.12; margin:0 0 .18em;
+    font-weight:700; letter-spacing:-.015em; color:var(--brand);
+  }
+  h1 .sub{ display:block; color:var(--ink-soft); font-size:.46em; font-weight:400;
+           letter-spacing:0; margin-top:.55em; max-width:52ch; }
+  /* 64ch waren deutlich schmaler als der Titel (631 zu 758 px) und wirkten
+     abgesetzt. 72ch reichen fast an die Titelbreite heran und bleiben unter
+     der Grenze, ab der Zeilen schwer zu verfolgen sind (etwa 75 Zeichen). */
+  .lede{ color:var(--ink-soft); max-width:72ch; font-size:17px; margin:.2em 0 0; }
+
+  /* ---------- Search panel ---------- */
+  .panel{
+    margin-top:26px; background:var(--card-2); border:1px solid var(--line);
+    border-radius:6px; padding:20px; box-shadow:var(--shadow);
+    /* Kein eigener Rand: Das Feld steht seit dem 29.08.2026 IN der linken
+       Saeule der lede-zeile und endet damit von selbst an der goldenen Kante
+       der Kopfkarte. */
+  }
+  .panel-label{
+    font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+    font-weight:700; margin-bottom:10px; display:block;
+  }
+  /* Die Zeile ruecken, damit die Schrittziffern ueber den Knoepfen Platz
+     haben, ohne die Beschriftung des Suchfeldes zu beruehren. */
+  .search-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+
+  /* ---------- Schrittfolge 1 -> 2 ueber den Knoepfen ---------- */
+  /* Rot kommt sonst nirgends im Hub vor. Genau deshalb steht es hier: Die
+     Ziffern sollen nicht wie ein weiteres Gestaltungselement wirken, sondern
+     wie eine Anweisung. Die Ziffer selbst ist gold - die Handlungsfarbe des
+     Hauses - und in der dunklen Fassung entsprechend heller. */
+  :root{ --schritt:#C62828; }
+  :root[data-theme="dark"]{ --schritt:#FF6B6B; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --schritt:#FF6B6B; } }
+  :root[data-theme="light"]{ --schritt:#C62828; }
+
+  .schritt{ position:relative; display:flex; flex:0 1 auto; }
+  .schritt::before{
+    content:attr(data-nr);
+    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    width:24px; height:24px; border-radius:50%; box-sizing:border-box;
+    border:2px solid var(--schritt); background:var(--card);
+    font-size:13px; font-weight:700; line-height:20px; text-align:center;
+    color:var(--schritt); z-index:2;
+  }
+  /* Die Eins in Gold, wie vom Herausgeber vorgegeben. Bewusst der dunklere
+     Goldton: Der helle erreicht auf Weiss nur 3,0:1 und waere in einer
+     24-Pixel-Scheibe schwer zu lesen. */
+  .schritt[data-nr="1"]::before{ color:var(--action-deep); }
+  .schritt > button{ width:100%; }
+
+  /* Der Bogen legt sich UEBER die Luecke, statt Breite zu beanspruchen: Sonst
+     rutschte der Knopf "Leeren" in die naechste Zeile - eine Ziffernfolge,
+     die das Feld unordentlicher macht, hilft niemandem. */
+  .schritt-pfeil{
+    position:relative; flex:0 0 0; width:0;
+    color:var(--schritt); pointer-events:none;
+  }
+  .schritt-pfeil svg{
+    position:absolute; left:50%; transform:translateX(-50%);
+    top:-12px; width:34px; height:20px;
+  }
+
+  /* Brechen die Knoepfe untereinander, zeigt ein Bogen nach rechts ins
+     Leere - dann bleibt es bei den Ziffern. */
+  @media (max-width:640px){
+    .schritt{ flex:1 1 100%; }
+    .schritt-pfeil{ display:none; }
+    /* Untereinander braucht jede Ziffer eigenen Platz - sonst sitzt die Zwei
+       auf der Unterkante des Knopfes darueber. */
+    .search-row{ gap:24px; }
+  }
+  .search-field{
+    position:relative; flex:1 1 320px; display:flex; align-items:center;
+  }
+  .search-field svg{ position:absolute; left:15px; width:19px; height:19px; color:var(--ink-faint); pointer-events:none; }
+  #q{
+    width:100%; font-size:17px; font-family:inherit; color:var(--ink);
+    background:var(--card); border:1.5px solid var(--line); border-radius:6px;
+    padding:14px 14px 14px 44px; outline:none; transition:border-color .15s, box-shadow .15s;
+  }
+  #q:focus{ border-color:var(--brand); box-shadow:0 0 0 3px var(--brand-tint); }
+  #q::placeholder{ color:var(--ink-faint); }
+  .btn-clear{
+    background:var(--card); border:1.5px solid var(--line); border-radius:6px;
+    color:var(--ink-soft); font-family:inherit; font-size:14px; font-weight:600;
+    padding:0 18px; cursor:pointer; transition:border-color .15s, color .15s;
+    min-height:46px;  /* Touch-Ziel, wenn die Buttons auf schmalen Displays umbrechen */
+  }
+  .btn-clear:hover{ border-color:var(--brand); color:var(--brand); }
+  .btn-clear:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+  .btn-go{
+    background:var(--action); border:1.5px solid var(--action); border-radius:6px;
+    color:var(--on-action); font-family:inherit; font-size:14px; font-weight:600;
+    padding:0 20px; cursor:pointer; white-space:nowrap;
+    display:flex; align-items:center; justify-content:center; gap:7px; transition:filter .15s;
+    min-height:46px;  /* Touch-Ziel, wenn die Buttons auf schmalen Displays umbrechen */
+    flex:0 1 auto;    /* natuerliche Breite: das Suchfeld soll den Platz bekommen */
+  }
+  /* Auf sehr schmalen Displays darf die Beschriftung umbrechen, statt zu ueberlaufen. */
+  @media (max-width:560px){
+    .btn-go{ white-space:normal; flex:1 1 100%; padding:10px 16px; }
+    .btn-select{ max-width:none; flex:1 1 auto; }
+  }
+  :root[data-theme="dark"] .btn-go{ color:var(--on-action); }
+  @media (prefers-color-scheme:dark){ .btn-go{ color:var(--on-action); } }
+  :root[data-theme="light"] .btn-go{ color:var(--on-action); }
+  .btn-go:hover{ filter:brightness(1.12); }
+  .btn-select{
+    background:var(--card); border:1.5px solid var(--line); border-radius:6px;
+    color:var(--ink-soft); font-family:inherit; font-size:14px; font-weight:600;
+    padding:0 12px; cursor:pointer; min-height:46px; max-width:230px;
+    transition:border-color .15s, color .15s;
+  }
+  .btn-select:hover{ border-color:var(--brand); color:var(--brand); }
+  .btn-select:disabled{ opacity:.45; cursor:not-allowed; }
+  .btn-select:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+  .btn-select optgroup{ font-weight:700; color:var(--ink); }
+  .btn-select option{ font-weight:500; color:var(--ink); }
+  .btn-go:disabled{ opacity:.45; cursor:not-allowed; filter:none; }
+  .btn-go:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+
+  .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; align-items:center; }
+  .chips .chips-label{ font-size:12.5px; color:var(--ink-faint); margin-right:2px; }
+  .chip{
+    font-size:13px; font-family:inherit; color:var(--ink-soft); font-weight:500;
+    background:var(--card); border:1px solid var(--line); border-radius:999px;
+    padding:6px 13px; cursor:pointer; transition:all .14s; white-space:nowrap;
+  }
+  .chip:hover{ border-color:var(--brand); color:var(--brand); }
+  .chip[aria-pressed="true"]{ background:var(--brand); border-color:var(--brand); color:#fff; }
+  :root[data-theme="dark"] .chip[aria-pressed="true"],
+  .chip[aria-pressed="true"]{ color:var(--on-brand); }
+  .chip:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+
+  .meta-row{
+    display:flex; align-items:center; gap:8px; margin-top:16px;
+    font-size:13px; color:var(--ink-faint); flex-wrap:wrap;
+  }
+  .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 var(--accent); animation:pulse 2.4s infinite; }
+  @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(179,97,42,.5)} 70%{box-shadow:0 0 0 7px rgba(179,97,42,0)} 100%{box-shadow:0 0 0 0 rgba(179,97,42,0)} }
+  @media (prefers-reduced-motion:reduce){ .dot{ animation:none } }
+
+  /* ---------- Category nav ---------- */
+  nav.jump{
+    position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid var(--line);
+  }
+  .jump-inner{ display:flex; gap:6px; overflow-x:auto; padding:11px 0; scrollbar-width:thin; }
+  .jump a{
+    flex:0 0 auto; font-size:13px; color:var(--ink-soft); text-decoration:none; font-weight:500;
+    padding:6px 12px; border-radius:6px; border:1px solid transparent; white-space:nowrap; transition:all .14s;
+  }
+  .jump a:hover{ background:var(--card); border-color:var(--line); color:var(--brand); }
+
+  /* ---------- Layout (Datenbanken + Studien-Frame) ---------- */
+  .layout{ padding:26px 0 40px; display:grid; grid-template-columns:minmax(0,1fr); gap:28px; align-items:start; }
+  @media (min-width:1000px){ .layout{ grid-template-columns:minmax(0,1fr) 358px; } }
+  .col-main{ min-width:0; }
+
+  /* ---------- Studien-Frame (rechts) ---------- */
+  aside.studies{ min-width:0; }
+  @media (min-width:1000px){
+    aside.studies{
+      position:sticky; top:58px; max-height:calc(100vh - 74px);
+      display:flex; flex-direction:column;
+      overflow-y:auto; scrollbar-width:thin;  /* Ventil, wenn alle Teile zusammen zu hoch werden */
+    }
+  }
+  .studies-head{
+    background:var(--card); border:1px solid var(--line); border-top:3px solid var(--accent);
+    border-radius:5px 13px 0 0; padding:15px 16px 13px; box-shadow:var(--shadow);
+  }
+  .studies-title{ display:flex; align-items:center; gap:9px; font-weight:600; font-size:16px; letter-spacing:-.01em; }
+  .studies-title .dot{ width:8px; height:8px; }
+  /* Zweite Zeile unter der Ueberschrift. Der Einzug von 17 px = Punkt (8) plus
+     Abstand (9) setzt sie buendig unter den Titeltext, nicht unter den Punkt. */
+  .studies-claim{ font-size:12px; font-weight:400; color:var(--ink-soft);
+                  margin-top:2px; padding-left:17px; line-height:1.35; }
+  /* Meldung ueber den letzten Lauf. Zwei Faelle mit eigener Farbe:
+     "nichts Neues" ist normal (neutral), ein ausgefallener Lauf nicht (Warnfarbe). */
+  .studies-status{
+    font-size:11.5px; line-height:1.4; margin-top:7px; padding:6px 9px;
+    border-radius:5px; border-left:3px solid var(--ink-faint);
+    background:var(--card-2); color:var(--ink-soft);
+  }
+  .studies-status[data-art="ausfall"]{ border-left-color:var(--action-deep); }
+  .studies-hint{ font-size:11.5px; color:var(--ink-faint); margin-top:7px; line-height:1.45; }
+  .studies-sub{ font-size:12px; color:var(--ink-faint); margin-top:6px; padding-top:6px;
+                border-top:1px solid var(--line-soft); line-height:1.4; }
+  .studies-sub b{ color:var(--ink-soft); font-weight:600; }
+  .studies-list{
+    border:1px solid var(--line); border-top:none; border-radius:0 0 13px 13px;
+    background:var(--card-2); padding:12px; display:flex; flex-direction:column; gap:11px;
+    box-shadow:var(--shadow);
+    /* Volle Hoehe, kein eigener Rollbalken: Eine Studienkarte ist rund 420 px
+       hoch: in einem eingeklemmten Kasten war stets nur eine sichtbar.
+       Gescrollt wird stattdessen die Spalte als Ganzes (siehe aside.studies). */
+    flex:0 0 auto;
+  }
+  article.study{
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:11px 13px; display:flex; flex-direction:column; gap:5px;
+  }
+  .study-top{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
+  .study-journal{ font-size:11.5px; font-weight:600; color:var(--accent); line-height:1.3; }
+  .study-year{ font-size:11px; color:var(--ink-faint); font-variant-numeric:tabular-nums;
+               flex:0 0 auto; white-space:nowrap; }
+  .study-author{ font-size:11.5px; color:var(--ink-faint); line-height:1.3; margin-top:-3px; }
+  .study-added{ font-size:10.5px; color:var(--ink-faint); line-height:1.3; margin-top:-3px; opacity:.85; }
+  a.study-title{ font-size:14.5px; font-weight:600; color:var(--ink); text-decoration:none; line-height:1.32; letter-spacing:-.005em; }
+  a.study-title:hover{ color:var(--brand); text-decoration:underline; }
+  .study-sum{ font-size:13px; color:var(--ink-soft); line-height:1.46; margin:0; }
+  .study-result{
+    font-size:12.5px; line-height:1.45; color:var(--ink); background:var(--brand-tint);
+    border-left:3px solid var(--brand); border-radius:0 5px 5px 0; padding:7px 9px;
+  }
+  /* Inline statt auf eigener Zeile: spart je Karte eine Zeile Hoehe. */
+  .study-result .rlabel{
+    display:inline; font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--brand-deep); font-weight:700; margin-right:6px;
+  }
+  :root[data-theme="dark"] .study-result .rlabel{ color:var(--brand); }
+  @media (prefers-color-scheme:dark){ .study-result .rlabel{ color:var(--brand); } }
+  /* Uebertragbarkeit auf das deutsche System - das wichtigste Auswahlkriterium.
+     Bewusst zurueckhaltender gesetzt als der Ergebnisblock: eine Einordnung,
+     kein Befund. */
+  .study-transfer{
+    font-size:11.5px; line-height:1.4; color:var(--ink-soft);
+    border-left:3px solid var(--line); padding:5px 9px; border-radius:0 4px 4px 0;
+    background:var(--card-2);
+  }
+  .study-transfer .tlabel{
+    display:inline; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--ink-faint); font-weight:700; margin-right:6px;
+  }
+  a.study-src{ font-size:11.5px; font-weight:600; color:var(--ink-faint); text-decoration:none; align-self:flex-start; }
+  a.study-src:hover{ color:var(--brand); }
+  /* Hinweise unter dem Suchfeld: zwei Textspalten, keine Rasterzellen.
+     Ein Raster richtet Zeilen an der hoechsten Karte aus - der kurze Absatz
+     wurde dadurch gestreckt und hinterliess knapp 50 px Loch. Textspalten
+     lassen den Text einfach fliessen und packen dicht. */
+  .hints{
+    columns:2; column-gap:26px;
+    margin-top:14px; padding-top:13px; border-top:1px solid var(--line-soft);
+  }
+  .hints p{
+    margin:0 0 9px; font-size:12px; line-height:1.5; color:var(--ink-faint);
+    break-inside:avoid;           /* ein Absatz wird nie zerrissen */
+  }
+  .hints p:last-child{ margin-bottom:0; }
+  .hints b{ color:var(--ink-soft); font-weight:700; }
+  /* Auf schmalen Bildschirmen untereinander - zwei Spalten waeren dort unlesbar. */
+  @media (max-width:760px){ .hints{ columns:1; } }
+
+  /* ---------- Trefferliste ueber mehrere Datenbanken ---------- */
+  /* Einwand eines Nutzers vom 30.08.2026: Wer 37 Kacheln einzeln anklicken
+     muss, sieht seine Treffer nie nebeneinander. Diese Liste holt die Treffer
+     der Datenbanken, die ihre Schnittstelle fuer Browser freigegeben haben,
+     und zeigt sie zusammengefuehrt auf der Seite - die uebrigen bleiben
+     Kachel, das sagt der Hinweis unter der Liste auch. */
+  .btn-meta{
+    background:var(--card); border:1.5px solid var(--schritt); border-radius:6px;
+    color:var(--schritt); font-family:inherit; font-size:14px; font-weight:600;
+    padding:0 20px; cursor:pointer; white-space:nowrap;
+    display:flex; align-items:center; justify-content:center; gap:7px;
+    min-height:46px; flex:0 1 auto; transition:background .15s, color .15s;
+  }
+  .btn-meta:hover:not(:disabled){ background:var(--schritt); color:#FFFFFF; }
+  .btn-meta:disabled{ opacity:.45; cursor:not-allowed; }
+  .btn-meta:focus-visible{ outline:2px solid var(--schritt); outline-offset:2px; }
+  @media (max-width:640px){ .btn-meta{ white-space:normal; flex:1 1 100%; padding:10px 16px; } }
+
+  .meta-wrap{ margin:22px auto 0; }
+  .meta-card{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    box-shadow:var(--shadow); padding:18px 20px 16px;
+  }
+  .meta-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; }
+  .meta-head h2{ font-size:19px; margin:0; letter-spacing:-.01em; }
+  .meta-sub{ margin:4px 0 0; font-size:13px; color:var(--ink-soft); line-height:1.5; }
+  .meta-zu{
+    background:none; border:1px solid var(--line); border-radius:5px; cursor:pointer;
+    font-family:inherit; font-size:11.5px; font-weight:600; color:var(--ink-faint);
+    padding:5px 10px; flex:0 0 auto;
+  }
+  .meta-zu:hover{ border-color:var(--brand); color:var(--brand); }
+  .meta-quellen{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+  .qchip{
+    font-size:11.5px; border-radius:20px; padding:4px 11px; border:1px solid var(--line);
+    background:var(--card-2); color:var(--ink-soft); display:inline-flex; gap:6px; align-items:center;
+  }
+  .qchip b{ color:var(--ink); font-weight:700; }
+  .qchip[data-stand="laedt"]{ opacity:.6; }
+  .qchip[data-stand="fehler"]{ border-color:var(--action-deep); color:var(--accent); }
+  .meta-leiste{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    gap:10px; margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft);
+  }
+  .meta-sort{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .meta-leiste .dl-row{ margin-top:0; }
+  .meta-liste{ margin-top:6px; }
+  .mt{ padding:13px 0; border-bottom:1px solid var(--line-soft); }
+  .mt:last-child{ border-bottom:none; }
+  .mt-titel{
+    font-size:15px; font-weight:600; color:var(--ink); text-decoration:none;
+    line-height:1.35; letter-spacing:-.005em; display:inline-block;
+  }
+  .mt-titel:hover{ color:var(--brand); text-decoration:underline; }
+  .mt-meta{ font-size:12.5px; color:var(--ink-faint); margin-top:4px; line-height:1.45; }
+  .mt-meta i{ color:var(--ink-soft); }
+  .mt-quellen{ margin-top:6px; display:flex; flex-wrap:wrap; gap:5px; align-items:center; }
+  .mt-quellen .vor{ font-size:11px; color:var(--ink-faint); }
+  .qtag{
+    font-size:10.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--brand-tint); color:var(--brand-deep); border-radius:3px; padding:2px 6px;
+  }
+  /* Die Art einer Fundstelle ist eine Einordnung, keine Herkunft - deshalb
+     ruhiger als die Quellenzeichen und ohne Hausfarbe. */
+  .qtag.art{ background:var(--card-2); border:1px solid var(--line); color:var(--ink-soft); }
+  a.qtag.oa{ background:none; border:1px solid var(--action-deep); color:var(--accent); text-decoration:none; }
+  a.qtag.oa:hover{ background:var(--action); color:var(--on-action); }
+  .mt-abstract{ margin-top:7px; }
+  .mt-abstract summary{
+    cursor:pointer; font-size:12px; color:var(--brand); list-style:none; width:max-content;
+  }
+  .mt-abstract summary::-webkit-details-marker{ display:none; }
+  .mt-abstract summary::before{ content:"\25B8  "; }
+  .mt-abstract[open] summary::before{ content:"\25BE  "; }
+  .mt-abstract p{ font-size:13px; line-height:1.55; color:var(--ink-soft); margin:6px 0 0; }
+  /* Der Titel in deutscher Fassung traegt die Ueberschrift, das Original
+     steht darunter - zitiert wird das Original, nicht die Uebersetzung. */
+  .mt-original{ font-size:12px; color:var(--ink-faint); margin-top:3px; line-height:1.4; }
+  .uebersetzt-mark{
+    font-size:9.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--ink-faint); border:1px solid var(--line); border-radius:3px;
+    padding:1px 4px; margin-right:5px; vertical-align:1px;
+  }
+  .meta-blaetter{
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    flex-wrap:wrap; margin-top:14px; padding-top:12px;
+    border-top:1px solid var(--line-soft);
+  }
+  .meta-blaetter:empty{ display:none; }
+  .blatt-stand{ font-size:12px; color:var(--ink-soft); }
+  .meta-fuss{ margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft); }
+  .meta-hinweis{ font-size:12px; line-height:1.55; color:var(--ink-faint); margin:10px 0 0; }
+  .meta-leer{ font-size:13.5px; color:var(--ink-soft); padding:14px 0; }
+
+  /* ---------- Download-Leisten ---------- */
+  .dl-row{ display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-top:10px; }
+  .dl-label{ font-size:11px; color:var(--ink-faint); }
+  .dl-btn{
+    font-size:11.5px; font-family:inherit; font-weight:600; color:var(--ink-soft);
+    background:var(--card-2); border:1px solid var(--line); border-radius:5px;
+    padding:5px 10px; cursor:pointer; transition:border-color .14s, color .14s;
+  }
+  .dl-btn:hover:not(:disabled){ border-color:var(--brand); color:var(--brand); }
+  .dl-btn:disabled{ opacity:.4; cursor:not-allowed; }
+  .dl-btn:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+  .archive .dl-row{ margin:0; padding:10px 14px 4px; border-bottom:1px solid var(--line-soft); }
+
+  /* ---------- Studien-Newsletter ---------- */
+  /* Die Anmeldung selbst liegt bei Monitor Versorgungsforschung; hier steht nur
+     der Hinweis darauf. Wie .archive: flex:0 0 auto, sonst staucht die
+     Studienliste den Kasten in der Sticky-Spalte weg. */
+  /* ---------- Ausgesuchte News ----------
+     Beitraege von m-vf.de zum Themenfeld dieses Hubs, in der Kopfkarte unter
+     dem Ausschreibungsradar. Die Spalte ist 236 px schmal - deshalb drei
+     Titel, kurzes Datum und kein Auszug.
+
+     Nicht in der Studienspalte: Die ist ein eigener Scrollbereich, und hinter
+     Studienliste und Archivordner (zusammen ueber 3.000 px) faende den Kasten
+     niemand. Am 29.08.2026 genau daran gescheitert. */
+  .magazin{
+    margin-top:12px; padding-top:10px; border-top:1px solid var(--line);
+  }
+  .magazin[hidden]{ display:none; }
+  .magazin-title{
+    display:flex; align-items:center; gap:7px;
+    font-weight:700; font-size:12.5px; color:var(--ink); margin-bottom:3px;
+  }
+  .magazin-title::before{ content:"\1F4F0"; font-size:14px; filter:grayscale(.3); }
+  .magazin-sub{ font-size:10.5px; line-height:1.4; color:var(--ink-faint); margin:0 0 6px; }
+  .magazin-sub a{ color:var(--ink-faint); }
+  .magazin-list{ list-style:none; margin:0; padding:0; }
+  .magazin-list li{ padding:6px 0; border-top:1px solid var(--line-soft); }
+  .magazin-list li:first-child{ border-top:none; }
+  .magazin-list a{
+    font-size:12px; line-height:1.35; font-weight:600; color:var(--brand);
+    text-decoration:none; display:block; hyphens:auto;
+  }
+  .magazin-list a:hover{ text-decoration:underline; }
+  .magazin-datum{ display:block; font-size:10.5px; color:var(--ink-faint); margin-top:2px; }
+  /* Der Verweis unter jeder Rubrik: Zwei Eintraege sind eine Auswahl, kein
+     Bestand - wer mehr will, soll wissen, wohin. */
+  .magazin-mehr{
+    display:inline-block; margin-top:7px;
+    font-size:11px; font-weight:700; color:var(--brand); text-decoration:none;
+  }
+  .magazin-mehr:hover{ text-decoration:underline; }
+  /* Die Presserubrik steht optisch eine Stufe zurueck: Sie ist die Zugabe,
+     nicht der Inhalt. Die Quelle steht bei jedem Eintrag - wer eine
+     Pressemitteilung liest, soll wissen, von wem. */
+  .presse .magazin-list a{ font-weight:400; color:var(--ink); }
+  .presse .magazin-list a:hover{ color:var(--brand); }
+  .magazin-quelle{ color:var(--ink-faint); }
+
+  .nl{
+    margin-top:10px; border:1px solid var(--line); border-radius:6px;
+    background:var(--card); padding:11px 13px; flex:0 0 auto;
+  }
+  .nl-title{
+    display:flex; align-items:center; gap:8px;
+    font-weight:700; font-size:13.5px; color:var(--ink); margin-bottom:5px;
+  }
+  .nl-title::before{ content:"\2709"; font-size:15px; filter:grayscale(.3); }
+  .nl-text{ font-size:11px; line-height:1.45; color:var(--ink-faint); margin:0 0 8px; }
+  .nl-btn{
+    display:inline-flex; align-items:center; font-size:12px; font-weight:700;
+    text-decoration:none; color:var(--on-action); background:var(--action); border-radius:5px;
+    padding:8px 13px; transition:filter .14s;
+    min-height:46px;  /* Touch-Ziel, wie bei den uebrigen Knoepfen */
+  }
+  .nl-btn:hover{ filter:brightness(1.12); }
+  .nl-btn:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+  .nl-host{ display:block; font-size:10.5px; color:var(--ink-faint); margin-top:7px; }
+
+
+  .boolmark{
+    font-size:9.5px; font-weight:700; letter-spacing:.05em;
+    border-radius:3px; padding:1px 4px;
+    margin-left:6px; white-space:nowrap; vertical-align:middle;
+  }
+  .boolmark.ja  { color:var(--brand); border:1px solid var(--brand); }
+  /* Bewusst zurueckgenommen: die Aussage ist wahr, aber kein Verkaufsargument. */
+  .boolmark.nein{ color:var(--ink-faint); border:1px solid var(--line); }
+
+  /* ---------- Menueleiste ---------- */
+  nav.hauptmenu{ background:var(--card); border-bottom:1px solid var(--line); }
+  .menu-inner{
+    display:flex; align-items:center; gap:2px;
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .menu-inner::-webkit-scrollbar{ display:none; }
+  .menu-inner a{
+    flex:0 0 auto; padding:11px 13px; font-size:13px; font-weight:700;
+    color:var(--ink-soft); text-decoration:none; white-space:nowrap;
+    border-bottom:2px solid transparent; transition:color .14s, border-color .14s;
+  }
+  .menu-inner a:hover{ color:var(--brand); border-bottom-color:var(--brand); }
+  .menu-inner a.hier{ color:var(--brand); border-bottom-color:var(--brand); }
+  .menu-inner a:focus-visible{ outline:2px solid var(--brand); outline-offset:-2px; }
+  .menu-extern::after{ content:" ↗"; font-size:.85em; }
+
+  /* Auf schmalen Bildschirmen passt das Menue nicht in eine Zeile und rollt
+     waagerecht. Ohne Andeutung bleibt das unbemerkt - die hinteren Punkte
+     (Impressum, Datenschutz) waeren praktisch unsichtbar. Der weiche Rand
+     rechts zeigt, dass es weitergeht. */
+  /* Bis 860 px passen die sechs Punkte nicht in eine Zeile - gemessen: bei
+     768 px liegen 54 px hinter dem Rand. Der weiche Rand zeigt, dass es
+     weitergeht. Darunter (620 px) bricht das Menue ohnehin um. */
+  @media (max-width:860px){
+    nav.hauptmenu{ position:relative; }
+    nav.hauptmenu::after{
+      content:""; position:absolute; top:0; right:0; bottom:0; width:36px;
+      background:linear-gradient(to right, transparent, var(--card));
+      pointer-events:none;
+    }
+  }
+  /* Auf dem Telefon waren von sechs Punkten nur zwei sichtbar, der Rest lag
+     487 px hinter dem Rand. Deshalb dort umbrechen statt rollen - und
+     Impressum und Datenschutz ausblenden, die ohnehin im Fussbereich stehen
+     und dort die gesetzlich geforderte staendige Erreichbarkeit erfuellen. */
+  @media (max-width:620px){
+    .menu-inner{ flex-wrap:wrap; padding:3px 0; gap:0; }
+    /* Kleiner gesetzt, damit vier Punkte in zwei Reihen passen statt in drei -
+       drei Reihen kosteten 131 px Hoehe ueber dem eigentlichen Inhalt. */
+    .menu-inner a{ padding:12px 9px; font-size:12px; }   /* 44 px Tippflaeche */
+    .menu-inner a.nur-breit{ display:none; }
+    nav.hauptmenu::after{ display:none; }
+  }
+  /* Einleitung und Newsletter-Knopf nebeneinander. Der Knopf steht damit
+     im ersten Blickfeld, ohne den Text zu unterbrechen; unter 860 px rutscht
+     er darunter, weil zwei Spalten dort nur noch Silbentrennung erzeugen. */
+  .lede-zeile{ display:flex; align-items:stretch; gap:30px; margin:.2em 0 0; }
+  .lede-zeile .lede{ margin:0; }
+  /* Die linke Saeule: Einleitungstext, Suchfeld, Sponsorblock. Das Suchfeld
+     stand bis zum 29.08.2026 unter der ganzen Zeile - seit Radar und News die
+     Kopfkarte auf 468 px wachsen liessen, klaffte daneben eine Luecke von ueber
+     500 px. Jetzt fuellt es sie.
+
+     Kein space-between mehr: Mit drei Kindern verteilte es die Zwischenraeume
+     wieder ungleich. Der Sponsorblock haengt sich stattdessen selbst ans Ende
+     (margin-top:auto), damit die Sponsorzeile auf einer Linie mit dem Knopf
+     der Kopfkarte sitzt - padding-bottom ist die Hoehe der Fussnote. */
+  .lede-links{ flex:1 1 auto; display:flex; flex-direction:column;
+               gap:16px; padding-bottom:16px; min-width:0; }
+  .lede-links .sponsor-block{ margin-top:auto; }
+  /* In der Saeule setzt der gap den Abstand nach oben. Und der Kasten waechst
+     auf die volle Hoehe: Die Kopfkarte rechts ist mit Radar, News und den
+     beiden Fremdrubriken hoeher als das Suchfeld hoch ist - ohne flex bliebe
+     darunter eine Luecke, und die graue Kante braeche mitten auf der Seite ab.
+     So enden beide Spalten auf derselben Linie. */
+  .lede-links .panel{ margin-top:0; flex:1 1 auto; }
+  .lede-nl{
+    flex:0 0 auto; width:236px; padding:16px 18px;
+    background:var(--card); border:1px solid var(--line);
+    border-left:4px solid var(--action); border-radius:6px;
+  }
+  .btn-nl{
+    display:flex; align-items:center; justify-content:center; min-height:46px;
+    background:var(--action); color:var(--on-action); font-weight:700; font-size:14.5px;
+    text-decoration:none; padding:0 16px; border-radius:6px; transition:filter .14s;
+    text-align:center; line-height:1.25;
+  }
+  .btn-nl:hover{ filter:brightness(1.08); }
+  .btn-nl:focus-visible{ outline:2px solid var(--brand); outline-offset:3px; }
+  .nl-mini{ display:block; margin-top:9px; font-size:12px; line-height:1.45; color:var(--ink-faint); }
+  @media (max-width:860px){
+    .lede-zeile{ flex-direction:column; gap:18px; align-items:stretch; }
+    .lede-links{ padding-bottom:0; }
+    .lede-nl{ width:100%; }
+  }
+
+  /* Knopf zur Über-Seite, direkt unter dem Einleitungstext */
+  .lede-nl .btn-ueber{ margin-top:10px; width:100%; justify-content:center; text-align:center; }
+  .btn-ueber{
+    display:inline-flex; align-items:center; gap:8px; min-height:46px;
+    background:var(--action); color:var(--on-action); font-weight:700; font-size:14px;
+    text-decoration:none; padding:0 20px; border-radius:6px; transition:filter .14s;
+  }
+  .btn-ueber:hover{ filter:brightness(1.08); }
+  .btn-ueber:focus-visible{ outline:2px solid var(--brand); outline-offset:3px; }
+
+  /* ---------- Sponsorenfeld ----------
+     Bleibt verborgen, solange SPONSOREN leer ist - es gibt keinen Schalter,
+     den jemand vergessen koennte. Bewusst zurueckhaltend gesetzt: Der goldene
+     Knopf ist die Hauptaktion der Seite, das Logo darf nicht mit ihm
+     konkurrieren. */
+  .sponsor{ display:flex; align-items:center; gap:11px; }
+  .sponsor-vor{ font-size:12px; line-height:1.3; color:var(--ink-faint); }
+  .sponsor-logos{ display:flex; align-items:center; gap:16px; }
+  .sponsor-logos img{ height:42px; width:auto; max-width:240px; display:block; }
+  /* Der Hinweis steht neben dem Logo, nicht darunter: Sonst drueckt er das Logo
+     aus der Linie mit dem Knopf, und das Sternchen stuende weit von seinem
+     Bezugswort entfernt. */
+  .sponsor-text{ display:flex; flex-direction:column; gap:2px; }
+  .sponsor-fuss{ margin:0; font-size:11px; line-height:1.35; color:var(--ink-faint); }
+  /* Wie beim MVF-Logo: im Dark Mode nicht umfaerben, sondern auf eine weisse
+     Flaeche stellen. Ein filter:invert wuerde jede Hausfarbe zerstoeren -
+     und ein Sponsor hat ein Anrecht auf sein Logo, nicht auf ein Negativ. */
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .sponsor-logos img{
+      background:#fff; padding:3px 6px; border-radius:4px;
+    }
+  }
+  :root[data-theme="dark"] .sponsor-logos img{
+    background:#fff; padding:3px 6px; border-radius:4px;
+  }
+
+  /* ---------- Rueckmeldung nach dem Absenden ---------- */
+  /* Fruehere Fassung schrieb die Links still um - niemand sah, dass etwas
+     geschah. Diese Leiste ist die sichtbare Antwort auf die Eingabetaste. */
+  .result-bar{
+    margin-top:12px; padding:11px 14px; border-radius:6px;
+    background:var(--brand-tint); border-left:3px solid var(--brand);
+    font-size:13.5px; line-height:1.5; color:var(--ink);
+  }
+  .result-bar b{ font-weight:700; }
+  .result-bar .rb-zusatz{ display:block; margin-top:3px; font-size:12px; color:var(--ink-soft); }
+
+  .leer-hinweis{
+    margin-top:10px; padding:11px 14px; border-radius:6px;
+    background:var(--card-2); border-left:3px solid var(--action-deep);
+    font-size:13px; line-height:1.5; color:var(--ink-soft);
+  }
+  .leer-hinweis b{ color:var(--ink); }
+
+  .uebersetzen{
+    display:flex; align-items:center; gap:7px; margin-top:9px;
+    font-size:12px; color:var(--ink-soft); cursor:pointer;
+  }
+  .uebersetzen input{ accent-color:var(--brand); width:15px; height:15px; cursor:pointer; }
+  .rb-uebersetzung{
+    display:block; margin-top:6px; padding-top:6px;
+    border-top:1px solid var(--line-soft); font-size:12px; color:var(--ink-soft);
+  }
+  .rb-uebersetzung b{ color:var(--brand); }
+  .rb-fehlt{
+    display:block; margin-top:6px; padding-top:6px;
+    border-top:1px solid var(--line-soft); font-size:12px; color:var(--ink-soft);
+  }
+  .rb-fehlt b{ color:var(--ink); }
+  .rb-fehlt a{ color:var(--brand); font-weight:700; white-space:nowrap; }
+
+  .bool-hint{
+    margin-top:9px; padding:9px 13px; border-radius:6px;
+    background:var(--card-2); border-left:3px solid var(--action-deep);
+    font-size:12.5px; line-height:1.5; color:var(--ink-soft);
+  }
+  .bool-hint b{ color:var(--ink); font-weight:700; }
+
+  /* ---------- Filter ---------- */
+  .filters{ margin-top:12px; }
+  /* Bewusst eine Leiste, kein blasser Textlink: Der Filter ging vorher unter.
+     Zusammengeklappt bleibt er eine Zeile hoch - er soll keinen Platz fressen. */
+  .filters summary{
+    cursor:pointer; list-style:none;
+    display:flex; align-items:center; gap:9px;
+    padding:12px 13px; border:1px solid var(--line); border-radius:6px;
+    background:var(--card-2); transition:border-color .14s, background .14s;
+    min-height:44px;   /* Touch-Ziel; 39 px waren zu knapp fuer Finger */
+  }
+  .filters summary::-webkit-details-marker{ display:none; }
+  .filters summary:hover{ border-color:var(--brand); background:var(--card); }
+  .filters summary:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+  .filters[open] summary{ border-color:var(--brand); background:var(--card); }
+  /* Symbole als SVG - Schriftzeichen wie oder haengen davon ab, ob die
+     Hausschrift sie enthaelt; Lato tut es nicht. */
+  .f-icon{ width:15px; height:15px; flex:0 0 auto; color:var(--brand); }
+  .f-titel{ font-size:12.5px; font-weight:700; color:var(--brand); }
+  .f-dims{
+    font-size:11.5px; color:var(--ink-faint); flex:1 1 auto;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .f-pfeil{ width:13px; height:13px; flex:0 0 auto; color:var(--ink-faint); transition:transform .16s; }
+  .filters[open] .f-pfeil{ transform:rotate(90deg); }
+  @media (max-width:620px){ .f-dims{ display:none; } }
+  .filter-badge{
+    background:var(--brand); color:var(--on-brand); border-radius:999px;
+    font-size:11px; padding:1px 7px; font-weight:700;
+  }
+  .filter-body{ display:flex; flex-direction:column; gap:9px; margin-top:11px; }
+  .filter-group{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+  .filter-label{
+    font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink-faint); font-weight:700; min-width:104px;
+  }
+  .fchip{
+    font-size:12px; font-family:inherit; font-weight:600; color:var(--ink-soft);
+    background:var(--card); border:1px solid var(--line); border-radius:999px;
+    padding:4px 11px; cursor:pointer; transition:all .13s;
+  }
+  .fchip:hover{ border-color:var(--brand); color:var(--brand); }
+  .fchip[aria-pressed="true"]{
+    background:var(--brand); border-color:var(--brand); color:var(--on-brand);
+  }
+  .fchip:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+  .filter-reset{ display:flex; justify-content:flex-end; margin-top:2px; }
+  .fchip.reset{ border-style:dashed; color:var(--ink-faint); }
+  .fchip.reset:hover{ border-style:solid; border-color:var(--brand); color:var(--brand); }
+
+  /* Ausgeblendete Kacheln und leergefilterte Rubriken */
+  .card.aus, .cat.aus{ display:none; }
+  .cat-leer{
+    font-size:12.5px; color:var(--ink-faint); padding:10px 2px;
+  }
+
+  /* Marker auf der Kachel, sobald die Suche vorbereitet ist */
+  .card .bereit{
+    display:none; font-size:10px; font-weight:700; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--brand);
+  }
+  body.gesucht .card[data-live="1"] .bereit{ display:inline; }
+
+  /* ---------- Ordner „Ältere Suchergebnisse" ---------- */
+  .archive{
+    margin-top:10px; border:1px solid var(--line); border-radius:6px;
+    background:var(--card); overflow:hidden;
+    flex:0 0 auto;   /* darf nicht gestaucht werden - sonst verschwindet der Ordner */
+  }
+  /* Der Radar sitzt IN der Kopfkarte, nicht daneben: kein zweiter Rahmen,
+     nur eine Trennlinie nach oben. Ein Kasten im Kasten sieht nach Versehen aus. */
+  /* ---------- Hinweis auf den Ausschreibungsradar ----------
+     Bis zum 28.08.2026 stand hier der Radar selbst. Seither laeuft er einmal
+     zentral im Versorgungsforschungs-Hub und ist dort nach zwoelf
+     Themengebieten gegliedert; diese Karte nennt nur noch die Zahl des
+     eigenen Gebiets und verweist dorthin. Zwoelf Gebiete haetten in dieser
+     236 px schmalen Spalte ohnehin keinen Platz. */
+  .radar-hinweis{
+    margin-top:12px; padding:11px 13px;
+    background:var(--card-2); border:1px solid var(--line); border-radius:6px;
+    font-size:12.5px; line-height:1.5; color:var(--ink-soft);
+  }
+  .radar-hinweis[hidden]{ display:none; }
+  .radar-hinweis b{ color:var(--ink); }
+  .radar-hinweis a{
+    display:inline-block; margin-top:6px;
+    font-weight:700; color:var(--brand); text-decoration:none;
+  }
+  .radar-hinweis a:hover{ text-decoration:underline; }
+  .archive summary{
+    cursor:pointer; padding:12px 14px; font-weight:600; font-size:13.5px; color:var(--ink-soft);
+    list-style:none; display:flex; align-items:center; gap:9px;
+  }
+  .archive summary::-webkit-details-marker{ display:none; }
+  .archive summary::before{ content:"\1F5C2"; font-size:15px; filter:grayscale(.35); }
+  .archive summary::after{ content:"\25B8"; margin-left:auto; color:var(--ink-faint); transition:transform .15s; }
+  .archive[open] summary::after{ transform:rotate(90deg); }
+  .archive summary:hover{ color:var(--brand); }
+  .archive[open] summary{ border-bottom:1px solid var(--line); }
+  /* 32vh laesst der Studienliste genug Platz, wenn der Ordner offen ist. */
+  /* 32vh war zu viel: zusammen mit dem Newsletter-Kasten blieb fuer die
+     Studienliste kaum Hoehe uebrig. Das Archiv ist zweitrangig. */
+  .archive-body{ padding:6px 12px 12px; max-height:20vh; overflow-y:auto; scrollbar-width:thin; }
+  .arch-day{ margin-top:12px; }
+  .arch-day:first-child{ margin-top:4px; }
+  .arch-date{
+    position:sticky; top:0; z-index:1; background:var(--card);
+    font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--brand); padding:6px 0 5px; border-bottom:1px solid var(--line-soft);
+  }
+  .arch-item{ padding:9px 0 8px; border-bottom:1px solid var(--line-soft); }
+  .arch-item:last-child{ border-bottom:none; }
+  .arch-top{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
+  .arch-journal{ font-size:11px; font-weight:600; color:var(--accent); line-height:1.3; }
+  .arch-year{ font-size:10.5px; color:var(--ink-faint); font-variant-numeric:tabular-nums; flex:0 0 auto; white-space:nowrap; }
+  a.arch-title{ display:block; font-size:13.5px; font-weight:600; color:var(--ink); text-decoration:none; line-height:1.32; margin-top:2px; }
+  a.arch-title:hover{ color:var(--brand); text-decoration:underline; }
+  .arch-result{ font-size:12px; color:var(--ink-soft); line-height:1.45; margin:4px 0 0; }
+  .arch-status{ font-size:12px; color:var(--ink-faint); padding:10px 2px; }
+
+  /* ---------- Sections ---------- */
+  .cat{ scroll-margin-top:64px; margin-top:0; }
+  .cat + .cat{ margin-top:34px; }
+  /* MVF fuehrt genau zwei Farben: Blau und Gold. Ein Regenbogen aus acht
+     Kategorietoenen widerspraeche dem, deshalb tragen alle Rubriken die
+     Hausfarbe; die Rubriknummer steht in Gold. Das --h-System in CATS
+     bleibt unangetastet und laesst sich mit einer Zeile reaktivieren. */
+  .cat{ --cat:var(--brand); }
+  /* Gold bleibt den Knoepfen vorbehalten - bei MVF ebenso. Als kleine
+     Textfarbe reicht sein Kontrast nicht (3,04:1 auf hellem Grund). */
+  .cat-num{ color:var(--brand) !important; }
+
+  .cat-head{ display:flex; align-items:baseline; gap:13px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+  .cat-num{ font-family:inherit; font-size:13px; font-weight:700; color:var(--cat);
+            letter-spacing:.06em; font-variant-numeric:tabular-nums; }
+  .cat-head h2{ font-size:clamp(20px,2.6vw,25px); margin:0; font-weight:600; letter-spacing:-.01em; }
+  .cat-count{ margin-left:auto; font-size:12.5px; color:var(--ink-faint); align-self:center; }
+
+  /* Hinweiszeile, die nur einzelne Bloecke tragen (CATS[].hinweis). */
+  .cat-hinweis{ margin:14px 0 0; padding:11px 14px; font-size:13.5px; line-height:1.55;
+                color:var(--ink-soft); background:var(--card-2);
+                border-left:3px solid var(--cat); border-radius:0 6px 6px 0; }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(268px,1fr)); gap:14px; margin-top:16px; }
+
+  a.card{
+    display:flex; flex-direction:column; gap:9px; text-decoration:none; color:inherit;
+    background:var(--card); border:1px solid var(--line); border-left:3px solid var(--cat);
+    border-radius:5px; padding:16px 16px 15px; box-shadow:var(--shadow);
+    transition:transform .16s ease, box-shadow .16s ease, border-color .16s;
+    position:relative; min-height:120px;
+  }
+  a.card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-hover); }
+  a.card:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+  .card-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+  .card-name{ font-weight:600; font-size:16.5px; letter-spacing:-.005em; line-height:1.25; }
+  .badge{
+    flex:0 0 auto; font-size:10.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    padding:3px 8px; border-radius:6px; white-space:nowrap; margin-top:2px;
+  }
+  .badge.live{ background:var(--brand-tint); color:var(--brand-deep); }
+  :root[data-theme="dark"] .badge.live{ color:var(--brand); }
+  @media (prefers-color-scheme:dark){ .badge.live{ color:var(--brand); } }
+  .badge.portal{ background:transparent; color:var(--ink-faint); border:1px solid var(--line); }
+  .badge.lic{ background:transparent; color:var(--accent); border:1px solid color-mix(in srgb, var(--accent) 45%, var(--line)); }
+  .card-desc{ font-size:13.5px; color:var(--ink-soft); line-height:1.42; flex:1; }
+  .card-foot{ display:flex; align-items:center; gap:6px; font-size:12.5px; color:var(--cat); font-weight:600; margin-top:2px; }
+  .card-foot .host{ color:var(--ink-faint); font-weight:500; }
+  .arrow{ transition:transform .16s; }
+  a.card:hover .arrow{ transform:translate(3px,-3px); }
+
+  .empty{ grid-column:1/-1; text-align:center; color:var(--ink-faint); padding:30px; font-size:14px; }
+
+  /* ---------- Footer ---------- */
+  footer{ border-top:1px solid var(--line); margin-top:44px; }
+  .foot-inner{ padding:26px 0 40px; color:var(--ink-faint); font-size:13px; display:grid; gap:10px; }
+  .foot-inner strong{ color:var(--ink-soft); font-weight:600; }
+  .foot-inner a{ color:var(--brand); text-decoration:none; }
+  .foot-inner a:hover{ text-decoration:underline; }
+  .attrib{ color:var(--ink-soft); font-weight:600; margin-top:4px; }
+  .legal{ display:grid; gap:8px; margin-top:2px; }
+  .legal details{ border:1px solid var(--line); border-radius:6px; background:var(--card); overflow:hidden; }
+  .legal summary{ cursor:pointer; padding:10px 13px; font-weight:600; color:var(--ink-soft); font-size:13px; list-style:none; }
+  .legal summary::-webkit-details-marker{ display:none; }
+  .legal summary::before{ content:"\25B8\00a0"; color:var(--ink-faint); }
+  .legal details[open] summary::before{ content:"\25BE\00a0"; }
+  .legal details[open] summary{ border-bottom:1px solid var(--line); }
+  .legal .legal-body{ padding:10px 14px 14px; font-size:12px; line-height:1.55; color:var(--ink-soft); }
+  .legal .legal-body h4{ margin:11px 0 2px; font-size:12px; color:var(--ink); font-weight:700; }
+  .legal .legal-body h4:first-child{ margin-top:0; }
+  .legal .legal-body p{ margin:3px 0; }
+  .legal .legal-body a{ color:var(--brand); word-break:break-word; }
+
+  @media (max-width:560px){
+    .masthead-inner{ padding:26px 0 22px; }
+    .panel{ padding:16px; }
+    .cat-count{ display:none; }
+  }
+</style>
+
+<nav class="hauptmenu">
+  <div class="wrap menu-inner">
+    <a href="./" class="hier" aria-current="page">Knowledge-Hub</a>
+    <a href="ueber.html" target="_blank" rel="noopener">Über den Hub</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="https://wissen.m-vf.de/ausschreibungen.html" target="_blank" rel="noopener">Ausschreibungen</a>
+    <a href="#impressum" class="nur-breit">Impressum</a>
+    <a href="#datenschutz" class="nur-breit">Datenschutz</a>
+    <a href="https://www.monitor-versorgungsforschung.de/?utm_source=onkologie-hub&amp;utm_medium=referral&amp;utm_campaign=menu" target="_blank" rel="noopener" class="menu-extern">Monitor Versorgungsforschung</a>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <div class="masthead-top">
+      <div class="masthead-text">
+        <h1 class="serif">Knowledge-Hub Onkologie
+          <span class="sub">Ein Zugang zu Studien, Daten und Versorgungswissen</span>
+        </h1>
+      </div>
+      <a class="brand-link" href="https://www.monitor-versorgungsforschung.de/?utm_source=onkologie-hub&amp;utm_medium=referral&amp;utm_campaign=logo" target="_blank" rel="noopener" title="Monitor Versorgungsforschung — Herausgeber dieses Portals">
+        <img src="logo/mvf-logo.png" width="1236" height="327" alt="Monitor Versorgungsforschung">
+      </a>
+    </div>
+    <div class="lede-zeile">
+      <div class="lede-links">
+        <p class="lede">Ein Suchbegriff, alle Datenbanken. Geben Sie bitte unten einen Begriff ein - jede Datenbankkarte oeffnet damit direkt die passende Live-Suche in einem neuen Tab. Darunter finden Sie die Studienauswahl der vergangenen Tage: neue Arbeiten von der Grundlagenforschung bis zur Versorgung, jede auf Deutsch zusammengefasst und mit Blick darauf ausgewaehlt, was sie fuer die Behandlung hierzulande bedeutet.</p>
+
+        <div class="panel">
+          <label class="panel-label" for="q">Suchbegriff</label>
+          <div class="search-row">
+            <div class="search-field">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input id="q" type="search" autocomplete="off" spellcheck="false" value="Onkologie" placeholder="z. B. Immuntherapie, Mammakarzinom, Tumorboard, screening …">
+            </div>
+            <!-- Die beiden Knoepfe stehen nebeneinander und sehen gleich wichtig
+                 aus - dabei ist der zweite der zweite Schritt. Die Ziffern und der
+                 Bogen dazwischen sagen die Reihenfolge, die die Anordnung allein
+                 nicht hergibt. -->
+            <span class="schritt" data-nr="1">
+              <button class="btn-go" id="go" type="button" title="Stellt alle Datenbanken auf Ihren Suchbegriff ein (oder Eingabetaste drücken)">In allen Datenbanken suchen</button>
+            </span>
+            <span class="schritt-pfeil" aria-hidden="true">
+              <svg viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 15C4 5 14 2 24 6"/><path d="m19 3 6 3-4 5"/>
+              </svg>
+            </span>
+            <span class="schritt" data-nr="2">
+              <button class="btn-meta" id="goMeta" type="button" title="Fragt sieben Datenbanken unmittelbar ab und zeigt die Treffer hier auf der Seite">Treffer direkt anzeigen</button>
+            </span>
+            <button class="btn-clear" id="clear" type="button">Leeren</button>
+          </div>
+
+          <!-- Rueckmeldung nach dem Absenden. Vorher unsichtbar: Ohne Suche gibt
+               es nichts zu melden. -->
+          <div class="result-bar" id="resultBar" hidden></div>
+          <div class="leer-hinweis" id="leerHinweis" hidden></div>
+
+          <!-- Hinweis auf Boolesche Operatoren - erscheint nur, wenn welche
+               getippt werden. -->
+          <div class="bool-hint" id="boolHint" hidden></div>
+          <label class="uebersetzen"><input type="checkbox" id="uebersetzenAn" checked>
+            Deutsche Fachbegriffe für internationale Datenbanken übersetzen</label>
+          <div class="chips" id="chips">
+            <span class="chips-label">Schnellwahl:</span>
+          </div>
+
+          <details class="filters" id="filters">
+            <summary>
+              <svg class="f-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+              <span class="f-titel">Filter</span>
+              <span class="f-dims">Zugang &middot; Suchart &middot; Operatoren &middot; Art der Quelle</span>
+              <span class="filter-badge" id="filterBadge" hidden></span>
+              <svg class="f-pfeil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </summary>
+            <div class="filter-body">
+              <div class="filter-group" data-gruppe="zugang">
+                <span class="filter-label">Zugang</span>
+                <button type="button" class="fchip" data-wert="alle" aria-pressed="true">Alle</button>
+                <button type="button" class="fchip" data-wert="frei" aria-pressed="false">Frei zugänglich</button>
+                <button type="button" class="fchip" data-wert="lizenz" aria-pressed="false">Lizenz nötig</button>
+              </div>
+              <div class="filter-group" data-gruppe="suchart">
+                <span class="filter-label">Suchart</span>
+                <button type="button" class="fchip" data-wert="alle" aria-pressed="true">Alle</button>
+                <button type="button" class="fchip" data-wert="live" aria-pressed="false">Live-Suche</button>
+                <button type="button" class="fchip" data-wert="portal" aria-pressed="false">Portal</button>
+              </div>
+              <div class="filter-group" data-gruppe="bool">
+                <span class="filter-label">Operatoren</span>
+                <button type="button" class="fchip" data-wert="alle" aria-pressed="true">Alle</button>
+                <button type="button" class="fchip" data-wert="ja" aria-pressed="false">Wertet AND/OR/NOT aus</button>
+              </div>
+              <div class="filter-group" data-gruppe="rubrik" id="filterRubrik">
+                <span class="filter-label">Art der Quelle</span>
+              </div>
+              <!-- Erscheint nur, wenn etwas zurueckzusetzen ist - sonst waere es
+                   ein Knopf ohne Wirkung. -->
+              <div class="filter-reset" id="filterResetZeile" hidden>
+                <button type="button" class="fchip reset" id="filterReset">Alle Filter zurücksetzen</button>
+              </div>
+            </div>
+          </details>
+          <div class="hints">
+            <p><b>So funktioniert die Suche.</b> Begriff eingeben, <b>Eingabetaste</b> drücken oder auf <b>„In allen Datenbanken suchen"</b> klicken — damit werden alle Kacheln auf Ihren Begriff eingestellt. Ein Klick auf eine Kachel öffnet dann <b>direkt die Trefferliste</b> dieser Datenbank in einem neuen Tab; ein zweites Mal suchen müssen Sie dort nicht. Die Kacheln bleiben eingestellt, Sie können also nacheinander mehrere Datenbanken öffnen, ohne den Begriff erneut einzugeben. Ausnahme sind die als <b>„Portal"</b> gekennzeichneten Anbieter — die erlauben technisch keine verlinkbare Trefferadresse.</p>
+            <p><b>Treffer direkt auf dieser Seite.</b> Der Knopf <b>&bdquo;Treffer direkt anzeigen&ldquo;</b> fragt die Datenbanken unmittelbar ab, die einen direkten Zugriff auf ihre Inhalte erlauben (derzeit <b id="cntMeta"></b>), und zeigt die Fundstellen zusammengef&uuml;hrt hier auf der Seite &mdash; jede mit Angabe der Datenbank, aus der sie stammt. Dubletten werden &uuml;ber die DOI zusammengelegt; erscheint eine Arbeit in mehreren Datenbanken, steht sie einmal in der Liste und tr&auml;gt mehrere Herkunftszeichen. Die Trefferliste zeigt <b>25 Treffer je Blatt</b>. Neben Zeitschriftenaufs&auml;tzen sind angemeldete Studien, Preprints und Repositorien darunter; der Filter <b>Art</b> trennt sie. Wo es eine legale frei zug&auml;ngliche Fassung gibt, steht ein Verweis <b>Volltext</b>. Die Liste l&auml;sst sich als Word, Excel, RIS oder BibTeX herunterladen und damit in Zotero, EndNote oder Citavi weiterverarbeiten. Die &uuml;brigen halten ihre Inhalte f&uuml;r eine solche Abfrage verschlossen; sie bleiben &uuml;ber die Kacheln zu &ouml;ffnen. Dabei erf&auml;hrt der jeweilige Anbieter Ihren Suchbegriff &mdash; N&auml;heres in den <a href="#datenschutz">Datenschutzhinweisen</a>.</p>
+            <p><b>Vollständigkeit.</b> Auch dieses Portal kann nicht sämtliche Artikel „aller Datenbanken" enthalten — das verhindern Lizenz- und Technikgrenzen. Es bündelt stattdessen die maßgeblichen Suchen, sodass eine Recherche systematisch über alle relevanten Datenbanken laufen kann.</p>
+            <!-- === THEMA-HINWEIS-START (themenspezifisch; aus dem Themenprofil) === -->
+            <p><b>Ein Hub fuer die ganze Onkologie - und warum das so ist.</b> Die onkologische Literatur umfasst rund 350 Arbeiten am Tag; keine taegliche Auswahl kann daraus sinnvoll sechs greifen. Dieses Portal verengt deshalb nicht das Thema, sondern den Ort der Veroeffentlichung: Es liest rund dreissig onkologische und allgemeinmedizinische Kernzeitschriften, von Lancet Oncology und JCO bis Nature, Blood und Strahlentherapie und Onkologie. Damit bleiben Klinik und Grundlagenforschung beide drin.</p>
+        <p><b>Was das bedeutet:</b> Sie sehen nicht alles, was zu Ihrer Entitaet erscheint, sondern das, was in den fuehrenden Zeitschriften erscheint. Wer vollstaendig zu einem Krankheitsbild recherchieren will, nutzt die Live-Suchen oben - sie gehen an PubMed und die Fachdatenbanken ohne diese Einschraenkung.</p>
+            <!-- === THEMA-HINWEIS-ENDE === -->
+            <p><b>Portal vs. Live-Suche.</b> Von den derzeit <b id="cntGesamt"></b> eingebundenen Datenbanken unterstützen <b id="cntLive"></b> die Live-Suche; sie sind entsprechend gekennzeichnet. Weitere <b id="cntPortal"></b> sind als „Portal" markiert: Angebote wie LIVIVO, das DRKS oder die WHO-Plattform ICTRP erlauben technisch keine verlinkbaren Ergebnisadressen. Der Klick führt dort auf die Startseite — der Suchbegriff ist anschließend von Hand einzugeben.</p>
+            <p><b>Suchoperatoren.</b> <b>AND</b>, <b>OR</b> und <b>NOT</b> funktionieren nicht überall gleich — wir haben es einzeln nachgemessen. <span class="boolmark ja">AND/OR ✓</span> heißt: geprüft, die Operatoren wirken (<b id="cntBoolJa"></b> Datenbanken). <span class="boolmark nein">AND/OR ✗</span> heißt: geprüft, sie wirken nicht — die Wörter werden einfach mitgesucht (<b id="cntBoolNein"></b>). <b>Ohne Zeichen ist es ungeprüft</b> (<b id="cntBoolOffen"></b>): Diese Anbieter liefern eine Bot-Sperre oder eine reine JavaScript-Oberfläche, aus der sich kein belastbares Ergebnis ablesen ließ — das heißt ausdrücklich <i>nicht</i>, dass sie es nicht können. Der Filter „Operatoren" zeigt auf Wunsch nur die geprüft tauglichen.</p>
+            <p><b>Deutsch suchen, international finden.</b> Internationale Datenbanken kennen keine deutschen Fachbegriffe — „Nachsorge“ liefert dort nichts. Der Hub übersetzt deshalb <b id="cntGlossar"></b> Fachbegriffe automatisch: Deutschsprachige Datenbanken behalten Ihren Begriff, internationale bekommen den Ausdruck, unter dem sie tatsächlich indexieren („Frueherkennung“ wird zu <i>mass screening</i>, „Nachsorge“ zu <i>aftercare</i>, „Lebensqualitaet“ zu <i>quality of life</i>.). Die Ergebnisleiste zeigt die verwendete Fassung; der Schalter unter dem Suchfeld stellt es ab.</p>
+            <p><b>Hinweis zu Lizenzen.</b> Mit <span style="color:var(--accent)">Lizenz</span> markierte Datenbanken (z. B. Web of Science, Scopus, Embase, CINAHL) sind kostenpflichtig — der Zugang läuft meist über Ihre Bibliothek/Institution. Der Link führt zur Startseite bzw. zum institutionellen Login.</p>
+            <p id="sponsorText" hidden><b>Sponsoren.</b> Unsere Sponsoren ermöglichen mit ihrer finanziellen Unterstützung den Betrieb und das Hosting dieses Services. Sie nehmen dabei keinerlei Einfluss auf Auswahl der Datenbanken, der Ergebnisse oder den dargestellten Inhalt.</p>
+          </div>
+          <div class="meta-row">
+            <span class="dot"></span>
+            <span id="statusText"><strong id="dbCount"></strong> Datenbanken · <span id="searchHint">Links aktualisieren sich live · öffnen in neuem Tab</span></span>
+          </div>
+        </div>
+
+        <div class="sponsor-block" id="sponsorFeld" hidden>
+          <div class="sponsor">
+            <span class="sponsor-text">
+              <span class="sponsor-vor">Gesponsert<sup>*</sup> von:</span>
+              <span class="sponsor-fuss"><sup>*</sup> ohne Einfluss auf die Inhalte zu nehmen</span>
+            </span>
+            <span class="sponsor-logos" id="sponsorLogos"></span>
+          </div>
+        </div>
+      </div>
+      <aside class="lede-nl">
+        <a class="btn-nl" href="newsletter.html">Newsletter abonnieren</a>
+        <span class="nl-mini">Die Studienauswahl jeden Morgen per E-Mail — kostenfrei und jederzeit kündbar.</span>
+        <a class="btn-ueber" href="ueber.html" target="_blank" rel="noopener">Über den Hub <span aria-hidden="true">↗</span></a>
+        <a class="btn-ueber" href="https://wissen.m-vf.de/ausschreibungen.html#onkologie" target="_blank" rel="noopener">Ausschreibungsradar <span aria-hidden="true">↗</span></a>
+        <!-- Hinweis auf den Ausschreibungsradar. Angeregt von einem Nutzer
+             der Hubs: Wer zu einem Thema forscht, sucht nicht nur Studien,
+             sondern auch Geld. Gesucht wird zentral im Versorgungsforschungs-
+             Hub; hier steht, wie viel davon dieses Themengebiet betrifft.
+             Gefuellt von scripts/radar_hinweis.py, verborgen bis dahin. -->
+        <div class="radar-hinweis" id="radarHinweis" hidden></div>
+
+        <!-- Ausgesuchte News. Angeregt vom selben Nutzer wie der
+             Ausschreibungsradar: Wer sich fuer ein Thema interessiert, will
+             nicht nur die Studienlage, sondern auch, was dazu geschrieben
+             wurde. Quelle ist ausschliesslich das eigene Archiv (m-vf.de) -
+             Fremdmedien waeren presserechtlich heikel und verwaesserten das
+             Evidenz-Profil.
+
+             Steht hier und nicht in der Studienspalte: Die ist ein eigener
+             Scrollbereich (826 px hoch, 4.239 px Inhalt), und hinter
+             Studienliste und Archivordner faende den Kasten niemand.
+             Gefuellt von scripts/newsfeed.py, verborgen bis dahin. -->
+        <section class="magazin" id="magazin" hidden>
+          <div class="magazin-title">Ausgesuchte News zu diesem Themenfeld</div>
+          <p class="magazin-sub">Beiträge aus dem Portal von „Monitor
+            Versorgungsforschung“ (<a href="https://www.monitor-versorgungsforschung.de/?utm_source=onkologie-hub&amp;utm_medium=referral&amp;utm_campaign=magazin" target="_blank" rel="noopener">www.m-vf.de</a>)</p>
+          <ul class="magazin-list" id="magazinList"></ul>
+        </section>
+
+        <!-- Weitere Pressemeldungen. Fremde Quellen, deshalb ausdruecklich
+             als solche gekennzeichnet und getrennt von den eigenen Beitraegen
+             darueber - Entscheidung des Herausgebers vom 29.08.2026. Quellen
+             sind der Informationsdienst Wissenschaft (Forschungsmeldungen aus
+             Hochschulen und Instituten) und presseportal.de, letzteres nur
+             als Auffuellung und nur bei Treffer im Titel.
+             Gefuellt von scripts/newsfeed.py, verborgen bis dahin. -->
+        <section class="magazin presse" id="presse" hidden>
+          <div class="magazin-title">Weitere Pressemeldungen zum Thema</div>
+          <p class="magazin-sub">Pressemitteilungen Dritter, aus
+            <a href="https://idw-online.de/" target="_blank" rel="noopener">idw</a>
+            und
+            <a href="https://www.presseportal.de/" target="_blank" rel="noopener">presseportal.de</a></p>
+          <ul class="magazin-list" id="presseList"></ul>
+        </section>
+
+        <!-- Aus der Selbstverwaltung: Beschluesse, Methodenbewertungen und
+             Meldungen des Gemeinsamen Bundesausschusses. Amtlich, also
+             urheberrechtlich unbedenklich - und im Kern dessen, was die
+             Leserschaft betrifft. Im Versorgungsforschungs-Hub ungefiltert,
+             sonst nach dem Thema des Hubs ausgewaehlt.
+             Gefuellt von scripts/newsfeed.py, verborgen bis dahin. -->
+        <section class="magazin presse" id="selbst" hidden>
+          <div class="magazin-title">Aus der Selbstverwaltung</div>
+          <p class="magazin-sub">Beschlüsse und Meldungen des
+            <a href="https://www.g-ba.de/" target="_blank" rel="noopener">Gemeinsamen Bundesausschusses</a></p>
+          <ul class="magazin-list" id="selbstList"></ul>
+        </section>
+      </aside>
+    </div>
+
+  </div>
+</header>
+
+<nav class="jump">
+  <div class="wrap jump-inner" id="jumpNav"></div>
+</nav>
+
+<!-- Trefferliste ueber mehrere Datenbanken. Steht bewusst zwischen Suchfeld
+     und Kachelraster: Sie ist die Antwort auf die Suche, die Kacheln sind der
+     Weg zu allem, was sich nicht abfragen laesst. Verborgen, bis jemand sie
+     ausdruecklich anfordert - vorher geht kein Datum an einen Dritten. -->
+<div class="wrap meta-wrap" id="metaWrap" hidden>
+  <section class="meta-card" aria-labelledby="metaTitel">
+    <div class="meta-head">
+      <div>
+        <h2 class="serif" id="metaTitel">Treffer aus mehreren Datenbanken</h2>
+        <p class="meta-sub" id="metaSub"></p>
+      </div>
+      <button class="meta-zu" id="metaZu" type="button">Schlie&szlig;en</button>
+    </div>
+    <div class="meta-quellen" id="metaQuellen"></div>
+    <!-- Die Schaltflaechen f&uuml;r &bdquo;Art&ldquo; entstehen aus den Quellen selbst,
+         damit beides nie auseinanderl&auml;uft. -->
+    <div class="meta-leiste">
+      <div class="meta-sort" id="metaArt">
+        <span class="dl-label">Art:</span>
+      </div>
+    </div>
+    <div class="meta-leiste">
+      <div class="meta-sort" id="metaSort">
+        <span class="dl-label">Sortierung:</span>
+        <button type="button" class="fchip" data-sort="rang" aria-pressed="true">Relevanz</button>
+        <button type="button" class="fchip" data-sort="jahr" aria-pressed="false">Jahr</button>
+      </div>
+      <div class="dl-row">
+        <span class="dl-label">Download:</span>
+        <button class="dl-btn" id="mtWord" type="button" disabled title="Als Word-Dokument herunterladen">&#10515; Word</button>
+        <button class="dl-btn" id="mtCsv" type="button" disabled title="Als Tabelle f&uuml;r Excel herunterladen">&#10515; Excel</button>
+        <button class="dl-btn" id="mtRis" type="button" disabled title="Literaturverwaltung: Zotero, EndNote, Citavi">&#10515; RIS</button>
+        <button class="dl-btn" id="mtBib" type="button" disabled title="Literaturverwaltung: BibTeX, LaTeX">&#10515; BibTeX</button>
+      </div>
+    </div>
+    <div class="meta-liste" id="metaListe"></div>
+    <div class="meta-blaetter" id="metaBlaetter"></div>
+    <div class="meta-fuss">
+      <button class="btn-clear" id="metaMehr" type="button" hidden>Weitere Treffer laden</button>
+      <p class="meta-hinweis" id="metaFuss"></p>
+    </div>
+  </section>
+</div>
+
+<div class="wrap layout">
+  <main class="col-main" id="main"></main>
+
+  <aside class="studies">
+    <div class="studies-head">
+      <div class="studies-title"><span class="dot"></span>Neu in PubMed</div>
+      <div class="studies-claim">Onkologie - Forschung, Klinik und Versorgung</div>
+      <div class="studies-status" id="studiesStatus" hidden></div>
+      <div class="studies-hint">Bei den Suchergebnissen handelt es sich um eine Momentaufnahme, um keinen Live-Feed. Die Liste wird jeden Morgen um 6 Uhr automatisch aus PubMed geholt, auf Deutsch zusammengefasst und neu veröffentlicht. Bringt PubMed an einem Tag nichts Neues — an Wochenenden häufig —, bleiben die zuletzt gefundenen Studien aktuell, bis neue hinzukommen. Gesucht wird in rund dreissig Kernzeitschriften des Fachs - klinische Studien ebenso wie Grundlagenforschung. Ausgewaehlt wird nach Bedeutung fuer die Behandlung in Deutschland.</div>
+      <div class="studies-sub">Datenbank: <b>PubMed</b>, nach Datum sortiert · jede Studie mit deutscher Zusammenfassung · Zuletzt aktualisiert: <b id="snapDate">Momentaufnahme</b></div>
+      <div class="dl-row">
+        <span class="dl-label">Download:</span>
+        <button class="dl-btn" id="dlAktuellDoc" type="button" title="Als Word-Dokument herunterladen">⤓ Word</button>
+        <button class="dl-btn" id="dlAktuellCsv" type="button" title="Als Tabelle für Excel herunterladen">⤓ Excel</button>
+      </div>
+    </div>
+    <div class="studies-list" id="studiesList"></div>
+
+    <details class="archive" id="archive" open>
+      <summary id="archiveSummary">Ältere Suchergebnisse</summary>
+      <div class="dl-row">
+        <span class="dl-label">Download:</span>
+        <button class="dl-btn" id="dlArchivDoc" type="button" disabled title="Als Word-Dokument herunterladen">⤓ Word</button>
+        <button class="dl-btn" id="dlArchivCsv" type="button" disabled title="Als Tabelle für Excel herunterladen">⤓ Excel</button>
+      </div>
+      <div class="archive-body" id="archiveBody">
+        <p class="arch-status">Wird geladen …</p>
+      </div>
+    </details>
+    <!-- Anmeldung bewusst NICHT hier: Der Hub erhebt keine personenbezogenen
+         Daten. Das Formular liegt bei Monitor Versorgungsforschung, wo auch
+         Double-Opt-in und Einwilligung verwaltet werden. -->
+    <div class="nl">
+      <div class="nl-title">Studien-Newsletter</div>
+      <p class="nl-text">Diese Studienauswahl kommt auf Wunsch jeden Morgen per E-Mail — mit deutschen Zusammenfassungen und den Ergebniszahlen, dazu Word- und Excel-Download. Kostenfrei, jederzeit kündbar.</p>
+      <a class="nl-btn" id="nlLink" href="newsletter.html">Newsletter abonnieren</a>
+      <span class="nl-host">Kostenfrei, mit Bestätigung per E-Mail, jederzeit kündbar.</span>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="attrib">Ein Angebot von „Monitor Versorgungsforschung" · eRelation AG – Content in Health</div>
+
+    <div class="legal">
+      <details id="impressum">
+        <summary>Impressum</summary>
+        <div class="legal-body">
+          <h4>Angaben gemäß § 5 DDG und § 18 Abs. 2 MStV</h4>
+          <p>eRelation AG – Content in Health<br>Johannes-von-Hanstein-Str. 2<br>53115 Bonn, Deutschland</p>
+          <p>Vertreten durch den Vorstand: Peter Stegmaier (Vorsitzender)</p>
+          <p>Telefon: +49 228 76 36 80-30<br>Fax: +49 228 76 36 80-01<br>E-Mail: info@m-vf.de</p>
+          <p>Registergericht: Amtsgericht Bonn · Registernummer: HRB 9392</p>
+          <p>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Peter Stegmaier (Anschrift wie oben, stegmaier@m-vf.de)</p>
+          <p>Herausgeber: Prof. Dr. Reinhold Roski · Chefredaktion: Peter Stegmaier</p>
+          <p>Dieser Knowledge-Hub ist ein Angebot von „Monitor Versorgungsforschung".</p>
+        </div>
+      </details>
+      <details id="datenschutz">
+        <summary>Datenschutzhinweise</summary>
+        <div class="legal-body">
+          <h4>1. Verantwortlicher</h4>
+          <p>eRelation AG – Content in Health, vertreten durch Peter Stegmaier, Johannes-von-Hanstein-Str. 2, 53115 Bonn. Kontakt siehe Impressum.</p>
+          <h4>2. Charakter dieses Angebots</h4>
+          <p>Dieses Portal ist eine statische Informationsseite. Es setzt <strong>keine Cookies</strong> und bindet <strong>keine Analyse- oder Trackingdienste Dritter</strong> ein. Über die anonyme Reichweitenmessung nach Abschnitt 3 hinaus werden beim bloßen Lesen keine personenbezogenen Daten erhoben oder gespeichert.</p><p>Eine Ausnahme bildet die Seite <a href="newsletter.html">Newsletter bestellen</a>: Dort können Sie freiwillig eine E-Mail-Adresse angeben, um einen Newsletter zu abonnieren. Näheres in den Abschnitten 4 und 5.</p><p>Eine zweite Ausnahme ist die Schaltfläche <b>„Treffer direkt anzeigen“</b>: Erst wenn Sie sie anklicken, fragt Ihr Browser mehrere wissenschaftliche Datenbanken unmittelbar ab. Näheres in Abschnitt 8.</p>
+          <h4>3. Reichweitenmessung ohne Cookies</h4><p>Damit wir wissen, ob und wie dieses Angebot genutzt wird, zählen wir Seitenaufrufe. Die Zählung läuft auf einem eigenen Server von <i>Monitor Versorgungsforschung</i>; ein Dritter ist daran nicht beteiligt. Es werden <strong>keine Cookies gesetzt</strong> und <strong>keine Informationen auf Ihrem Endgerät gespeichert oder ausgelesen</strong> — eine Einwilligung nach § 25 Abs. 1 TTDSG ist dafür nicht erforderlich.</p><p>Gespeichert werden ausschließlich Summen: die aufgerufene Seite, die Domain der verweisenden Seite, die Art des Geräts (Desktop oder Mobilgerät), die Bildschirmbreite in groben Stufen und die Stunde des Zugriffs. Die Bildschirmbreite wird bewusst nur als Stufe festgehalten und nicht als genaue Auflösung — diese wäre eines der stärksten Merkmale, um einen Browser wiederzuerkennen. <strong>Ihre IP-Adresse wird nicht gespeichert.</strong> Sie geht gemeinsam mit der Browserkennung und einer geheimen Zufallszahl in einen nicht umkehrbaren Hashwert ein, der es uns allein erlaubt, mehrere Aufrufe desselben Tages als eine Person zu zählen. Die Zufallszahl wird jede Nacht durch eine neue ersetzt und die alte verworfen; danach ist auch uns eine Zuordnung nicht mehr möglich. Eine Wiedererkennung über den Tag hinaus findet nicht statt, ebenso wenig eine Zusammenführung mit anderen Daten oder eine Profilbildung.</p><p>Zusätzlich zählen wir, <strong>wie oft die Suche dieses Portals benutzt wird</strong> — getrennt danach, ob ein Begriff eingetippt, ein Schnellwahl-Vorschlag angeklickt oder die Trefferliste über die Schaltfläche „Treffer direkt anzeigen“ angefordert wurde. Diese Zählung ist von der Zählung der Seitenaufrufe getrennt und verändert deren Zahlen nicht.</p><p><strong>Der eingegebene Suchbegriff</strong> wird dabei nur unter engen Voraussetzungen gespeichert, und zwar getrennt von allem anderen: in einer eigenen Sammlung, die ausschließlich das Portal, den <strong>Monat</strong> und den Begriff kennt — <strong>keinen Tag, keine Uhrzeit und keinen Bezug zu Ihrem Aufruf</strong>. Eine Zuordnung zu einer Person ist damit auch uns selbst nicht möglich. Der Zweck ist allein, die vom Portal vorgeschlagenen Suchbegriffe an dem auszurichten, wonach tatsächlich gesucht wird.</p><p><strong>Begriffe, die eine Krankheit oder Diagnose benennen, werden nicht gespeichert.</strong> Ebenfalls verworfen werden Eingaben mit mehr als drei Wörtern, mit Ziffern, Satz- oder Sonderzeichen sowie Suchformeln — also alles, was Freitext sein könnte. In diesen Fällen wird die Suche als Vorgang gezählt, der Begriff selbst aber nicht aufgeschrieben. Bereits Ihr Browser sendet solche Eingaben nicht mit.</p><p>Rechtsgrundlage ist unser berechtigtes Interesse an einer bedarfsgerechten Gestaltung dieses Angebots (Art. 6 Abs. 1 lit. f DSGVO). Aufrufe von Browsern, die <i>Do Not Track</i> oder <i>Global Privacy Control</i> senden, werden gar nicht erst gezählt.</p><h4>4. Newsletter-Anmeldung</h4>
+          <p><b>Welche Daten.</b> Für die Bestellung eines Newsletters benötigen wir Ihre E-Mail-Adresse. Weitere Angaben verlangen wir nicht. Mit übermittelt wird, welchen der beiden Newsletter Sie ausgewählt haben.</p>
+          <p><b>Bestätigungsverfahren.</b> Nach dem Absenden erhalten Sie eine E-Mail mit einem Bestätigungslink; der Versand beginnt erst, wenn Sie ihn anklicken (Double-Opt-in). So kann niemand fremde Adressen eintragen. Anmeldung und Bestätigung werden mit Zeitpunkt und IP-Adresse protokolliert, damit wir Ihre Einwilligung nachweisen können.</p>
+          <p><b>Rechtsgrundlage.</b> Der Versand erfolgt aufgrund Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO. Die Protokollierung der Einwilligung stützt sich auf Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit der Nachweispflicht aus Art. 7 Abs. 1 DSGVO.</p>
+          <p><b>Widerruf.</b> Sie können Ihre Einwilligung jederzeit widerrufen — am einfachsten über den Abmeldelink am Ende jeder E-Mail. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt davon unberührt. Nach dem Widerruf entfernen wir Ihre Adresse aus dem Verteiler; die Einwilligungsnachweise bewahren wir auf, solange Ansprüche gegen uns geltend gemacht werden könnten.</p>
+          <p><b>Erfolgsmessung.</b> Unsere Newsletter enthalten ein Zählpixel und nachverfolgbare Links. Damit lässt sich erkennen, ob eine E-Mail geöffnet und welche Links angeklickt wurden. Wir werten das aus, um die Newsletter besser auf die Interessen unserer Leserinnen und Leser zuzuschneiden; auch dies erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) und endet mit dem Widerruf.</p>
+
+          <h4>5. Versanddienstleister (Mailchimp)</h4>
+          <p>Für Anmeldung, Verwaltung und Versand nutzen wir <b>Mailchimp</b>, einen Dienst der The Rocket Science Group LLC, 405 N. Angier Ave. NE, Atlanta, GA 30308, USA (ein Unternehmen von Intuit Inc.). Ihre Angaben werden dort gespeichert und in unserem Auftrag verarbeitet; Grundlage ist ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO.</p>
+          <p>Wenn Sie das Anmeldeformular absenden, gehen Ihre Eingaben zunächst an unseren eigenen Server unter <b>monitor-versorgungsforschung.de</b> und von dort an Mailchimp. Der Umweg ist notwendig, weil Mailchimp Einsendungen von anderen Adressen als seiner eigenen Anmeldeseite nicht mehr annimmt. Auf unserem Server wird Ihre E-Mail-Adresse <b>nicht gespeichert</b>; er reicht sie unmittelbar weiter. Zum Schutz vor automatisierten Masseneintragungen zählt er, wie viele Anmeldungen von einem Anschluss an einem Tag kommen — dafür geht Ihre IP-Adresse gemeinsam mit einer täglich wechselnden Zufallszahl in einen nicht umkehrbaren Hashwert ein; die IP-Adresse selbst wird nicht gespeichert. Rechtsgrundlage dafür ist Art. 6 Abs. 1 lit. f DSGVO. Mailchimp erhält anschließend Ihre Angaben sowie technische Verbindungsdaten.</p>
+          <p>Die Verarbeitung findet in den USA statt. Mailchimp ist unter dem <b>EU-US Data Privacy Framework</b> zertifiziert, für das die Europäische Kommission am 10. Juli 2023 ein angemessenes Schutzniveau festgestellt hat; ergänzend hat sich Mailchimp vertraglich zu den EU-Standardvertragsklauseln verpflichtet. Näheres in der <a href="https://www.intuit.com/privacy/statement/" target="_blank" rel="noopener">Datenschutzerklärung von Intuit/Mailchimp</a>.</p>
+
+          <h4>6. Hosting (GitHub Pages)</h4>
+          <p>Die Auslieferung erfolgt über GitHub Pages (GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). Dabei verarbeitet GitHub technisch notwendige Zugriffsdaten (u. a. IP-Adresse, Datum und Uhrzeit, angeforderte Datei, Browsertyp) in Server-Logdateien zum sicheren Betrieb. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Näheres im <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>. Die Übermittlung in die USA erfolgt auf Grundlage der EU-Standardvertragsklauseln.</p>
+          <h4>7. Externe Links</h4>
+          <p>Das Portal verlinkt auf externe Datenbanken, Studien und Institutionen (z. B. PubMed, Cochrane, LIVIVO). Mit dem Anklicken verlassen Sie dieses Angebot; die aufgerufenen Anbieter erhalten Ihre IP-Adresse, die Angabe, dass Sie von diesem Portal kommen (Referrer), und ggf. weitere Daten und verarbeiten diese nach ihren eigenen Bestimmungen. Hierfür sind die jeweiligen Anbieter verantwortlich.</p>
+          <h4>8. Trefferliste &uuml;ber mehrere Datenbanken</h4>
+          <p>Auf Ihren ausdr&uuml;cklichen Klick auf &bdquo;Treffer direkt anzeigen&ldquo; ruft Ihr Browser die &ouml;ffentlichen Programmierschnittstellen mehrerer wissenschaftlicher Datenbanken auf und stellt die Fundstellen auf dieser Seite zusammen. Derzeit sind dies <b>PubMed</b> und <b>ClinicalTrials.gov</b> (beide National Library of Medicine, USA), <b>Europe PMC</b> (EMBL-EBI, Vereinigtes K&ouml;nigreich), <b>OpenAlex</b> (OurResearch, Kanada), <b>Crossref</b> (Vereinigtes K&ouml;nigreich/USA), <b>DOAJ</b> (Directory of Open Access Journals, Schweden) und <b>Zenodo</b> (CERN, Schweiz). Anschlie&szlig;end wird f&uuml;r die vordersten Treffer bei <b>Unpaywall</b> (OurResearch, Kanada) nachgeschlagen, ob eine frei zug&auml;ngliche Fassung vorliegt; &uuml;bermittelt wird dabei nur die DOI der jeweiligen Arbeit.</p>
+          <p>Die Abfrage erfolgt <b>unmittelbar von Ihrem Ger&auml;t aus</b>; ein Server dieses Portals ist daran nicht beteiligt und erf&auml;hrt weder Ihren Suchbegriff noch Ihre Treffer. Die genannten Anbieter erhalten dabei Ihren <b>Suchbegriff</b> sowie technische Verbindungsdaten, insbesondere Ihre <b>IP-Adresse</b>, und verarbeiten diese nach ihren eigenen Bestimmungen; hierf&uuml;r sind sie selbst verantwortlich. Gegen&uuml;ber Crossref, OpenAlex und Unpaywall wird zus&auml;tzlich die Kontaktadresse der Redaktion (info@m-vf.de) &uuml;bermittelt &mdash; das ist bei diesen Diensten die vorgesehene Kennzeichnung nicht-kommerzieller Abfragen und betrifft keine Daten von Ihnen.</p>
+          <p>Ohne diesen Klick findet keine solche Abfrage statt. Es werden dabei weder Cookies gesetzt noch Daten auf Ihrem Ger&auml;t gespeichert; die Treffer bestehen nur im Arbeitsspeicher Ihres Browsers und sind mit dem Schlie&szlig;en der Seite fort. Rechtsgrundlage ist Ihre durch das Anklicken erkl&auml;rte Einwilligung sowie unser berechtigtes Interesse an der Bereitstellung dieser Rechercheleistung (Art. 6 Abs. 1 lit. a und f DSGVO). Eine Eine &Uuml;bermittlungUuml;bermittlung in die USA erfolgt nur, soweit Sie die Funktion nutzen; sie ist zur Erbringung der von Ihnen angeforderten Recherche erforderlich.</p>
+          <h4>9. Ihre Rechte</h4>
+          <p>Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO) sowie das Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO). Zuständig ist die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW).</p>
+          <h4>10. Stand</h4>
+          <p>Stand: August 2026.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+// === CATS-BLOCK-START (themenspezifisch) ===
+const CATS = [
+  {id:"deutsch", h:14, num:"01", name:"Deutschsprachig: Onkologie"},
+  {id:"biblio", h:190, num:"02", name:"Bibliografische Datenbanken (international)"},
+  {id:"evidenz", h:210, num:"03", name:"Systematische Reviews & Evidenzsynthesen"},
+  {id:"daten", h:275, num:"04", name:"Krebsregister & Epidemiologie",
+   hinweis:"Diese Quellen liefern Zahlen, keine Studien: Inzidenz und Mortalitaet nach Entitaet, Stadienverteilung, Ueberlebensraten, regionale Unterschiede. Wer wissen will, wie haeufig eine Krebserkrankung ist und wie gut sie versorgt wird, sucht hier zuerst."},
+  {id:"leitlinien", h:25, num:"05", name:"Leitlinien, Zertifizierung & Nutzenbewertung",
+   hinweis:"Was gelten soll und was bezahlt wird, steht nicht in Studien. Hier liegen das Leitlinienprogramm Onkologie, Onkopedia, die Nutzenbewertungen nach AMNOG und die Anforderungen an zertifizierte Zentren - und damit die Antwort darauf, warum eine wirksame Therapie hierzulande trotzdem nicht ueberall ankommt."},
+  {id:"policy", h:338, num:"06", name:"Institutionen & Gesundheitspolitik (international)"},
+  {id:"openaccess", h:150, num:"07", name:"Open Access & Discovery"},
+  {id:"register", h:212, num:"08", name:"Studienregister & Preprints"},
+  {id:"volltext", h:100, num:"09", name:"Volltext beschaffen"},
+];
+// === CATS-BLOCK-ENDE ===
+
+// type: "live" = URL-Suche mit %s | "portal" = feste URL | "lic" = lizenzpflichtig (feste URL)
+// === DB-BLOCK-START (themenspezifisch) ===
+const DB = [
+  // 01 — Deutschsprachig: Onkologie
+  {c:"deutsch", n:"Monitor Versorgungsforschung", de:1, d:"Deutsche Fachzeitschrift für Politik, Praxis & Forschung der Versorgung — durchsuchbares Facharchiv.", t:"live", u:"https://www.monitor-versorgungsforschung.de/?s=%s&utm_source=onkologie-hub&utm_medium=referral&utm_campaign=onkologie-portal", b:0},
+  {c:"deutsch", n:"LIVIVO (ZB MED)", de:1, d:"Größtes deutschsprachiges Suchportal der Lebenswissenschaften — Begriff nach Öffnen eingeben.", t:"portal", u:"https://www.livivo.de/"},
+  {c:"deutsch", n:"German Medical Science (GMS)", de:1, d:"Open-Access-Portal deutscher medizinischer Fachgesellschaften (AWMF/ZB MED).", t:"portal", u:"https://www.egms.de/"},
+  {c:"deutsch", n:"Gesundheitsinformation.de (IQWiG)", de:1, d:"Evidenzbasierte Patienteninformation des IQWiG und von Cochrane Deutschland – Krankheitsbilder, Behandlungen, Vorsorge, jeweils mit der Studienlage dahinter. Begriff nach Öffnen eingeben.", t:"portal", u:"https://www.gesundheitsinformation.de/"},
+  {c:"deutsch", n:"Deutsche Krebsgesellschaft (DKG)", de:1, d:"Fachgesellschaft und Trägerin der Zertifizierung von Krebszentren: Stellungnahmen, Qualitätsberichte, Jahreszahlen der zertifizierten Zentren.", t:"live", u:"https://www.krebsgesellschaft.de/?s=%s"},
+  {c:"deutsch", n:"Leitlinienprogramm Onkologie", de:1, d:"S3-Leitlinien von DKG, Krebshilfe und AWMF, dazu Patientenleitlinien und Qualitätsindikatoren.", t:"portal", u:"https://www.leitlinienprogramm-onkologie.de/"},
+  {c:"deutsch", n:"Onkopedia (DGHO)", de:1, d:"Behandlungsempfehlungen der hämatologischen und onkologischen Fachgesellschaften, laufend aktualisiert.", t:"portal", u:"https://www.onkopedia.com/de/onkopedia/guidelines"},
+  {c:"deutsch", n:"Krebsinformationsdienst (DKFZ)", de:1, d:"Geprüfte Information für Fachkreise und Betroffene, mit Quellenangaben und Stand der Evidenz.", t:"portal", u:"https://www.krebsinformationsdienst.de/"},
+  {c:"deutsch", n:"Deutsches Krebsforschungszentrum (DKFZ)", de:1, d:"Größtes biomedizinisches Forschungszentrum Deutschlands: Grundlagen, Translation, Präventionsforschung.", t:"portal", u:"https://www.dkfz.de/"},
+  {c:"deutsch", n:"Deutsche Krebshilfe", de:1, d:"Fördert Forschung und Versorgungsprojekte; Berichte zu Comprehensive Cancer Centers und Präventionskampagnen.", t:"live", u:"https://www.krebshilfe.de/suche/?tx_solr%5Bq%5D=%s"},
+  {c:"deutsch", n:"DGHO – Hämatologie und Med. Onkologie", de:1, d:"Fachgesellschaft: Gesundheitspolitische Stellungnahmen, Versorgungsdaten, Arzneimittelengpässe.", t:"portal", u:"https://www.dgho.de/"},
+  {c:"deutsch", n:"Deutsches Ärzteblatt", de:1, d:"Übersichts- und Originalarbeiten zur onkologischen Versorgung in Deutschland.", t:"portal", u:"https://www.aerzteblatt.de/"},
+
+  // 02 — Bibliografische Datenbanken (international)
+  {c:"biblio", n:"PubMed / MEDLINE", d:"Die zentrale biomedizinische Datenbank der US-Nationalbibliothek (NLM). >37 Mio. Nachweise.", t:"live", u:"https://pubmed.ncbi.nlm.nih.gov/?term=%s", b:1},
+  {c:"biblio", n:"PubMed Central (PMC)", d:"Volltext-Archiv frei zugänglicher biomedizinischer Artikel.", t:"live", u:"https://www.ncbi.nlm.nih.gov/pmc/?term=%s", b:1},
+  {c:"biblio", n:"Europe PMC", d:"Europäisches Pendant zu PMC mit Volltexten, Preprints und Fördermittel-Nachweisen.", t:"live", u:"https://europepmc.org/search?query=%s", b:1},
+  {c:"biblio", n:"Embase", d:"Biomedizin & Pharmakologie mit starkem Europa-Fokus (Elsevier).", t:"lic", u:"https://www.embase.com/"},
+  {c:"biblio", n:"Web of Science", d:"Interdisziplinäre Zitationsdatenbank (Clarivate).", t:"lic", u:"https://www.webofscience.com/"},
+  {c:"biblio", n:"Scopus", d:"Große Abstract- & Zitationsdatenbank (Elsevier).", t:"lic", u:"https://www.scopus.com/"},
+  {c:"biblio", n:"CINAHL", d:"Pflege & Gesundheitsfachberufe (EBSCO).", t:"lic", u:"https://www.ebsco.com/products/research-databases/cinahl-database"},
+  {c:"biblio", n:"APA PsycInfo", d:"Psychologie, psychische Gesundheit & Verhaltenswissenschaften.", t:"lic", u:"https://www.apa.org/pubs/databases/psycinfo"},
+
+  // 03 — Systematische Reviews & Evidenzsynthesen
+  {c:"evidenz", n:"Cochrane Library", d:"Systematische Reviews & kontrollierte Studien — Goldstandard der Evidenzsynthese.", t:"live", u:"https://www.cochranelibrary.com/search?q=%s"},
+  {c:"evidenz", n:"Epistemonikos", d:"Datenbank systematischer Reviews und ihrer eingeschlossenen Studien.", t:"live", u:"https://www.epistemonikos.org/en/search?q=%s"},
+  {c:"evidenz", n:"Trip Database", d:"Klinische Suchmaschine für evidenzbasierte Antworten & Leitlinien.", t:"live", u:"https://www.tripdatabase.com/search?criteria=%s"},
+  {c:"evidenz", n:"PROSPERO", d:"Internationales Register geplanter systematischer Reviews (CRD, York).", t:"portal", u:"https://www.crd.york.ac.uk/prospero/"},
+  {c:"evidenz", n:"JBI EBP Database", d:"Evidenzsynthesen des Joanna Briggs Institute.", t:"portal", u:"https://jbi.global/ebp"},
+
+  // 04 — Krebsregister & Epidemiologie
+  {c:"daten", n:"Zentrum für Krebsregisterdaten (RKI)", de:1, d:"Bundesweite Inzidenz, Mortalität und Überlebensraten nach Entität, Alter, Geschlecht und Region.", t:"portal", u:"https://www.krebsdaten.de/"},
+  {c:"daten", n:"GEKID – Epidemiologische Krebsregister", de:1, d:"Dachverband der Landeskrebsregister: Atlas, Auswertungen und regionale Vergleiche.", t:"portal", u:"https://www.gekid.de/"},
+  {c:"daten", n:"Global Cancer Observatory (IARC)", d:"Weltweite Schätzungen zu Inzidenz, Mortalität und Prävalenz – GLOBOCAN, nach Land und Entität.", t:"portal", u:"https://gco.iarc.fr/"},
+  {c:"daten", n:"SEER (National Cancer Institute)", d:"US-Registerdaten mit langen Zeitreihen zu Überleben und Stadienverteilung – der internationale Vergleichsmaßstab.", t:"portal", u:"https://seer.cancer.gov/"},
+
+  // 05 — Leitlinien, Zertifizierung & Nutzenbewertung
+  {c:"leitlinien", n:"ESMO Clinical Practice Guidelines", d:"Europäischer Referenzstandard der medikamentösen Tumortherapie, mit ESMO-MCBS-Nutzenbewertung.", t:"portal", u:"https://www.esmo.org/guidelines"},
+  {c:"leitlinien", n:"NCCN Guidelines", d:"US-Leitlinien, oft früher als europäische – nützlich, um Abweichungen der Zulassungspraxis zu erkennen.", t:"portal", u:"https://www.nccn.org/guidelines"},
+  {c:"leitlinien", n:"NCI – National Cancer Institute", d:"PDQ-Zusammenfassungen für Fachkreise, Wirkstoffinformationen und Studienübersichten.", t:"portal", u:"https://www.cancer.gov/"},
+  {c:"leitlinien", n:"Gemeinsamer Bundesausschuss (G-BA)", de:1, d:"Nutzenbewertungen onkologischer Wirkstoffe, DMP Brustkrebs, Richtlinien zur Früherkennung.", t:"portal", u:"https://www.g-ba.de/"},
+  {c:"leitlinien", n:"IQWiG", de:1, d:"Nutzenbewertungen nach AMNOG, Berichte zu Screeningprogrammen und Therapieverfahren.", t:"portal", u:"https://www.iqwig.de/"},
+
+  // 06 — Institutionen & Gesundheitspolitik (international)
+  {c:"policy", n:"WHO IRIS", d:"Institutionelles Repositorium der WHO — Volltexte aller Berichte und Leitlinien.", t:"live", u:"https://iris.who.int/discover?query=%s"},
+
+  // 07 — Open Access & Discovery
+  {c:"openaccess", n:"Google Scholar", d:"Breite Suchmaschine für wissenschaftliche Literatur inkl. grauer Literatur & Zitationen.", t:"live", u:"https://scholar.google.com/scholar?q=%s", b:1},
+  {c:"openaccess", n:"Semantic Scholar", d:"Discovery mit Zitationskontext (Allen Institute).", t:"live", u:"https://www.semanticscholar.org/search?q=%s&sort=relevance"},
+  {c:"openaccess", n:"OpenAlex", d:"Offener Katalog von >250 Mio. Werken, Autoren & Institutionen.", t:"live", u:"https://openalex.org/works?filter=default.search%3A%s", b:1},
+  {c:"openaccess", n:"BASE", d:"Bielefeld Academic Search Engine — >400 Mio. Dokumente aus Repositorien.", t:"live", u:"https://www.base-search.net/Search/Results?lookfor=%s"},
+  {c:"openaccess", n:"CORE", d:"Weltweit größte Sammlung offener Volltexte aus Repositorien.", t:"live", u:"https://core.ac.uk/search?q=%s"},
+  {c:"openaccess", n:"DOAJ", d:"Directory of Open Access Journals — qualitätsgeprüfte OA-Artikel.", t:"live", u:'https://doaj.org/search/articles?source=%7B%22query%22%3A%7B%22query_string%22%3A%7B%22query%22%3A%22%s%22%2C%22default_operator%22%3A%22AND%22%7D%7D%7D'},
+  {c:"openaccess", n:"The Lens", d:"Verknüpfte Suche über Publikationen und Patente.", t:"live", u:"https://www.lens.org/lens/search/scholar/list?q=%s"},
+  {c:"openaccess", n:"Dimensions", d:"Publikationen, Förderung, Patente & klinische Studien vernetzt (Digital Science).", t:"live", u:"https://app.dimensions.ai/discover/publication?search_text=%s"},
+  {c:"openaccess", n:"Zenodo", d:"Offenes Repositorium (CERN) für Artikel, Daten und Software.", t:"live", u:"https://zenodo.org/search?q=%s", b:1},
+
+  // 08 — Studienregister & Preprints
+  {c:"register", n:"ClinicalTrials.gov", d:"Weltweit größtes Register klinischer Studien (NLM).", t:"live", u:"https://clinicaltrials.gov/search?term=%s", b:1},
+  {c:"register", n:"DRKS", de:1, d:"Deutsches Register Klinischer Studien — Begriff nach Öffnen eingeben.", t:"portal", u:"https://drks.de/"},
+  {c:"register", n:"WHO ICTRP", d:"International Clinical Trials Registry Platform — Meta-Suche über alle Register.", t:"portal", u:"https://trialsearch.who.int/"},
+  {c:"register", n:"medRxiv", d:"Preprint-Server für die medizinischen & Gesundheitswissenschaften.", t:"live", u:"https://www.medrxiv.org/search/%s", b:1},
+  {c:"register", n:"OSF", d:"Open Science Framework — Preprints, Daten, Code & Präregistrierungen.", t:"live", u:"https://osf.io/search/?q=%s"},
+
+  // 09 — Volltext beschaffen
+  {c:"volltext", n:"Nationallizenzen (DFG)", de:1, d:"DFG-finanzierte Lizenzen für Zeitschriftenarchive und E-Books. Privatpersonen mit Wohnsitz in Deutschland können sich kostenlos registrieren.", t:"live", u:"https://www.nationallizenzen.de/@@search?SearchableText=%s", b:0},
+  {c:"volltext", n:"Unpaywall", d:"Findet legale Open-Access-Fassungen zu einer DOI — über 50 Mio. Volltexte. DOI nach dem Öffnen eingeben.", t:"portal", u:"https://unpaywall.org/"},
+  {c:"volltext", n:"Open Access Button", d:"Sucht frei zugängliche Fassungen und fordert sie bei Bedarf direkt beim Autor an. DOI oder Titel nach dem Öffnen eingeben.", t:"portal", u:"https://openaccessbutton.org/"},
+  {c:"volltext", n:"subito", de:1, d:"Direktlieferdienst wissenschaftlicher Bibliotheken — Aufsätze und Bücher kostenpflichtig, aber schnell und lizenzkonform.", t:"live", u:"https://search.subito-doc.de/vufind/Search/Results?lookfor=%s&type=AllFields", b:1},
+  {c:"volltext", n:"Fernleihe (K10plus)", de:1, d:"Verbundkatalog mit Bestandsnachweis: zeigt, welche Bibliothek den Titel führt — Bestellung über die eigene Bibliothek.", t:"live", u:"https://opac.k10plus.de/DB=2.299/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=%s"},
+];
+// === DB-BLOCK-ENDE ===
+
+// Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
+// === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
+const SNAP_DATE = "10. Sep. 2026, 08:06 Uhr";
+const SNAP_STATUS = "neu";
+const STUDIES = [];
+// === STUDIES-BLOCK-ENDE ===
+
+// Offene Foerderausschreibungen zum Thema — taeglich von scripts/radar_hinweis.py
+// === RADAR-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
+const RADAR_STAND = "10. Sep. 2026, 08:06 Uhr";
+const RADAR_URL = "https://wissen.m-vf.de/ausschreibungen.html";
+const RADAR_EIGENES = 0;
+const RADAR_ZUHAUSE = false;
+const RADAR_FRISTEN = [];
+// === RADAR-BLOCK-ENDE ===
+
+// Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
+// === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
+const NEWS_STAND = "10. Sep. 2026, 08:06 Uhr";
+const NEWS = [];
+// === NEWS-BLOCK-ENDE ===
+
+// Fremde Pressemeldungen zum Thema — taeglich von scripts/newsfeed.py
+// === PRESSE-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
+const PRESSE = [];
+// === PRESSE-BLOCK-ENDE ===
+
+// Meldungen des G-BA — taeglich von scripts/newsfeed.py
+// === SELBST-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
+const SELBST = [];
+// === SELBST-BLOCK-ENDE ===
+
+// === CHIPS-BLOCK-START (themenspezifisch) ===
+const CHIPS = [
+  "Immuntherapie",
+  "Zielgerichtete Therapie",
+  "Tumorboard",
+  "Frueherkennung",
+  "CAR-T",
+  "Strahlentherapie",
+  "Palliativversorgung",
+  "cancer screening",
+  "real-world evidence",
+];
+// === CHIPS-BLOCK-ENDE ===
+
+// === SPONSOR-BLOCK-START (themenspezifisch) ===
+const SPONSOREN = [
+];
+// === SPONSOR-BLOCK-ENDE ===
+
+// Sponsorenfeld einblenden, sobald es etwas einzublenden gibt. Ohne Eintrag
+// bleibt beides verborgen; ein zusaetzlicher Schalter waere eine Stelle mehr,
+// an der jemand etwas vergessen kann.
+// Wie ueberall in dieser Datei wird ohne Maskierung eingesetzt (siehe CLAUDE.md):
+// Namen und Adressen werden von Hand gepflegt, spitze Klammern gehoeren nicht hinein.
+if (Array.isArray(SPONSOREN) && SPONSOREN.length) {
+  document.getElementById('sponsorLogos').innerHTML = SPONSOREN.map(function (s) {
+    // rel="sponsored" ist die von Suchmaschinen erwartete Kennzeichnung eines
+    // bezahlten Verweises; ohne sie kann er als Linkkauf gewertet werden.
+    return '<a href="' + s.u + '" target="_blank" rel="sponsored noopener" title="'
+      + s.n + '"><img src="' + s.logo + '" alt="' + s.n + '" loading="lazy"></a>';
+  }).join('');
+  document.getElementById('sponsorFeld').hidden = false;
+  document.getElementById('sponsorText').hidden = false;
+}
+
+function hostOf(u){ try{ return new URL(u).hostname.replace(/^www\./,''); }catch(e){ return ""; } }
+
+const main = document.getElementById('main');
+const jumpNav = document.getElementById('jumpNav');
+const cardIndex = []; // {el, tpl, type}
+
+// Kein Sprung-Link in der Navigation - die id bleibt aber bestehen,
+// damit Direktlinks auf #studien weiter funktionieren.
+document.querySelector('aside.studies').id = 'studien';
+document.querySelector('aside.studies').style.scrollMarginTop = '64px';
+
+CATS.forEach(cat=>{
+  const items = DB.filter(x=>x.c===cat.id);
+  // jump link
+  const jl = document.createElement('a');
+  jl.href = '#'+cat.id; jl.textContent = cat.name;
+  jumpNav.appendChild(jl);
+
+  const sec = document.createElement('section');
+  sec.className='cat'; sec.id=cat.id; sec.style.setProperty('--h', cat.h);
+  sec.innerHTML =
+    '<div class="cat-head"><span class="cat-num mono">'+cat.num+'</span>'+
+    '<h2 class="serif">'+cat.name+'</h2>'+
+    '<span class="cat-count">'+items.length+' Datenbanken</span></div>'+
+    // Nur einzelne Bloecke tragen einen Hinweis: Dort liegen Modelle, Daten
+    // keine Publikationen - das erwartet niemand ungewarnt.
+    (cat.hinweis ? '<p class="cat-hinweis">'+cat.hinweis+'</p>' : '')+
+    '<div class="grid"></div>';
+  const grid = sec.querySelector('.grid');
+
+  items.forEach(x=>{
+    const a = document.createElement('a');
+    a.className='card'; a.target='_blank'; a.rel='noopener';
+    if(x.t==='live') a.dataset.live='1';
+    const badge = x.t==='live' ? '<span class="badge live">Live-Suche</span>'
+                : x.t==='lic' ? '<span class="badge lic">Lizenz</span>'
+                : '<span class="badge portal">Portal</span>';
+    const foot = x.t==='live'
+      ? '<span class="bereit">Trefferliste · </span><span class="arrow">↗</span> Suche öffnen <span class="host mono">· '+hostOf(x.u)+'</span>'
+      : '<span class="arrow">↗</span> Öffnen <span class="host mono">· '+hostOf(x.u)+'</span>';
+    a.innerHTML =
+      '<div class="card-top"><span class="card-name">'+x.n+'</span>'+
+    (x.b===1 ? '<span class="boolmark ja" title="Geprüft: wertet AND, OR und NOT aus">AND/OR ✓</span>'
+     : x.b===0 ? '<span class="boolmark nein" title="Geprüft: wertet die Operatoren nicht aus – sie werden als Wörter mitgesucht">AND/OR ✗</span>'
+     : '')+badge+'</div>'+
+      '<div class="card-desc">'+x.d+'</div>'+
+      '<div class="card-foot">'+foot+'</div>';
+    grid.appendChild(a);
+    cardIndex.push({el:a, tpl:x.u, type:x.t, eintrag:x});
+  });
+
+  main.appendChild(sec);
+});
+
+document.getElementById('dbCount').textContent = DB.length;
+// Die Zahlen im Hinweis 'Portal vs. Live-Suche' aus DB zaehlen, nicht fest
+// eintragen - sonst veralten sie beim naechsten neuen Eintrag unbemerkt.
+document.getElementById('cntGesamt').textContent = DB.length;
+document.getElementById('cntLive').textContent   = DB.filter(x=>x.t==='live').length;
+document.getElementById('cntPortal').textContent = DB.filter(x=>x.t==='portal').length;
+// Boolesch-Zahlen aus denselben Daten wie die Kennzeichen - nie getrennt pflegen.
+const _live = DB.filter(x=>x.t==='live');
+document.getElementById('cntBoolJa').textContent    = _live.filter(x=>x.b===1).length;
+document.getElementById('cntBoolNein').textContent  = _live.filter(x=>x.b===0).length;
+document.getElementById('cntBoolOffen').textContent = _live.filter(x=>x.b===undefined).length;
+
+// ---- Studien-Frame rendern ----
+document.getElementById('snapDate').textContent = SNAP_DATE;
+
+// ---- Meldung ueber den letzten Lauf -------------------------------------
+// Drei Faelle sollen unterscheidbar sein:
+//   1. alles normal              -> keine Meldung
+//   2. Lauf war da, nichts Neues -> neutraler Hinweis (SNAP_STATUS)
+//   3. Lauf ausgefallen          -> Warnhinweis (Zeitstempel zu alt)
+// Fall 3 erkennt die Seite selbst: SNAP_DATE wird bei jedem erfolgreichen Lauf
+// neu gesetzt. Ist er aelter als 30 Stunden, kann kein Lauf stattgefunden haben.
+(function(){
+  const el = document.getElementById('studiesStatus');
+  if(!el) return;
+  const MON = {'Jan':0,'Feb':1,'März':2,'Apr':3,'Mai':4,'Juni':5,
+               'Juli':6,'Aug':7,'Sept':8,'Okt':9,'Nov':10,'Dez':11};
+  // Format: "15. Aug. 2026, 07:01 Uhr"
+  const m = /^(\d{1,2})\.\s*([^\s.]+)\.?\s*(\d{4}),\s*(\d{1,2}):(\d{2})/.exec(SNAP_DATE || '');
+  let stunden = null;
+  if(m && MON[m[2]] !== undefined){
+    const d = new Date(+m[3], MON[m[2]], +m[1], +m[4], +m[5]);
+    stunden = (Date.now() - d.getTime()) / 36e5;
+  }
+  const status = (typeof SNAP_STATUS !== 'undefined') ? SNAP_STATUS : 'neu';
+
+  if(stunden !== null && stunden > 30){
+    const tage = Math.floor(stunden / 24);
+    el.dataset.art = 'ausfall';
+    el.textContent = 'Die automatische Aktualisierung ist ausgefallen — die Liste '
+      + 'stammt vom ' + SNAP_DATE.replace(/,.*/, '') + (tage >= 1 ? ' (vor ' + tage + ' Tag' + (tage>1?'en':'') + ')' : '')
+      + '. Ursache ist eine technische Störung, nicht fehlende Studien.';
+    el.hidden = false;
+  } else if(status === 'unveraendert'){
+    el.dataset.art = 'unveraendert';
+    el.textContent = 'Der heutige Abgleich lief planmäßig, PubMed hat aber keine '
+      + 'neuen passenden Studien geliefert. Die Liste ist deshalb unverändert.';
+    el.hidden = false;
+  }
+})();
+const studiesList = document.getElementById('studiesList');
+STUDIES.forEach(s=>{
+  const art = document.createElement('article');
+  art.className = 'study';
+  const url = 'https://pubmed.ncbi.nlm.nih.gov/' + s.pmid + '/';
+  art.innerHTML =
+    '<div class="study-top"><span class="study-journal">'+s.journal+'</span>'+
+    // Publikationsdatum, sofern PubMed eines kennt - sonst das Jahr.
+    '<span class="study-year">'+(s.pubdate || s.year)+'</span></div>'+
+    '<a class="study-title" href="'+url+'" target="_blank" rel="noopener">'+s.title+'</a>'+
+    (s.author ? '<div class="study-author">'+s.author+'</div>' : '')+
+    // Das Aufnahmedatum erklaert, warum aeltere Publikationsdaten in einer
+    // taeglichen Liste auftauchen: Ausgewaehlt wird nach dem Tag, an dem
+    // PubMed den Eintrag aufnimmt - der liegt oft Wochen nach dem Erscheinen.
+    (s.added && s.added !== s.pubdate
+       ? '<div class="study-added">in PubMed seit '+s.added+'</div>' : '')+
+    '<p class="study-sum">'+s.sum+'</p>'+
+    '<div class="study-result"><span class="rlabel">Ergebnis</span>'+s.result+'</div>'+
+    (s.transfer ? '<div class="study-transfer"><span class="tlabel">Übertragbarkeit</span>'+s.transfer+'</div>' : '')+
+    '<a class="study-src" href="'+url+'" target="_blank" rel="noopener">PubMed · PMID '+s.pmid+' ↗</a>';
+  studiesList.appendChild(art);
+});
+
+// ---- Aus dem Magazin ----
+// Die Beitraege stehen fertig im Block; hier wird nur gerendert. Findet
+// newsfeed.py nichts, bleibt der alte Inhalt stehen - eine leere Karte saehe
+// aus wie ein Themenfeld, ueber das nie etwas geschrieben wurde.
+(function(){
+  const kasten = document.getElementById('magazin');
+  const liste = document.getElementById('magazinList');
+  if(!kasten || !liste || typeof NEWS === 'undefined' || !NEWS.length) return;
+  NEWS.forEach(n => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = n.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    // textContent statt innerHTML: In Beitragstiteln stehen Anfuehrungs-
+    // zeichen, Gedankenstriche und gelegentlich ein Ampersand.
+    a.textContent = n.titel;
+    li.appendChild(a);
+    if(n.datum){
+      const d = new Date(n.datum + 'T00:00:00');
+      if(!isNaN(d)){
+        const span = document.createElement('span');
+        span.className = 'magazin-datum';
+        span.textContent = d.toLocaleDateString('de-DE',
+          {day:'2-digit', month:'2-digit', year:'numeric'});
+        li.appendChild(span);
+      }
+    }
+    liste.appendChild(li);
+  });
+  // Der Newsfeed von m-vf.de - dieselbe Adresse in allen zwoelf Hubs.
+  const mehr = document.createElement('a');
+  mehr.className = 'magazin-mehr';
+  mehr.href = 'https://www.monitor-versorgungsforschung.de/news/';
+  mehr.target = '_blank';
+  mehr.rel = 'noopener';
+  mehr.textContent = 'Weitere Beitr\u00e4ge \u2197';
+  kasten.appendChild(mehr);
+  kasten.hidden = false;
+})();
+
+// ---- Fremde Rubriken: Pressemeldungen und Selbstverwaltung ----
+// Beide zeigen dasselbe Muster - Titel, Datum, Quelle -, deshalb eine
+// Funktion. Bleibt eine Liste leer, bleibt ihr Kasten verborgen: Eine Rubrik,
+// die "nichts gefunden" meldet, waere hier nur Laerm.
+function fremdeRubrik(kastenId, listenId, eintraege, mehr, mehrText){
+  const kasten = document.getElementById(kastenId);
+  const liste = document.getElementById(listenId);
+  if(!kasten || !liste || !eintraege || !eintraege.length) return;
+  eintraege.forEach(n => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = n.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = n.titel;
+    li.appendChild(a);
+    const span = document.createElement('span');
+    span.className = 'magazin-datum';
+    let zeile = '';
+    if(n.datum){
+      const d = new Date(n.datum + 'T00:00:00');
+      if(!isNaN(d)) zeile = d.toLocaleDateString('de-DE',
+        {day:'2-digit', month:'2-digit', year:'numeric'});
+    }
+    span.textContent = zeile + (zeile && n.quelle ? ' · ' : '') + (n.quelle || '');
+    li.appendChild(span);
+    liste.appendChild(li);
+  });
+  if(mehr){
+    const a = document.createElement('a');
+    a.className = 'magazin-mehr';
+    a.href = mehr;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = mehrText + ' \u2197';
+    kasten.appendChild(a);
+  }
+  kasten.hidden = false;
+}
+if(typeof PRESSE !== 'undefined')
+  fremdeRubrik('presse', 'presseList', PRESSE,
+               'https://idw-online.de/de/pressreleases', 'Mehr im idw');
+if(typeof SELBST !== 'undefined')
+  fremdeRubrik('selbst', 'selbstList', SELBST,
+               'https://www.g-ba.de/beschluesse/', 'Mehr beim G-BA');
+
+// ---- Die Kopfkarte auf die Hoehe des Suchkastens kuerzen ----
+// Wie viele Eintraege hineinpassen, laesst sich nicht vorher festlegen: Ein
+// G-BA-Beschluss traegt drei Zeilen Titel, eine Pressemeldung manchmal eine.
+// Deshalb wird gemessen, nicht geschaetzt - und von unten gekuerzt, bis die
+// Karte mit dem grauen Kasten abschliesst.
+//
+// Gekuerzt wird in dieser Reihenfolge: erst die Selbstverwaltung, dann die
+// fremden Pressemeldungen. Die eigenen Beitraege bleiben immer stehen; sie
+// sind der Grund, warum es die Karte gibt.
+//
+// Nur im zweispaltigen Layout: Gestapelt (unter 861 px) steht die Karte unter
+// dem Suchkasten, und es gibt nichts, womit sie buendig sein koennte.
+(function(){
+  const karte = document.querySelector('.lede-nl');
+  const kasten = document.querySelector('.lede-links .panel');
+  if(!karte || !kasten) return;
+
+  function passen(){
+    if(window.innerWidth <= 860) return;
+    // Zuerst alles wieder einblenden - beim Verkleinern des Fensters koennte
+    // vorher zu viel weggeschnitten worden sein.
+    document.querySelectorAll('#selbstList li, #presseList li')
+      .forEach(li => { li.hidden = false; });
+    ['selbst', 'presse'].forEach(id => {
+      const k = document.getElementById(id);
+      if(k && k.dataset.hatEintraege === 'ja') k.hidden = false;
+    });
+
+    // Von unten nach oben, und je Rubrik bleibt der erste Eintrag stehen:
+    // Eine Rubrik, von der nur die Ueberschrift uebrig ist, sagt nichts - und
+    // eine, die ganz verschwindet, verschweigt, dass es sie gibt. Was danach
+    // an Ueberhang bleibt, faengt der gewachsene Kasten links auf.
+    const reihen = [
+      ...[...document.querySelectorAll('#selbstList li')].slice(1).reverse(),
+      ...[...document.querySelectorAll('#presseList li')].slice(1).reverse(),
+    ];
+    // 12 px Luft: Genau auf den Pixel waere es Zufall, und die Kante des
+    // Kastens soll sichtbar bleiben, nicht mit der Karte verschmelzen.
+    for(const li of reihen){
+      if(karte.getBoundingClientRect().bottom
+         <= kasten.getBoundingClientRect().bottom + 12) break;
+      li.hidden = true;
+    }
+  }
+
+  ['presse', 'selbst'].forEach(id => {
+    const k = document.getElementById(id);
+    if(k && !k.hidden) k.dataset.hatEintraege = 'ja';
+  });
+  passen();
+  // Beim Drehen eines Tablets oder Ziehen des Fensters aendert sich die Hoehe
+  // des Kastens - dann noch einmal.
+  let wartet;
+  window.addEventListener('resize', () => {
+    clearTimeout(wartet);
+    wartet = setTimeout(passen, 150);
+  });
+})();
+
+// ---- Hinweis auf den Ausschreibungsradar ----
+// Der Block oben nennt die Fristen des eigenen Themengebiets, nicht eine
+// fertige Zahl: Zwischen dem naechtlichen Lauf und dem Seitenaufruf koennen
+// Tage liegen - faellt der zentrale Lauf einmal aus, sogar mehr. Eine
+// mitgeschriebene Zahl waere dann zu hoch und verspraeche Ausschreibungen, die
+// es nicht mehr gibt. Gezaehlt wird deshalb hier, beim Aufruf.
+(function(){
+  const karte = document.getElementById('radarHinweis');
+  if(!karte || typeof RADAR_FRISTEN === 'undefined') return;
+  // Vor dem ersten Lauf ist der Stand leer. Dann bleibt die Karte verborgen:
+  // Die Null-Ansage hiesse "gesucht und nichts gefunden", und gesucht wurde
+  // noch gar nicht.
+  if(typeof RADAR_STAND === 'undefined' || !RADAR_STAND) return;
+  const heute = new Date(); heute.setHours(0,0,0,0);
+  // Eine Zahl je Themengebiet. In den elf Schwesterhubs steht genau eine
+  // darin, im Versorgungsforschungs-Hub zwoelf - dort nennt die Karte auch,
+  // aus wie vielen Gebieten die Ausschreibungen kommen.
+  const jeGebiet = RADAR_FRISTEN.map(liste => liste.filter(f => {
+    const d = new Date(f + 'T00:00:00');
+    return !isNaN(d) && d >= heute;
+  }).length);
+  const zuhause = (typeof RADAR_ZUHAUSE !== 'undefined') && RADAR_ZUHAUSE;
+  const meines = (typeof RADAR_EIGENES !== 'undefined') ? RADAR_EIGENES : 0;
+  // Im Versorgungsforschungs-Hub zaehlt die Karte alles, in den uebrigen nur
+  // das eigene Gebiet - und daneben, in wie vielen anderen etwas laeuft.
+  const offen = zuhause ? jeGebiet.reduce((a, b) => a + b, 0)
+                        : (jeGebiet[meines] || 0);
+  const gebiete = jeGebiet.filter(n => n > 0).length;
+  const andere = jeGebiet.filter((n, i) => n > 0 && i !== meines).length;
+
+  let text;
+  if(!offen){
+    // Die Null-Ansage ist eine Aussage, keine Fehlermeldung: Es wurde gesucht
+    // und nichts gefunden. Bei eng gefassten Gebieten ist das der Normalfall
+    // und darf nicht wie ein Ausfall aussehen. Der Wortlaut ist vom
+    // Herausgeber vorgegeben.
+    //
+    // Der Zusatz nennt die anderen Gebiete: Wer in seinem Thema nichts
+    // findet, soll wenigstens erfahren, dass der Radar arbeitet - und wo es
+    // gerade etwas zu holen gibt. Faellt die Zahl auf null, entfaellt der
+    // Satz; "Aber in 0 anderen" waere Hohn.
+    text = 'Derzeit gibt es keine von uns recherchierbaren '
+         + 'F\u00f6rderma\u00dfnahmen in diesem Themenbereich. '
+         + (andere ? 'Aber in ' + (andere === 1 ? 'einem' : andere)
+                     + ' anderen: ' : '')
+         + 'Der Radar sucht zweimal pro Woche neu.';
+  } else if(zuhause){
+    text = '<b>' + offen + '</b> laufende Ausschreibung' + (offen === 1 ? '' : 'en')
+         + ' aus <b>' + gebiete + '</b> Themengebiet' + (gebiete === 1 ? '' : 'en')
+         + '.';
+  } else {
+    text = '<b>' + offen + '</b> laufende Ausschreibung' + (offen === 1 ? '' : 'en')
+         + ' zu Ihrem Themengebiet.';
+  }
+  karte.innerHTML = '\ud83d\udce2 ' + text;
+  karte.hidden = false;
+})();
+
+// ---- Download der Studienlisten (Word / Excel) ----
+// Bewusst ohne Fremdbibliothek: Word oeffnet HTML mit der Endung .doc,
+// Excel oeffnet CSV mit Semikolon und UTF-8-BOM. Die Seite bleibt eigenstaendig.
+
+// Die Texte liegen HTML-maskiert vor (z. B. "p &lt; 0,001"), weil sie per innerHTML
+// eingesetzt werden. Fuer Dateien muss das zurueckverwandelt werden.
+function alsKlartext(v){
+  const t = document.createElement('textarea');
+  t.innerHTML = (v == null ? '' : String(v));
+  return t.value;
+}
+function pubmedUrl(pmid){ return 'https://pubmed.ncbi.nlm.nih.gov/' + pmid + '/'; }
+function htmlEsc(v){
+  return alsKlartext(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function dateiStempel(){
+  const d = new Date(), p = n => String(n).padStart(2,'0');
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());
+}
+function speichern(dateiname, inhalt, mime){
+  const url = URL.createObjectURL(new Blob([inhalt], {type: mime}));
+  const a = document.createElement('a');
+  a.href = url; a.download = dateiname; a.style.display = 'none';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 2000);
+}
+
+// Das Logo fuer den Word-Kopf. Ein relativer Pfad wuerde in einer verschickten
+// Datei ins Leere laufen, deshalb wird das Bild als data:-URI eingebettet -
+// ueber die Leinwand, weil das Logo je nach Fassung als Datei oder bereits als
+// data:-URI vorliegt.
+function logoDataUri(){
+  const img = document.querySelector('.brand-link img');
+  if(!img || !img.complete || !img.naturalWidth) return '';
+  if(img.src.startsWith('data:')) return img.src;
+  try{
+    const c = document.createElement('canvas');
+    c.width = img.naturalWidth; c.height = img.naturalHeight;
+    c.getContext('2d').drawImage(img, 0, 0);
+    return c.toDataURL('image/png');
+  }catch(e){ return ''; }   // z. B. wenn die Leinwand als fremd gilt
+}
+
+const DL_KOPFTEXT = 'Ein Service des Knowledge-Hubs von Monitor Versorgungsforschung. '
+  + 'Täglich automatisiert KI-kuratiert aus PubMed und auf Deutsch übersetzt.';
+
+function baueCSV(liste, mitDatum){
+  const feld = v => '"' + alsKlartext(v).replace(/"/g,'""') + '"';
+  const kopf = (mitDatum ? ['Aufgenommen am'] : [])
+    .concat(['Autor','Publiziert am','In PubMed seit','Journal','Jahr','Titel','Fragestellung','Ergebnis','Übertragbarkeit','PMID','PubMed-Link']);
+  // Eine Tabelle kann kein Logo aufnehmen - deshalb nur der Kopftext, gefolgt
+  // von einer Leerzeile, damit die Spaltenueberschriften klar abgesetzt sind.
+  const zeilen = [feld(DL_KOPFTEXT), '', kopf.map(feld).join(';')];
+  liste.forEach(s=>{
+    zeilen.push((mitDatum ? [s.aufgenommen || ''] : [])
+      .concat([s.author || '', s.pubdate || '', s.added || '', s.journal, s.year, s.title, s.sum, s.result, s.transfer || '', s.pmid, pubmedUrl(s.pmid)])
+      .map(feld).join(';'));
+  });
+  // Das BOM explizit als Escape-Sequenz: als wortwoertliches Zeichen ginge es
+  // beim Speichern unsichtbar verloren. Ohne BOM zeigt deutsches Excel Umlaute falsch.
+  return '\uFEFF' + zeilen.join('\r\n');
+}
+
+function baueDoc(titel, untertitel, liste, mitDatum){
+  const logo = logoDataUri();
+  const eintraege = liste.map(s =>
+      '<h2 style="font-size:13pt;margin:16pt 0 2pt">' + htmlEsc(s.title) + '</h2>'
+    + '<p style="margin:0 0 5pt;color:#555">'
+    + (s.author ? htmlEsc(s.author) + ' &middot; ' : '')
+    + '<i>' + htmlEsc(s.journal) + '</i> &middot; ' + htmlEsc(s.pubdate || s.year)
+    + (s.added && s.added !== s.pubdate ? ' (in PubMed seit ' + htmlEsc(s.added) + ')' : '')
+    + (mitDatum && s.aufgenommen ? ' &middot; aufgenommen am ' + htmlEsc(s.aufgenommen) : '') + '</p>'
+    + '<p style="margin:0 0 5pt">' + htmlEsc(s.sum) + '</p>'
+    + '<p style="margin:0 0 5pt"><b>Ergebnis:</b> ' + htmlEsc(s.result) + '</p>'
+    + (s.transfer ? '<p style="margin:0 0 5pt;color:#555"><b>Übertragbarkeit:</b> ' + htmlEsc(s.transfer) + '</p>' : '')
+    + '<p style="margin:0 0 12pt;font-size:9pt">PMID ' + htmlEsc(s.pmid) + ' &ndash; '
+    + '<a href="' + pubmedUrl(s.pmid) + '">' + pubmedUrl(s.pmid) + '</a></p>'
+  ).join('');
+  return '<html xmlns:o="urn:schemas-microsoft-com:office:office" '
+    + 'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
+    + '<head><meta charset="utf-8"><title>' + htmlEsc(titel) + '</title></head>'
+    + '<body style="font-family:Lato,Calibri,Arial,sans-serif;font-size:11pt">'
+    + (logo ? '<p style="margin:0 0 6pt"><img src="' + logo + '" width="170" height="45" '
+              + 'alt="Monitor Versorgungsforschung"></p>' : '')
+    + '<p style="margin:0 0 14pt;padding-bottom:8pt;border-bottom:1pt solid #C0A060;'
+              + 'font-size:9.5pt;color:#0051A1">' + htmlEsc(DL_KOPFTEXT) + '</p>'
+    + '<h1 style="font-size:16pt;margin:0 0 3pt;color:#0051A1">' + htmlEsc(titel) + '</h1>'
+    + '<p style="margin:0 0 16pt;color:#555">' + htmlEsc(untertitel) + '</p>'
+    + eintraege
+    + '<p style="margin-top:20pt;font-size:8.5pt;color:#777">Quelle: Knowledge-Hub '
+    + 'Onkologie, onkologie.m-vf.de &ndash; ein Angebot von Monitor Versorgungsforschung. '
+    + 'Studiendaten aus PubMed (U.S. National Library of Medicine).</p></body></html>';
+}
+
+const DOC_MIME = 'application/msword';
+const CSV_MIME = 'text/csv;charset=utf-8';
+
+document.getElementById('dlAktuellDoc').addEventListener('click', ()=>{
+  speichern('MVF-Onkologie-Hub_Neueste-Studien_'+dateiStempel()+'.doc',
+    baueDoc('Neu in PubMed: Onkologie', 'Stand: '+alsKlartext(SNAP_DATE), STUDIES, false), DOC_MIME);
+});
+document.getElementById('dlAktuellCsv').addEventListener('click', ()=>{
+  speichern('MVF-Onkologie-Hub_Neueste-Studien_'+dateiStempel()+'.csv',
+    baueCSV(STUDIES, false), CSV_MIME);
+});
+
+// ---- Ordner „Ältere Suchergebnisse" ----
+// Standardmaessig aufgeklappt. Das Archiv liegt in einer eigenen Datei, damit
+// index.html nicht mit jedem Tag weiterwaechst; geladen wird es einmal pro Aufruf.
+const archiveEl = document.getElementById('archive');
+const archiveBody = document.getElementById('archiveBody');
+const archiveSummary = document.getElementById('archiveSummary');
+let archivGeladen = false;
+let archivListe = [];   // gefilterte Liste fuer den Download
+
+const MONATE = ['Jan.','Feb.','März','Apr.','Mai','Juni','Juli','Aug.','Sept.','Okt.','Nov.','Dez.'];
+function datumLang(iso){
+  const p = iso.split('-');
+  return parseInt(p[2],10)+'. '+MONATE[parseInt(p[1],10)-1]+' '+p[0];
+}
+
+function ladeArchiv(){
+  if(archivGeladen) return;
+  archivGeladen = true;
+  fetch('studien-archiv.json', {cache:'no-cache'})
+    .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(alle=>{
+      const aktuell = new Set(STUDIES.map(s=>s.pmid));
+      const aeltere = alle.filter(e=>!aktuell.has(e.pmid));
+      if(!aeltere.length){
+        archiveBody.innerHTML = '<p class="arch-status">Noch keine älteren Ergebnisse — '
+          + 'das Archiv füllt sich mit jeder Aktualisierung.</p>';
+        return;
+      }
+      const tage = {};
+      aeltere.forEach(e=>{ (tage[e.aufgenommen] = tage[e.aufgenommen] || []).push(e); });
+      archiveBody.innerHTML = Object.keys(tage).sort().reverse().map(tag=>{
+        const items = tage[tag].map(e=>{
+          const url = 'https://pubmed.ncbi.nlm.nih.gov/'+e.pmid+'/';
+          return '<div class="arch-item">'
+               + '<div class="arch-top"><span class="arch-journal">'+e.journal+'</span>'
+               + '<span class="arch-year">'+e.year+'</span></div>'
+               + '<a class="arch-title" href="'+url+'" target="_blank" rel="noopener">'+e.title+'</a>'
+               + '<p class="arch-result">'+e.result+'</p></div>';
+        }).join('');
+        return '<div class="arch-day"><div class="arch-date">'+datumLang(tag)
+             + ' · '+tage[tag].length+' Studien</div>'+items+'</div>';
+      }).join('');
+      archiveSummary.textContent = 'Ältere Suchergebnisse ('+aeltere.length+')';
+      archivListe = aeltere;
+      document.getElementById('dlArchivDoc').disabled = false;
+      document.getElementById('dlArchivCsv').disabled = false;
+    })
+    .catch(()=>{
+      archivGeladen = false;   // beim naechsten Aufklappen erneut versuchen
+      archiveBody.innerHTML = '<p class="arch-status">Archiv konnte nicht geladen werden. '
+        + 'Bitte später erneut versuchen.</p>';
+    });
+}
+
+// Beim Laden holen (der Ordner ist offen); zusaetzlich beim Aufklappen,
+// falls er zuvor geschlossen wurde oder der erste Versuch fehlschlug.
+archiveEl.addEventListener('toggle', ()=>{ if(archiveEl.open) ladeArchiv(); });
+if(archiveEl.open) ladeArchiv();
+
+document.getElementById('dlArchivDoc').addEventListener('click', ()=>{
+  if(!archivListe.length) return;
+  speichern('MVF-Onkologie-Hub_Aeltere-Suchergebnisse_'+dateiStempel()+'.doc',
+    baueDoc('Ältere Suchergebnisse', archivListe.length+' Studien, nach Aufnahmetag sortiert',
+            archivListe, true), DOC_MIME);
+});
+document.getElementById('dlArchivCsv').addEventListener('click', ()=>{
+  if(!archivListe.length) return;
+  speichern('MVF-Onkologie-Hub_Aeltere-Suchergebnisse_'+dateiStempel()+'.csv',
+    baueCSV(archivListe, true), CSV_MIME);
+});
+
+// ---- Suchglossar: deutsche Fachbegriffe -> der Ausdruck, unter dem
+// internationale Datenbanken sie fuehren. Redaktionell gepflegt, kein
+// Uebersetzungsdienst: kein Fremdzugriff, kein Schluessel, korrigierbar.
+// === GLOSSAR-BLOCK-START (themenspezifisch) ===
+const GLOSSAR = [{"de":"Telemedizin","en":"telemedicine"},{"de":"Videosprechstunde","en":"video consultation"},{"de":"Arzneimitteltherapiesicherheit","en":"medication safety"},{"de":"Routinedaten","en":"claims data"},{"de":"Abrechnungsdaten","en":"administrative claims data"},{"de":"Datenschutz","en":"data protection"},{"de":"Interoperabilität","en":"interoperability"},{"de":"maschinelles Lernen","en":"machine learning"},{"de":"Erstattung","en":"reimbursement"},{"de":"Nutzenbewertung","en":"health technology assessment"},{"de":"Implementierungsforschung","en":"implementation research"},{"de":"Versorgungsqualität","en":"quality of care"},{"de":"Patientensicherheit","en":"patient safety"},{"de":"Behandlungsfehler","en":"medical error"},{"de":"Patientenbeteiligung","en":"patient participation"},{"de":"Gesundheitsökonomie","en":"health economics"},{"de":"Kosteneffektivität","en":"cost-effectiveness"},{"de":"Gesundheitsausgaben","en":"health expenditure"},{"de":"Versorgungsforschung","en":"health services research"},{"de":"Epidemiologie","en":"epidemiology"},{"de":"randomisierte kontrollierte Studie","en":"randomized controlled trial"},{"de":"Kohortenstudie","en":"cohort study"},{"de":"Beobachtungsstudie","en":"observational study"},{"de":"Querschnittstudie","en":"cross-sectional study"},{"de":"Machbarkeitsstudie","en":"feasibility study"},{"de":"systematische Übersichtsarbeit","en":"systematic review"},{"de":"Metaanalyse","en":"meta-analysis"},{"de":"Scoping Review","en":"scoping review"},{"de":"Modellierung","en":"modelling"},{"de":"Befragung","en":"survey"},{"de":"ältere Menschen","en":"aged"},{"de":"Kinder","en":"child"},{"de":"chronische Erkrankung","en":"chronic disease"},{"de":"seltene Erkrankung","en":"rare disease"},{"de":"Multimorbidität","en":"multimorbidity"},{"de":"psychische Gesundheit","en":"mental health"},{"de":"Hausarzt","en":"general practitioner"},{"de":"Krankenhaus","en":"hospital"},{"de":"Notaufnahme","en":"emergency department"},{"de":"Fachkräftemangel","en":"health workforce shortage"},{"de":"Gesundheitspersonal","en":"health personnel"},{"de":"Gesundheitssystem","en":"health system"},{"de":"Gesundheitspolitik","en":"health policy"},{"de":"Prävention","en":"prevention"},{"de":"Gesundheitsförderung","en":"health promotion"},{"de":"Gesundheitskompetenz","en":"health literacy"},{"de":"öffentlicher Gesundheitsdienst","en":"public health services"},{"de":"Krebs","en":"neoplasms"},{"de":"Tumor","en":"neoplasms"},{"de":"Krebsfrueherkennung","en":"early detection of cancer"},{"de":"Screening","en":"mass screening"},{"de":"Nachsorge","en":"aftercare"},{"de":"Tumorkonferenz","en":"patient care team"},{"de":"Krebsregister","en":"registries"},{"de":"Gesamtueberleben","en":"survival rate"},{"de":"Rezidiv","en":"neoplasm recurrence, local"},{"de":"Metastase","en":"neoplasm metastasis"},{"de":"Chemotherapie","en":"drug therapy"},{"de":"Strahlentherapie","en":"radiotherapy"},{"de":"Immuntherapie","en":"immunotherapy"},{"de":"Zielgerichtete Therapie","en":"molecular targeted therapy"},{"de":"Antikoerpertherapie","en":"antibodies, monoclonal"},{"de":"Zelltherapie","en":"cell- and tissue-based therapy"},{"de":"Knochenmarktransplantation","en":"hematopoietic stem cell transplantation"},{"de":"Palliativversorgung","en":"palliative care"},{"de":"Schmerztherapie","en":"pain management"},{"de":"Lebensqualitaet","en":"quality of life"},{"de":"Krankheitslast","en":"cost of illness"},{"de":"Brustkrebs","en":"breast neoplasms"},{"de":"Lungenkrebs","en":"lung neoplasms"},{"de":"Darmkrebs","en":"colorectal neoplasms"},{"de":"Prostatakrebs","en":"prostatic neoplasms"},{"de":"Leukaemie","en":"leukemia"},{"de":"Lymphom","en":"lymphoma"},{"de":"Multiples Myelom","en":"multiple myeloma"},{"de":"Bauchspeicheldruesenkrebs","en":"pancreatic neoplasms"},{"de":"Hautkrebs","en":"skin neoplasms"},{"de":"Schwarzer Hautkrebs","en":"melanoma"},{"de":"Gebaermutterhalskrebs","en":"uterine cervical neoplasms"},{"de":"Hirntumor","en":"brain neoplasms"},{"de":"Erbliche Belastung","en":"genetic predisposition to disease"},{"de":"Biomarker","en":"biomarkers, tumor"},{"de":"Fluessigbiopsie","en":"liquid biopsy"},{"de":"Nebenwirkung","en":"drug-related side effects and adverse reactions"},{"de":"Erschoepfung","en":"fatigue"}];
+// === GLOSSAR-BLOCK-ENDE ===
+
+document.getElementById('cntGlossar').textContent = GLOSSAR.length;
+
+// Sprungziele Impressum/Datenschutz: Die Texte stecken in <details>. Wird eines
+// direkt angesprungen, muss es aufklappen - sonst landet man auf einer
+// geschlossenen Ueberschrift und haelt den Link fuer kaputt.
+function oeffneZiel(){
+  const id = location.hash.replace('#','');
+  if(!id) return;
+  const el = document.getElementById(id);
+  if(el && el.tagName === 'DETAILS'){
+    el.open = true;
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+window.addEventListener('hashchange', oeffneZiel);
+oeffneZiel();
+
+// ---- Suche ---------------------------------------------------------------
+// Grundsatz: Es passiert nichts, bevor der Nutzer absendet. Frueher schrieb
+// die Seite die Links schon beim Tippen um - unsichtbar, ohne Rueckmeldung.
+// Jetzt gilt das Muster gaengiger Suchmaschinen: eingeben, Enter, Ergebnis.
+const input     = document.getElementById('q');
+const goBtn     = document.getElementById('go');
+const resultBar = document.getElementById('resultBar');
+const boolHint  = document.getElementById('boolHint');
+let   gesucht   = '';        // zuletzt abgeschickter Begriff
+
+const OPERATOR = /(^|\s)(AND|OR|NOT)(\s|$)/;
+
+function basisUrl(tpl){
+  return tpl.split('?')[0].split('/%s')[0];
+}
+
+// Laengste Begriffe zuerst - sonst zerfaellt "integrierte Versorgung" in
+// "Versorgung" und der Rest bleibt deutsch stehen.
+const GLOSSAR_LANG = GLOSSAR.slice().sort((a,b)=>b.de.length - a.de.length);
+
+// Alle Woerter, die in der englischen Spalte vorkommen. Wer 'primary care'
+// oder 'diabetes' eingibt, sucht bereits international - dann ist eine
+// fehlende Uebersetzung kein Mangel und es braucht keinen Hinweis.
+const EN_WOERTER = new Set(GLOSSAR.flatMap(g=>g.en.toLowerCase().split(/\s+/)));
+function wirktEnglisch(t){
+  const w = t.toLowerCase().split(/[\s,;]+/).filter(Boolean);
+  return w.length > 0 && w.every(x=>EN_WOERTER.has(x));
+}
+
+// Deutsche Fachbegriffe durch den international ueblichen Ausdruck ersetzen.
+// Wortweise, damit auch "Primaerversorgung Diabetes" funktioniert.
+function uebersetze(term){
+  let text = term;
+  const treffer = [];
+  GLOSSAR_LANG.forEach(g=>{
+    // Sonderzeichen im Begriff maskieren, damit z. B. ein Punkt nicht als
+    // "beliebiges Zeichen" wirkt. Wortgrenzen ueber Leerzeichen und Komma
+    // statt \b: \b trennt bei Umlauten und Bindestrichen falsch.
+    const roh = g.de.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const muster = new RegExp('(^|[\\s,;])(' + roh + ')(?=[\\s,;]|$)', 'gi');
+    if(muster.test(text)){
+      text = text.replace(muster, (_m, vor)=> vor + g.en);
+      treffer.push(g);
+    }
+  });
+  return { text, treffer, geaendert: text.toLowerCase() !== term.toLowerCase() };
+}
+
+// Eine deutschsprachige Datenbank bekommt den deutschen Begriff. Das sind die
+// Rubrik 01 und einzeln gekennzeichnete Kataloge (subito, K10plus, DRKS ...).
+function istDeutsch(x){ return x.c === 'deutsch' || x.de === 1; }
+
+let uebersetzung = null;   // Ergebnis von uebersetze() zur zuletzt gesendeten Suche
+
+// Links einstellen - deutsche Datenbanken deutsch, internationale uebersetzt.
+function verdrahte(term){
+  const deutschEnc = encodeURIComponent(term);
+  const intText = (uebersetzung && uebersetzung.geaendert) ? uebersetzung.text : term;
+  const intEnc  = encodeURIComponent(intText);
+  cardIndex.forEach(c=>{
+    const enc = istDeutsch(c.eintrag) ? deutschEnc : intEnc;
+    c.el.href = (c.type === 'live' && term) ? c.tpl.replace('%s', enc)
+              : (c.type === 'live')         ? basisUrl(c.tpl)
+              :                               c.tpl;
+  });
+}
+
+// Die Ergebniszeile getrennt vom Springen: Beim Filtern sollen sich die
+// Zahlen aktualisieren, die Ansicht aber stehen bleiben - sonst rutscht die
+// Seite bei jedem Filterklick weg, und man kann keine zwei Filter setzen.
+function zeigeErgebnis(){
+  if(!gesucht) return;
+  const sichtbar = cardIndex.filter(c=>!c.el.classList.contains('aus'));
+  const live     = sichtbar.filter(c=>c.type==='live').length;
+  const portale  = sichtbar.filter(c=>c.type==='portal').length;
+  const lizenz   = sichtbar.filter(c=>c.type==='lic').length;
+
+  resultBar.innerHTML =
+    '<b>&bdquo;' + htmlEsc(gesucht) + '&ldquo;</b> ist in <b>' + live + '</b> Datenbanken vorbereitet &mdash; '
+    + 'ein Klick &ouml;ffnet die Trefferliste in einem neuen Tab.'
+    + '<span class="rb-zusatz">Dazu ' + portale + ' Portale, in denen der Begriff nach dem &Ouml;ffnen '
+    + 'einzugeben ist, und ' + lizenz + ' Datenbanken mit Lizenzpflicht.</span>'
+    + ((uebersetzung && uebersetzung.geaendert)
+        ? '<span class="rb-uebersetzung">In internationalen Datenbanken wird gesucht als '
+          + '<b>' + htmlEsc(uebersetzung.text) + '</b> &mdash; deutschsprachige Datenbanken '
+          + 'behalten Ihren Begriff.</span>'
+        : (uebersetzung && !wirktEnglisch(gesucht))
+        ? '<span class="rb-fehlt">F&uuml;r <b>&bdquo;' + htmlEsc(gesucht) + '&ldquo;</b> ist keine '
+          + '&Uuml;bersetzung hinterlegt &mdash; internationale Datenbanken suchen den deutschen '
+          + 'Begriff und finden damit vermutlich wenig. '
+          + '<a href="' + vorschlagLink(gesucht) + '">Begriff vorschlagen</a></span>'
+        : '');
+  resultBar.hidden = false;
+}
+
+// Die Falle, in die ein Betatester lief: Begriff eingetippt, nicht abgesendet,
+// dann auf eine Kachel geklickt - und die Datenbank oeffnete ihre Startseite,
+// wo er den Begriff ein zweites Mal eingeben musste. Aus seiner Sicht zu
+// Recht unverstaendlich. Ein Klick auf eine Kachel holt das Absenden deshalb
+// jetzt selbst nach: Der Zugriff erfolgt in der Erfassungsphase, also bevor
+// der Browser dem Link folgt - die Adresse steht dann schon richtig.
+document.addEventListener('click', (e)=>{
+  const link = e.target.closest('.card');
+  if(!link) return;
+  const term = input.value.trim();
+  if(!term || term === gesucht) return;      // nichts Neues einzustellen
+  gesucht = term;
+  uebersetzung = document.getElementById('uebersetzenAn').checked ? uebersetze(term) : null;
+  verdrahte(term);
+  document.body.classList.add('gesucht');
+  zeigeErgebnis();
+  aktualisiereChips(term);
+}, true);
+
+// Eine abgesendete Suche melden. Gezaehlt wird der Vorgang; der Begriff
+// geht nur mit, wenn er wie ein Fachbegriff aussieht - der Zaehlschnipsel
+// prueft das, und der Server wirft danach alle Krankheitsbegriffe weg. Die
+// Zaehlung haengt bewusst an den Absendestellen und nicht in suchen(): Die
+// Meta-Suche ruft suchen(false) selbst auf, und jede Meta-Suche wuerde sonst
+// zusaetzlich als getippte Suche in der Statistik stehen.
+function zaehleSuche(art){
+  if(window.mvfZ) window.mvfZ(art, input.value.trim());
+}
+
+function suchen(springen){
+  const term = input.value.trim();
+  if(!term){ input.focus(); return; }
+  gesucht = term;
+  uebersetzung = document.getElementById('uebersetzenAn').checked ? uebersetze(term) : null;
+  verdrahte(term);
+  document.body.classList.add('gesucht');
+  zeigeErgebnis();
+  aktualisiereChips(term);
+
+  // Nur beim Absenden hinunterspringen - nicht bei jeder Filteraenderung.
+  // Die Meta-Trefferliste ruft mit springen=false auf: Sie stellt die
+  // Kacheln mit ein, die Seite soll dabei aber stehen bleiben.
+  if(springen === false) return;
+  const ziel = document.querySelector('.cat:not(.aus)');
+  if(ziel) ziel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// Vorbereitete E-Mail an die Redaktion: Wer eine Uebersetzung vermisst,
+// meldet sie selbst - mit dem englischen Fachbegriff, den die Zaehlung nicht
+// kennen kann. Sie zaehlt nur, wonach gesucht wurde.
+function vorschlagLink(begriff){
+  const betreff = 'Knowledge-Hub: Begriff fürs Suchglossar';
+  const U = String.fromCharCode(10);   // Zeilenumbruch, ohne Escape-Fallen
+  const text = 'Guten Tag,' + U + U
+    + 'bitte ergänzen Sie folgenden Begriff im Suchglossar des Knowledge-Hubs:' + U + U
+    + 'Deutsch:  ' + begriff + U
+    + 'Englisch: ' + U + U
+    + '(Falls Ihnen der englische Fachbegriff bekannt ist, gern eintragen.)' + U + U
+    + 'Mit freundlichen Grüßen' + U;
+  return 'mailto:info@m-vf.de?subject=' + encodeURIComponent(betreff)
+       + '&body=' + encodeURIComponent(text);
+}
+
+function zuruecksetzen(){
+  gesucht = '';
+  uebersetzung = null;
+  input.value = '';
+  verdrahte('');
+  document.body.classList.remove('gesucht');
+  resultBar.hidden = true;
+  boolHint.hidden = true;
+  aktualisiereChips('');
+  input.focus();
+}
+
+function aktualisiereChips(term){
+  document.querySelectorAll('.chip').forEach(ch=>{
+    ch.setAttribute('aria-pressed',
+      ch.dataset.term.toLowerCase() === term.toLowerCase() ? 'true' : 'false');
+  });
+}
+
+// Operatoren-Hinweis: nur wenn welche getippt werden, und mit den echten
+// Zahlen. b:1 = geprueft, wertet aus. b:0 = geprueft, wertet nicht aus.
+// Fehlendes Merkmal = ungeprueft und wird NICHT als "kann es" gezaehlt.
+function pruefeOperatoren(){
+  if(!OPERATOR.test(input.value)){ boolHint.hidden = true; return; }
+  const live  = DB.filter(x=>x.t === 'live');
+  const ja    = live.filter(x=>x.b === 1).length;
+  const nein  = live.filter(x=>x.b === 0).length;
+  const offen = live.length - ja - nein;
+  boolHint.innerHTML =
+    'Sie verwenden <b>Suchoperatoren</b>. Von ' + live.length + ' Live-Suchen werten <b>'
+    + ja + '</b> sie nachweislich aus (Zeichen <b>AND/OR &#10003;</b>), ' + nein
+    + ' nachweislich nicht (<b>AND/OR &#10007;</b>) &mdash; dort werden die W&ouml;rter '
+    + 'einfach mitgesucht. Bei ' + offen + ' ohne Zeichen ist es ungepr&uuml;ft.';
+  boolHint.hidden = false;
+}
+
+input.addEventListener('input', ()=>{
+  pruefeOperatoren();
+  goBtn.disabled = !input.value.trim();
+});
+input.addEventListener('keydown', e=>{
+  if(e.key === 'Enter'){ e.preventDefault(); zaehleSuche('suche'); suchen(); }
+});
+goBtn.addEventListener('click', ()=>{ zaehleSuche('suche'); suchen(); });
+document.getElementById('clear').addEventListener('click', zuruecksetzen);
+
+// Umschalten wirkt sofort auf die laufende Suche - Links neu einstellen und
+// Zahlen nachfuehren, aber nicht springen.
+document.getElementById('uebersetzenAn').addEventListener('change', ()=>{
+  if(!gesucht) return;
+  uebersetzung = document.getElementById('uebersetzenAn').checked ? uebersetze(gesucht) : null;
+  verdrahte(gesucht);
+  zeigeErgebnis();
+});
+
+// ---- Schnellwahl ----
+const chipsBox = document.getElementById('chips');
+CHIPS.forEach(t=>{
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'chip'; b.textContent = t; b.dataset.term = t;
+  // Ein Chip ist eine fertige Suche - er sendet direkt ab. Gezaehlt wird er
+  // getrennt von der getippten Suche: Nur so laesst sich sehen, welche Chips
+  // wirklich benutzt werden und welche nur Platz wegnehmen.
+  b.addEventListener('click', ()=>{
+    input.value = t; pruefeOperatoren(); zaehleSuche('chip'); suchen();
+  });
+  chipsBox.appendChild(b);
+});
+
+// ---- Filter --------------------------------------------------------------
+const FILTER = { zugang:'alle', suchart:'alle', bool:'alle', rubrik:new Set() };
+
+// Rubrik-Chips aus CATS aufbauen, damit beides nie auseinanderlaeuft.
+const rubrikBox = document.getElementById('filterRubrik');
+CATS.forEach(cat=>{
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'fchip'; b.dataset.wert = cat.id;
+  b.textContent = cat.name; b.setAttribute('aria-pressed','false');
+  rubrikBox.appendChild(b);
+});
+
+function passt(x){
+  if(FILTER.zugang === 'frei'   && x.t === 'lic') return false;
+  if(FILTER.zugang === 'lizenz' && x.t !== 'lic') return false;
+  if(FILTER.suchart === 'live'   && x.t !== 'live')   return false;
+  if(FILTER.suchart === 'portal' && x.t !== 'portal') return false;
+  if(FILTER.bool === 'ja' && x.b !== 1) return false;
+  if(FILTER.rubrik.size && !FILTER.rubrik.has(x.c)) return false;
+  return true;
+}
+
+function filtern(){
+  let sichtbar = 0;
+  cardIndex.forEach(c=>{
+    const ok = passt(c.eintrag);
+    c.el.classList.toggle('aus', !ok);
+    if(ok) sichtbar++;
+  });
+  // Rubriken ohne sichtbare Kachel ganz ausblenden - samt Sprungmarke.
+  CATS.forEach(cat=>{
+    const sek = document.getElementById(cat.id);
+    if(!sek) return;
+    const drin = cardIndex.filter(c=>c.eintrag.c === cat.id && !c.el.classList.contains('aus'));
+    sek.classList.toggle('aus', drin.length === 0);
+    const nav = document.querySelector('.jump a[href="#' + cat.id + '"]');
+    if(nav) nav.classList.toggle('aus', drin.length === 0);
+    const z = sek.querySelector('.cat-count');
+    if(z) z.textContent = drin.length + ' Datenbanken';
+  });
+
+  const aktiv = (FILTER.zugang !== 'alle') + (FILTER.suchart !== 'alle')
+              + (FILTER.bool !== 'alle') + (FILTER.rubrik.size ? 1 : 0);
+  const badge = document.getElementById('filterBadge');
+  badge.textContent = aktiv; badge.hidden = !aktiv;
+  document.getElementById('filterResetZeile').hidden = !aktiv;
+  document.getElementById('dbCount').textContent = sichtbar;
+  // Sackgasse abfangen: Vier Filter zusammen koennen alles ausblenden.
+  const leer = document.getElementById('leerHinweis');
+  if(sichtbar === 0){
+    leer.innerHTML = '<b>Keine Datenbank erf&uuml;llt alle gew&auml;hlten Filter.</b> '
+      + 'Nehmen Sie einen Filter zur&uuml;ck &mdash; oder setzen Sie unten alle zur&uuml;ck.';
+    leer.hidden = false;
+  } else {
+    leer.hidden = true;
+  }
+  zeigeErgebnis();   // nur die Zahlen nachfuehren, nicht springen
+}
+
+// Alles auf Ausgangswerte - die Suche selbst bleibt bestehen.
+document.getElementById('filterReset').addEventListener('click', ()=>{
+  FILTER.zugang = FILTER.suchart = FILTER.bool = 'alle';
+  FILTER.rubrik.clear();
+  document.querySelectorAll('.filter-group').forEach(g=>{
+    g.querySelectorAll('.fchip').forEach(b=>
+      b.setAttribute('aria-pressed', b.dataset.wert === 'alle' ? 'true' : 'false'));
+  });
+  filtern();
+});
+
+document.querySelectorAll('.filter-group').forEach(gruppe=>{
+  const name = gruppe.dataset.gruppe;
+  gruppe.addEventListener('click', e=>{
+    const b = e.target.closest('.fchip');
+    if(!b) return;
+    if(name === 'rubrik'){
+      const an = b.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', an ? 'false' : 'true');
+      if(an) FILTER.rubrik.delete(b.dataset.wert); else FILTER.rubrik.add(b.dataset.wert);
+    } else {
+      FILTER[name] = b.dataset.wert;
+      gruppe.querySelectorAll('.fchip').forEach(x=>
+        x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    }
+    filtern();
+  });
+});
+
+// ---- Trefferliste ueber mehrere Datenbanken ------------------------------
+// Warum es das gibt: Ein Nutzer hat am 30.08.2026 zu Recht eingewandt, dass
+// er auf jede Kachel einzeln klicken muss, um seine Treffer zu sehen. Diese
+// Liste fragt die Datenbanken, die ihre Schnittstelle fuer Browser
+// freigegeben haben (CORS), unmittelbar ab und legt die Ergebnisse
+// zusammen. Vier sind es im Prototyp; die uebrigen bleiben Kachel.
+//
+// Grundsaetze:
+//   * Nichts geschieht ungefragt. Erst der Klick auf den Knopf loest die
+//     Abfragen aus - vorher verlaesst kein Suchbegriff diese Seite.
+//   * Kein Server dazwischen. Der Browser des Nutzers spricht direkt mit den
+//     Datenbanken; dieses Portal erfaehrt weder Begriff noch Treffer.
+//   * Eine ausgefallene Quelle darf die Liste nicht verhindern. Jede Abfrage
+//     wird einzeln aufgefangen und ihr Zustand angezeigt.
+const MT_PRO_SEITE = 25;
+const MT_MAILTO    = 'info@m-vf.de';   // Hoeflichkeitsangabe fuer OpenAlex/Crossref
+const MT_ZEIT      = 15;               // Sekunden bis zum Abbruch einer Abfrage
+
+function mtJson(url, zweiterVersuch){
+  // Ohne Zeitgrenze bliebe eine haengende Quelle fuer immer im Zustand
+  // "laedt" - der Nutzer saehe eine Liste, die nie fertig wird.
+  const ctrl = new AbortController();
+  const uhr = setTimeout(function(){ ctrl.abort(); }, MT_ZEIT * 1000);
+  return fetch(url, {signal: ctrl.signal, referrerPolicy: 'no-referrer'})
+    .then(function(r){
+      // 429 heisst "zu schnell", 503 "gerade nicht". Beides geht nach einem
+      // Augenblick meist von selbst vorueber - OpenAlex etwa antwortet so,
+      // wenn aus demselben Netz mehrere Suchen dicht aufeinander folgen.
+      // Einmal nachfassen ist billiger, als dem Nutzer eine Quelle als
+      // "nicht erreichbar" zu melden, die es gar nicht ist.
+      if((r.status === 429 || r.status === 503) && !zweiterVersuch){
+        return new Promise(function(fertig){ setTimeout(fertig, 1500); })
+          .then(function(){ return mtJson(url, true); });
+      }
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .finally(function(){ clearTimeout(uhr); });
+}
+
+// Zusammenfassungen kommen je nach Quelle mit Auszeichnung (Crossref liefert
+// JATS-XML). Fuer Anzeige und Download wird reiner Text gebraucht.
+function mtText(v){
+  if(v == null) return '';
+  return String(v).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+// Die DOI ist der Schluessel, ueber den dieselbe Arbeit in vier Datenbanken
+// als eine erkannt wird. Sie kommt mal nackt, mal als Adresse, mal in
+// Grossbuchstaben - deshalb hier auf eine Form gebracht.
+function mtDoi(v){
+  return String(v || '').trim()
+    .replace(/^https?:\/\/(dx\.)?doi\.org\//i, '')
+    .replace(/[.,;]$/, '')
+    .toLowerCase();
+}
+
+// OpenAlex gibt Zusammenfassungen nicht als Text, sondern als Verzeichnis
+// Wort -> Positionen. Zusammensetzen ist vorgesehen; fehlt das Feld, bleibt
+// die Zusammenfassung eben leer.
+function mtAusInvertiert(inv){
+  if(!inv) return '';
+  const w = [];
+  Object.keys(inv).forEach(function(wort){
+    (inv[wort] || []).forEach(function(p){ w[p] = wort; });
+  });
+  return w.join(' ').replace(/\s+/g, ' ').trim();
+}
+
+// Der Status einer angemeldeten Studie kommt als englische Schluesselwort-
+// Liste. Uebersetzt, weil die Oberflaeche deutsch ist und "ACTIVE_NOT_
+// RECRUITING" auch auf Englisch niemandem etwas sagt. Unbekannte Werte werden
+// unveraendert durchgereicht - lieber englisch als leer.
+const MT_CT_STATUS = {
+  'RECRUITING':              'rekrutiert',
+  'NOT_YET_RECRUITING':      'noch nicht begonnen',
+  'ENROLLING_BY_INVITATION': 'Aufnahme nur auf Einladung',
+  'ACTIVE_NOT_RECRUITING':   'läuft, keine Aufnahme mehr',
+  'COMPLETED':               'abgeschlossen',
+  'TERMINATED':              'abgebrochen',
+  'SUSPENDED':               'ausgesetzt',
+  'WITHDRAWN':               'zurückgezogen',
+  'UNKNOWN':                 'Stand unbekannt',
+  'AVAILABLE':               'verfügbar',
+  'NO_LONGER_AVAILABLE':     'nicht mehr verfügbar',
+  'APPROVED_FOR_MARKETING':  'zugelassen',
+  'WITHHELD':                'zurückgehalten'
+};
+
+// Jede Quelle liefert {gesamt, liste}. Ein Treffer traegt immer dieselben
+// Felder, damit Zusammenfuehrung, Anzeige und Download nichts ueber die
+// Herkunft wissen muessen.
+const MT_QUELLEN = [
+  {
+    id: 'pubmed', n: 'PubMed', art: 'Aufsatz', u: 'https://pubmed.ncbi.nlm.nih.gov/',
+    hole: async function(term, seite){
+      const s = await mtJson('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi'
+        + '?db=pubmed&retmode=json&sort=relevance&retmax=' + MT_PRO_SEITE
+        + '&retstart=' + ((seite - 1) * MT_PRO_SEITE)
+        + '&term=' + encodeURIComponent(term));
+      const er = s.esearchresult || {};
+      const ids = er.idlist || [];
+      if(!ids.length) return {gesamt: +er.count || 0, liste: []};
+      // PubMed trennt Suche und Datensatz: esearch liefert nur Nummern,
+      // die Angaben kommen aus einem zweiten Aufruf.
+      const z = await mtJson('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi'
+        + '?db=pubmed&retmode=json&id=' + ids.join(','));
+      const r = z.result || {};
+      const liste = [];
+      ids.forEach(function(id){
+        const e = r[id];
+        if(!e || e.error) return;
+        const doi = (e.articleids || []).filter(function(a){ return a.idtype === 'doi'; })
+                      .map(function(a){ return a.value; })[0] || '';
+        liste.push({
+          titel: mtText(e.title),
+          autoren: (e.authors || []).map(function(a){ return a.name; }).filter(Boolean),
+          journal: e.fulljournalname || e.source || '',
+          jahr: String(e.pubdate || '').slice(0, 4),
+          doi: mtDoi(doi),
+          pmid: id,
+          url: 'https://pubmed.ncbi.nlm.nih.gov/' + id + '/',
+          abstract: '',          // esummary fuehrt keine Zusammenfassung
+          oaUrl: ''
+        });
+      });
+      return {gesamt: +er.count || liste.length, liste: liste};
+    }
+  },
+  {
+    id: 'epmc', n: 'Europe PMC', art: 'Aufsatz', u: 'https://europepmc.org/',
+    hole: async function(term, seite, s){
+      // resultType=core, weil nur diese Fassung die Zusammenfassung
+      // mitliefert - sie fuellt spaeter die Luecke der PubMed-Treffer.
+      //
+      // Europe PMC blaettert NICHT ueber einen Seitenzaehler. Ein &page=2
+      // wird stillschweigend ignoriert und liefert noch einmal dieselben
+      // Treffer - im Test die haeufigste Fehlerquelle, weil nichts
+      // fehlschlaegt, die Liste sich aber verdoppelt. Geblaettert wird ueber
+      // die Marke, die jede Antwort fuer die naechste mitgibt.
+      const d = await mtJson('https://www.ebi.ac.uk/europepmc/webservices/rest/search'
+        + '?format=json&resultType=core&pageSize=' + MT_PRO_SEITE
+        + '&cursorMark=' + encodeURIComponent(s.cursor || '*')
+        + '&query=' + encodeURIComponent(term));
+      s.cursor = d.nextCursorMark || '';
+      const res = (d.resultList && d.resultList.result) || [];
+      const liste = res.map(function(e){
+        const doi = mtDoi(e.doi);
+        let oa = '';
+        const urls = (e.fullTextUrlList && e.fullTextUrlList.fullTextUrl) || [];
+        for(let i = 0; i < urls.length; i++){
+          if(urls[i].availability === 'Open access'){ oa = urls[i].url; break; }
+        }
+        return {
+          titel: mtText(e.title),
+          autoren: String(e.authorString || '').replace(/\.$/, '').split(', ').filter(Boolean),
+          journal: (e.journalInfo && e.journalInfo.journal && e.journalInfo.journal.title) || '',
+          jahr: String(e.pubYear || ''),
+          doi: doi,
+          pmid: e.pmid || '',
+          url: doi ? 'https://doi.org/' + doi
+                   : 'https://europepmc.org/article/' + (e.source || 'MED') + '/' + e.id,
+          abstract: mtText(e.abstractText),
+          oaUrl: oa,
+          // Europe PMC fuehrt Preprints unter der Quellenkennung PPR. Sie
+          // deshalb hier auszuzeichnen erspart eine eigene Preprint-Datenbank:
+          // medRxiv und bioRxiv stecken bereits in diesem Bestand, und ihr
+          // eigener Dienst hat gar keine Suchschnittstelle.
+          art: e.source === 'PPR' ? 'Preprint' : ''
+        };
+      });
+      return {gesamt: +d.hitCount || liste.length, liste: liste};
+    }
+  },
+  {
+    id: 'openalex', n: 'OpenAlex', art: 'Aufsatz', u: 'https://openalex.org/',
+    hole: async function(term, seite){
+      const d = await mtJson('https://api.openalex.org/works'
+        + '?per-page=' + MT_PRO_SEITE + '&page=' + seite
+        + '&mailto=' + encodeURIComponent(MT_MAILTO)
+        + '&search=' + encodeURIComponent(term));
+      const res = d.results || [];
+      const liste = res.map(function(w){
+        const ort = w.primary_location || {};
+        return {
+          titel: mtText(w.display_name),
+          autoren: (w.authorships || []).map(function(a){
+            return a.author && a.author.display_name; }).filter(Boolean),
+          journal: (ort.source && ort.source.display_name) || '',
+          jahr: String(w.publication_year || ''),
+          doi: mtDoi(w.doi),
+          pmid: String((w.ids && w.ids.pmid) || '').split('/').filter(Boolean).pop() || '',
+          url: w.doi || ort.landing_page_url || ('https://openalex.org/' + String(w.id || '').split('/').pop()),
+          abstract: mtAusInvertiert(w.abstract_inverted_index),
+          oaUrl: (w.open_access && w.open_access.oa_url) || ''
+        };
+      });
+      return {gesamt: (d.meta && d.meta.count) || liste.length, liste: liste};
+    }
+  },
+  {
+    id: 'crossref', n: 'Crossref', art: 'Aufsatz', u: 'https://www.crossref.org/',
+    hole: async function(term, seite){
+      // Ohne die Einschraenkung auf Zeitschriftenaufsaetze schwemmen
+      // Buchkapitel, Errata und Verlags-Bausteine die Liste zu.
+      const d = await mtJson('https://api.crossref.org/works'
+        + '?rows=' + MT_PRO_SEITE + '&offset=' + ((seite - 1) * MT_PRO_SEITE)
+        + '&filter=type:journal-article'
+        + '&select=DOI,title,author,container-title,issued,abstract,URL'
+        + '&mailto=' + encodeURIComponent(MT_MAILTO)
+        + '&query=' + encodeURIComponent(term));
+      const m = d.message || {};
+      const liste = (m.items || []).map(function(it){
+        const teile = (it.issued && it.issued['date-parts'] && it.issued['date-parts'][0]) || [];
+        return {
+          titel: mtText((it.title || [])[0]),
+          autoren: (it.author || []).map(function(a){
+            return [a.given, a.family].filter(Boolean).join(' '); }).filter(Boolean),
+          journal: (it['container-title'] || [])[0] || '',
+          jahr: String(teile[0] || ''),
+          doi: mtDoi(it.DOI),
+          pmid: '',
+          url: it.URL || (it.DOI ? 'https://doi.org/' + it.DOI : ''),
+          abstract: mtText(it.abstract),
+          oaUrl: ''
+        };
+      }).filter(function(t){ return t.titel; });
+      return {gesamt: +m['total-results'] || liste.length, liste: liste};
+    }
+  },
+  {
+    id: 'doaj', n: 'DOAJ', art: 'Aufsatz', u: 'https://doaj.org/',
+    hole: async function(term, seite){
+      // DOAJ nimmt die Abfrage im Pfad, nicht als Parameter - der Begriff
+      // muss deshalb vollstaendig kodiert werden, sonst wird ein Schraegstrich
+      // im Suchbegriff zur Wegmarke.
+      const d = await mtJson('https://doaj.org/api/search/articles/'
+        + encodeURIComponent(term)
+        + '?pageSize=' + MT_PRO_SEITE + '&page=' + seite);
+      const liste = (d.results || []).map(function(r){
+        const b = r.bibjson || {};
+        const kennungen = b.identifier || [];
+        let doi = '';
+        for(let i = 0; i < kennungen.length; i++){
+          if(kennungen[i].type === 'doi'){ doi = mtDoi(kennungen[i].id); break; }
+        }
+        const links = b.link || [];
+        let volltext = '';
+        for(let i = 0; i < links.length; i++){
+          if(links[i].type === 'fulltext'){ volltext = links[i].url; break; }
+        }
+        return {
+          titel: mtText(b.title),
+          autoren: (b.author || []).map(function(a){ return a.name; }).filter(Boolean),
+          journal: (b.journal && b.journal.title) || '',
+          jahr: String(b.year || ''),
+          doi: doi,
+          pmid: '',
+          url: doi ? 'https://doi.org/' + doi : ('https://doaj.org/article/' + r.id),
+          abstract: mtText(b.abstract),
+          // Bei DOAJ ist jeder Treffer frei zugaenglich - das ist der Zweck
+          // des Verzeichnisses. Der Volltextlink steht deshalb immer.
+          oaUrl: volltext
+        };
+      }).filter(function(t){ return t.titel; });
+      return {gesamt: +d.total || liste.length, liste: liste};
+    }
+  },
+  {
+    id: 'ctgov', n: 'ClinicalTrials.gov', art: 'Studienregister',
+    u: 'https://clinicaltrials.gov/',
+    hole: async function(term, seite, s){
+      // Wie Europe PMC ohne Seitenzaehler: Jede Antwort nennt die Marke der
+      // naechsten Seite. Fehlt sie, ist das Register erschoepft.
+      if(seite > 1 && !s.cursor) return {gesamt: s.gesamt, liste: []};
+      const d = await mtJson('https://clinicaltrials.gov/api/v2/studies'
+        + '?pageSize=' + MT_PRO_SEITE + '&countTotal=true'
+        + '&fields=NCTId,BriefTitle,BriefSummary,LeadSponsorName,StartDate,OverallStatus'
+        + (s.cursor ? '&pageToken=' + encodeURIComponent(s.cursor) : '')
+        + '&query.term=' + encodeURIComponent(term));
+      s.cursor = d.nextPageToken || '';
+      const liste = (d.studies || []).map(function(st){
+        const p = st.protocolSection || {};
+        const kennung = (p.identificationModule && p.identificationModule.nctId) || '';
+        const status = p.statusModule || {};
+        const traeger = (p.sponsorCollaboratorsModule && p.sponsorCollaboratorsModule.leadSponsor
+                         && p.sponsorCollaboratorsModule.leadSponsor.name) || '';
+        return {
+          titel: mtText(p.identificationModule && p.identificationModule.briefTitle),
+          // Eine Studie hat keine Autoren, sondern einen Traeger. Er steht an
+          // derselben Stelle, weil er dieselbe Frage beantwortet: von wem.
+          autoren: traeger ? [traeger] : [],
+          // Dass es ein Registereintrag ist, sagt schon das Kennzeichen der
+          // Art. An dieser Stelle steht deshalb, was den Leser wirklich
+          // interessiert: ob die Studie noch laeuft.
+          journal: MT_CT_STATUS[status.overallStatus] || status.overallStatus || '',
+          jahr: String((status.startDateStruct && status.startDateStruct.date) || '').slice(0, 4),
+          doi: '',
+          pmid: '',
+          url: kennung ? 'https://clinicaltrials.gov/study/' + kennung : '',
+          abstract: mtText(p.descriptionModule && p.descriptionModule.briefSummary),
+          oaUrl: '',
+          kennung: kennung
+        };
+      }).filter(function(t){ return t.titel; });
+      return {gesamt: +d.totalCount || s.gesamt || liste.length, liste: liste};
+    }
+  },
+  {
+    id: 'zenodo', n: 'Zenodo', art: 'Repositorium', u: 'https://zenodo.org/',
+    hole: async function(term, seite){
+      const d = await mtJson('https://zenodo.org/api/records'
+        + '?size=' + MT_PRO_SEITE + '&page=' + seite
+        + '&q=' + encodeURIComponent(term));
+      const treffer = (d.hits && d.hits.hits) || [];
+      const liste = treffer.map(function(r){
+        const m = r.metadata || {};
+        return {
+          titel: mtText(m.title),
+          autoren: (m.creators || []).map(function(c){ return c.name; }).filter(Boolean),
+          journal: (m.resource_type && (m.resource_type.title || m.resource_type.type)) || 'Zenodo',
+          jahr: String(m.publication_date || '').slice(0, 4),
+          doi: mtDoi(m.doi || r.doi),
+          pmid: '',
+          url: r.doi_url || ('https://zenodo.org/records/' + r.id),
+          abstract: mtText(m.description),
+          oaUrl: 'https://zenodo.org/records/' + r.id
+        };
+      }).filter(function(t){ return t.titel; });
+      const gesamt = (d.hits && (d.hits.total && d.hits.total.value !== undefined
+                       ? d.hits.total.value : d.hits.total)) || liste.length;
+      return {gesamt: +gesamt || liste.length, liste: liste};
+    }
+  }
+];
+
+// Zustand der laufenden Meta-Suche
+let mtBegriff  = '';      // Begriff, mit dem die Datenbanken befragt wurden
+let mtRoh      = '';      // Eingabe des Nutzers, unuebersetzt
+let mtSeite    = 0;
+let mtSort     = 'rang';
+let mtArt      = 'alle';  // Filter auf die Art der Quelle
+let mtBlatt    = 0;       // angezeigtes Blatt der Trefferliste, von 0 an
+let mtLauf     = 0;       // laufende Nummer; aeltere Antworten werden verworfen
+let mtListe    = [];      // zusammengefuehrte Treffer
+let mtSchl     = new Map();
+const mtStand  = {};      // je Quelle: {stand, anzahl, gesamt}
+
+const metaWrap    = document.getElementById('metaWrap');
+const metaSubEl   = document.getElementById('metaSub');
+const metaQuellen = document.getElementById('metaQuellen');
+const metaListeEl = document.getElementById('metaListe');
+const metaMehrBtn = document.getElementById('metaMehr');
+const metaFussEl  = document.getElementById('metaFuss');
+const goMetaBtn   = document.getElementById('goMeta');
+const metaArtBox  = document.getElementById('metaArt');
+const metaBlaetterEl = document.getElementById('metaBlaetter');
+
+document.getElementById('cntMeta').textContent = MT_QUELLEN.length;
+
+// Ein Treffer kann in allen vier Quellen stehen. Zusammengelegt wird ueber
+// die DOI, ersatzweise ueber die PubMed-Nummer, zuletzt ueber den auf
+// Buchstaben und Ziffern reduzierten Titel - Interpunktion und
+// Grossschreibung weichen zwischen den Datenbanken regelmaessig ab.
+function mtSchluessel(t){
+  if(t.doi)  return 'doi:' + t.doi;
+  if(t.pmid) return 'pmid:' + t.pmid;
+  return 'titel:' + String(t.titel || '').toLowerCase()
+    .replace(/[^a-z0-9äöüß]+/g, '').slice(0, 70);
+}
+
+// Reihenfolge ueber vier Ergebnislisten: Jede Quelle sortiert nach ihrer
+// eigenen Vorstellung von Relevanz, eine gemeinsame Punktzahl gibt es nicht.
+// Verwendet wird deshalb die Rangverschmelzung (reciprocal rank fusion) - ein
+// Treffer steigt, je weiter vorn er steht und je mehr Datenbanken ihn vorn
+// haben. Das belohnt Uebereinstimmung, statt eine Skala zu erfinden.
+// Nicht jede Quelle wiegt gleich schwer. Studienregister, Preprintserver und
+// Repositorien beantworten eine andere Frage als eine Literaturdatenbank, und
+// ihre Relevanzreihung ist deutlich grober - Zenodo etwa hebt bei einem
+// Fachbegriff auch Zeitschriftenhuellen und Gutachten nach oben. Sie zaehlen
+// deshalb weniger, verschwinden aber nicht: Wer sie sucht, findet sie ueber
+// den Filter "Art" sofort beisammen.
+function mtGewicht(quelle){ return quelle.art === 'Aufsatz' ? 1 : 0.6; }
+function mtPunkte(rang, quelle){ return mtGewicht(quelle) / (20 + rang); }
+
+// basis ist der Rang, bei dem diese Lieferung anfaengt. Ohne ihn bekaeme der
+// erste Treffer der zweiten Seite dieselbe Punktzahl wie der erste Treffer
+// ueberhaupt und spraenge beim Nachladen an die Spitze.
+function mtAufnehmen(quelle, liste, basis){
+  liste.forEach(function(t, n){
+    const i = basis + n;
+    const k = mtSchluessel(t);
+    const da = mtSchl.get(k);
+    if(da){
+      // Die vollstaendigere Angabe gewinnt: PubMed hat keine
+      // Zusammenfassung, Crossref oft kein Journal, OpenAlex den
+      // Open-Access-Volltext. Zusammen ergibt es einen brauchbaren Eintrag.
+      ['abstract','journal','jahr','doi','pmid','oaUrl','url'].forEach(function(f){
+        if(!da[f] && t[f]) da[f] = t[f];
+      });
+      if(t.autoren.length > da.autoren.length) da.autoren = t.autoren;
+      if(t.titel.length > da.titel.length) da.titel = t.titel;
+      if(da.quellen.indexOf(quelle.n) < 0) da.quellen.push(quelle.n);
+      // Die Art bleibt die der ersten Quelle - ausser eine Literaturdatenbank
+      // fuehrt denselben Titel: Was auch in PubMed steht, ist mehr als ein
+      // Eintrag im Repositorium. Ein Preprint bleibt eines, selbst wenn
+      // OpenAlex oder Crossref es fuehren; genau das muss der Leser wissen.
+      if(quelle.art === 'Aufsatz' && da.art !== 'Preprint') da.art = 'Aufsatz';
+      da.punkte += mtPunkte(i, quelle);
+    } else {
+      // Die Quelle gibt die Art vor, ausser der Datensatz weiss es besser -
+      // Europe PMC kennzeichnet seine Preprints selbst.
+      const neu = Object.assign({}, t, {quellen: [quelle.n], art: t.art || quelle.art,
+                                        punkte: mtPunkte(i, quelle)});
+      mtSchl.set(k, neu);
+      mtListe.push(neu);
+    }
+  });
+}
+
+// Die Arten in fester Reihenfolge - Aufsaetze zuerst, weil sie die Mehrzahl
+// stellen. Fest und nicht aus den Quellen abgeleitet, weil eine Art auch aus
+// einem Datensatz kommen kann: Europe PMC liefert Aufsaetze UND Preprints.
+const MT_ARTEN = ['Aufsatz', 'Preprint', 'Studienregister', 'Repositorium'];
+
+/** Treffer je Blatt. Zugleich die Obergrenze dessen, was je Suchschritt
+ *  uebersetzt wird - der Endpunkt nimmt nicht mehr als 25 entgegen. */
+const MT_JE_BLATT = 25;
+
+function mtSortiert(){
+  const l = mtArt === 'alle' ? mtListe.slice()
+          : mtListe.filter(function(t){ return t.art === mtArt; });
+  if(mtSort === 'jahr'){
+    l.sort(function(a, b){ return (+b.jahr || 0) - (+a.jahr || 0) || b.punkte - a.punkte; });
+  } else {
+    l.sort(function(a, b){ return b.punkte - a.punkte; });
+  }
+  return l;
+}
+
+function mtZahl(n){ return Number(n || 0).toLocaleString('de-DE'); }
+
+function mtZeichneQuellen(){
+  metaQuellen.innerHTML = MT_QUELLEN.map(function(q){
+    const s = mtStand[q.id] || {stand: 'offen'};
+    const text = s.stand === 'laedt'  ? 'wird abgefragt …'
+               : s.stand === 'fehler' ? 'nicht erreichbar'
+               : s.stand === 'leer'   ? 'kein Treffer'
+               : mtZahl(s.anzahl) + ' von ' + mtZahl(s.gesamt);
+    return '<span class="qchip" data-stand="' + s.stand + '"><b>' + htmlEsc(q.n)
+         + '</b> ' + text + '</span>';
+  }).join('');
+}
+
+function mtAutorZeile(t){
+  const a = t.autoren || [];
+  if(!a.length) return '';
+  return a.length > 3 ? htmlEsc(a.slice(0, 3).join(', ')) + ' u.&nbsp;a.'
+                      : htmlEsc(a.join(', '));
+}
+
+function mtZeichnen(){
+  const alle = mtSortiert();
+  // Angezeigt wird blattweise. Das hat zwei Gruende, und der zweite ist der
+  // wichtigere: Eine Liste von zweihundert Titeln liest niemand am Stueck -
+  // und uebersetzt wird nur, was auf dem Blatt steht. Ohne diese Grenze
+  // wuerde jede Suche zweihundert Uebersetzungen kosten, von denen der Leser
+  // ein Dutzend sieht.
+  const blaetter = Math.max(1, Math.ceil(alle.length / MT_JE_BLATT));
+  if(mtBlatt >= blaetter) mtBlatt = blaetter - 1;
+  const liste = alle.slice(mtBlatt * MT_JE_BLATT, (mtBlatt + 1) * MT_JE_BLATT);
+  const fertig = MT_QUELLEN.every(function(q){
+    const s = mtStand[q.id]; return s && s.stand !== 'laedt'; });
+
+  if(!alle.length && mtListe.length){
+    // Es gibt Treffer, nur nicht in dieser Art - das ist etwas anderes als
+    // eine erfolglose Suche und muss auch anders klingen.
+    metaListeEl.innerHTML = '<p class="meta-leer">Unter den <b>' + mtListe.length
+      + '</b> Fundstellen ist keine der Art <b>' + htmlEsc(mtArt) + '</b>.</p>';
+  } else if(!alle.length){
+    metaListeEl.innerHTML = fertig
+      ? '<p class="meta-leer">Keine der abgefragten Datenbanken hat zu <b>'
+        + htmlEsc(mtBegriff) + '</b> einen Treffer geliefert. Die Kacheln unten '
+        + 'führen zu den übrigen Datenbanken — dort kann es anders aussehen.</p>'
+      : '<p class="meta-leer">Die Datenbanken werden abgefragt …</p>';
+  } else {
+    metaListeEl.innerHTML = liste.map(function(t){
+      const zeile = [mtAutorZeile(t),
+                     t.journal ? '<i>' + htmlEsc(t.journal) + '</i>' : '',
+                     t.jahr ? '<b>' + htmlEsc(t.jahr) + '</b>' : ''
+                    ].filter(Boolean).join(' &middot; ');
+      // Steht eine deutsche Fassung bereit, traegt sie die Ueberschrift - und
+      // das Original steht darunter. Nicht nur im Tooltip: Wer zitiert, braucht
+      // den Titel, unter dem die Arbeit tatsaechlich erschienen ist, und muss
+      // sehen koennen, dass die deutsche Zeile eine Uebersetzung ist.
+      const uebersetzt = t.de && t.de !== t.titel;
+      return '<article class="mt">'
+        + '<a class="mt-titel" href="' + htmlEsc(t.url) + '" target="_blank" rel="noopener">'
+        + htmlEsc(uebersetzt ? t.de : t.titel) + '</a>'
+        + (uebersetzt ? '<div class="mt-original"><span class="uebersetzt-mark">übersetzt</span> '
+                        + htmlEsc(t.titel) + '</div>' : '')
+        + (zeile ? '<div class="mt-meta">' + zeile + '</div>' : '')
+        + '<div class="mt-quellen">'
+        // Die Art zuerst: Ob eine Fundstelle ein begutachteter Aufsatz, eine
+        // angemeldete Studie oder ein Preprint ist, entscheidet darueber, wie
+        // sie zu lesen ist - das gehoert vor die Herkunft, nicht dahinter.
+        + (t.art && t.art !== 'Aufsatz'
+            ? '<span class="qtag art">' + htmlEsc(t.art) + '</span>' : '')
+        + '<span class="vor">Gefunden in:</span>'
+        + t.quellen.map(function(q){ return '<span class="qtag">' + htmlEsc(q) + '</span>'; }).join('')
+        + (t.doi ? '<span class="vor">DOI ' + htmlEsc(t.doi) + '</span>' : '')
+        + (t.oaUrl ? '<a class="qtag oa" href="' + htmlEsc(t.oaUrl) + '" target="_blank" '
+                     + 'rel="noopener" title="Frei zugänglicher Volltext">Volltext</a>' : '')
+        + '</div>'
+        + (t.abstract ? '<details class="mt-abstract"><summary>Zusammenfassung</summary><p>'
+                        + htmlEsc(t.abstract) + '</p></details>' : '')
+        + '</article>';
+    }).join('');
+  }
+
+  // Gezaehlt wird immer die ganze Ausbeute, nicht der gefilterte Ausschnitt -
+  // sonst saehe es beim Filtern so aus, als waeren Treffer verlorengegangen.
+  const dubletten = MT_QUELLEN.reduce(function(n, q){
+    const s = mtStand[q.id]; return n + ((s && s.anzahl) || 0); }, 0) - mtListe.length;
+  metaSubEl.innerHTML = '<b>&bdquo;' + htmlEsc(mtRoh) + '&ldquo;</b> in '
+    + MT_QUELLEN.length + ' Datenbanken gleichzeitig gesucht — <b>' + mtListe.length
+    + '</b> Fundstellen' + (dubletten > 0 ? ', ' + dubletten + ' Dublette'
+        + (dubletten === 1 ? '' : 'n') + ' zusammengelegt' : '') + '.'
+    + (mtArt !== 'alle' ? ' Angezeigt werden <b>' + alle.length + '</b> davon '
+        + 'mit der Art <b>' + htmlEsc(mtArt) + '</b>.' : '')
+    + (mtBegriff !== mtRoh ? ' Gesucht wurde als <b>' + htmlEsc(mtBegriff)
+        + '</b> — internationale Datenbanken kennen den deutschen Begriff nicht.' : '');
+
+  mtZeichneBlaetter(blaetter, alle.length);
+
+  // Nachladen erst anbieten, wenn der Leser hinten angekommen ist. Auf Blatt 1
+  // von 7 waere der Knopf eine Aufforderung, sich noch mehr aufzuladen, bevor
+  // das Vorhandene angesehen ist.
+  const nochWas = MT_QUELLEN.some(function(q){
+    const s = mtStand[q.id];
+    return s && s.stand === 'ok' && s.gesamt > mtSeite * MT_PRO_SEITE;
+  });
+  metaMehrBtn.hidden = !(fertig && nochWas && mtBlatt === blaetter - 1);
+  metaMehrBtn.disabled = false;
+  metaMehrBtn.textContent = 'Weitere Treffer laden';
+
+  mtZeichneArten();
+  mtUebersetze(liste);
+
+  ['mtWord','mtCsv','mtRis','mtBib'].forEach(function(id){
+    document.getElementById(id).disabled = !alle.length;
+  });
+}
+
+// ---- Blaettern ------------------------------------------------------------
+function mtZeichneBlaetter(blaetter, gesamt){
+  if(blaetter <= 1 || !gesamt){ metaBlaetterEl.innerHTML = ''; return; }
+  const von = mtBlatt * MT_JE_BLATT + 1;
+  const bis = Math.min((mtBlatt + 1) * MT_JE_BLATT, gesamt);
+  metaBlaetterEl.innerHTML =
+      '<button type="button" class="dl-btn" data-schritt="-1"' + (mtBlatt === 0 ? ' disabled' : '')
+    + '>&larr; Zurück</button>'
+    + '<span class="blatt-stand">Treffer <b>' + von + '&ndash;' + bis + '</b> von <b>'
+    + gesamt + '</b> &middot; Blatt ' + (mtBlatt + 1) + ' von ' + blaetter + '</span>'
+    + '<button type="button" class="dl-btn" data-schritt="1"'
+    + (mtBlatt >= blaetter - 1 ? ' disabled' : '') + '>Weiter &rarr;</button>';
+}
+
+// ---- Deutsche Titel -------------------------------------------------------
+// Uebersetzt wird auf dem Server von Monitor Versorgungsforschung, nicht hier:
+// Ein API-Schluessel in einer statischen Seite waere im Quelltext mitzulesen.
+// Der Endpunkt beantwortet nur Anfragen von den Hub-Adressen, legt jede
+// Uebersetzung unter dem Hashwert des Titels ab und gibt sie danach allen
+// Lesern aller Portale wieder heraus.
+//
+// Faellt er aus, fehlt er oder ist die Tagesgrenze erreicht, bleibt es beim
+// englischen Titel. Das ist der Grund, warum hier nichts angezeigt wird, was
+// nach Fehler aussieht: Die Trefferliste steht auch ohne Uebersetzung.
+// ABGESCHALTET, Entscheidung des Herausgebers vom 30.08.2026: Die Titel
+// bleiben zunaechst in der Originalsprache. Der Dienst kostet dauerhaft Geld,
+// und ob er gebraucht wird, weiss noch niemand - erst die Nachfrage, dann die
+// laufende Rechnung.
+//
+// ZUM EINSCHALTEN sind es zwei Handgriffe, beide in uebersetzer/README.md
+// beschrieben: hier die Adresse des Endpunkts eintragen, und den dort
+// abgelegten Abschnitt in die Datenschutzhinweise zurueckholen. Ohne den
+// zweiten Handgriff nicht einschalten - dann uebermittelte die Seite Daten,
+// von denen ihre eigenen Hinweise nichts sagen.
+//
+// Leer heisst aus: Es wird gar nicht erst gefragt.
+const MT_UEBERSETZER = '';
+// Antwortet der Endpunkt einmal nicht, wird er in dieser Sitzung nicht mehr
+// gefragt. Sonst liefe je Blatt eine Anfrage ins Leere - siebenmal je Suche,
+// und jedes Mal eine rote Zeile in der Konsole des Lesers.
+let mtUebersetzerAus = false;
+
+async function mtUebersetze(blatt){
+  // Nur auf den echten Hub-Adressen. Eine lokale Kopie oder eine Vorschau
+  // soll keine Anfragen ausloesen, die der Endpunkt ohnehin abweist.
+  if(!MT_UEBERSETZER || mtUebersetzerAus) return;
+  if(!/\.m-vf\.de$/.test(location.hostname)) return;
+
+  // Nur was auf dem Blatt steht, noch keine deutsche Fassung hat und nicht
+  // bereits unterwegs ist. Kein gemeinsamer Riegel, sondern eine Marke je
+  // Treffer: Wer schnell blaettert, soll nicht ein Blatt unuebersetzt
+  // zurueckbehalten, weil das vorige noch laedt.
+  const offen = blatt.filter(function(t){ return t.titel && !t.de && !t.deLaeuft; });
+  if(!offen.length) return;
+  offen.forEach(function(t){ t.deLaeuft = true; });
+
+  const lauf = mtLauf;
+  try{
+    const antwort = await fetch(MT_UEBERSETZER, {
+      method: 'POST',
+      // text/plain, damit der Browser keine Vorabfrage (Preflight) schickt -
+      // das spart je Blatt einen Weg ueber den Atlantik und eine Stelle, an
+      // der die Serverkonfiguration danebengehen kann.
+      headers: {'Content-Type': 'text/plain;charset=UTF-8'},
+      body: JSON.stringify({t: offen.map(function(t){ return t.titel; })})
+    });
+    if(!antwort.ok){ mtUebersetzerAus = true; return; }
+    const d = await antwort.json();
+    const u = (d && d.u) || {};
+    if(lauf !== mtLauf) return;              // inzwischen neu gesucht
+    let neu = 0;
+    // Der Server antwortet mit Pruefwerten, nicht mit Positionen. Eine
+    // verrutschte Reihenfolge kann deshalb keinen Titel an die falsche Arbeit
+    // heften - bei einer Literaturliste waere das der schlimmste Fehler.
+    for(const t of offen){
+      const k = await mtHash(t.titel);
+      if(u[k]){ t.de = u[k]; neu++; }
+    }
+    if(neu) mtZeichnen();
+  }catch(e){
+    mtUebersetzerAus = true;
+    if(window.console) console.warn('Titeluebersetzung', e);
+  }finally{
+    offen.forEach(function(t){ t.deLaeuft = false; });
+  }
+}
+
+// Derselbe Hashwert wie auf dem Server: Kleinschreibung, Leerraum vereinheitlicht.
+async function mtHash(titel){
+  const norm = titel.trim().replace(/\s+/g, ' ').toLowerCase();
+  const roh = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(norm));
+  return Array.from(new Uint8Array(roh))
+    .map(function(b){ return b.toString(16).padStart(2, '0'); }).join('');
+}
+
+async function mtSuchen(neu){
+  const roh = input.value.trim();
+  if(!roh){ input.focus(); return; }
+
+  // Die Kacheln mitziehen: Wer die Liste sieht und daneben eine Kachel
+  // anklickt, soll dort denselben Begriff vorfinden. Ohne Sprung, sonst
+  // rutscht die Seite an der eben angeforderten Liste vorbei.
+  suchen(false);
+
+  if(neu){
+    mtListe = []; mtSchl = new Map(); mtSeite = 0;
+    mtBlatt = 0;
+    mtRoh = roh;
+    // Alle Quellen sind international - sie bekommen die uebersetzte Fassung,
+    // dieselbe, die auch in den Kacheln steht.
+    const u = document.getElementById('uebersetzenAn').checked ? uebersetze(roh) : null;
+    mtBegriff = (u && u.geaendert) ? u.text : roh;
+    MT_QUELLEN.forEach(function(q){ mtStand[q.id] = {stand: 'laedt', anzahl: 0, gesamt: 0}; });
+    metaListeEl.innerHTML = '';
+  }
+  mtSeite++;
+  const lauf = ++mtLauf;
+
+  metaWrap.hidden = false;
+  goMetaBtn.disabled = true;
+  metaMehrBtn.disabled = true;
+  metaMehrBtn.textContent = 'Wird geladen …';
+  if(neu){
+    mtZeichneQuellen();
+    mtZeichnen();
+    metaWrap.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  await Promise.all(MT_QUELLEN.map(function(q){
+    const s = mtStand[q.id];
+    // Erschoepfte und ausgefallene Quellen beim Nachladen nicht erneut
+    // behelligen - sie haben nichts mehr beizutragen.
+    if(!neu && (s.stand === 'fehler' || s.gesamt <= (mtSeite - 1) * MT_PRO_SEITE)) return Promise.resolve();
+    if(!neu) s.stand = 'laedt';
+    return q.hole(mtBegriff, mtSeite, s).then(function(e){
+      if(lauf !== mtLauf) return;                     // veraltete Antwort
+      mtAufnehmen(q, e.liste, (mtSeite - 1) * MT_PRO_SEITE);
+      s.anzahl += e.liste.length;
+      s.gesamt = e.gesamt;
+      s.stand = s.anzahl ? 'ok' : 'leer';
+    }).catch(function(err){
+      if(lauf !== mtLauf) return;
+      s.stand = 'fehler';
+      // Absichtlich nur in die Konsole: Auf der Seite steht die Quelle
+      // bereits als "nicht erreichbar" - eine zweite Fehlermeldung
+      // verunsichert, ohne etwas zu erklaeren.
+      if(window.console) console.warn('Meta-Suche', q.id, err);
+    }).then(function(){
+      if(lauf !== mtLauf) return;
+      mtZeichneQuellen();
+      mtZeichnen();
+    });
+  }));
+
+  if(lauf !== mtLauf) return;
+  goMetaBtn.disabled = !input.value.trim();
+  mtZeichneQuellen();
+  mtZeichnen();
+  await mtVolltexte(lauf);
+}
+
+// ---- Freie Volltexte nachtragen (Unpaywall) ------------------------------
+// Unpaywall ist keine Suchmaschine, sondern ein Nachschlagewerk: Es beantwortet
+// zu einer DOI die Frage, ob es irgendwo eine legale freie Fassung gibt. Genau
+// das ist die Frage, an der eine Recherche sonst haengenbleibt.
+//
+// Deshalb erst nach der Suche und nur fuer die vordersten Treffer, denen noch
+// kein Volltext anhaengt: Es kostet eine Abfrage je Arbeit, und niemand liest
+// zweihundert Titel. Fehlschlaege bleiben stumm - ein fehlender Volltext ist
+// kein Fehler, sondern der Normalfall.
+const MT_VOLLTEXT_MAX = 30;
+
+async function mtVolltexte(lauf){
+  const offen = mtSortiert().filter(function(t){ return t.doi && !t.oaUrl; })
+                            .slice(0, MT_VOLLTEXT_MAX);
+  if(!offen.length) return;
+  let gefunden = 0;
+  await Promise.all(offen.map(function(t){
+    return mtJson('https://api.unpaywall.org/v2/' + encodeURIComponent(t.doi)
+        + '?email=' + encodeURIComponent(MT_MAILTO))
+      .then(function(d){
+        if(lauf !== mtLauf) return;
+        const ort = d && d.best_oa_location;
+        if(d && d.is_oa && ort && (ort.url_for_pdf || ort.url)){
+          t.oaUrl = ort.url_for_pdf || ort.url;
+          gefunden++;
+        }
+      })
+      .catch(function(){ /* ohne Fundstelle bleibt es beim Verweis aufs Original */ });
+  }));
+  if(lauf !== mtLauf || !gefunden) return;
+  mtZeichnen();
+}
+
+// ---- Download der Trefferliste -------------------------------------------
+// Vier Formate, weil vier verschiedene Arbeitsweisen bedient werden: Word zum
+// Lesen und Weiterschreiben, Excel zum Sortieren, RIS und BibTeX fuer die
+// Literaturverwaltung. Wie bei den Studienlisten ohne Fremdbibliothek.
+const MT_KOPFTEXT = 'Rechercheergebnis aus dem Knowledge-Hub von Monitor '
+  + 'Versorgungsforschung. Zusammengeführt aus ' + MT_QUELLEN.map(function(q){
+      return q.n; }).join(', ')
+  + '; Dubletten sind über die DOI zusammengelegt, freie Volltexte über '
+  + 'Unpaywall ergänzt.';
+
+function mtDateiname(endung){
+  const teil = (mtRoh || 'Suche')
+    .replace(/[^\wäöüÄÖÜß-]+/g, '-')
+    .replace(/^-+|-+$/g, '').slice(0, 40) || 'Suche';
+  return 'MVF-Onkologie-Hub_Trefferliste_' + teil + '_' + dateiStempel() + '.' + endung;
+}
+
+function mtKopfzeile(){
+  return 'Suchbegriff: ' + mtRoh + (mtBegriff !== mtRoh ? ' (gesucht als: ' + mtBegriff + ')' : '')
+    + ' — Abfrage vom ' + new Date().toLocaleDateString('de-DE')
+    + ', ' + mtListe.length + ' Fundstellen';
+}
+
+function mtCSV(liste){
+  const feld = function(v){ return '"' + alsKlartext(v).replace(/"/g, '""') + '"'; };
+  // Die deutsche Spalte nur, wenn es etwas darin gibt. Eine leere Spalte in
+  // jeder Tabelle waere eine Frage, die niemand beantwortet.
+  const mitDe = liste.some(function(t){ return t.de && t.de !== t.titel; });
+  const kopf = ['Art'].concat(mitDe ? ['Titel (deutsch)'] : [])
+    .concat(['Titel', 'Autoren bzw. Träger','Journal','Jahr',
+             'DOI','PMID','Link','Volltext (frei zugänglich)','Gefunden in','Zusammenfassung']);
+  const zeilen = [feld(MT_KOPFTEXT), feld(mtKopfzeile()), '', kopf.map(feld).join(';')];
+  liste.forEach(function(t){
+    zeilen.push([t.art].concat(mitDe ? [t.de || ''] : [])
+      .concat([t.titel, (t.autoren || []).join('; '), t.journal, t.jahr,
+      t.doi ? 'https://doi.org/' + t.doi : '', t.pmid || t.kennung || '', t.url, t.oaUrl,
+      (t.quellen || []).join(', '), t.abstract]).map(feld).join(';'));
+  });
+  // BOM wie bei den Studienlisten: Ohne zeigt deutsches Excel Umlaute falsch.
+  // Als Zeichennummer, nicht als wortwoertliches Zeichen - das ginge beim
+  // Bearbeiten der Datei unsichtbar verloren.
+  return String.fromCharCode(0xFEFF) + zeilen.join('\r\n');
+}
+
+function mtDoc(liste){
+  const logo = logoDataUri();
+  const eintraege = liste.map(function(t){
+    return '<h2 style="font-size:12.5pt;margin:15pt 0 2pt">'
+      + htmlEsc(t.de && t.de !== t.titel ? t.de : t.titel) + '</h2>'
+      + (t.de && t.de !== t.titel
+          ? '<p style="margin:0 0 3pt;font-size:9.5pt;color:#777">Originaltitel: '
+            + htmlEsc(t.titel) + '</p>' : '')
+      + '<p style="margin:0 0 4pt;color:#555">'
+      + ((t.autoren || []).length ? htmlEsc(t.autoren.join(', ')) + ' &middot; ' : '')
+      + (t.journal ? '<i>' + htmlEsc(t.journal) + '</i> &middot; ' : '')
+      + htmlEsc(t.jahr) + '</p>'
+      + (t.abstract ? '<p style="margin:0 0 4pt;font-size:10pt">' + htmlEsc(t.abstract) + '</p>' : '')
+      + '<p style="margin:0 0 10pt;font-size:9pt;color:#777">'
+      + (t.art && t.art !== 'Aufsatz' ? htmlEsc(t.art) + ' &middot; ' : '')
+      + 'Gefunden in: ' + htmlEsc((t.quellen || []).join(', '))
+      + (t.doi ? ' &middot; DOI ' + htmlEsc(t.doi) : '')
+      + (t.pmid ? ' &middot; PMID ' + htmlEsc(t.pmid) : '')
+      + (t.url ? ' &middot; <a href="' + htmlEsc(t.url) + '">' + htmlEsc(t.url) + '</a>' : '')
+      + '</p>';
+  }).join('');
+  return '<html xmlns:o="urn:schemas-microsoft-com:office:office" '
+    + 'xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'
+    + '<head><meta charset="utf-8"><title>Trefferliste ' + htmlEsc(mtRoh) + '</title></head>'
+    + '<body style="font-family:Lato,Calibri,Arial,sans-serif;font-size:11pt">'
+    + (logo ? '<p style="margin:0 0 6pt"><img src="' + logo + '" width="170" height="45" '
+              + 'alt="Monitor Versorgungsforschung"></p>' : '')
+    + '<p style="margin:0 0 14pt;padding-bottom:8pt;border-bottom:1pt solid #C0A060;'
+              + 'font-size:9.5pt;color:#0051A1">' + htmlEsc(MT_KOPFTEXT) + '</p>'
+    + '<h1 style="font-size:16pt;margin:0 0 3pt;color:#0051A1">Trefferliste &bdquo;'
+    + htmlEsc(mtRoh) + '&ldquo;</h1>'
+    + '<p style="margin:0 0 16pt;color:#555">' + htmlEsc(mtKopfzeile()) + '</p>'
+    + eintraege
+    + '<p style="margin-top:20pt;font-size:8.5pt;color:#777">Quelle: Knowledge-Hub '
+    + 'Onkologie, onkologie.m-vf.de &ndash; ein Angebot von Monitor Versorgungsforschung.</p>'
+    + '</body></html>';
+}
+
+// RIS ist das Austauschformat, das Zotero, EndNote und Citavi gleichermassen
+// lesen. Zweistelliges Kuerzel, zwei Leerzeichen, Bindestrich, Leerzeichen -
+// das Format ist an dieser Stelle empfindlich.
+// RIS kennt eigene Typkuerzel. Ein Preprint als JOUR einzutragen waere eine
+// falsche Angabe in der Literaturliste des Nutzers - das faellt spaeter auf ihn
+// zurueck, nicht auf uns.
+const MT_RIS_TYP = {'Aufsatz': 'JOUR', 'Preprint': 'UNPB',
+                    'Repositorium': 'DATA', 'Studienregister': 'GEN'};
+
+function mtRIS(liste){
+  const z = [];
+  liste.forEach(function(t){
+    z.push('TY  - ' + (MT_RIS_TYP[t.art] || 'GEN'));
+    z.push('TI  - ' + alsKlartext(t.titel));
+    // TI bleibt das Original: Eine Literaturverwaltung muss den Titel fuehren,
+    // unter dem die Arbeit erschienen ist. Die deutsche Fassung ist eine
+    // Lesehilfe und steht deshalb im Feld fuer den uebersetzten Titel.
+    if(t.de && t.de !== t.titel) z.push('TT  - ' + alsKlartext(t.de));
+    (t.autoren || []).forEach(function(a){ z.push('AU  - ' + alsKlartext(a)); });
+    if(t.journal)  z.push('JO  - ' + alsKlartext(t.journal));
+    if(t.jahr)     z.push('PY  - ' + t.jahr);
+    if(t.doi)      z.push('DO  - ' + t.doi);
+    if(t.url)      z.push('UR  - ' + t.url);
+    if(t.abstract) z.push('AB  - ' + alsKlartext(t.abstract));
+    if(t.pmid || t.kennung) z.push('AN  - ' + (t.pmid || t.kennung));
+    z.push('DB  - ' + (t.quellen || []).join(', '));
+    z.push('ER  - ');
+    z.push('');
+  });
+  return z.join('\r\n');
+}
+
+// Der Nachname steht je nach Quelle vorn oder hinten: PubMed schreibt
+// "Yakushin MA" (Name, dann Initialen), Crossref und OpenAlex "Maria Yakushin".
+// Sind die letzten Zeichen lauter Grossbuchstaben, sind es Initialen.
+function mtNachname(name){
+  const teile = String(name || '').trim().split(/\s+/).filter(Boolean);
+  if(!teile.length) return 'ohneAutor';
+  const letzt = teile[teile.length - 1];
+  return (teile.length > 1 && letzt.length <= 3 && letzt === letzt.toUpperCase())
+    ? teile[0] : letzt;
+}
+
+function mtBibTeX(liste){
+  const vergeben = {};
+  return liste.map(function(t){
+    const erst = mtNachname((t.autoren || [])[0]);
+    const wort = String(t.titel || '').split(/\s+/)[0] || 'titel';
+    let key = (erst + (t.jahr || '') + wort).replace(/[^A-Za-z0-9]/g, '') || 'eintrag';
+    if(vergeben[key]){ vergeben[key]++; key += String.fromCharCode(96 + vergeben[key]); }
+    else vergeben[key] = 1;
+    // Geschweifte Klammern im Feldwert wuerden den Eintrag zerlegen.
+    const f = function(v){ return alsKlartext(v).replace(/[{}]/g, ''); };
+    const zeilen = ['  title = {' + f(t.titel) + '}'];
+    if(t.de && t.de !== t.titel) zeilen.push('  titleaddon = {' + f(t.de) + '}');
+    if((t.autoren || []).length) zeilen.push('  author = {' + t.autoren.map(f).join(' and ') + '}');
+    if(t.journal) zeilen.push('  journal = {' + f(t.journal) + '}');
+    if(t.jahr)    zeilen.push('  year = {' + t.jahr + '}');
+    if(t.doi)     zeilen.push('  doi = {' + t.doi + '}');
+    if(t.url)     zeilen.push('  url = {' + t.url + '}');
+    zeilen.push('  note = {' + (t.art && t.art !== 'Aufsatz' ? f(t.art) + '. ' : '')
+      + 'Gefunden in: ' + f((t.quellen || []).join(', ')) + '}');
+    // @misc statt @article fuer alles, was kein Zeitschriftenaufsatz ist -
+    // sonst behauptet die Literaturliste eine Publikationsform, die es nicht gibt.
+    return '@' + (t.art === 'Aufsatz' ? 'article' : 'misc') + '{'
+      + key + ',\r\n' + zeilen.join(',\r\n') + '\r\n}';
+  }).join('\r\n\r\n');
+}
+
+document.getElementById('mtWord').addEventListener('click', function(){
+  speichern(mtDateiname('doc'), mtDoc(mtSortiert()), 'application/msword');
+});
+document.getElementById('mtCsv').addEventListener('click', function(){
+  speichern(mtDateiname('csv'), mtCSV(mtSortiert()), 'text/csv;charset=utf-8');
+});
+document.getElementById('mtRis').addEventListener('click', function(){
+  speichern(mtDateiname('ris'), mtRIS(mtSortiert()), 'application/x-research-info-systems');
+});
+document.getElementById('mtBib').addEventListener('click', function(){
+  speichern(mtDateiname('bib'), mtBibTeX(mtSortiert()), 'application/x-bibtex');
+});
+
+// Nur die neue Abfrage zaehlt, nicht das Nachladen weiterer Blaetter -
+// sonst haengt die Zahl daran, wie weit jemand blaettert.
+goMetaBtn.addEventListener('click', function(){
+  zaehleSuche('metasuche'); mtSuchen(true);
+});
+metaMehrBtn.addEventListener('click', function(){ mtSuchen(false); });
+document.getElementById('metaZu').addEventListener('click', function(){
+  metaWrap.hidden = true;
+  document.querySelector('.panel').scrollIntoView({behavior: 'smooth', block: 'center'});
+});
+document.getElementById('metaSort').addEventListener('click', function(e){
+  const b = e.target.closest('.fchip');
+  if(!b) return;
+  mtSort = b.dataset.sort;
+  mtBlatt = 0;              // eine andere Ordnung faengt vorn an
+  this.querySelectorAll('.fchip').forEach(function(x){
+    x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+  mtZeichnen();
+});
+
+// Die Schaltflaechen fuer die Art stehen einmal fest und tragen ihre Zahl aus
+// der laufenden Suche. Eine Art ohne Treffer wird verborgen statt gesperrt -
+// ein Knopf, der nichts tut, ist eine Frage, die niemand beantwortet.
+function mtZeichneArten(){
+  metaArtBox.querySelectorAll('.fchip').forEach(function(b){
+    const a = b.dataset.art;
+    const n = a === 'alle' ? mtListe.length
+            : mtListe.filter(function(t){ return t.art === a; }).length;
+    b.textContent = (a === 'alle' ? 'Alle' : a) + ' ' + n;
+    b.hidden = (a !== 'alle' && a !== mtArt && !n);
+  });
+  metaArtBox.parentElement.hidden = !mtListe.length;
+}
+
+['alle'].concat(MT_ARTEN).forEach(function(a){
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'fchip'; b.dataset.art = a;
+  b.textContent = a === 'alle' ? 'Alle' : a;
+  b.setAttribute('aria-pressed', a === 'alle' ? 'true' : 'false');
+  metaArtBox.appendChild(b);
+});
+metaArtBox.addEventListener('click', function(e){
+  const b = e.target.closest('.fchip');
+  if(!b) return;
+  mtArt = b.dataset.art;
+  mtBlatt = 0;
+  this.querySelectorAll('.fchip').forEach(function(x){
+    x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+  mtZeichnen();
+});
+metaBlaetterEl.addEventListener('click', function(e){
+  const b = e.target.closest('button[data-schritt]');
+  if(!b || b.disabled) return;
+  mtBlatt += Number(b.dataset.schritt);
+  if(mtBlatt < 0) mtBlatt = 0;
+  mtZeichnen();
+  // An den Kopf der Liste, nicht an den der Seite: Wer blaettert, will den
+  // ersten Treffer des neuen Blatts sehen, nicht das Suchfeld.
+  metaWrap.scrollIntoView({behavior: 'smooth', block: 'start'});
+});
+
+input.addEventListener('input', function(){ goMetaBtn.disabled = !input.value.trim(); });
+
+metaFussEl.innerHTML = 'Abgefragt werden die Datenbanken, die einen direkten '
+  + 'Zugriff auf ihre Inhalte erlauben — derzeit <b>' + MT_QUELLEN.length
+  + '</b> der <b>' + DB.length + '</b> eingebundenen. Die übrigen, darunter '
+  + 'Cochrane, LIVIVO und das DRKS, halten ihre Inhalte für eine solche Abfrage '
+  + 'verschlossen; sie sind über die Kacheln unter dieser Liste zu öffnen, der '
+  + 'Suchbegriff ist dort bereits eingestellt. Diese Trefferliste ist deshalb ein '
+  + 'Einstieg, keine vollständige Recherche.'
+  + '<br>Die Reihenfolge fügt die Ordnungen der Quellen zusammen: Die meisten '
+  + 'liefern nach ihrer eigenen Relevanz, Europe PMC nach Erscheinungsdatum. Je '
+  + 'weiter vorn eine Arbeit in mehreren Listen steht, desto weiter oben steht '
+  + 'sie hier. Studienregister, Preprints und Repositorien beantworten eine '
+  + 'andere Frage als eine Literaturdatenbank und stehen deshalb etwas weiter '
+  + 'unten — der Filter <b>Art</b> holt sie nach vorn.'
+  + '<br>Wo ein Verweis <b>Volltext</b> steht, gibt es eine legale frei '
+  + 'zugängliche Fassung; nachgeschlagen wird sie über Unpaywall.'
+  + '<br>Titel und Zusammenfassungen stehen in der Sprache, in der die Arbeit '
+  + 'erschienen ist — meist Englisch. Wir empfehlen den Browser <b>Chrome</b>: '
+  + 'Dort lässt sich die gesamte Seite mit einem Rechtsklick → <b>„Auf Deutsch '
+  + 'übersetzen“</b> ins Deutsche bringen, auch die Zusammenfassungen.';
+
+// ---- Anfangszustand: nichts ist gesucht, Links zeigen auf die Startseiten.
+verdrahte('');
+filtern();
+goBtn.disabled = !input.value.trim();
+goMetaBtn.disabled = !input.value.trim();
+</script>
+
+<!-- ZAEHLER-START --------------------------------------------------------
+     Zaehlt den Aufruf auf dem eigenen Server von Monitor Versorgungsforschung.
+     Kein Cookie, keine Kennung auf dem Geraet, keine fremde Firma. Wer Do Not
+     Track gesetzt hat, wird gar nicht erst gezaehlt. Schlaegt der Abruf fehl,
+     merkt die Seite es nicht - ein Bild, das nicht laedt, ist folgenlos.
+     Gegenstueck: /zaehler/z.php auf monitor-versorgungsforschung.de -->
+<script>
+(function () {
+  // Die Seite meldet Suchen ueber window.mvfZ. Die Funktion steht ab sofort
+  // immer bereit und tut im Zweifel nichts - sonst muesste jede Aufrufstelle
+  // pruefen, ob es sie ueberhaupt gibt, und eine vergessene Pruefung waere
+  // ein Skriptfehler mitten in der Suche.
+  window.mvfZ = function () {};
+  try {
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1'
+        || navigator.globalPrivacyControl === true) return;
+    // Automatische Umgebungen melden sich selbst: navigator.webdriver setzen
+    // Headless Chrome und Selenium von sich aus. Zuverlaessiger als jede
+    // Liste von Browserkennungen, weil es nicht geraten, sondern gemeldet wird.
+    if (navigator.webdriver) return;
+    if (!screen.width || !screen.height) return;   // kein echter Bildschirm
+    if (!/\.m-vf\.de$/.test(location.hostname)) return;   // lokal nicht zaehlen
+    var r = '';
+    try { r = document.referrer ? new URL(document.referrer).hostname : ''; }
+    catch (e) { r = ''; }
+    if (r === location.hostname) r = '';
+    // Bildschirmbreite nur in Stufen. Die genaue Aufloesung waere eines der
+    // staerksten Merkmale zum Wiedererkennen eines Browsers; fuer die Frage,
+    // fuer welche Breite zu gestalten ist, genuegt die Schublade.
+    var w = screen.width;
+    var stufe = w < 480 ? 'bis480' : w < 768 ? 'bis768' : w < 1024 ? 'bis1024'
+              : w < 1440 ? 'bis1440' : w < 1920 ? 'bis1920' : 'ueber1920';
+    var q = 'h=' + encodeURIComponent(location.hostname)
+          + '&p=' + encodeURIComponent(location.pathname)
+          + '&r=' + encodeURIComponent(r ? 'https://' + r + '/' : '')
+          + '&g=' + (Math.min(screen.width, screen.height) < 768 ? 'm' : 'd')
+          + '&b=' + stufe
+          + '&c=' + Date.now();
+    var ziel = 'https://www.monitor-versorgungsforschung.de/zaehler/z.php?';
+    new Image(1, 1).src = ziel + q;
+
+    // Ein Begriff wird nur mitgeschickt, wenn er wie ein Fachbegriff aussieht.
+    // Ziffern, Klammern, Anfuehrungszeichen, @ und mehr als drei Woerter
+    // deuten auf Freitext oder eine Kennung - so etwas verlaesst den Browser
+    // gar nicht erst. Was uebrig bleibt, prueft der Server noch einmal und
+    // wirft dort zusaetzlich alle Krankheitsbegriffe weg.
+    function sauber(v) {
+      if (typeof v !== 'string') return '';
+      var t = v.toLowerCase().replace(/\s+/g, ' ').trim();
+      if (t.length < 3 || t.length > 40) return '';
+      if (t.split(' ').length > 3) return '';
+      if (/[^a-zßà-öø-ÿ \-]/.test(t)) return '';
+      if (t.charAt(0) === '-') return '';
+      if (/(^| )(and|or|not)( |$)/.test(t)) return '';   // Formel, kein Begriff
+      return t;
+    }
+
+    // Eine abgesendete Suche zaehlen. Kein Seitenaufruf: z.php fuehrt beides
+    // getrennt. sendBeacon ueberlebt einen Seitenwechsel, ein Bild nicht -
+    // wer sucht und sofort auf eine Kachel klickt, wird sonst nicht gezaehlt.
+    window.mvfZ = function (art, begriff) {
+      try {
+        var f = 'h=' + encodeURIComponent(location.hostname)
+              + '&e=' + encodeURIComponent(art)
+              + '&c=' + Date.now();
+        var t = sauber(begriff);
+        if (t) f += '&t=' + encodeURIComponent(t);
+        if (navigator.sendBeacon) navigator.sendBeacon(ziel + f);
+        else new Image(1, 1).src = ziel + f;
+      } catch (e) { /* eine ungezaehlte Suche ist kein Grund, etwas kaputtzumachen */ }
+    };
+  } catch (e) { /* Zaehlung ist nie wichtiger als die Seite */ }
+})();
+</script>
+<!-- ZAEHLER-ENDE -->

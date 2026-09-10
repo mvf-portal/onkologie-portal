@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.claude/
+pool-status.json
+
+# Wird vom Workflow zur Laufzeit aus mvf-portal/hub-scripts geholt.
+scripts/gemeinsam/

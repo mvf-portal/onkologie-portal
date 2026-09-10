@@ -1,0 +1,95 @@
+name: Newsletter neu bauen (von Hand)
+
+# Fuer den Tag, an dem der Torwaechter morgens gestoppt hat und die Ursache
+# noch am selben Vormittag behoben wurde - ein zu langer Titel etwa, korrigiert
+# in studien-archiv.json.
+#
+# Warum ein eigener Workflow und nicht einfach "Studien-Update" erneut starten:
+# Der taegliche Lauf fragt PubMed und die Claude-API neu an. Er wuerfelt damit
+# die Auswahl des Tages neu und kostet ein zweites Mal - obwohl die Studien
+# laengst feststehen und nur die Kampagne neu gebaut werden muss. Dieser
+# Workflow beruehrt die Auswahl nicht.
+#
+# Er verwirft den Entwurf von heute (--neu) und legt ihn neu an. Eine bereits
+# TERMINIERTE Kampagne bleibt dabei unangetastet - die geht ohnehin raus.
+# Nur wer den Schalter 'auch_terminierte' setzt, hebt ihren Termin auf und
+# ersetzt sie. Das ist der Fall, wenn der Inhalt vor 10:00 noch falsch ist.
+on:
+  workflow_dispatch:
+    inputs:
+      auch_terminierte:
+        description: "Auch eine bereits terminierte Kampagne ersetzen"
+        type: boolean
+        default: false
+      termin:
+        description: "Abweichende Versandzeit, volle Viertelstunde (z. B. 11:00)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write           # fuer versand-status.json
+
+concurrency:
+  group: studien-update     # nie gleichzeitig mit dem taeglichen Lauf
+  cancel-in-progress: false
+
+jobs:
+  neubau:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # thema.py liegt weiterhin in scripts/, die gemeinsamen Skripte in
+      # scripts/gemeinsam/. Beide muessen importierbar sein: update_studies.py
+      # laeuft drueben und importiert thema von hier, mailchimp_entwurf.py
+      # laeuft hier und importiert torwaechter und sponsoren von drueben.
+      PYTHONPATH: scripts:scripts/gemeinsam
+
+    steps:
+      - name: Repo auschecken
+        uses: actions/checkout@v4
+
+      # Die gemeinsamen Skripte liegen seit dem 04.09.2026 nicht mehr in jedem
+      # Portal, sondern einmal in mvf-portal/hub-scripts. Geholt wird der Zweig
+      # `stabil` - nicht `main`: Auf main wird entwickelt, und ein Commit dort
+      # soll nicht am naechsten Morgen ungeprueft in zwoelf Portalen laufen.
+      # Ausgerollt wird mit `git push origin main:stabil` im Skript-Repo.
+      - name: Gemeinsame Skripte auschecken
+        uses: actions/checkout@v4
+        with:
+          repository: mvf-portal/hub-scripts
+          ref: stabil
+          path: scripts/gemeinsam
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Kein anthropic-Paket noetig: Dieser Lauf fragt kein Modell.
+      - name: Abhängigkeiten installieren
+        run: pip install --quiet requests tzdata python-docx
+
+      # Aus dem Archiv, damit eine dort korrigierte Studie auch in Feed und
+      # Download-Dateien ankommt.
+      - name: Newsletter-Feed & Downloads erzeugen
+        run: python scripts/gemeinsam/build_newsletter.py
+
+      - name: Entwurf verwerfen, neu bauen, pruefen und terminieren
+        env:
+          MAILCHIMP_API_KEY: ${{ secrets.ONKOLOGIEHUBMC }}
+        run: |
+          python scripts/gemeinsam/mailchimp_entwurf.py --neu             ${{ inputs.auch_terminierte && '--auch-terminierte' || '' }}             ${{ inputs.termin && format('--termin {0}', inputs.termin) || '' }}
+
+      - name: Committen & pushen (nur bei Änderung)
+        env:
+          DATEIEN: studien-feed.xml download versand-status.json
+        run: |
+          if [ -z "$(git status --porcelain $DATEIEN)" ]; then
+            echo "Keine Änderung – nichts zu committen."
+            exit 0
+          fi
+          git config user.name  "Onkologie-Portal Bot"
+          git config user.email "stegmaier@m-vf.de"
+          git add $DATEIEN
+          git commit -m "Newsletter neu gebaut $(TZ=Europe/Berlin date +%d.%m.%Y)"
+          git push

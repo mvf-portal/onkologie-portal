@@ -1,0 +1,187 @@
+name: Studien-Update (täglich)
+
+# 03:00 UTC = 05:00 Uhr Berlin (Sommerzeit) bzw. 04:00 Uhr (Winterzeit).
+# GitHub führt geplante Läufe bei hoher Last mit einigen Minuten Verzögerung aus
+# - am 24.08.2026 waren es fast zwei Stunden. Deshalb am selben Tag um eine
+# Stunde vorgezogen: Der Sammelbericht (03:45 UTC, Repo knowledge-hubs) muss
+# nach diesem Lauf kommen, und beide deutlich vor dem Versand um 10:00 Ortszeit.
+on:
+  schedule:
+    # Jedes Portal hat eine EIGENE Minute (35 aus portal.json).
+    # GitHubs Cron ist "best effort": Zur vollen Stunde stehen weltweit die
+    # meisten Zeitplaene an, und unter Last werden Laeufe verspaetet gestartet
+    # oder verworfen. Zwoelf Repos auf derselben Minute sind der unguenstigste
+    # Fall - am 26.08.2026 kam der Lauf zwei Stunden zu spaet, am 27. und
+    # 28.08. gar nicht.
+    - cron: "35 3 * * *"
+    # Netz fuer einen ausgefallenen ersten Lauf: Am 27.08.2026 hat GitHub die
+    # geplanten Laeufe aller dreizehn Repos verschluckt (zeitgleich mit einer
+    # Stoerung der Billing-Dienste), und es kam kein einziger Newsletter.
+    # 05:30 UTC liegt gut vier Stunden vor dem Versand um 10:00 Ortszeit. An
+    # normalen Tagen kostet dieser Lauf nichts: update_studies.py bricht sofort
+    # ab, wenn das Archiv fuer heute schon Studien hat.
+    - cron: "35 5 * * *"
+  workflow_dispatch:        # erlaubt manuelles Starten über die Actions-Oberfläche
+    inputs:
+      nur_studien:
+        description: "Nur Studien holen, keine Kampagne anlegen"
+        type: boolean
+        default: false
+      erzwingen:
+        description: "Auswahl des Tages neu würfeln, auch wenn schon gelaufen"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write           # GITHUB_TOKEN darf index.html zurück ins Repo pushen
+  pages: write              # erlaubt das explizite Anstoßen des Pages-Builds (letzter Schritt)
+
+concurrency:
+  group: studien-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # thema.py liegt weiterhin in scripts/, die gemeinsamen Skripte in
+      # scripts/gemeinsam/. Beide muessen importierbar sein: update_studies.py
+      # laeuft drueben und importiert thema von hier, mailchimp_entwurf.py
+      # laeuft hier und importiert torwaechter und sponsoren von drueben.
+      PYTHONPATH: scripts:scripts/gemeinsam
+
+    steps:
+      - name: Repo auschecken
+        uses: actions/checkout@v4
+
+      # Die gemeinsamen Skripte liegen seit dem 04.09.2026 nicht mehr in jedem
+      # Portal, sondern einmal in mvf-portal/hub-scripts. Geholt wird der Zweig
+      # `stabil` - nicht `main`: Auf main wird entwickelt, und ein Commit dort
+      # soll nicht am naechsten Morgen ungeprueft in zwoelf Portalen laufen.
+      # Ausgerollt wird mit `git push origin main:stabil` im Skript-Repo.
+      - name: Gemeinsame Skripte auschecken
+        uses: actions/checkout@v4
+        with:
+          repository: mvf-portal/hub-scripts
+          ref: stabil
+          path: scripts/gemeinsam
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Abhängigkeiten installieren
+        run: pip install --quiet "anthropic>=0.40" requests tzdata python-docx
+
+      - name: Studienliste aktualisieren
+        env:
+          # Das Geheimnis heisst in diesem Repository ONKOLOGIEHUB. Fehlt es, bricht der
+          # Lauf ab - bewusst ohne Rueckfallweg, damit ein falscher Name auffaellt.
+          ANTHROPIC_API_KEY: ${{ secrets.ONKOLOGIEHUB }}
+          MODEL: claude-haiku-4-5          # günstiges Modell; z. B. claude-sonnet-5 für mehr Qualität
+          # SEARCH_TERM: '...'   # optional: Standardabfrage ueberschreiben (siehe update_studies.py)
+        run: python scripts/gemeinsam/update_studies.py ${{ inputs.erzwingen && '--erzwingen' || '' }}
+
+      # Baut RSS-Feed (Mailchimp) und Download-Dateien aus dem Archiv.
+      # Braucht weder API-Key noch Netz – liest nur studien-archiv.json.
+      - name: Newsletter-Feed & Downloads erzeugen
+        run: python scripts/gemeinsam/build_newsletter.py
+
+      # ---- Ausschreibungsradar -------------------------------------------
+      # Der Radar laeuft EINMAL ZENTRAL im Versorgungsforschungs-Portal und
+      # teilt sein Ergebnis nach zwoelf Themengebieten auf; die elf
+      # Schwesterportale holen sich daraus nur ihre Zahl (naechster Schritt).
+      # Deshalb die Bedingung auf das Repository - die Datei selbst bleibt in
+      # allen zwoelf Portalen wortgleich und wird weiter aus der Vorlage
+      # gepflegt.
+      #
+      # Gesucht wird nur montags und donnerstags: Das Skript prueft LAUFTAGE
+      # selbst und beendet sich an anderen Tagen ohne Kosten. Der Zeitplan
+      # bleibt taeglich, damit ein ausgefallener Montag am Donnerstag nicht
+      # zusaetzlich fehlt.
+      #
+      # Ein Fehler hier darf das Studien-Update nicht scheitern lassen. Er
+      # bleibt trotzdem sichtbar: ausschreibungen.json behaelt dann den alten
+      # Stand, und der Sammelbericht meldet einen veralteten Radar.
+      - name: Ausschreibungsradar aktualisieren (nur Versorgungsforschung)
+        if: github.repository == 'mvf-portal/versorgungsforschung-portal'
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ONKOLOGIEHUB }}
+        run: python scripts/ausschreibungen.py
+
+      # Setzt in index.html die Fristen des eigenen Themengebiets. Laeuft in
+      # ALLEN zwoelf Portalen und jeden Tag: Der Abruf kostet nichts und kein
+      # Modell, und die Karte soll auch dann stimmen, wenn der zentrale Lauf
+      # aussetzt. Im Versorgungsforschungs-Portal liest das Skript die eben
+      # geschriebene Datei lokal, in den uebrigen holt es sie aus dem
+      # VF-Repository - dort also der Stand des letzten dortigen Pushes.
+      - name: Radar-Hinweis dieses Hubs setzen
+        continue-on-error: true
+        run: python scripts/gemeinsam/radar_hinweis.py
+
+      # ---- Newsfeed aus dem eigenen Archiv --------------------------------
+      # Sucht ueber die WordPress-Suche von m-vf.de nach Beitraegen zum
+      # Themenfeld dieses Hubs - ohne Sprachmodell, ohne Schluessel, also
+      # taeglich und in allen zwoelf Portalen. Findet er nichts, bleibt der
+      # Block stehen, wie er ist: Eine leere Karte saehe aus wie ein Thema,
+      # ueber das nie etwas geschrieben wurde.
+      - name: Newsfeed aus dem MVF-Archiv setzen
+        continue-on-error: true
+        run: python scripts/gemeinsam/newsfeed.py
+
+      # Legt bei Mailchimp einen ENTWURF an und schickt eine Testausgabe zur
+      # Entwurf anlegen, pruefen, terminieren. Verschickt wird hier noch nichts:
+      # Die Kampagne wird auf TERMIN_UTC gesetzt und laesst sich bis dahin in
+      # Mailchimp absagen. Faellt der Torwaechter durch, bleibt der Entwurf
+      # liegen. Ohne hinterlegten Schluessel passiert schlicht nichts; ein
+      # Fehler hier darf das Studien-Update nicht scheitern lassen - und er
+      # faellt in die sichere Richtung, weil dann eben nichts terminiert ist.
+      - name: Newsletter-Entwurf anlegen, pruefen und terminieren
+        continue-on-error: true
+        env:
+          # Das Geheimnis heisst in diesem Repository ONKOLOGIEHUBMC ("MC" fuer
+          # Mailchimp - nicht mit ONKOLOGIEHUB verwechseln, das ist der
+          # Claude-Schluessel).
+          MAILCHIMP_API_KEY: ${{ secrets.ONKOLOGIEHUBMC }}
+        if: ${{ !inputs.nur_studien }}
+        run: python scripts/gemeinsam/mailchimp_entwurf.py
+
+      - name: Committen & pushen (nur bei Änderung)
+        id: commit
+        env:
+          DATEIEN: index.html studien-archiv.json studien-feed.xml download versand-status.json ausschreibungen.html ausschreibungen.json
+        run: |
+          # Nicht jedes Portal hat jede Datei: ausschreibungen.html/.json
+          # entstehen nur im Versorgungsforschungs-Portal, weil der Radar dort
+          # zentral laeuft. `git add` bricht an einem Pfad ab, den es nicht
+          # gibt (29.08.2026: elf Hubs scheiterten genau daran, nachdem die
+          # beiden Namen in die Liste kamen). Deshalb wird die Liste vorher auf
+          # das eingedampft, was wirklich im Arbeitsverzeichnis liegt.
+          VORHANDEN=""
+          for f in $DATEIEN; do
+            [ -e "$f" ] && VORHANDEN="$VORHANDEN $f"
+          done
+          if [ -z "$VORHANDEN" ] || [ -z "$(git status --porcelain $VORHANDEN)" ]; then
+            echo "Keine Änderung – nichts zu committen."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name  "Onkologie-Portal Bot"
+          git config user.email "stegmaier@m-vf.de"
+          git add $VORHANDEN
+          git commit -m "Studien-Update $(TZ=Europe/Berlin date +%d.%m.%Y)"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Pushes mit dem GITHUB_TOKEN lösen nicht zuverlässig einen Pages-Build aus.
+      # Deshalb stoßen wir ihn explizit an; schlägt das fehl, ist der Lauf trotzdem OK
+      # (der Build kommt dann über den normalen Push-Mechanismus).
+      - name: GitHub-Pages-Build anstoßen
+        if: steps.commit.outputs.changed == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

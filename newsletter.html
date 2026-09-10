@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Newsletter von Monitor Versorgungsforschung bestellen: den Studien-Newsletter Onkologie, die Studienauswahl der Schwesterportale und den redaktionellen Newsletter.">
+<title>Newsletter bestellen — Monitor Versorgungsforschung</title>
+<!-- Ohne Icon zeigt die Tableiste nur den Anfangsbuchstaben des Titels. Das
+     Zeichen ist in allen zwoelf Portalen dasselbe; gebaut wird es mit
+     icon_bauen.py in der Portal-Vorlage. -->
+<link rel="icon" href="/logo/hub-icon.svg" type="image/svg+xml">
+<link rel="icon" href="/logo/hub-icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/logo/hub-icon-180.png">
+<meta name="theme-color" content="#0051A1">
+<link rel="canonical" href="https://onkologie.m-vf.de/newsletter.html">
+<style>
+  /* Schrift, Farben und Gerüst wie ueber.html - die Seite gehört sichtbar dazu. */
+  @font-face{ font-family:"Lato"; font-style:normal; font-weight:400;
+    src:url("fonts/lato-400.woff2") format("woff2"); font-display:swap; }
+  @font-face{ font-family:"Lato"; font-style:normal; font-weight:700;
+    src:url("fonts/lato-700.woff2") format("woff2"); font-display:swap; }
+
+  :root{
+    --paper:#EDF2FA; --card:#FFFFFF; --card-2:#F7FAFD;
+    --ink:#111111; --ink-soft:#444A50; --ink-faint:#545C63;
+    --line:#D0D8E4; --line-soft:#E3EAF3;
+    --brand:#0051A1; --brand-deep:#003B77; --brand-tint:#E1EAF6;
+    --action:#BE9E53; --action-deep:#8A6E28; --on-action:#2A2207;
+    --ok:#1C6B3C; --ok-tint:#E6F4EC; --warn:#8A2D2D; --warn-tint:#FAEAEA;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#0A1120; --card:#111B2E; --card-2:#0E1728;
+      --ink:#E9EEF6; --ink-soft:#A9B7CA; --ink-faint:#8FA0B7;
+      --line:#22314A; --line-soft:#1A2639;
+      --brand:#6FA8E8; --brand-deep:#9CC6F4; --brand-tint:#152742;
+      --action:#D4B878; --action-deep:#D9BE82; --on-action:#221A08;
+      --ok:#7FD3A2; --ok-tint:#12271C; --warn:#F0A3A3; --warn-tint:#2A1414;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0A1120; --card:#111B2E; --card-2:#0E1728;
+    --ink:#E9EEF6; --ink-soft:#A9B7CA; --ink-faint:#8FA0B7;
+    --line:#22314A; --line-soft:#1A2639;
+    --brand:#6FA8E8; --brand-deep:#9CC6F4; --brand-tint:#152742;
+    --action:#D4B878; --action-deep:#D9BE82; --on-action:#221A08;
+    --ok:#7FD3A2; --ok-tint:#12271C; --warn:#F0A3A3; --warn-tint:#2A1414;
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Lato", system-ui, "Segoe UI", Arial, sans-serif;
+    font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:820px; margin:0 auto; padding:0 22px; }
+
+  /* ---------- Menüleiste (wie ueber.html) ---------- */
+  nav.hauptmenu{ background:var(--card); border-bottom:1px solid var(--line); }
+  .menu-inner{
+    display:flex; align-items:center; gap:4px; flex-wrap:nowrap;
+    overflow-x:auto; scrollbar-width:none; padding:0;
+  }
+  .menu-inner::-webkit-scrollbar{ display:none; }
+  .menu-inner a{
+    flex:0 0 auto; padding:11px 13px; font-size:13px; font-weight:700;
+    color:var(--ink-soft); text-decoration:none; white-space:nowrap;
+    border-bottom:2px solid transparent; transition:color .14s, border-color .14s;
+  }
+  .menu-inner a:hover{ color:var(--brand); border-bottom-color:var(--brand); }
+  .menu-inner a.hier{ color:var(--brand); border-bottom-color:var(--brand); }
+  .menu-inner a:focus-visible{ outline:2px solid var(--brand); outline-offset:-2px; }
+  .menu-extern::after{ content:" \2197"; font-size:.85em; }
+  @media (max-width:860px){
+    nav.hauptmenu{ position:relative; }
+    nav.hauptmenu::after{
+      content:""; position:absolute; top:0; right:0; bottom:0; width:36px;
+      background:linear-gradient(to right, transparent, var(--card));
+      pointer-events:none;
+    }
+  }
+  @media (max-width:620px){
+    .menu-inner{ flex-wrap:wrap; padding:3px 0; gap:0; }
+    .menu-inner a{ padding:12px 9px; font-size:12px; }
+    .menu-inner a.nur-breit{ display:none; }
+    nav.hauptmenu::after{ display:none; }
+  }
+
+  /* ---------- Kopf ---------- */
+  header.top{ background:var(--card); border-bottom:1px solid var(--line); padding:38px 0 30px; }
+  .kopf-oben{ display:flex; align-items:flex-start; justify-content:space-between; gap:26px; }
+  .eyebrow{
+    font-size:11.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--brand); margin:0 0 8px;
+  }
+  h1{
+    font-size:clamp(24px,3.6vw,38px); font-weight:700; line-height:1.15;
+    margin:0 0 14px; color:var(--brand); letter-spacing:-.015em; text-wrap:balance;
+  }
+  .standfirst{ margin:0; font-size:clamp(16px,2vw,18px); color:var(--ink-soft); max-width:62ch; text-wrap:pretty; }
+  .marke{ flex:0 0 auto; display:block; line-height:0; border-radius:5px; }
+  .marke img{ width:190px; max-width:34vw; height:auto; display:block; }
+  @media (prefers-color-scheme:dark){ .marke{ background:#fff; padding:9px 12px; } }
+  :root[data-theme="dark"] .marke{ background:#fff; padding:9px 12px; }
+  :root[data-theme="light"] .marke{ background:none; padding:0; }
+  @media (max-width:720px){
+    .kopf-oben{ flex-direction:column-reverse; align-items:flex-start; gap:16px; }
+    .marke img{ width:160px; max-width:56vw; }
+  }
+
+  main{ padding:34px 0 70px; }
+  h2{
+    font-size:clamp(19px,2.6vw,24px); font-weight:700; line-height:1.25;
+    margin:0 0 14px; padding-bottom:9px; border-bottom:2px solid var(--brand);
+  }
+  p{ margin:0 0 14px; max-width:68ch; text-wrap:pretty; }
+  a{ color:var(--brand); text-underline-offset:2px; }
+  a:focus-visible{ outline:2px solid var(--brand); outline-offset:3px; border-radius:3px; }
+
+  /* ---------- Formular ---------- */
+  form{ margin:0 0 30px; }
+  fieldset{ border:0; margin:0 0 22px; padding:0; }
+  legend{
+    font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-faint); padding:0; margin-bottom:10px;
+  }
+
+  /* Die beiden Newsletter als anklickbare Karten - die ganze Fläche schaltet
+     das Kästchen, nicht nur das Kästchen selbst. */
+  .wahl{ display:grid; gap:12px; }
+  @media (min-width:700px){ .wahl{ grid-template-columns:1fr 1fr; } }
+  .karte{
+    display:block; position:relative; cursor:pointer;
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:16px 18px 16px 46px; transition:border-color .14s, background .14s;
+  }
+  .karte:hover{ border-color:var(--brand); }
+  .karte input{
+    position:absolute; left:17px; top:19px; width:18px; height:18px;
+    accent-color:var(--brand); cursor:pointer; margin:0;
+  }
+  .karte:has(input:checked){ border-color:var(--brand); background:var(--brand-tint); }
+  .karte:has(input:focus-visible){ outline:2px solid var(--brand); outline-offset:2px; }
+  .karte b{ display:block; font-size:16px; line-height:1.3; margin-bottom:3px; }
+  .karte .takt{
+    display:inline-block; font-size:11px; font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--brand-deep); background:var(--card-2);
+    border:1px solid var(--line); border-radius:4px; padding:1px 7px; margin-bottom:6px;
+  }
+  .karte .was{ display:block; font-size:13.5px; line-height:1.5; color:var(--ink-soft); }
+
+  .reihe-vor{ margin:-4px 0 12px; }
+  /* Die Karten der Schwesterportale tragen zusaetzlich die Domain. */
+  .karte .wo{ display:block; font-size:12.5px; color:var(--ink-faint); margin-top:7px; }
+  .karte .wo a{ color:var(--ink-faint); }
+
+  label.feld{ display:block; font-size:13px; font-weight:700; color:var(--ink-soft); margin-bottom:6px; }
+  input[type="email"]{
+    width:100%; max-width:420px; min-height:46px; padding:0 13px;
+    font-family:inherit; font-size:16px; color:var(--ink);
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+  }
+  input[type="email"]:focus{ outline:2px solid var(--brand); outline-offset:1px; border-color:var(--brand); }
+
+  .einwilligung{
+    display:flex; gap:11px; align-items:flex-start;
+    font-size:13.5px; line-height:1.55; color:var(--ink-soft); max-width:68ch; margin:18px 0 6px;
+  }
+  .einwilligung input{ flex:0 0 auto; width:18px; height:18px; margin-top:3px; accent-color:var(--brand); }
+
+  .btn-gold{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    min-height:48px; margin-top:18px;
+    background:var(--action); color:var(--on-action); font-family:inherit;
+    font-weight:700; font-size:15px; text-decoration:none;
+    padding:0 26px; border:0; border-radius:6px; cursor:pointer; transition:filter .14s;
+  }
+  .btn-gold:hover{ filter:brightness(1.08); }
+  .btn-gold:focus-visible{ outline:2px solid var(--brand); outline-offset:3px; }
+  .btn-gold[disabled]{ opacity:.6; cursor:default; }
+
+  /* Rückmeldung. Wird per aria-live vorgelesen, deshalb immer im Dokument. */
+  .meldung{ margin:16px 0 0; padding:13px 16px; border-radius:6px; font-size:14.5px; max-width:68ch; }
+  .meldung:empty{ display:none; }
+  .meldung.ok{ background:var(--ok-tint); color:var(--ok); border:1px solid currentColor; }
+  .meldung.fehler{ background:var(--warn-tint); color:var(--warn); border:1px solid currentColor; }
+
+  /* Falle für Formularroboter: sichtbar nur für Maschinen. */
+  .falle{ position:absolute; left:-5000px; }
+
+  .fein{ font-size:13px; color:var(--ink-faint); max-width:68ch; }
+
+  footer{
+    border-top:1px solid var(--line); background:var(--card);
+    padding:26px 0 40px; font-size:13.5px; color:var(--ink-faint);
+  }
+  footer p{ margin:0 0 8px; max-width:70ch; }
+  footer a{ color:var(--ink-soft); }
+</style>
+
+<nav class="hauptmenu">
+  <div class="wrap menu-inner">
+    <a href="./">Knowledge-Hub</a>
+    <a href="ueber.html">Über den Hub</a>
+    <a href="newsletter.html" class="hier" aria-current="page">Newsletter</a>
+    <a href="https://wissen.m-vf.de/ausschreibungen.html" target="_blank" rel="noopener">Ausschreibungen</a>
+    <a href="./#impressum" class="nur-breit">Impressum</a>
+    <a href="./#datenschutz" class="nur-breit">Datenschutz</a>
+    <a href="https://www.monitor-versorgungsforschung.de/?utm_source=onkologie-hub&amp;utm_medium=referral&amp;utm_campaign=menu" target="_blank" rel="noopener" class="menu-extern">Monitor Versorgungsforschung</a>
+  </div>
+</nav>
+
+<header class="top">
+  <div class="wrap kopf-oben">
+    <div>
+      <p class="eyebrow">Knowledge-Hub Onkologie</p>
+      <h1>Newsletter bestellen</h1>
+      <p class="standfirst">Eine Anmeldung für alles: die tägliche Studienauswahl dieses Hubs,
+      die Studienauswahl der Schwesterportale und der redaktionelle Newsletter von
+      „Monitor Versorgungsforschung" — einzeln oder zusammen.</p>
+    </div>
+    <a class="marke" href="https://www.monitor-versorgungsforschung.de/?utm_source=onkologie-hub&amp;utm_medium=referral&amp;utm_campaign=logo" target="_blank" rel="noopener" title="Monitor Versorgungsforschung — Herausgeber dieses Portals">
+      <img src="logo/mvf-logo.png" width="1236" height="327" alt="Monitor Versorgungsforschung">
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <form id="anmeldung" novalidate>
+    <fieldset>
+      <legend>Was möchten Sie erhalten?</legend>
+      <div class="wahl">
+        <label class="karte">
+          <input type="checkbox" id="wahlStudien" checked>
+          <span class="takt">täglich</span>
+          <!-- Der eigene Newsletter traegt seinen Themennamen wie die Karten der
+               Schwesterportale auch. Ohne ihn stand hier als einziger ein
+               namenloser "Studien-Newsletter" - auf einer Seite, die daneben
+               elf benannte anbietet. -->
+          <b>Studien-Newsletter Onkologie</b>
+          <span class="was">Die Studienauswahl des Hubs per E-Mail: neue Arbeiten aus rund dreissig Kernzeitschriften der Onkologie - klinische Studien und Grundlagenforschung, ausgewaehlt nach Bedeutung fuer die Behandlung in Deutschland, jede auf Deutsch zusammengefasst.</span>
+        </label>
+        <label class="karte">
+          <input type="checkbox" id="wahlMvf">
+          <span class="takt">regelmäßig</span>
+          <b>MVF-Newsletter</b>
+          <span class="was">Der redaktionelle Newsletter von „Monitor Versorgungsforschung":
+          Beiträge aus der Fachzeitschrift, Nachrichten aus Politik und Selbstverwaltung,
+          Veranstaltungen und Ausgabenhinweise.</span>
+        </label>
+        <!-- Die Sonderaussendungen loesen den bisherigen eBlast ab. Sie sind das
+             einzige Angebot auf dieser Seite, das WERBUNG enthaelt - deshalb steht
+             das hier so deutlich und nicht im Kleingedruckten. Wer eine Zustimmung
+             zu werblicher Post einholt, muss sie benennen (§ 7 UWG); ein Haekchen
+             neben "Newsletter" traegt sie nicht mit. -->
+        <label class="karte">
+          <input type="checkbox" id="wahlSonder">
+          <span class="takt">gelegentlich</span>
+          <b>Sonderaussendungen der Verlagspartner</b>
+          <span class="was"><b>Werbliche Informationen</b> von Partnern aus dem Gesundheitswesen —
+          Produkte, Studien, Veranstaltungen. Versendet ausschließlich von uns;
+          Ihre Adresse wird nicht an Dritte weitergegeben. Löst den bisherigen
+          eBlast ab.</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- Die Schwesterportale. Der Abschnitt wird aus REIHE (siehe Skript) erzeugt
+         und bleibt verborgen, solange die Reihe ausser diesem Portal nichts
+         Bereites enthaelt - eine leere Ueberschrift waere schlimmer als keine. -->
+    <fieldset id="feldReihe" hidden>
+      <legend>Auch aus den Schwesterportalen</legend>
+      <p class="fein reihe-vor">Dieselbe Machart, anderes Thema — jeder dieser Newsletter kommt
+      aus einem eigenen Rechercheportal von „Monitor Versorgungsforschung" und ist einzeln
+      abbestellbar.</p>
+      <div class="wahl" id="wahlReihe"></div>
+    </fieldset>
+
+    <div>
+      <label class="feld" for="email">E-Mail-Adresse</label>
+      <input type="email" id="email" name="EMAIL" autocomplete="email" required
+             placeholder="name@einrichtung.de" spellcheck="false">
+    </div>
+
+    <!-- Honigtopf: Menschen sehen dieses Feld nicht, automatische Formularausfueller
+         schon. Ist es gefuellt, antwortet der Endpunkt freundlich und traegt nichts ein. -->
+    <div class="falle" aria-hidden="true"><input type="text" id="falle" tabindex="-1" autocomplete="off"></div>
+
+    <label class="einwilligung">
+      <input type="checkbox" id="einwilligung" required>
+      <span>Ich möchte die ausgewählten Newsletter per E-Mail erhalten. Habe ich die
+      Sonderaussendungen gewählt, willige ich zugleich in den Erhalt werblicher Informationen
+      unserer Verlagspartner ein. Meine E-Mail-Adresse wird
+      dafür an unseren Versanddienstleister übermittelt und dort gespeichert. Die Einwilligung
+      kann ich jederzeit über den Abmeldelink am Ende jeder E-Mail widerrufen — die Rechtmäßigkeit
+      der bis dahin erfolgten Verarbeitung bleibt davon unberührt. Näheres in den
+      <a href="./#datenschutz">Datenschutzhinweisen</a>.</span>
+    </label>
+
+    <button type="submit" class="btn-gold" id="absenden">Newsletter bestellen</button>
+
+    <p class="meldung" id="meldung" role="status" aria-live="polite"></p>
+  </form>
+
+  <p class="fein">Die Anmeldung wird an unseren Versanddienstleister Mailchimp übermittelt.
+  Anschließend erhalten Sie eine E-Mail mit einem Bestätigungslink; erst mit dem Klick darauf
+  beginnt der Versand (Double-Opt-in) — so kann niemand fremde Adressen eintragen. Alle
+  Newsletter sind kostenfrei und jederzeit einzeln abbestellbar; Ihre Auswahl können Sie
+  später über den Link „Einstellungen ändern" am Ende jeder E-Mail anpassen.</p>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Ein Angebot von „Monitor Versorgungsforschung" · eRelation AG – Content in Health, Bonn</p>
+    <p><a href="./">Knowledge-Hub</a> · <a href="ueber.html">Über den Hub</a> ·
+       <a href="./#impressum">Impressum</a> · <a href="./#datenschutz">Datenschutz</a></p>
+  </div>
+</footer>
+
+<script>
+// ---------------------------------------------------------------------------
+// Die Anmeldung geht an den eigenen Endpunkt auf dem MVF-Server, der sie ueber
+// die Mailchimp-API eintraegt. Der Hub selbst speichert nichts.
+//
+// Warum nicht mehr unmittelbar an Mailchimp: Bis zum 31.08.2026 sendete diese
+// Seite an die Formularadresse /subscribe/post. Die ist inzwischen mit
+// reCAPTCHA und Akamais Bot Manager geschuetzt. Eine Einsendung von fremder
+// Domain bringt weder ein reCAPTCHA-Zeichen noch die Akamai-Telemetrie mit -
+// Mailchimp nimmt sie mit HTTP 200 an und verwirft sie. Am 31.08.2026 mit zwei
+// echten Adressen belegt: keine Bestaetigungsmail, null Kontakte im Tag.
+//
+// Der Endpunkt heilt zwei weitere Dinge mit:
+//   - Wer schon Abonnent war, kann jetzt einen weiteren Newsletter dazunehmen.
+//     Die Formularadresse verwarf bei bekannten Adressen alles Mitgeschickte.
+//   - Die Rueckmeldung ist echt. Frueher sendete das Formular in einen
+//     unsichtbaren Rahmen, dessen Inhalt es nicht lesen darf, und meldete
+//     deshalb nach vier Sekunden in JEDEM Fall Erfolg.
+//
+// Beschreibung der Schnittstelle: mvf-server/anmeldung/LIESMICH.md im Repo
+// knowledge-hubs.
+// ---------------------------------------------------------------------------
+const ZIEL = "https://www.monitor-versorgungsforschung.de/anmeldung/anmeldung.php";
+
+// Der Schluessel dieses Hubs beim Endpunkt. Er entspricht der Vorsilbe der
+// Domain und steht dort in der Zulassungsliste INTERESSEN - was nicht darin
+// steht, weist der Endpunkt ab. Das ist Absicht: Ein Endpunkt im offenen Netz
+// darf nur in ausdruecklich benannte Gruppen eintragen.
+const HUB = "onkologie";
+
+// Der redaktionelle MVF-Newsletter ist beim Endpunkt ein Schluessel wie jeder
+// andere. Welche Mailchimp-Gruppe dahinter steht, weiss nur der Server.
+const HUB_MVF = "mvf";
+
+// Die Sonderaussendungen der Verlagspartner - der Nachfolger des eBlast. Eigener
+// Schluessel, weil es eine eigene Einwilligung ist: Wer den Studien-Newsletter
+// bestellt, hat damit nicht in Werbung eingewilligt.
+const HUB_SONDER = "sonderaussendungen";
+
+// ---------------------------------------------------------------------------
+// Alle Studien-Newsletter der Reihe - in JEDEM Portal dieselbe Liste. Das
+// eigene Portal wird unten anhand von HUB herausgenommen, sodass niemand
+// seinen eigenen Newsletter zweimal angeboten bekommt.
+//
+// Kommt ein Portal hinzu, wird hier EINE Zeile ergaenzt und die Aenderung mit
+// `py vorlage-abgleich.py --alle --uebernehmen` in alle Portale gezogen. Genau
+// dafuer ist newsletter.html seit dem 18.08.2026 eine neutrale Datei.
+//
+// `bereit: false` hiesse: Die Gruppe steht in Mailchimp, das Portal versendet
+// aber noch nicht. Solche Zeilen werden nicht angeboten - man kann niemanden
+// auf einen Newsletter setzen, den es noch nicht gibt. Am 01.09.2026 antwortet
+// jedes der zwoelf Portale ueber HTTPS und hat einen terminierten Versand.
+// ---------------------------------------------------------------------------
+const REIHE = [
+  // erzeugt aus portale.json von portale_pflegen.py - nicht von Hand aendern
+  { hub:"wissen",          titel:"Versorgungsforschung",
+    url:"https://wissen.m-vf.de", domain:"wissen.m-vf.de", bereit:true,
+    was:"Versorgungsforschung und Health Services Research: "
+      + "Versorgungsformen, Qualitaet, Steuerung und Nutzenbewertung." },
+  { hub:"klima",           titel:"Hitze, Klima &amp; Gesundheit",
+    url:"https://klima.m-vf.de", domain:"klima.m-vf.de", bereit:true,
+    was:"Hitze, Extremwetter und Klimawandel und was sie fuer Versorgung, "
+      + "Praxis und Bevoelkerungsgesundheit bedeuten." },
+  { hub:"ki",              titel:"Digitalisierung, KI &amp; Gesundheit",
+    url:"https://ki.m-vf.de", domain:"ki.m-vf.de", bereit:true,
+    was:"Digitale Anwendungen und Kuenstliche Intelligenz in der Versorgung - "
+      + "vom Entscheidungsassistenten bis zur Regulierung." },
+  { hub:"pflege",          titel:"Pflege &amp; Langzeitversorgung",
+    url:"https://pflege.m-vf.de", domain:"pflege.m-vf.de", bereit:true,
+    was:"Pflegerische Versorgung, Langzeitpflege und die Lage der Pflegenden "
+      + "- Personal, Qualitaet, Angehoerige." },
+  { hub:"longevity",       titel:"Gesundes Altern &amp; Longevity",
+    url:"https://longevity.m-vf.de", domain:"longevity.m-vf.de", bereit:true,
+    was:"Lebensspanne und gesunde Lebensjahre: Praevention, Geriatrie, "
+      + "Alternskohorten und die Biologie des Alterns." },
+  { hub:"healthliteracy",  titel:"Gesundheitskompetenz",
+    url:"https://healthliteracy.m-vf.de", domain:"healthliteracy.m-vf.de", bereit:true,
+    was:"Verstaendliche Gesundheitsinformation, Entscheidungshilfen und "
+      + "Patientenbeteiligung - und wer davon nicht erreicht wird." },
+  { hub:"impfen",          titel:"Impfen &amp; Impfpraevention",
+    url:"https://impfen.m-vf.de", domain:"impfen.m-vf.de", bereit:true,
+    was:"Impfungen in der Versorgung: Impfquoten, Impfbereitschaft, "
+      + "Impfstoffsicherheit und was die Durchimpfung hebt." },
+  { hub:"ncd",             titel:"Nicht uebertragbare Krankheiten",
+    url:"https://ncd.m-vf.de", domain:"ncd.m-vf.de", bereit:true,
+    was:"Die Versorgung chronisch Kranker: Diabetes, Herz-Kreislauf, Krebs "
+      + "und Mehrfacherkrankung - Programme, Leitlinien, Ergebnisse." },
+  { hub:"gender",          titel:"Geschlechtersensible Medizin",
+    url:"http://gender.m-vf.de", domain:"gender.m-vf.de", bereit:true,
+    was:"Geschlecht als Einflussgroesse in der Versorgung: Diagnostik, "
+      + "Dosierung, Zugang - und woran der Unterschied jeweils haengt." },
+  { hub:"adipositas",      titel:"Adipositas",
+    url:"https://adipositas.m-vf.de", domain:"adipositas.m-vf.de", bereit:true,
+    was:"Adipositas in der Versorgung: Gewichtsmanagement, Arzneimittel, "
+      + "Chirurgie, Praevention - und wer die Behandlung bezahlt." },
+  { hub:"safety",          titel:"Patientensicherheit",
+    url:"https://safety.m-vf.de", domain:"safety.m-vf.de", bereit:true,
+    was:"Vermeidbarer Schaden in der Versorgung: Behandlungs- und "
+      + "Medikationsfehler, Krankenhausinfektionen, Sepsis - und was dagegen "
+      + "wirkt." },
+  { hub:"mental",          titel:"Psychische Gesundheit",
+    url:"https://mental.m-vf.de", domain:"mental.m-vf.de", bereit:true,
+    was:"Die Versorgung psychisch erkrankter Menschen: Zugang, Wartezeiten, "
+      + "gemeindenahe Angebote, Krisenversorgung, Zwang und Praevention." }
+];
+
+// Faellt der Endpunkt aus, bleibt Mailchimps eigene Anmeldeseite. Sie traegt
+// den Botschutz selbst und funktioniert - nur ist sie fremd gestaltet und
+// kennt die Auswahl von hier nicht. Deshalb nur als Notausgang.
+// Faellt der Endpunkt aus oder hat sich jemand frueher abgemeldet, fuehrt der
+// Weg auf diese Anmeldeseite. Sie liegt bei Mailchimp und traegt deshalb den
+// Botschutz mit - vor allem aber ist sie die EINZIGE Stelle, an der eine
+// abgemeldete Adresse zurueckkommen kann: Das darf nach Art. 7 Abs. 3 DSGVO
+// nur die Person selbst, und die Mailchimp-API weist uns dabei hart ab.
+//
+// Bis zum 02.09.2026 zeigte der Link auf Mailchimps klassisches Formular. Das
+// hatte unsichtbare Ankreuzfelder (weisses Kaestchen, Rahmen #D0D0D0, 1,5:1)
+// und liess sich nicht gestalten - weder ueber die API noch im Baukasten.
+// Diese Landingpage kann es: echte Bedienelemente, deutsche Beschriftungen,
+// alle Gruppen zur Auswahl. Am 02.09.2026 an einer abgemeldeten Adresse
+// geprueft: unsubscribed -> pending -> subscribed.
+const MC_SEITE = "https://mailchi.mp/erelation/newsletter-von-monitor-versorgungsforschung";
+
+const form         = document.getElementById('anmeldung');
+const feldReihe    = document.getElementById('feldReihe');
+const wahlReihe    = document.getElementById('wahlReihe');
+const feldMail     = document.getElementById('email');
+const feldFalle    = document.getElementById('falle');
+const wahlStudien  = document.getElementById('wahlStudien');
+const wahlMvf      = document.getElementById('wahlMvf');
+const wahlSonder   = document.getElementById('wahlSonder');
+const einwilligung = document.getElementById('einwilligung');
+const knopf        = document.getElementById('absenden');
+const meldung      = document.getElementById('meldung');
+
+// Die Karten der Schwesterportale entstehen erst hier - so steht die Liste nur
+// einmal im Dokument und kein Portal traegt handgeschriebene Kacheln mit sich
+// herum, die beim naechsten Abgleich auseinanderlaufen.
+const andere = REIHE.filter(x => x.bereit && x.hub !== HUB);
+if(andere.length){
+  wahlReihe.innerHTML = andere.map(x => (
+    '<label class="karte">'
+    + '<input type="checkbox" class="wahlAnderes" data-hub="' + x.hub + '">'
+    + '<span class="takt">täglich</span>'
+    + '<b>Studien-Newsletter ' + x.titel + '</b>'
+    + '<span class="was">' + x.was + '</span>'
+    + '<span class="wo"><a href="' + x.url + '/?utm_source=onkologie-hub&amp;utm_medium=referral'
+    + '&amp;utm_campaign=newsletter" target="_blank" rel="noopener">' + x.domain + '</a></span>'
+    + '</label>'
+  )).join('');
+  feldReihe.hidden = false;
+}
+
+function sage(text, art){
+  meldung.className = 'meldung ' + (art || '');
+  meldung.innerHTML = text;
+}
+
+// Der Notausgang steht in jeder Meldung, die der Besucher nicht selbst beheben
+// kann - eine Sackgasse waere schlimmer als ein fremd gestaltetes Formular.
+const NOTAUSGANG = ' Bitte versuchen Sie es später noch einmal oder bestellen Sie über die '
+  + '<a href="' + MC_SEITE + '" target="_blank" rel="noopener">Anmeldeseite von '
+  + 'Monitor Versorgungsforschung</a>.';
+
+// Der Knopf sperrt sich beim Absenden, die Eingabetaste umgeht ihn aber -
+// ohne diesen Riegel liesse sich zweimal senden.
+let laeuft = false;
+
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  if(laeuft) return;
+
+  const gewaehlteAndere = [...document.querySelectorAll('.wahlAnderes:checked')];
+  if(!wahlStudien.checked && !wahlMvf.checked && !wahlSonder.checked && !gewaehlteAndere.length){
+    sage('Bitte wählen Sie mindestens einen Newsletter aus.', 'fehler');
+    wahlStudien.focus(); return;
+  }
+  if(!feldMail.value.trim() || !feldMail.checkValidity()){
+    sage('Bitte geben Sie eine gültige E-Mail-Adresse ein.', 'fehler');
+    feldMail.focus(); return;
+  }
+  if(!einwilligung.checked){
+    sage('Ohne Ihre Einwilligung dürfen wir Ihnen nichts schicken. Bitte setzen Sie das Häkchen.', 'fehler');
+    einwilligung.focus(); return;
+  }
+
+  const hubs = [];
+  if(wahlStudien.checked) hubs.push(HUB);
+  if(wahlMvf.checked)     hubs.push(HUB_MVF);
+  if(wahlSonder.checked)  hubs.push(HUB_SONDER);
+  gewaehlteAndere.forEach(el => hubs.push(el.dataset.hub));
+
+  laeuft = true;
+  knopf.disabled = true;
+  sage('Wird gesendet …', '');
+
+  let daten = null;
+  try {
+    const antwort = await fetch(ZIEL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: feldMail.value.trim(),
+        hubs:  hubs,
+        falle: feldFalle.value
+      })
+    });
+    daten = await antwort.json();
+  } catch (err) {
+    // Netz weg, Endpunkt weg oder die Freigabe im Kopf fehlt. In allen drei
+    // Faellen weiss die Seite nichts - und sagt genau das, statt Erfolg zu
+    // melden. Das Formular bleibt bedienbar, damit ein zweiter Versuch geht.
+    laeuft = false; knopf.disabled = false;
+    sage('<b>Die Bestellung ist nicht angekommen.</b> Wir konnten unseren Server nicht '
+       + 'erreichen.' + NOTAUSGANG, 'fehler');
+    return;
+  }
+
+  if (daten && daten.ok) {
+    form.querySelectorAll('input').forEach(i=>{ i.disabled = true; });
+    if (daten.zustand === 'eingetragen') {
+      sage('<b>Ihre Auswahl ist eingetragen.</b> Ihre Adresse war bereits bei uns bekannt, '
+         + 'deshalb entfällt die Bestätigungsmail — die neu gewählten Newsletter kommen ab '
+         + 'der nächsten Ausgabe. Ändern können Sie die Auswahl jederzeit über den Link '
+         + '„Einstellungen ändern" am Ende jeder unserer E-Mails.', 'ok');
+    } else {
+      sage('<b>Bitte prüfen Sie Ihr Postfach.</b> Sie finden dort gleich eine E-Mail mit '
+         + 'einem Bestätigungslink — erst mit dem Klick darauf beginnt der Versand. Sehen '
+         + 'Sie notfalls im Spam-Ordner nach.', 'ok');
+    }
+    return;
+  }
+
+  // Ab hier hat der Endpunkt abgelehnt. Jeder Grund bekommt den Satz, der dem
+  // Besucher tatsaechlich weiterhilft; das Formular bleibt offen, damit ein
+  // zweiter Versuch moeglich ist.
+  const grund = (daten && daten.grund) || '';
+  laeuft = false; knopf.disabled = false;
+
+  if (grund === 'email') {
+    sage('Diese E-Mail-Adresse konnten wir nicht annehmen. Bitte prüfen Sie die Schreibweise.', 'fehler');
+    feldMail.focus();
+  } else if (grund === 'abgemeldet') {
+    sage('<b>Diese Adresse hat sich früher von unseren E-Mails abgemeldet.</b> Aus rechtlichen '
+       + 'Gründen dürfen wir sie nicht selbst wieder eintragen — das können nur Sie, über die '
+       + '<a href="' + MC_SEITE + '" target="_blank" rel="noopener">Anmeldeseite von '
+       + 'Monitor Versorgungsforschung</a>.', 'fehler');
+  } else if (grund === 'unzustellbar') {
+    sage('An diese Adresse war eine frühere E-Mail nicht zustellbar. Bitte prüfen Sie die '
+       + 'Schreibweise oder verwenden Sie eine andere Adresse.', 'fehler');
+    feldMail.focus();
+  } else if (grund === 'zu-oft') {
+    sage('Von diesem Anschluss sind heute schon ungewöhnlich viele Bestellungen gekommen. '
+       + 'Bitte versuchen Sie es morgen wieder oder bestellen Sie über die '
+       + '<a href="' + MC_SEITE + '" target="_blank" rel="noopener">Anmeldeseite von '
+       + 'Monitor Versorgungsforschung</a>.', 'fehler');
+  } else {
+    // nichts-gewaehlt, unbekannter-hub, mailchimp, nicht-eingerichtet: alles
+    // Faelle, an denen der Besucher nichts aendern kann. Der Grund steht mit
+    // in der Meldung, damit eine Rueckfrage in der Redaktion ankommt.
+    sage('<b>Die Bestellung ist nicht durchgegangen.</b> Unser Versanddienstleister hat sie '
+       + 'abgelehnt (' + (grund || 'unbekannt') + ').' + NOTAUSGANG, 'fehler');
+  }
+});
+</script>
+</html>
+
+<!-- ZAEHLER-START --------------------------------------------------------
+     Zaehlt den Aufruf auf dem eigenen Server von Monitor Versorgungsforschung.
+     Kein Cookie, keine Kennung auf dem Geraet, keine fremde Firma. Wer Do Not
+     Track gesetzt hat, wird gar nicht erst gezaehlt. Schlaegt der Abruf fehl,
+     merkt die Seite es nicht - ein Bild, das nicht laedt, ist folgenlos.
+     Gegenstueck: /zaehler/z.php auf monitor-versorgungsforschung.de -->
+<script>
+(function () {
+  // Die Seite meldet Suchen ueber window.mvfZ. Die Funktion steht ab sofort
+  // immer bereit und tut im Zweifel nichts - sonst muesste jede Aufrufstelle
+  // pruefen, ob es sie ueberhaupt gibt, und eine vergessene Pruefung waere
+  // ein Skriptfehler mitten in der Suche.
+  window.mvfZ = function () {};
+  try {
+    if (navigator.doNotTrack === '1' || window.doNotTrack === '1'
+        || navigator.globalPrivacyControl === true) return;
+    // Automatische Umgebungen melden sich selbst: navigator.webdriver setzen
+    // Headless Chrome und Selenium von sich aus. Zuverlaessiger als jede
+    // Liste von Browserkennungen, weil es nicht geraten, sondern gemeldet wird.
+    if (navigator.webdriver) return;
+    if (!screen.width || !screen.height) return;   // kein echter Bildschirm
+    if (!/\.m-vf\.de$/.test(location.hostname)) return;   // lokal nicht zaehlen
+    var r = '';
+    try { r = document.referrer ? new URL(document.referrer).hostname : ''; }
+    catch (e) { r = ''; }
+    if (r === location.hostname) r = '';
+    // Bildschirmbreite nur in Stufen. Die genaue Aufloesung waere eines der
+    // staerksten Merkmale zum Wiedererkennen eines Browsers; fuer die Frage,
+    // fuer welche Breite zu gestalten ist, genuegt die Schublade.
+    var w = screen.width;
+    var stufe = w < 480 ? 'bis480' : w < 768 ? 'bis768' : w < 1024 ? 'bis1024'
+              : w < 1440 ? 'bis1440' : w < 1920 ? 'bis1920' : 'ueber1920';
+    var q = 'h=' + encodeURIComponent(location.hostname)
+          + '&p=' + encodeURIComponent(location.pathname)
+          + '&r=' + encodeURIComponent(r ? 'https://' + r + '/' : '')
+          + '&g=' + (Math.min(screen.width, screen.height) < 768 ? 'm' : 'd')
+          + '&b=' + stufe
+          + '&c=' + Date.now();
+    var ziel = 'https://www.monitor-versorgungsforschung.de/zaehler/z.php?';
+    new Image(1, 1).src = ziel + q;
+
+    // Ein Begriff wird nur mitgeschickt, wenn er wie ein Fachbegriff aussieht.
+    // Ziffern, Klammern, Anfuehrungszeichen, @ und mehr als drei Woerter
+    // deuten auf Freitext oder eine Kennung - so etwas verlaesst den Browser
+    // gar nicht erst. Was uebrig bleibt, prueft der Server noch einmal und
+    // wirft dort zusaetzlich alle Krankheitsbegriffe weg.
+    function sauber(v) {
+      if (typeof v !== 'string') return '';
+      var t = v.toLowerCase().replace(/\s+/g, ' ').trim();
+      if (t.length < 3 || t.length > 40) return '';
+      if (t.split(' ').length > 3) return '';
+      if (/[^a-zßà-öø-ÿ \-]/.test(t)) return '';
+      if (t.charAt(0) === '-') return '';
+      if (/(^| )(and|or|not)( |$)/.test(t)) return '';   // Formel, kein Begriff
+      return t;
+    }
+
+    // Eine abgesendete Suche zaehlen. Kein Seitenaufruf: z.php fuehrt beides
+    // getrennt. sendBeacon ueberlebt einen Seitenwechsel, ein Bild nicht -
+    // wer sucht und sofort auf eine Kachel klickt, wird sonst nicht gezaehlt.
+    window.mvfZ = function (art, begriff) {
+      try {
+        var f = 'h=' + encodeURIComponent(location.hostname)
+              + '&e=' + encodeURIComponent(art)
+              + '&c=' + Date.now();
+        var t = sauber(begriff);
+        if (t) f += '&t=' + encodeURIComponent(t);
+        if (navigator.sendBeacon) navigator.sendBeacon(ziel + f);
+        else new Image(1, 1).src = ziel + f;
+      } catch (e) { /* eine ungezaehlte Suche ist kein Grund, etwas kaputtzumachen */ }
+    };
+  } catch (e) { /* Zaehlung ist nie wichtiger als die Seite */ }
+})();
+</script>
+<!-- ZAEHLER-ENDE -->
