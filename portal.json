@@ -14,7 +14,6 @@
   "_GEHEIMNISSE": "Muessen zu den Secrets im Repository passen.",
   "SECRET_CLAUDE": "ONKOLOGIEHUB",
   "SECRET_MAILCHIMP": "ONKOLOGIEHUBMC",
-  "_MAILCHIMP": "mc_gruppe_feld ist NOCH NICHT abgelesen. Nach dem Anlegen der Gruppe auf der gehosteten Anmeldeseite ablesen - die Nummernvergabe ist nicht vorhersagbar.",
   "MC_PRAEFIX": "MVF Onkologie-Newsletter",
   "MC_GRUPPE_NAME": "Studien Newsletter Onkologie",
   "MC_GRUPPE_FELD": "",
