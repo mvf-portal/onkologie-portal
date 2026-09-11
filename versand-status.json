@@ -1,0 +1,33 @@
+{
+ "hub": "Knowledge-Hub Onkologie",
+ "domain": "onkologie.m-vf.de",
+ "datum": "2026-09-11",
+ "stand": "terminiert",
+ "titel": "MVF Onkologie-Newsletter 11.09.2026",
+ "betreff": "Neueste Studien - Onkologie – 10. September 2026 bis 11. September 2026",
+ "anzahl": 12,
+ "pmids": [
+  "42717097",
+  "42706355",
+  "42680950",
+  "42675139",
+  "42673704",
+  "42664749",
+  "42715516",
+  "42714834",
+  "42714572",
+  "42705254",
+  "42697931",
+  "42691436"
+ ],
+ "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9098819",
+ "termin_utc": "2026-09-14T08:00:00+00:00",
+ "empfaenger": 1,
+ "listengroesse": 5905,
+ "beanstandungen": [],
+ "aussortiert": [],
+ "pool": {},
+ "rubriken": {
+  "news": "70453717dd36fd7a"
+ }
+}
