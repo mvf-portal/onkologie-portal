@@ -1,28 +1,29 @@
 {
  "hub": "Knowledge-Hub Onkologie",
  "domain": "onkologie.m-vf.de",
- "datum": "2026-09-16",
+ "datum": "2026-09-17",
  "stand": "terminiert",
- "titel": "MVF Onkologie-Newsletter 16.09.2026",
- "betreff": "Neueste Studien - Onkologie – 16. September 2026",
- "anzahl": 6,
+ "titel": "MVF Onkologie-Newsletter 17.09.2026",
+ "betreff": "Neueste Studien - Onkologie – 17. September 2026",
+ "anzahl": 5,
  "pmids": [
-  "42743939",
-  "42743888",
-  "42743886",
-  "42743885",
-  "42735455",
-  "42679812"
+  "42748921",
+  "42748587",
+  "42748509",
+  "42748428",
+  "42748427"
  ],
- "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9098914",
- "termin_utc": "2026-09-16T08:00:00+00:00",
+ "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9098928",
+ "termin_utc": "2026-09-17T08:00:00+00:00",
  "empfaenger": 1,
- "listengroesse": 5905,
+ "listengroesse": 5902,
  "beanstandungen": [],
- "aussortiert": [],
+ "aussortiert": [
+  "Studie 1 (PMID djag328): PMID ist keine Zahl: 'djag328'"
+ ],
  "pool": {
   "geholt": 220,
-  "bekannt": 49,
+  "bekannt": 54,
   "pool": 49,
   "gewaehlt": 6,
   "neu": 6
