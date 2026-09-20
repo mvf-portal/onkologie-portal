@@ -1477,71 +1477,62 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "19. Sept. 2026, 06:21 Uhr";
+const SNAP_DATE = "20. Sept. 2026, 06:21 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Blood", year:"2026", pmid:"42758645",
-    author:"Bertoli S et al.", pubdate:"18.09.2026",
+    journal:"Radiother Oncol", year:"2026", pmid:"42763051",
+    author:"Wang X et al.", pubdate:"19.09.2026",
+    added:"19.09.2026",
+    title:"Omit-CTV in begrenzt-stadialem Kleinzellkarzinom: Gleiche Wirkung, weniger Toxizität",
+    sum:"Retrospektive Real-World-Studie an 946 Patienten mit begrenzt-stadialem Kleinzellkarzinom der Lunge zum Vergleich von Bestrahlungstechnik mit und ohne klinisches Zielvolumen.",
+    result:"Mediales PFS 11,8 vs. 11,6 Monate (HR 0,93; p=0,500), mediales OS 35,8 vs. 30,7 Monate (HR 0,85; p=0,220). Omit-CTV zeigte niedrigere Pneumonitis-Raten (Grad ≥3: 3,4 % vs. 8,3 %) und Ösophagitis (Grad ≥3: 5,7 % vs. 9,1 %). Bei Immuntherapie-Patienten: nicht erreichte PFS vs. 15,2 Monate (HR 0,48; p=0,033), nicht erreichte OS vs. 26,9 Monate (HR 0,31; p=0,018).",
+    transfer:"China, nationale Klinikdaten; technische Replizierbarkeit international, aber Validierung erforderlich"
+  },
+  {
+    journal:"Radiother Oncol", year:"2026", pmid:"42763050",
+    author:"van Keeken K et al.", pubdate:"19.09.2026",
+    added:"19.09.2026",
+    title:"Dosisunterversorgung bei Protonentherapie: Kein Einfluss auf Ansprechen bei Ösophaguskarzinom",
+    sum:"Retrospektive niederländische Analyse von 135 Patienten mit distalem Ösophaguskarzinom unter neoadjuvanter Chemoradiotherapie und intensitätsmodulierter Protonentherapie zur Beziehung zwischen akkumulierter Targetdosis und Tumor-Response.",
+    result:"Dosisunterversorgung des Internal-Target-Volume (ITV D98 % &lt;94 %) trat bei 21 % auf, Gross-Tumor-Volume-Unterversorgung in 0 %. Persistierende klinische komplette Remission/pathologische komplette Remission: 30 % mit vs. 28 % ohne ITV-Unterversorgung (p=0,90). 2-Jahres-OS identisch (64 %). Zwerchfellbewegung &gt;2 cm war nicht mit Unterversorgung assoziiert.",
+    transfer:"Niederländische Klinik, vergleichbares Versicherungssystem; Technische Parameter übertragbar"
+  },
+  {
+    journal:"ESMO Open", year:"2026", pmid:"42759381",
+    author:"Ferrari A et al.", pubdate:"18.09.2026",
     added:"18.09.2026",
-    title:"Tyrosinkinasehemmer verbessert Gesamtüberleben bei BCR::ABL1+ AML deutlich",
-    sum:"Multizentrische europäische Studie: 212 Patienten mit de novo BCR::ABL1+ AML wurden retrospektiv analysiert – intensiveChemotherapie (IC) allein oder kombiniert mit Tyrosinkinasehemmer (TKI).",
-    result:"Mit IC+TKI erreichten 110/123 Patienten (89%) komplette Remission/CRi vs. 52/77 (68%) mit IC allein (p&lt;0,0001). 5-Jahres-Gesamtüberleben: 62,9% (IC+TKI) vs. 38,5% (IC; p&lt;0,0001). Im multivariaten Modell: Odds Ratio für CR/CRi 4,74 (95%-KI 2,17–10,35), Hazard Ratio für Überleben 0,40 (0,27–0,62; p&lt;0,001). TKI-Zusatz ist unabhängiger prognostischer Faktor.",
-    transfer:"Französisch-deutsches Konsortium, europäische Versicherungssysteme, direkt übertragbar auf deutsche Kliniken."
+    title:"Europäisches Netzwerk für Krebsversorgung bei Jugendlichen und jungen Erwachsenen",
+    sum:"Policy-Paper eines europäischen Expertise-Netzwerks zu Versorgung von Adoleszenten und jungen Erwachsenen (Alter 15–39 Jahre) mit Krebserkrankungen mit Fokus auf nationale Kooperation und strukturelle Maßnahmen.",
+    result:"Netzwerk empfiehlt: (1) Etablierung länderspezifischer AYA-Zentren, (2) Kooperation zwischen pädiatrischen und Erwachsenen-Onkologie-Diensten, (3) strukturierte Psychosozial-Unterstützung, (4) harmonisierte Datenerfassung für vergleichende Analyse. Hauptmerkmale: Unterschiedliche nationale Zugangsbarrieren und Versorgungsstrukturen in Europas Ländern erfordern lokale Anpassung bei gemeinsamen Standards.",
+    transfer:"Europäischer Kontext, 14 Länder; Übertragbar auf deutsches System mit entsprechender Anpassung"
   },
   {
-    journal:"J Clin Oncol", year:"2026", pmid:"42758960",
-    author:"Hirpara DH et al.", pubdate:"18.09.2026",
-    added:"18.09.2026",
-    title:"Symptom-Belastung in Krebspatienten korreliert mit geringerer Therapie- und höherer Supportiv-Kostennutzung",
-    sum:"Populationsbasierte Kohortenstudie aus Ontario, Kanada: 285.924 Krebspatienten mit 1.728.025 ESAS-Assessments (Edmonton Symptom Assessment) zur Assoziation zwischen Patient-Reported Outcomes und Gesundheitskosten.",
-    result:"Höchste Symptom-Belastung (Müdigkeit, Depression, Wohlbefinden) bei Atem-, HNO-Tumoren. Jede 10-Punkte-Zunahme ESAS-Score: 9,4% weniger Krebs-Therapiekosten (sinkende Therapie-Nutzung), aber 18% mehr Supportiv-Care-Kosten (mehr ED-Besuche, Hauscare). GI/Mamma/ZNS teuerste Entitäten (85–78k CAD/30 Tage). Aktives Symptom-Management könnte Krebs-Therapien fördern und unnötige Supportiv-Kosten senken.",
-    transfer:"Kanada, ähnliches Versicherungssystem wie Deutschland; Symptom-Management-Evidenz direkt relevant."
+    journal:"Eur J Cancer", year:"2026", pmid:"42762559",
+    author:"Roulleaux Dugage M et al.", pubdate:"17.09.2026",
+    added:"19.09.2026",
+    title:"Zugang zu Phase-I-Studien: Barrieren und Chancen bei 26.000 Patienten",
+    sum:"Französisches Einzelzentrum-Register (Gustave Roussy 2007–2023) zur Untersuchung von Überweisungs- und Einschluss-Mustern in Early-Phase-Trials sowie Dauer bis Therapie-Beginn und Behandlungs-Dauer.",
+    result:"Von 26.394 überweisenen Patienten wurden 13.713 (52 %) evaluiert, 5.847 (22 %) gaben Einwilligung ab, 4.769 (18 %) erhielten mindestens eine Dosis. Mediane Zeit von Uberweisung zu Trial-Inkl: variabel nach Tumortyp. Zugangsdisparitäten: Nicht-kleinzelliges Lungenkarzinom war häufigste Überweisung (n=5.025, 19 %), aber Brust-, Kolorektal- und Pankreaskarzinom hatten niedrige Behandlungsquoten trotz hoher Überweisungen. Therapeutische Landschaft: Anstieg von Antikörper-Wirkstoff-Konjugaten und T-Zell-Engagern, Rückgang konventioneller monoklonaler Antikörper.",
+    transfer:"Frankreich, spezialisiertes Zentrum; begrenzte Übertragbarkeit auf Flächenversorgung, methodisch hochwertig"
   },
   {
-    journal:"Lancet", year:"2026", pmid:"42759527",
-    author:"Rebbeck TR", pubdate:"18.09.2026",
-    added:"18.09.2026",
-    title:"Präzisions-Prävention und Früherkennung: Framework für neue Krebskontroll-Pfade",
-    sum:"Editoriales Essay zu Precision Prevention and Early Detection (PPED) – ein Rahmenwerk, das fragt: Wer hat erhöhtes Krebsrisiko, welche Intervention wann, wie de-eskalieren in Niedrig-Risiko-Gruppen?",
-    result:"Nur 13% der Krebsfälle werden durch Screening entdeckt; 20–50% präsentieren sich notfallmäßig. PPED-Logik funktioniert bei erblichen Syndromen mit ausreichend angereichertem Risiko. Schlüssel: Gesundheitssystem-Infrastruktur und Arbeitskräfte für longitudinales Präventions-Planning; de-Eskalation in Niedrig-Risiko-Personen genauso wichtig wie Intensivierung in Hoch-Risiko. Größte Herausforderung der nächsten Dekade.",
-    transfer:"Weltweit anwendbare Prinzipien; deutsche Früherkennung und Zentrenstruktur ermöglichen Umsetzung."
+    journal:"Eur J Cancer", year:"2026", pmid:"42762561",
+    author:"Gielen RCAM et al.", pubdate:"11.09.2026",
+    added:"19.09.2026",
+    title:"MammaPrint im MINDACT: 70-Gen-Signatur bestätigt Prognosekraft bei hochrisiko-Brustkrebspatientinnen",
+    sum:"Exploratorische Subgruppen-Analyse des MINDACT-Trials zu prognostischer Performance des 70-Gen-Signatures in Patientinnen über 50 Jahren mit HR+/HER2- Brustkrebs und klinisch hohem, genomisch niedrigem Risiko, die auf Chemotherapie verzichteten.",
+    result:"Bei 490 Patientinnen mit Tumoren &gt;2 cm: 8-Jahres-DMFS 87,9 % ohne Chemotherapie (95%-KI 82,9–91,6 %), absoluter Benefit durch Chemotherapie 1,2 %. Bei Grad-3-Tumoren (n=232): DMFS 91,3 % ohne Chemotherapie, Benefit -2,2 %. Bei Lymphknoten-Befall (n=406): DMFS 89,6 %, Benefit 0,7 %. Der Signatur behält prognostische Validität in diesen Hochrisiko-Subgruppen.",
+    transfer:"Europäischer Multizenterstudie (EORTC); GnP-Assessment, Leitlinien-relevant"
   },
   {
-    journal:"Strahlenther Onkol", year:"2026", pmid:"42754764",
-    author:"Sarria GR et al.", pubdate:"17.09.2026",
-    added:"17.09.2026",
-    title:"Intraoperative Radiotherapie zeigt Lokalrezidiv-Raten vergleichbar mit postoperativen Boost",
-    sum:"Matched-Pair-Analyse von 400 Brustkrebs-Patientinnen (je 200 mit intraoperativer oder postoperativer EBRT-Boost) mit frühen Hochrisikotumoreneach Brustkrebserhaltender Chirurgie.",
-    result:"Nach medianer 58-Monate-Nachsorge: Kumulative lokale Rezidiv-Inzidenz 3,5% (IORT) vs. 2,0% (EBRT); HR 1,80 (95%-KI 0,58–5,58; p=0,312, nicht signifikant). Keine Unterschiede bei Lymphknoten-, Fernmetastasen-freiem Überleben oder Gesamtüberleben (alle p&gt;0,6). IORT ist wirksame, gut verträgliche Alternative ohne Kompromisse im Langzeit-Onkologie.",
-    transfer:"Deutsche und europäische Zentren, Versicherungssystem unabhängig, direkt übertragbar."
-  },
-  {
-    journal:"Science", year:"2026", pmid:"42752144",
-    author:"LoPiccolo J et al.", pubdate:"17.09.2026",
-    added:"17.09.2026",
-    title:"Seltene EGFR-T790M-Keimbahn-Mutation mit Lungenkrebsrisiko in Southern Appalachia identifiziert",
-    sum:"Große bevölkerungsgenetische Studie (&gt;3,3 Mio. Personen) zur Assoziation der EGFR-T790M-Variante mit Lungenkrebsrisiko.",
-    result:"EGFR-T790M signifikant mit Lungenkrebsrisiko assoziiert, aber nicht mit 17 anderen Tumoren; Risiko übersteigt Raucher-Risiko, mehrfach höher in Never-Smokern. Geografisch/ancestral: höhere Prävalenz in USA (Southern-Appalachian-Founder-Event 200–225 Jahre ago, Herkunft britisch/irisch). Prävalenz regional deutlich erhöht, betrifft britische, irische und afrikanische Abstammung. Erkannte Hochrisiko-Träger ermöglichen gezielte genetische Tests und Screening-Strategien.",
-    transfer:"Transatlantische Studie, Angloamerika-Fokus; für Deutschland gering: regionale Appalachian-Founder-Effekt USA-spezifisch."
-  },
-  {
-    journal:"ESMO Open", year:"2026", pmid:"42735454",
-    author:"Curigliano G et al.", pubdate:"14.09.2026",
-    added:"14.09.2026",
-    title:"Elacestrant zeigt anhaltende Vorteile bei ESR1-mutiertem HR+/HER2– mBC",
-    sum:"Real-World-Analyse von 281 Patientinnen mit HR+/HER2-negativ ESR1-mutiertem metastasiertem Brustkrebs nach ≥1 Linie endokriner Therapie plus CDK4/6-Hemmer.",
-    result:"Medianer Zeitpunkt bis nächste Therapie: 8,2 Monate (95%-KI 6,0–12,2) in Gruppe mit 1–2 Linien ET+CDK4/6i (n=108); 9,0 Monate bei ≥12-monatiger Vortherapie (n=85; 95%-KI 7,7–13,7). Mit nur 1 Vorlinientherapie: 12,2 Monate (95%-KI 9,0-nicht erreicht; n=31). Leber-/Lungenmets: 6,9 Monate; Gehirnmets: 7,4 Monate. Koexistente ESR1+PI3K-Mutation: 6,1 Monate. Durable Vorteile unterstützen Elacestrant als Erst-Option für endokrin-sensitive HR+ ESR1-mutierte Tumoren.",
-    transfer:"Europäische und kanadische Zentren, vergleichbares Versicherungssystem, breiter anwendbar."
-  },
-  {
-    journal:"Ann Oncol", year:"2026", pmid:"42641684",
-    author:"Prudente V et al.", pubdate:"25.08.2026",
+    journal:"Blood", year:"2026", pmid:"42640859",
+    author:"Brammer JE et al.", pubdate:"21.08.2026",
     added:"25.08.2026",
-    title:"Thymusbestrahlung bei NSCLC mit höherem Metastasen- und Todesrisiko assoziiert",
-    sum:"Multikohorten-Analyse von 1.107 NSCLC-Patienten (RTOG-0617 und zwei Real-World-Kohorten) zur Auswirkung akzidenteller Thymusbestrahlung auf Outcome.",
-    result:"Mittlere Thymusdosis (MTD) von 1 Gy assoziiert mit 1,57–4,21% erhöhtem Distanzmetastasen-Risiko (RTOG: aHR 1,29, p=0,0028; Harvard-CRT: aHR 1,33, p=0,011; Harvard-Durva: aHR 1,95, p=0,007). Patienten mit erhaltenem Thymus vorher besonders gefährdet. Nach 1 Jahr: Dosis-abhängiger Thymusfunktions-Verlust und niedrigere Lymphozytenzahlen. Neuplanuung-Machbarkeitsstudie zeigte thymussparing möglich ohne Tumorüberdeckungs-Verlust.",
-    transfer:"USA-Daten, aber biologischer Mechanismus universal; deutsche Zentren können Planung adaptieren."
+    title:"Internationale Konsens-Kriterien für T-Zell-Großgranulär-Lymphom-Diagnose und Therapie",
+    sum:"Internationale Konsensus-Arbeit (LGLL Consortium) zur Etablierung einheitlicher Diagnose-, Behandlungs- und Response-Kriterien für die seltene T-Zell-Großgranulär-Leukämie zur Standardisierung klinischer und Forschungspraxis.",
+    result:"Konsens auf folgende Punkte: (1) Harmonisierte diagnostische Laborkriterien (Flow-Cytometrie, TCR-Molekularanalyse), (2) standardisierte Behandlungsinitiat-Indikatoren (Symptomatik, Organfunktion), (3) einheitliche Response-Assessment-Parameter (Hämatologie, funktionelle Marker). Empfehlungen zur Differenzialdiagnose autoimmunärer Phänomene. Kriterien adressieren zentrale Heterogenität bisheriger Studien, um zukünftige Trials und Klinik zu vereinheitlichen.",
+    transfer:"International mit europäischen Zentren; Standards sind system-unabhängig, direkt übertragbar"
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -1557,7 +1548,7 @@ const RADAR_FRISTEN = [["2026-10-20", "2026-10-20", "2026-09-22"], [], ["2026-10
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "19.09.2026";
+const NEWS_STAND = "20.09.2026";
 const NEWS = [
   {titel:"EU-Expertenpool zu Lungenkrebs: Thoraxchirurg aus Coswig berufen", datum:"2026-09-10", url:"https://www.monitor-versorgungsforschung.de/news/eu-expertenpool-zu-lungenkrebs-thoraxchirurg-aus-coswig-berufen/"},
   {titel:"MV: Landesbeirat Onkologie berät Landespolitik und stärkt den Kampf gegen Krebs", datum:"2026-08-27", url:"https://www.monitor-versorgungsforschung.de/news/mv-landesbeirat-onkologie-beraet-landespolitik-und-staerkt-den-kampf-gegen-krebs/"},
