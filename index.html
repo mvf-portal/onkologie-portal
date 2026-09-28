@@ -1477,71 +1477,62 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "27. Sept. 2026, 09:48 Uhr";
+const SNAP_DATE = "28. Sept. 2026, 06:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Radiother Oncol", year:"2026", pmid:"42800679",
-    author:"Aguirre-Meneses KA et al.", pubdate:"26.09.2026",
+    journal:"Ann Oncol", year:"2026", pmid:"42760040",
+    author:"Rabasco Meneghetti A", pubdate:"Okt. 2026",
+    added:"18.09.2026",
+    title:"KI-Modelle zur Risikoprognose in der Magenkrebsnachsorge: Transfernutzen unklar",
+    sum:"Kommentar zu DeepComp, einem KI-System für postoperative Risikostratifizierung beim Magenkarzinom; erörtert Vorhersagekompetenz und Umsetzungserfordernisse.",
+    result:"Der Kommentar diskutiert Chancen maschineller Lernverfahren zur Risikoklassifizierung, warnt aber vor Interpretationsfallen und nennt fehlende Validierung in prospektiven Kohorten als zentrale Hürde für klinische Adoption.",
+    transfer:"Deutschland: Validierung in Zentren notwendig vor Einsatz in AMNOG- und Zertifizierungskontexten"
+  },
+  {
+    journal:"Radiother Oncol", year:"2026", pmid:"42801959",
+    author:"Ho F et al.", pubdate:"27.09.2026",
+    added:"27.09.2026",
+    title:"Kanonische Action Research verbessert Protontherapie-Zuweisungsquoten: Niederländische Versorgungsstudie zeigt Implementierungsdefizite",
+    sum:"Qualitative Implementierungsstudie mit Canonical Action Research in niederländischen Radiotherapie-Zentren zu Barrieren und Interventionen bei Protontherapie-Zuweisungen für Lungen- und Ösophaguskarzinome.",
+    result:"Diagnose-Phase identifizierte Barrieren (Wissenslücken, unzureichende Koordination, Logistik). Implementierte stakeholder-entwickelte Interventionen (Logistik-Verbesserungen, Patienten-Begleiter) waren mit erhöhten Überweisungs- und Behandlungsraten an einem Zentrum assoziiert. Stakeholder-Wahrnehmung von Pathway-Design und Intervention-Angemessenheit verbesserte sich; Patienten-Zufriedenheit blieb stabil.",
+    transfer:"Niederlande, vergleichbares Versicherungssystem; Modell übertragbar auf deutsche Zentrumsvernetzung"
+  },
+  {
+    journal:"Radiother Oncol", year:"2026", pmid:"42800678",
+    author:"Carevic G et al.", pubdate:"26.09.2026",
     added:"26.09.2026",
-    title:"Single-Fraction SABR gleichwertig zu Multi-Fraction bei frühem NSCLC",
-    sum:"Bevölkerungsbasierte retrospektive Analyse aus British Columbia (2021-2024): 814 Läsionen bei 778 Patienten mit peripher gelegenem T1-2N0-NSCLC, behandelt mit Single-Fraction (SF) oder Multi-Fraction (MF) SABR, Nachverfolgung median 25,8 Monate.",
-    result:"Keine signifikanten Unterschiede in 2-Jahres-Lokalversagen (3,5% vs. 4,8%, p=0,11) oder 2-Jahres-Gesamtüberleben (79,3% vs. 79,4%, p=0,62). Grad-2-Toxizität 11,5% vs. 12,4%, Grad-3-5-Toxizität 1,5% vs. 3,9% (p=0,08), Brustwandtoxizität identisch 5,0%. SF-SABR war kein unabhängiger Prädiktor für Lokalversagen oder Toxizität.",
-    transfer:"Kanadisches System mit vergleichbarem öffentlichem Versicherungsauftrag; Kostenwirksamkeit für deutsche Strahlenkliniken relevant."
+    title:"Schlafstörungen und Müdigkeit bei Oropharyngeal-Karzinom-Radiotherapie-Überlebenden korrelieren mit Gesamtüberleben",
+    sum:"Prospektive Longitudinalkohorte (372 Patienten mit Oropharyngeal-Karzinom unter kurativer Strahlentherapie ± Chemotherapie) zum Symptom-Verlauf und Überleben anhand patientenberichteter Outcomes (MDASI-HN).",
+    result:"Schwere Müdigkeit, Schlafstörung und Schläfrigkeit erreichten Höhepunkt bei RT-Ende (26%, 15%, 18%) und normalisierten sich bis Monat 6. Schwere longitudinale Müdigkeit (HR 5,05), Schlafstörung (HR 3,86) und Schläfrigkeit (HR 8,24) waren unabhängig mit schlechterer Overall Survival assoziiert (p &lt; 0,05). Effekt blieb nach multivariater Anpassung signifikant.",
+    transfer:"USA-Tertiary Center; Symptom-basierte Risikoidentifikation übertragbar auf deutsche Nachsorge-Protokolle"
   },
   {
-    journal:"Lancet Oncol", year:"2026", pmid:"42790449",
-    author:"Vokinger KN et al.", pubdate:"25.09.2026",
+    journal:"Lancet Oncol", year:"2026", pmid:"42790448",
+    author:"Casolino R et al.", pubdate:"25.09.2026",
     added:"25.09.2026",
-    title:"Komplexe Genomik verzögert Zugang zu Essential Cancer Medicines global",
-    sum:"Retrospektive Analyse der Verfügbarkeit von 41 Essential Cancer Medicines auf der WHO-Liste zwischen 2002 und 2023 in 71 Ländern, unterschieden nach Anforderung an Immunhistochemie, komplexe Genomik oder keine Diagnostik.",
-    result:"Arzneien, die komplexe genomische Diagnostik erfordern, zeigen 65% niedrigere Aufnahmevolumina als solche ohne Diagnostik-Anforderung (Regressionskoeffizient −0,453, p&lt;0,0001). In Ländern mit niedrigem BIP (&lt;11.000 USD) werden nur 44% der Arzneien mit komplexer Genomik eingesetzt, gegenüber 79% in Ländern mit hohem BIP (&gt;33.000 USD). Die Aufnahme zeigt, dass WHO-EML-Listung allein für Zugang insufficient ist.",
-    transfer:"Zeigt strukturelle Barrieren für Precision Oncology in Ländern mit begrenzter diagnostischer Infrastruktur; international vergleichbar."
+    title:"Präzisionsmedizin bei ungleicher Zugangsverteilung: Global-Audit zeigt massive Lücken zwischen Anspruch und Versorgung",
+    sum:"Lancet-Onkologie-Kommission analysierte die globale Lage der Krebsgenetik und Präzisionsmedizin und bewertete Implementierungsbarrieren, Ungleichheiten und den Nutzen biomarker-gestützter Therapien.",
+    result:"Nur wenige validierte Biomarker-Therapie-Paare zeigen konsistente klinische Gewinne; umfassendere genomische Profiling-Ansätze erweitern Optionen für Patienten, doch profitiert nur ein kleiner Anteil von angepasster Therapie. Massive Ungleichheiten bei Zugang zur Genomik und Präzisionsmedizin bestehen länder- und populationsübergreifend. Die Studie liefert ein Implementierungs-Framework für gerechte, nachhaltige Skalierung.",
+    transfer:"Deutsches Gesundheitssystem: zentral für Zertifizierung der Zentren und AMNOG-Bewertung"
   },
   {
-    journal:"Int J Radiat Oncol Biol Phys", year:"2026", pmid:"42790602",
-    author:"Gomez C et al.", pubdate:"25.09.2026",
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"42786582",
+    author:"Kim TS et al.", pubdate:"24.09.2026",
     added:"25.09.2026",
-    title:"Spirituelle Überzeugungen hemmen Studienteilnahme schwarzer Krebspatienten massiv",
-    sum:"Querschnittstudie an 172 von 247 Patienten (70% Teilnahmequote) nach definitiver Strahlentherapie für GI-, thorakale, gynäkologische und HNO-Malignome (Oktober 2023–Februar 2024): Psychosoziale Faktoren und Studieneinschlusshindernisse.",
-    result:"Schwarze Patienten (n=42, 24%) waren weniger verheiratet (16,7% vs. 68,8%; p&lt;0,001), geringer gebildet und hatten niedrigeres Einkommen ($69.318 vs. $106.823; p&lt;0,001). Obwohl gleich viele zur Teilnahme eingeladen (17,9% vs. 21,7%), stimmten weniger schwarze Patienten zu (17,1% vs. 31,9%; p&lt;0,001). Höhere Religiosität senkte Teilnahmebereitschaft um 44% (p=0,036). 48% schwarzer vs. 17,3% weißer Patienten glaubten, dass Gott Heilung bestimmt (p=0,024); 18% schwarzer vs. 3,6% weißer Patienten misstrauten klinischer Forschung (p=0,001).",
-    transfer:"USA - Disparitäten-fokussiertes qualitatives Forschungsdesign; deutsche Rekrutierungsstrategien müssen kulturelle und religiöse Faktoren adressieren."
+    title:"Alkoholkonsum und Kolorektalkarzinom-Risiko bei Prä-Diabetes und Diabetes: Südkoreanische Kohorten zeigen Synergien",
+    sum:"Nationale südkoreanische Kohortenstudie (4,475.492 Erwachsene, Median-Follow-up 9,33 Jahre) zur Dosis-Wirkung zwischen Alkoholkonsum und Kolorektalkrebs-Inzidenz nach glykämischem Status.",
+    result:"51.592 CRC-Fälle dokumentiert. Leichter bis mäßiger Alkoholkonsum erhöhte CRC-Risiko synergistisch bei Prä-Diabetes (HR 1,23; 95%-KI 1,19–1,27; Synergieindex 1,72) und Diabetes (HR 1,48; 95%-KI 1,42–1,54; Synergieindex 2,04). Dose-abhängige lineare Assoziation über alle kolorektalen Subsites, steiler bei Diabetes.",
+    transfer:"Südkorea, hohes Screening-Aufkommen; Prävention bei Stoffwechselvorstufen setzt patientenrelevante Endpunkte voraus"
   },
   {
-    journal:"Blood", year:"2026", pmid:"42789493",
-    author:"Luskin MR et al.", pubdate:"25.09.2026",
+    journal:"Oncologist", year:"2026", pmid:"42789933",
+    author:"Sherry AD et al.", pubdate:"09.09.2026",
     added:"25.09.2026",
-    title:"Venetoclax + Inotuzumab ozogamicin erzielt 95% komplette Remission im rezidivierten/refraktären B-ALL",
-    sum:"Phase-1-Studie (23 Patienten, 15 ALL, 8 LBL): Kombination BCL-2-Inhibitor Venetoclax (VEN 400 mg/Tag 21 Tage) plus CD22-Antikörper-Wirkstoff-Konjugat Inotuzumab ozogamicin (Standard-Dosis) bei rezidiviertem/refraktärem CD22+ B-ALL/lymphoblastischem Lymphom.",
-    result:"Von 22 evaluablen Patienten erreichten 21 (95,5%) komplette Remission, 19 nach einem Zyklus. Messbare Resterkrankung (MRD) negativ in 88,9% (Flow &lt;10⁻⁴) und 73,7% (NGS &lt;10⁻⁶). Zwei-Jahres-krankheitsfreies Überleben 48% (95% KI 24–72%), medianes Gesamtüberleben nicht erreicht. Nebenwirkungen Grad ≥3: Thrombozytopenie 43,5%, Neutropenie 39,1%, sinusoidales obstruktives Syndrom 4 Patienten. MRD-Negativität korrelierte mit BCL-2-Abhängigkeit; Progression verband sich mit MCL-1-Abhängigkeit, CD22-Escape, ABCB1-Expression.",
-    transfer:"USA-Zentrum, Phase 1; internationale Wirkstoffkombination, Übertragung auf Deutschland abhängig von Zulassung und lokaler ALL-Protokoll-Integration."
-  },
-  {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42786576",
-    author:"Zhang GQ et al.", pubdate:"24.09.2026",
-    added:"25.09.2026",
-    title:"Körperliche Aktivität verbessert Krankheitsfreies Überleben bei ctDNA-negativem Kolonkarzinom",
-    sum:"Post-hoc-Analyse der Phase-III-Studie CALGB/SWOG 80702 (763 Patienten Stage III Kolonkarzinom): Assoziation von körperlicher Aktivität (gemessen in MET-Stunden/Woche) und postoperativem Überleben, stratifiziert nach zirkulierender Tumor-DNA (ctDNA).",
-    result:"Bei ctDNA-negativen Patienten zeigten moderate (HR 0,58, 95% KI 0,37–0,91) und hohe körperliche Aktivität (HR 0,49, 95% KI 0,27–0,86) versus Inaktivität verbessertes krankheitsfreies Überleben. Bei ctDNA-positiven Patienten war körperliche Aktivität nicht prognostisch (p&gt;0,05). Physische Aktivität plus adjuvantes Celecoxib zeigte Vorteil in beiden Gruppen (ctDNA-positiv: HR 0,29, 95% KI 0,15–0,57).",
-    transfer:"Nordamerikanische Kohortenstudie; ctDNA-Analytik national nur in Zentren verfügbar, Aktivitätsinterventionen aber universell umsetzbar."
-  },
-  {
-    journal:"Nat Med", year:"2026", pmid:"42786305",
-    author:"Shitara K et al.", pubdate:"24.09.2026",
-    added:"24.09.2026",
-    title:"Evorpacept + Trastuzumab/Ramucirumab/Paclitaxel verbessert Ansprechrate im HER2+ Magenkarzinom",
-    sum:"Phase-2-Portion der randomisierten Studie ASPEN-06 (127 Patienten mit vorbehandeltem HER2-überexprimiertem metastasiertem Magen-/Ösophaguskarzinom): Evorpacept (CD47-SIRPα-Blocker) plus Standard-Tripel (TRP) versus TRP allein.",
-    result:"Primärer Endpunkt: Objektive Ansprechrate (ORR) investigator-assessed 40,3% (Evo+TRP) vs. 26,6% (TRP) in ITT-Population (Differenz 13,7%, p&lt;0,001), in Fresh-Biopsy-HER2+-Subgruppe 54,8% vs. 23,1% (Differenz 31,7%). Differenzen überschritten Schwellen, aber vs. historischem Benchmark (30%) verfehlte nur Fresh-Biopsy-Gruppe Signifikanz knapp (p=0,030 one-sided). Toxizitäten vergleichbar mit etabliertem Profil.",
-    transfer:"Internationale Phase-2-Studie; Zulassungsfähigkeit zu klären, Übertragung auf Deutschland abhängig von Zulassung und Amnog-Bewertung."
-  },
-  {
-    journal:"Eur J Cancer", year:"2026", pmid:"42800309",
-    author:"Kloots ISH et al.", pubdate:"19.09.2026",
-    added:"26.09.2026",
-    title:"Tumor-First DNA-Testing effizienter als Familienanamnese für BRCA-Screening",
-    sum:"Prospektive Studie (PROMPT) mit 452 Patienten mit metastasiertem Prostatakarzinom: Vergleich tumor-first-workflow (TFW) versus familienanamnese-basierte Testung für Keimbahnvarianten in BRCA1/2, PALB2, ATM, CHEK2.",
-    result:"TFW identifizierte 22/36 (61%) aller Träger pathogener Keimbahnvarianten mit technischer Sensitivität von 97%. Gegenüber modellierter Familienanamnese-Strategie (8 vs. 22 Träger identifiziert; p&lt;0,001) war TFW deutlich überlegen mit positiv-prädiktivem Wert 51% vs. 13% und niedrigerer Anzahl zum Testen (2,0 vs. 7,9). Kosten pro entdeckter Variante: 998 € vs. 12.246 €.",
-    transfer:"Niederländisches Gesundheitssystem mit direkter Übertragbarkeit auf deutsches Mutationsscreening-Protokoll."
+    title:"Gesamtüberleben als primärer Endpunkt in Phase-III-Onkologie-Studien: Metaanalyse zeigt konsistente Gewinne",
+    sum:"OPTIMA-Metaanalyse mit individualisierten Patientendaten von 159 Phase-III-Studien mit Gesamt-Überleben als primärem Endpunkt (104.740 Patienten).",
+    result:"Experimentelle Arme zeigten im Zwei-Stufen-Cox-Modell verbesserte Overall Survival (Hazard Ratio 0,87; 95%-KI 0,85–0,89; p &lt; 0,0001), bestätigt im einstufigen stratifizierten Modell (HR 0,88; 95%-KI 0,85–0,90). Befund dokumentiert, dass randomisierte Phase-III-Studien mit OS-Primärendpunkt konsistent therapeutische Fortschritte nachweisen.",
+    transfer:"Multinationale Studienpopulation; Befunde unterstützen Regulierungs- und Finanzierungsprioritäten für OS-fokussierte Trials"
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -1557,7 +1548,7 @@ const RADAR_FRISTEN = [["2026-10-19", "2026-10-06", "2026-10-15"], [], ["2026-10
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "27.09.2026";
+const NEWS_STAND = "28.09.2026";
 const NEWS = [
   {titel:"Onkologie-Datenpreis: ADT und DNVF zeichnen DigiNet und VersKiK aus", datum:"2026-09-24", url:"https://www.monitor-versorgungsforschung.de/news/onkologie-datenpreis-adt-und-dnvf-zeichnen-diginet-und-verskik-aus/"},
   {titel:"Lungenkrebs in Rheinland-Pfalz: Krebsregister legt Zahlen für 2024 vor", datum:"2026-09-23", url:"https://www.monitor-versorgungsforschung.de/news/lungenkrebs-in-rheinland-pfalz-krebsregister-legt-zahlen-fuer-2024-vor/"},
