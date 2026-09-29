@@ -1,48 +1,35 @@
 {
  "hub": "Knowledge-Hub Onkologie",
  "domain": "onkologie.m-vf.de",
- "datum": "2026-09-28",
+ "datum": "2026-09-29",
  "stand": "terminiert",
- "titel": "MVF Onkologie-Newsletter 28.09.2026",
- "betreff": "Neueste Studien - Onkologie – 26. September 2026 bis 28. September 2026",
- "anzahl": 20,
+ "titel": "MVF Onkologie-Newsletter 29.09.2026",
+ "betreff": "Neueste Studien - Onkologie – 29. September 2026",
+ "anzahl": 7,
  "pmids": [
-  "42801959",
-  "42800678",
-  "42790448",
-  "42789933",
-  "42786582",
-  "42760040",
-  "42800679",
-  "42800309",
-  "42790602",
-  "42790449",
-  "42789493",
-  "42786576",
-  "42786305",
-  "42790787",
-  "42790445",
-  "42789071",
-  "42789070",
-  "42786668",
-  "42784694",
-  "42735681"
+  "42805199",
+  "42805198",
+  "42790443",
+  "42790263",
+  "42789828",
+  "42786665",
+  "42778593"
  ],
- "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9099104",
- "termin_utc": "2026-09-28T08:00:00+00:00",
+ "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9099126",
+ "termin_utc": "2026-09-29T08:00:00+00:00",
  "empfaenger": 3,
- "listengroesse": 5908,
+ "listengroesse": 5907,
  "beanstandungen": [],
  "aussortiert": [],
  "pool": {
   "geholt": 220,
-  "bekannt": 98,
-  "pool": 48,
-  "gewaehlt": 6,
-  "neu": 6
+  "bekannt": 97,
+  "pool": 47,
+  "gewaehlt": 7,
+  "neu": 7
  },
  "rubriken": {
   "news": "b7b87cca465c57c8",
-  "radar": "11caac37f25bd5fd"
+  "radar": "336bc99b1c7dfdd6"
  }
 }
