@@ -250,12 +250,15 @@ Gib ausschliesslich das geforderte JSON zurueck.
 NEWS_SUCHE = [
     "Onkologie",
     "Krebs",
-    "Krebsfrüherkennung",
-    "Tumorzentrum",
+    "Brustkrebs",
     "Immuntherapie",
+    "Krebstherapie",
     "Krebsregister",
+    "Krebsfrüherkennung",
+    "Tumorboard",
+    "Lungenkarzinom",
     "Palliativversorgung",
-    "Nutzenbewertung",
+    "Tumorzentrum",
 ]
 
 # Der Ausschreibungsradar steht NICHT mehr hier. Er laeuft seit dem 28.08.2026
