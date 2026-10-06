@@ -13,14 +13,14 @@ on:
     # oder verworfen. Zwoelf Repos auf derselben Minute sind der unguenstigste
     # Fall - am 26.08.2026 kam der Lauf zwei Stunden zu spaet, am 27. und
     # 28.08. gar nicht.
-    - cron: "35 3 * * *"
+    - cron: "51 3 * * *"
     # Netz fuer einen ausgefallenen ersten Lauf: Am 27.08.2026 hat GitHub die
     # geplanten Laeufe aller dreizehn Repos verschluckt (zeitgleich mit einer
     # Stoerung der Billing-Dienste), und es kam kein einziger Newsletter.
     # 05:30 UTC liegt gut vier Stunden vor dem Versand um 10:00 Ortszeit. An
     # normalen Tagen kostet dieser Lauf nichts: update_studies.py bricht sofort
     # ab, wenn das Archiv fuer heute schon Studien hat.
-    - cron: "35 5 * * *"
+    - cron: "51 5 * * *"
   workflow_dispatch:        # erlaubt manuelles Starten über die Actions-Oberfläche
     inputs:
       nur_studien:
