@@ -1809,62 +1809,71 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "8. Okt. 2026, 06:01 Uhr";
+const SNAP_DATE = "9. Okt. 2026, 06:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Lancet Oncol", year:"2026", pmid:"42843394",
-    author:"Liu D et al.", pubdate:"07.10.2026",
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"42848614",
+    author:"Raghavendra AS et al.", pubdate:"08.10.2026",
+    added:"08.10.2026",
+    title:"Brain-Metastasis-Risikokalkulator für frühen Brustkrebs validiert",
+    sum:"Entwicklung und Validierung eines klinischen Vorhersagemodells (BrMR) für Hirnmetastasen-Risiko bei Stadium-I-III-Brustkrebs basierend auf 40.282 Trainings- und 1.644 Validierungspatienten.",
+    result:"C-Index 0,79 (Training), 0,76 (Validierung); AUROC 0,81/0,79/0,76/0,75 nach 4/6/8/10 Jahren. HER2-Positivität, hohes Ki-67, inflammatorischer Typ und höherer T/N-Status erhöhten Risiko; ER/PR-Positivität, höheres Alter und endokrine Therapie senkten es.",
+    transfer:"Validiert in Belgien (Institut Jules Bordet), Datengrundlage für deutsches System adaptierbar."
+  },
+  {
+    journal:"Neuro Oncol", year:"2026", pmid:"42848686",
+    author:"Beamish J et al.", pubdate:"08.10.2026",
+    added:"08.10.2026",
+    title:"Sozioökonomischer Status und Kognition nach Kinderhirntumor: schwedische Kohortenstudie",
+    sum:"Bevölkerungsbasierte Registry-Studie mit 461 schwedischen Kindern (Diagnose 2008-2023) zu Zusammenhang zwischen Sozioökonomischem Status (Elternbildung, Einkommen, Beruf) und neurokognitiven Ergebnissen bis 5 Jahre post-diagnose.",
+    result:"Höherer SES assoziiert mit besseren z-Scores bei Verarbeitungsgeschwindigkeit (+0,23), Arbeitsgedächtnis (+0,25), nonverbalem Reasoning (+0,29) und Gesamtkognition (+0,42). Längere Zeit seit Diagnose mit Rückgang Verarbeitungsgeschwindigkeit und verbalem Reasoning. Keine Interaktion zwischen SES und Abnahmeraten, was auf reduzierte kognitive Reserve statt erhöhte Treatment-Toxizität hinweist.",
+    transfer:"Schwedisches universales Gesundheitssystem, vergleichbar mit deutschem System und Survivalship-Dateninfrastruktur."
+  },
+  {
+    journal:"Nature", year:"2026", pmid:"42844481",
+    author:"Gamble S et al.", pubdate:"07.10.2026",
     added:"07.10.2026",
-    title:"Neoadjuvantes Niraparib ermöglicht R0-Resektion bei HRD-positivem Ovarialkarzinom",
-    sum:"Phase-2-Studie zu Niraparib-Monotherapie ohne Chemotherapie bei HRD-positiven, initial inoperablen Ovarialkarzinom-Patientinnen mit hohem chirurgischem Risiko.",
-    result:"Unter 67 Patientinnen: objektive Ansprechrate 63% (95%-KI 47–76), R0-Resektionsrate 80% (95%-KI 64–91). Häufigste Grad-3/4-Nebenwirkungen waren Thrombozytopenie (48%), Leukopenie (19%), Anämie (18%); 28% hatten ernsthafte Nebenwirkungen, keine Todesfälle durch Behandlung. Strategie bleibt investigativ und benötigt randomisierte Validierung gegen Standard-Chemotherapie.",
-    transfer:"China, ähnliche Dokumentationsstandards; Datenschnitt mit 37,7 Monaten Follow-up verfügbar"
+    title:"Preinvasive regulatorische T-Zellen bei Lungenkrebsentstehung: Interventionsziel",
+    sum:"Multi-omische Studie mit Bronchoskopie und CT-Bildgebung an Patienten mit preinvasiven Lungenschleimhaut-Läsionen: Identifikation von effektiven regulatorischen CD4+-T-Zellen (eTreg, BATF+) als Frühmarker und therapeutisches Ziel.",
+    result:"eTreg-Zellen reicherten sich in hochgradigen Läsionen an und korrelierten mit zirkulierenden eTreg-Zellen. Bei Mäusen reduzierte PI3Kδ-Inhibition eTreg-reiche tertiäre lymphoide Strukturen (iTLS), senkte Lungentumoranzahl und -größe. Circulating eTreg-Zellen ermöglichten nicht-invasive Verfolgung der Tumorprogression. eTreg-Achse gekennzeichnet schnelle Progression in frühem NSCLC (CT-Screening).",
+    transfer:"UK-Studie (UCL), Mechanismus und Biomarker übertragbar; klinische Anwendung erfordert deutsche Validierung."
   },
   {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42842394",
-    author:"Cheung LC et al.", pubdate:"07.10.2026",
+    journal:"J Clin Oncol", year:"2026", pmid:"42842849",
+    author:"Chmura SJ et al.", pubdate:"07.10.2026",
     added:"07.10.2026",
-    title:"Screening-Intervalle für Mundhöhlenkrebs können auf zehn Jahre verlängert werden",
-    sum:"Langzeitbeobachtung von 41.225 Kau- und Raucher aus der Kerala Oral Cancer Screening Trial (1996–2010): Analyse von Screening-Sensitivität, prädiktiven Werten und natürlicher Krankheitsgeschichte über multistate-Modelle.",
-    result:"Visuelles Screening über zwei aufeinanderfolgende Untersuchungen (Median 3,5 Jahre Abstand): Sensitivität 89,2%, positiv-prädiktiver Wert 1,55%, negativer Vorhersagewert 99,96% für prävalente Krebsfälle. Wiederholte Screening-Negative hatten 32-fach niedrigeres Krebsrisiko über 11 Jahre. Mittlere Dauer von Früh- zu Spätstadium: 2,7 Jahre. Mittlere Verweilzeit in Präkanzerose: 19,3 Jahre.",
-    transfer:"Indien, hohe Prävalenz von Kau- und Rauchtabak; Screening-Algorithmus prinzipiell auf europäische Risikopopulationen übertragbar"
+    title:"Metastase-gerichtete Ablation im Frühstadium bringt keinen OS-Gewinn bei oligometastasiertem Brustkrebs",
+    sum:"Randomisierte Phase-II/III-Studie (NRG-BR002) mit 125 Patienten (≤4 Metastasen, ≤12 Monate erste systemische Therapie): Metastase-gerichtete Ablation (SBRT/Chirurgie) + Systemtherapie versus nur Systemtherapie als Kontroll.",
+    result:"Medianes progressionsfreies Überleben: 19,5 Monate (Ablation) vs. 23,0 Monate (nur Systemtherapie); HR 0,92 (70%-KI 0,71-1,17, einseitig p=0,36). Studie schritt nicht zu Phase III vor. OS kein signifikanter Unterschied (HR 1,07, p=0,41). Explorative Analyse: möglicher Vorteil bei niedrigen/fehlenden CTCs. Keine Grade-5-Toxizitäten.",
+    transfer:"Nordamerikanische multizentrische RCT (USA/Kanada), Patientenpopulation und Endpoints für deutsches System relevant."
   },
   {
-    journal:"Ann Oncol", year:"2026", pmid:"42843562",
-    author:"Nakamura Y et al.", pubdate:"07.10.2026",
+    journal:"Eur J Cancer", year:"2026", pmid:"42843209",
+    author:"Jones T et al.", pubdate:"04.10.2026",
     added:"07.10.2026",
-    title:"ctDNA-Dynamik nach Resektion bestimmt Therapie-Strategien beim Kolorektalkarzinom",
-    sum:"Prospektive Biomarker-Studie (CIRCULATE-Japan) zur postoperativen zirkulären Tumor-DNA-Dynamik und Eligibilität für MRD-gesteuerte Therapie bei Kolorektalkarzinom; insgesamt 402 Patienten eingeschlossen.",
-    result:"Postoperative ctDNA-Muster bei 402 Patienten erfasst; Details zu ctDNA-Clearance, Persistenz und Zusammenhang mit TOMR-Eligibilität für adaptive Therapiesteuerung angekündigt. Studie abgeschlossen mit vollständigem Datensatz; Primäranalyse präsentiert mit Fokus auf MRD-gelenkte Behandlungsansätze.",
-    transfer:"Japan, Gesundheitssystem mit ähnlichen Dokumentations- und Qualitätsstandards wie Deutschland"
+    title:"Single-Item-Maße für wahrgenommene Therapienebenwirkungen: Scoping Review",
+    sum:"Systematische Analyse zu Einsatz, psychometrischen Eigenschaften und Validität von Single-Item-Fragebögen (EORTC Q168, FACIT GP5) für Treatment-Related Symptom Burden in Krebsstudien.",
+    result:"67 publizierte Studien und 74 klinische Trials eingeschlossen. FACIT GP5 breiter eingesetzt über Tumortypen (n=27 psychometrische Studien), EORTC Q168 konzentriert auf Pankreas- und Gallenblasenkrebs (n=2). Nachweise für Validität, Reliabilität, Responsiveness, aber konzeptionelle Limitationen bleiben (Symptomzuordnung zu Therapie vs. Erkrankung unklar).",
+    transfer:"Europäische Autorengruppe (EORTC), auf deutsche Studien und Zentrenprotokolle direkt anwendbar."
   },
   {
-    journal:"Leukemia", year:"2026", pmid:"42839070",
-    author:"Facon T et al.", pubdate:"06.10.2026",
-    added:"06.10.2026",
-    title:"Daratumumab plus Lenalidomid/Dexamethason verlängert Überleben bei nicht transplantierbarem Myelom",
-    sum:"Subgruppenanalyse der MAIA-Studie nach Frailty-Status bei älteren Patienten mit neu diagnostiziertem multiplem Myelom, die nicht für Stammzelltransplantation geeignet sind.",
-    result:"Bei nicht-frailen Patienten war das Gesamtüberleben unter D-Rd signifikant besser (Median nicht erreicht vs. 69,8 Monate; HR 0,53; 95%-KI 0,37–0,76; p=0,0004); bei frailen Patienten zeigte sich ein Trend ohne Signifikanz (HR 0,79; p=0,1128). Komplette Remissionsraten und MRD-Negativität waren über alle Frailty-Gruppen hinweg verbessert; längere Therapiedauer unter D-Rd deutete auf bessere Verträglichkeit hin.",
-    transfer:"Europäische und kanadische Kliniken; direkter Bezug zu deutschen Behandlungsstandards beim älteren Myelom-Patient"
+    journal:"Lancet", year:"2026", pmid:"42790456",
+    author:"Jenkinson MD et al.", pubdate:"10.10.2026",
+    added:"25.09.2026",
+    title:"Adjuvante Radiotherapie reduziert Rezidive bei atypischen Meningiomen um 46 %",
+    sum:"Randomisierte Phase-3-Studie (ROAM/EORTC-1308) an 157 Patienten mit WHO-Grad-2-Meningiom nach kompletter Resektion: Radiotherapie (60 Gy/30 Fraktionen) versus Beobachtung.",
+    result:"5-Jahres-rezidivfreies Überleben: 79,9 % (Radiotherapie) vs. 64,3 % (Beobachtung); Hazard Ratio 0,51 (p=0,0396). Grad-2/3-Nebenwirkungen in 8 % der bestrahlten Patienten, keine Todesfälle durch Strahlung. Rezidive traten bei 14 % vs. 30 % auf.",
+    transfer:"Europäische multizentrische RCT (11 Länder), übertragbar auf deutsches Versorgungssystem und Zertifizierungsstandards."
   },
   {
-    journal:"Blood", year:"2026", pmid:"42832396",
-    author:"Zhong X et al.", pubdate:"05.10.2026",
-    added:"05.10.2026",
-    title:"Blinatumomab-Kombination verbessert Überleben bei BCR::ABL1-negativer adulter ALL in Hochrisiko-Subtypen",
-    sum:"Genomische Charakterisierung von 569 Patienten der ECOG-ACRIN E1910-Studie zu Blinatumomab plus Chemotherapie bei BCR::ABL1-negativer B-ALL; Analyse von 23 Molekularsubtypen und Treibergenen.",
-    result:"Blinatumomab-Addition führte zu verbessertem rezidivfreiem und Gesamtüberleben bei hyperdiploidem, PAX5alt, PAX5 P80R, BCR::ABL1-ähnlichem JAK-STAT und KMT2A-R-Subtyp. TP53-Alterationen oder CHIP-assoziierte Mutationen (insgesamt 15,3% bzw. 9,8%) waren mit älterem Diagnose-Alter und schlechterem Ergebnis assoziiert. Analysen für einzelne Subtypen kleinerer Fallzahlen; Bestätigung erforderlich.",
-    transfer:"USA; genomische Klassifikation und Therapiestrategie prinzipiell auf deutsche ALL-Zentren übertragbar"
-  },
-  {
-    journal:"Eur J Cancer", year:"2026", pmid:"42843210",
-    author:"Adamde Beaumais T et al.", pubdate:"04.10.2026",
-    added:"07.10.2026",
-    title:"Exom-Sequenzierung identifiziert erbliche Krebsrisiken bei Kindern mit Hochrisiko-Tumoren",
-    sum:"Systematische Keimbahnanalyse aus therapeutischem Profiling (MAPPYACTS-Studie) bei 674 Kindern mit rezidivierenden/refraktären Malignomen zur Identifikation actionabler genetischer Befunde.",
-    result:"19,3% der Patienten (130/674) trugen pathogene/wahrscheinlich pathogene Varianten in 53 Krebs-Prädispositionsgenen; 8,6% (58) benötigten genetische Beratung. Häufigste Gene: TP53 (n=17), DICER1 (n=5), BRCA1 (n=4). 35% der Befunde waren nicht vorher bekannt. Zusätzlich 10 Patienten (1,5%) mit actionablen Varianten in Nicht-Krebs-Genen (Kardiomyopathien, familiäre Hyperholesterinämie). 98,6% der Familien stimmten Offenlegung zu.",
-    transfer:"Frankreich; multidisziplinärer Rahmen übertragbar auf deutsche Zentren mit genetischer Beratung"
+    journal:"Lancet", year:"2026", pmid:"42790456",
+    author:"Jenkinson MD et al.", pubdate:"10.10.2026",
+    added:"25.09.2026",
+    title:"Radiotherapie versus Beobachtung bei atypischem Meningiom WHO Grad 2",
+    sum:"Internationale multizentrische randomisierte Phase-3-Studie (ROAM/EORTC-1308) mit 157 Patienten: adjuvante Radiotherapie (60 Gy) versus Watchful Waiting nach kompletter chirurgischer Resektion.",
+    result:"Meningiom-Rezidiv: 14 % (Strahlung) vs. 30 % (Beobachtung); 5-Jahres-rezidivfreies Überleben 79,9 % vs. 64,3 %; HR 0,51 (95%-KI 0,27-0,97, p=0,0396). Ernsthafte Nebenwirkungen (Grad 2-3) in 8 % der bestrahlten, keine Todesfälle.",
+    transfer:"Europäische Multicenterstudie, direkt auf deutsche Zentren mit Neurotchirurgie und Strahlentherapie übertragbar."
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -1880,7 +1889,7 @@ const RADAR_FRISTEN = [["2026-10-20", "2026-10-20", "2026-12-31", "2026-10-28"],
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "08.10.2026";
+const NEWS_STAND = "09.10.2026";
 const NEWS = [
   {titel:"Paneuropäisches Onkologie-Register: iOMEDICO und Lifen kooperieren", datum:"2026-10-07", url:"https://www.monitor-versorgungsforschung.de/news/paneuropaeisches-onkologie-register-iomedico-und-lifen-kooperieren/"},
   {titel:"Lungenkrebs in Rheinland-Pfalz: Krebsregister legt Zahlen für 2024 vor", datum:"2026-09-23", url:"https://www.monitor-versorgungsforschung.de/news/lungenkrebs-in-rheinland-pfalz-krebsregister-legt-zahlen-fuer-2024-vor/"},
@@ -1890,8 +1899,8 @@ const NEWS = [
 // Fremde Pressemeldungen zum Thema — taeglich von scripts/newsfeed.py
 // === PRESSE-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
 const PRESSE = [
+  {titel:"Aspirin zur Darmkrebsprävention bisher selten genutzt", datum:"2026-10-08", url:"http://idw-online.de/de/news878855", quelle:"idw"},
   {titel:"Bauchspeicheldrüsenkrebs: Forschende programmieren Tumorumgebung gezielt um", datum:"2026-10-06", url:"http://idw-online.de/de/news878622", quelle:"idw"},
-  {titel:"Neue Ansätze bei Eierstockkrebs: eigene Immunzellen des Tumors helfen, Chemoresistenz zu überwinden", datum:"2026-10-06", url:"http://idw-online.de/de/news878589", quelle:"idw"},
 ];
 // === PRESSE-BLOCK-ENDE ===
 
