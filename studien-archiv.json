@@ -780,19 +780,6 @@
   "aufgenommen": "2026-10-02"
  },
  {
-  "pmid": "42815199",
-  "journal": "Eur J Cancer",
-  "year": "2026",
-  "author": "Choucair A et al.",
-  "pubdate": "25.09.2026",
-  "added": "30.09.2026",
-  "transfer": "Frankreich (Gustave Roussy), validiertes prospektives Design für deutsche Zentren nachbildbar.",
-  "title": "Liquid Biopsy und Tumorvolumen verbessern Überlebensprognose bei metastasierten Malignomen",
-  "sum": "Retrospektive Pankrebs-Kohortenstudie mit 719 Patienten (Training n=570, Validierung n=149) zur kombinierten Prognostik durch Tumorfrakt ion in Blutplasma, CT-Tumorvolumen und Body-Composition.",
-  "result": "28,2% der Patienten zeigten Tumorfrakt ion=0% trotz messbaren Tumors (medianes Volumen 43,6 cm³). Kombiniertes Modell (Tumorfrakt ion + Volumen + klinische Variablen) erreichte C-Index 0,678, besser als Tumorfrakt ion allein (0,634, p=0,04) oder nur klinische Variablen (0,563, p=0,004). Risiko stratifizierung zeigte markant unterschiedliche Überlebensraten (8,3 vs. >25 Monate, p<0,001).",
-  "aufgenommen": "2026-10-02"
- },
- {
   "pmid": "42815776",
   "journal": "Radiother Oncol",
   "year": "2026",
@@ -1411,8 +1398,8 @@
   "pubdate": "10.09.2026",
   "added": "23.09.2026",
   "transfer": "Deutsche Klinikdaten aus 19 Zentren, vollständig übertragbar",
-  "title": "FLOT plus Nivolumab bei Magenkrebse: Monocyten-Lymphozyten-Ratio identifiziert Profiteure",
-  "sum": "Extended Follow-up einer deutschen Multizenterstudie (Arm C: 52 Patienten mit mCRPC) zu FLOT-Chemotherapie plus Nivolumab mit Biomarker-Stratifizierung für Magenkarzinom.",
+  "title": "FLOT plus Nivolumab bei Magenkrebs: Monozyten-Lymphozyten-Ratio identifiziert Profiteure",
+  "sum": "Extended Follow-up einer deutschen Multizenterstudie (Arm C: 52 Patienten mit metastasiertem gastroösophagealem Adenokarzinom) zu FLOT-Chemotherapie plus Nivolumab mit Biomarker-Stratifizierung.",
   "result": "Mediane OS 14,6 Monate; bei CPS≥1 plus niedriger MLR (Monocyten-Lymphozyten-Ratio) OS 32,3 vs. 7,4 Monate (p=0,044). NLR und MLR korrelierten mit Überleben; Schmerz verbesserte sich, Müdigkeit und körperliche Funktionsfähigkeit verschlechterten sich.",
   "aufgenommen": "2026-09-24"
  },
