@@ -1868,62 +1868,62 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "14. Okt. 2026, 06:01 Uhr";
+const SNAP_DATE = "15. Okt. 2026, 06:25 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Int J Radiat Oncol Biol Phys", year:"2026", pmid:"42869299",
-    author:"Chun SG et al.", pubdate:"13.10.2026",
-    added:"13.10.2026",
-    title:"Beschleunigte Hypofractionierung bei inoperablem NSCLC: Konsensus gegen überlegene Evidenz",
-    sum:"Ein multidisziplinäres Expertenpanel der American Radium Society entwickelte Appropriate-Use-Kriterien für beschleunigte hypofractionierte Strahlentherapie bei lokal fortgeschrittenem NSCLC ohne Chemotherapie-Eignung.",
-    result:"Das Panel befürwortete IMRT und Protonentherapie mit Dosisbeschränkungen (Lunge V20&lt;30%, Herz V40&lt;20%) bei 15-Fraktionen-Hypofractionierung, lehnte aber auf Basis von 14 klinischen Studien (davon nur eine Phase III randomisiert) die Überlegenheit gegenüber konventioneller 60-Gy-Fraktionierung ab. Consolidative, nicht concurrent Immuntherapie wird empfohlen.",
-    transfer:"Leitlinienconsensus; deutsche Zentren folgen DEGRO-Empfehlungen mit vergleichbarem Evidenzstand"
+    journal:"N Engl J Med", year:"2026", pmid:"42874102",
+    author:"Chiaretti S et al.", pubdate:"15.10.2026",
+    added:"14.10.2026",
+    title:"Chemotherapie-freie Kombination überlegen bei Philadelphia-positiver ALL",
+    sum:"Randomisierte Phase-III-Studie (GIMEMA ALL2820) mit 236 Patienten mit neu diagnostizierter Philadelphia-positiver akuter lymphoblastischer Leukämie; Vergleich Ponatinib plus Blinatumomab vs. Imatinib plus Chemotherapie als Frontline-Therapie.",
+    result:"24-Monats-ereignisfreies Überleben: 86% (Ponatinib-Blinatumomab) vs. 67% (Imatinib-Chemotherapie), p&lt;0,001. Molekulare Remission nach Blinatumomab: 71% vs. 49%. Gesamtüberleben 90% vs. 85%. Nur 19% der Interventionsgruppe erhielten Stammzelltransplantation nach erster kompletter hämatologischer Remission. Kumulative Rezidivrate 5% vs. 13%.",
+    transfer:"Italien, europäisches Zentren-Netzwerk, GIMEMA-Datenbank, GKV-System vergleichbar"
   },
   {
-    journal:"Clin Cancer Res", year:"2026", pmid:"42868274",
-    author:"Nguyen DH et al.", pubdate:"13.10.2026",
-    added:"13.10.2026",
-    title:"Immunoscore stratifiziert HPV-assoziiertes Oropharynxkarzinom besser als TNM-Stadium",
-    sum:"Ein internationales Team validierte den Immunoscore (CD3+/CD8+-Dichten in Tumor und Invasionsrand) zur Prognosevorhersage in HPV-positivem Oropharynxkarzinom in drei Validierungskohorten mit insgesamt 191 Patienten.",
-    result:"Immunoscore-High-Patienten erreichten über alle Kohorten hinweg besseres 3-Jahres-krankheitsfreies Überleben (DFS) (log-rank p&lt;0,05). Im multivariablen Modell war Immunoscore-Low der unabhängige Prognosefaktor mit größtem adjustiertem Effekt (HR 9,03, 95%-KI 4,02–20,31, p&lt;0,001). Das kombinierte Immunoscore-klinische Modell zeigte bessere DFS-Vorhersage als klinisches Modell allein (C-Index 0,82 vs. 0,70, p&lt;0,0001).",
-    transfer:"Europäisches Multizenterstudie, französische/UK-Daten, internationales Validierungskonzept übertragbar"
+    journal:"Clin Cancer Res", year:"2026", pmid:"42873584",
+    author:"Miliziano D et al.", pubdate:"14.10.2026",
+    added:"14.10.2026",
+    title:"Platinum-Pemetrexed nach RET-Inhibitor-Versagen beim nicht-kleinzelligen Lungenkarzinom",
+    sum:"Internationale Real-World-Analyse von 81 Patienten mit RET-Fusions-positivem metastasiertem NSCLC nach Progression unter erstliniger selektiver RET-Inhibitor-Therapie; zweitlinige Behandlung meist mit Platin-Pemetrexed ± Immunotherapie.",
+    result:"Zweitlinie: Objektive Ansprechrate 41% (12/29), mediane Real-World-PFS 6,1 Monate (95%-KI 4,8–11,4), medianes OS 13,7 Monate (95%-KI 8,7–26,5). Kein Unterschied zwischen Chemotherapie allein vs. Chemo-Immunotherapie (PFS 5,9 vs. 6,8 Monate, p=0,903). Drittlinie mit Taxan: mediane PFS 1,5 Monate, keine Ansprechrate.",
+    transfer:"Internationales Konsortium, europäische Zentren vertreten, Versorgungsdaten übertragbar"
   },
   {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42867833",
-    author:"Wadhwa A et al.", pubdate:"13.10.2026",
-    added:"13.10.2026",
-    title:"Übermäßige Fettgewebszunahme unter Therapie erhöht Rezidivrisiko bei Hodgkin-Lymphom bei Kindern",
-    sum:"Longitudinale Analyse von 951 Kindern mit intermediärem/hochrisiko Hodgkin-Lymphom aus Therapiestudien mit CT-Messung von Skelettmuskel- und Fettgewebsfläche vor/nach 2 Chemotherapie-Zyklen.",
-    result:"Übermäßige Fettgewebszunahme (beobachtet in 36,2%) war bei Patienten mit negativem PET2-Scan mit 1,73-fach erhöhter bereinigter Hazard für Relapse assoziiert (95%-KI 1,08–2,77, p=0,02), nicht jedoch bei positivem PET2 (HR 0,90, 95%-KI 0,51–1,57, p=0,70). Skelettmuskelveränderungen zeigten keine Rezidivassoziation.",
-    transfer:"US-Kohortenstudie (SEER/COG-Daten); Kandidaten-Biomarker, Mechanismus unklar"
+    journal:"Strahlenther Onkol", year:"2026", pmid:"42873235",
+    author:"Steike DR et al.", pubdate:"14.10.2026",
+    added:"14.10.2026",
+    title:"Reiseroute bis zur Radiotherapie belastet Lymphom-Patienten deutlich",
+    sum:"Prospektive deutsche Registerstudie von 82 Patienten mit primären kutanen Lymphomen, die zur Strahlentherapie überwiesen wurden; Erfassung von Lebensqualitäts-Präferenzen, Reiseentfernung und gesundheitsbezogener Lebensqualität vor Therapiebeginn.",
+    result:"Mediane Reisedistanz für Sézary-Syndrom 201 km, Mykosis fungoides 114 km, andere kutane Lymphome 65 km. 38% der Patienten priorisierten Lebensqualität, 25% Lebensdauer, 37% bewerteten beide gleich. Älteres Alter und längere Reisedistanz waren mit Lebensqualitätspräferenz assoziiert. Höhere Beeinträchtigung der Lebensqualität bei MF und SS vs. anderen kutanen Lymphomen.",
+    transfer:"Deutschland, Westfalen-Lippe, deutsches Gesundheitssystem, direkt übertragbar"
   },
   {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42867136",
-    author:"Bodelon C et al.", pubdate:"13.10.2026",
-    added:"13.10.2026",
-    title:"Hochgradige Befolgung von Lifestyle-Leitlinien verbessert Gesundheit bei Chemotherapie-behandelten Brustkrebsüberlebenden",
-    sum:"Prospektive Kohortenstudie mit 1.610 Brustkrebsüberlebenden und 16.100 altersgepaarten Kontrollpersonen aus der American Cancer Society Cancer Prevention Study-3, Auswertung der Assoziation zwischen Befolgung von ACS-Lifestyle-Leitlinien (Score 0–8) und Patient-Reported Outcomes Measurement Information System Global Health Scale.",
-    result:"Höhere Leitlinien-Befolgung war mit besserer physischer Gesundheit assoziiert (p&lt;0,001). Chemotherapie-behandelte Überlebende mit niedriger Befolgung zeigten schlechtere Gesundheit (&lt;3 Jahre: β=−2,67, 95%-KI −3,77 bis −1,58; ≥3 Jahre: β=−2,10, 95%-KI −3,70 bis −0,51). Mit hoher Befolgung war Gesundheit vergleichbar mit nicht-krebserkrankten Frauen oder besser (&lt;3 Jahre: β=1,09, 95%-KI 0,30–1,89; ≥3 Jahre: β=2,56, 95%-KI 1,40–3,72).",
-    transfer:"USA-Daten; Lifestyle-Empfehlungen gelten international, Übertragbarkeit auf deutsche Nachsorge"
+    journal:"Radiother Oncol", year:"2026", pmid:"42874780",
+    author:"van der Walle R et al.", pubdate:"14.10.2026",
+    added:"14.10.2026",
+    title:"Wiederholte Metastasen-Radiotherapie verzögert Androgen-Entzug beim Prostatakarzinom",
+    sum:"Multizentrische europäische Kohorte von 177 Patienten mit PSMA-PET-detektierten oligorekurrenten hormonempfindlichen Prostatakarzinomen, die ≥2 Zyklen metastasen-gerichteter Radiotherapie erhielten; Risikostratifizierung für Androgen-Deprivations-Therapie-Freiheit.",
+    result:"2-Jahres-ADT-Freiheit: 50,2% (95%-KI 41,4–58,3%). 2-Jahres-Polymetastasen-Freiheit 64,4%, Systemtherapie-Freiheit 83,5%, Gesamtüberleben 94,2%. Längeres Intervall zwischen erstem und zweitem MDRT (HR 0,96 pro Monat, p=0,003) und einzelne Läsion (vs. ≥2 Läsionen, HR 1,88, p=0,006) unabhängig mit ADT-Freiheit assoziiert. C-Index 0,68 (moderat).",
+    transfer:"Niederlande, Polen, Österreich, Italien, Lettland; vergleichbare europäische Versorgungssysteme"
   },
   {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42867156",
-    author:"van der Velden KJM et al.", pubdate:"13.10.2026",
-    added:"13.10.2026",
-    title:"Unter-Nutzung von Knochenschutztherapie bei mCRPC trotz hoher Morbidität in Hochrisiko-Patienten",
-    sum:"Vergleichende Analyse von 2.115 mCRPC-Patienten mit Knochenmetas aus Dutch CAPRI-3-Register (2016–2021) versus 1.923 aus CAPRI-2 (2010–2015), Messung von Knochenschutzmittel-Nutzung und symptomatischen skelettalen Ereignissen nach Chemotherapie-Initiierung.",
-    result:"Knochenschutzmittel-Einsatz sank von 60% auf 28%, nur 8% erhielten guideline-empfohlenes Timing (≤4 Wochen nach Therapiestart). Gesamte symptomatische skelettale Ereignis-Inzidenz nahm ab (0,26 auf 0,21 pro Patient-Jahr), aber Hochrisiko-Patienten mit frühem Knochenschutz erlebten höchste Ereignisdichte (0,29) und kürzestes ereignisfreies Überleben (8,7 vs. 14,6 Monate, p&lt;0,001).",
-    transfer:"Niederlande, vergleichbares Versicherungssystem und Dokumentationstandards wie Deutschland"
+    journal:"Nat Med", year:"2026", pmid:"42864412",
+    author:"Castillon VJ et al.", pubdate:"12.10.2026",
+    added:"12.10.2026",
+    title:"Gewichtsverlust-Episoden vorhersagbar, Prognose beeinträchtigt",
+    sum:"Gesundheitssystem-weite klinogenomische Analyse von 52.236 Krebspatienten (Memorial Sloan Kettering 2010–2024, externe Validierung Dana-Farber mit 5.785 Patienten) zur Charakterisierung von Kachexie-Episoden und ihren Assoziationen mit Tumorgenotypen, Serologie und Outcome.",
+    result:"Kachexie-Episoden clusterten bei Krankheitsprogression und waren in fast allen Tumortypen mit inferiorem Outcome assoziiert. Konsistente Serum-Signatur: niedrige Albumin/Hämoglobin, erhöhte Leberenzyme. TP53-Mutation assoziiert mit häufigeren Kachexie-Episoden. Multivariates Vorhersage-Modell für Lungen-, Kolorektal- und Prostatakarzinom entwickelt und in externer Kohorte validiert.",
+    transfer:"USA, rutineklinische Daten, Genotypen-Verknüpfung übertragbar"
   },
   {
-    journal:"Cancer Cell", year:"2026", pmid:"42805170",
-    author:"García-Gómez P et al.", pubdate:"12.10.2026",
-    added:"28.09.2026",
-    title:"MXD4-abhängige Proliferationspause ermöglicht Hirnmetastasen-Überleben: therapeutische Angriffsfläche",
-    sum:"Mechanistische Studie an experimentellen Hirnmetastasen-Modellen und Patienten-Mikrometastasen zur Identifikation adaptiver Zustände metastatischer Zellen vor vaskulärer Ko-Option; genetische Disruption von MXD4 (MYC-Antagonist) und Screening nach therapeutischen Vulnerabilitäten in Organ-Kulturen.",
-    result:"MXD4-abhängige vorübergehende Proliferationspause puffert Early-Colonization-Stress ab. Genetische MXD4-Disruption beeinträchtigt Mikrometastasen-Überleben und verhindert Progression zu Makrometastasen. Vulnerabilität der Pause ist mit klinisch verfügbaren Medikamenten angreifbar; Modell validiert in Patienten-Hirnmikrometastasen.",
-    transfer:"Multinationale Grundlagen-/Translationsforschung (Spanien, UK, USA); klinischer Modellorganismus (Patient-Kulturen)"
+    journal:"Eur J Cancer", year:"2026", pmid:"42874215",
+    author:"Vo-Quang E et al.", pubdate:"09.10.2026",
+    added:"14.10.2026",
+    title:"5-FU besser als Gemcitabin bei metastasiertem Ampullenkarzinom",
+    sum:"Real-World-Analyse von 85 französischen Patienten mit metastasierendem Ampullenkarzinom nach Resektion, die erstlinig Fluoropyrimidin- oder Gemcitabin-basierte Chemotherapie erhielten.",
+    result:"Mediane progressionsfreie Überlebenszeit (PFS) 6,7 Monate (95%-KI 4,8–8,9) unter 5-FU vs. Gemcitabin; unter 5-FU signifikant bessere PFS (Hazard Ratio 0,53, p=0,01), aber kein Unterschied beim Gesamtüberleben (medianes OS 15,6 Monate; HR 0,58 für Abwesenheit von Lebermetastasen, p=0,04). Objektive Ansprechrate ähnlich (36,2% vs. 32,0%, p=0,73).",
+    transfer:"Frankreich, nationale prospektive FFCD-Kohorte mit vergleichbarem Gesundheitssystem"
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -1939,7 +1939,7 @@ const RADAR_FRISTEN = [["2026-10-20", "2026-10-20", "2026-12-31"], [], ["2026-10
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "14.10.2026";
+const NEWS_STAND = "15.10.2026";
 const NEWS = [
   {titel:"Paneuropäisches Onkologie-Register: iOMEDICO und Lifen kooperieren", datum:"2026-10-07", url:"https://www.monitor-versorgungsforschung.de/news/paneuropaeisches-onkologie-register-iomedico-und-lifen-kooperieren/"},
   {titel:"Lungenkrebs in Rheinland-Pfalz: Krebsregister legt Zahlen für 2024 vor", datum:"2026-09-23", url:"https://www.monitor-versorgungsforschung.de/news/lungenkrebs-in-rheinland-pfalz-krebsregister-legt-zahlen-fuer-2024-vor/"},
