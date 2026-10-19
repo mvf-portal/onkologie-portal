@@ -1868,62 +1868,71 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "18. Okt. 2026, 06:25 Uhr";
+const SNAP_DATE = "19. Okt. 2026, 06:25 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Nat Med", year:"2026", pmid:"42875559",
-    author:"Zacchi F et al.", pubdate:"14.10.2026",
-    added:"14.10.2026",
-    title:"Talazoparib + Enzalutamid bei metastasiertem Prostatakarzinom: PARP-Inhibitor bessert PSA-Response nicht",
-    sum:"Randomisierte Phase-II-Studie mit 54 Patienten, die den Nutzen von PARP-Inhibitor Talazoparib zusätzlich zu Enzalutamid bei hochvolumigen metastasierten hormonsensitiven Prostatakarzinomen untersuchte.",
-    result:"PSA-Ansprechrate (&lt;0,2 ng/ml) nach 12 Monaten: 73% unter Kombinationstherapie vs. 64,7% unter Enzalutamid allein (p=0,54 für explorativen Vergleich). Grade ≥3 Nebenwirkungen: 68% vs. 35%, davon Anämie 41%. Zwei Todesfälle durch therapieassoziierte myeloide Neoplasien in der Kombinationsgruppe. Die Studie zeigt klinische Aktivität, aber keinen klaren zusätzlichen Nutzen gegenüber Monotherapie bei erhöhter Toxizität.",
-    transfer:"Spanische akademische Zentren, europäisches Gesundheitssystem, begrenzte Übertragbarkeit wegen geringer Fallzahl"
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"42893805",
+    author:"Qin X et al.", pubdate:"19.10.2026",
+    added:"18.10.2026",
+    title:"59,6 % der gebrechlichen Brustkrebsüberlebenden erhalten keine ambulante Pflege",
+    sum:"Analyse von Medicare-Daten 2017-2020 zu Gebrechlichkeit und ambulanter Pflegeversorgung bei älteren Brustkrebsüberlebenden (134.410 Frauen, 347.953 Patientenjahre) mittels Claims-basiertem Deficit-Accumulation Frailty Index.",
+    result:"Bei hohem Pflegebedarf (DAFI≥0,25) hatten 59,6 % keine Medicare-Heimbetreuung; HH-Nutzung stieg mit Gebrechlichkeit (+1,10 Prozentpunkte pro +0,01 DAFI), am steilsten bei Nichtdual-Versicherten (+1,21 pp). Medicare-Leistungen erfassen frailty-assoziierte Pflegebedarfe nicht ausreichend.",
+    transfer:"USA-Daten, Finanzierungssystem grundlegend anders; Befund zur Unterversorgung übertragbar."
   },
   {
-    journal:"Nat Med", year:"2026", pmid:"42875558",
-    author:"Sellars MC et al.", pubdate:"14.10.2026",
-    added:"14.10.2026",
-    title:"Personalisierte Neoantigen-Vakzine bei Ovarialkarzinom: Phase-I-Verträglichkeit erreicht",
-    sum:"Phase-I-Studie mit 10 Patienten (1 Neudiagnose, 9 bei Rezidiv), die eine individualisierte Neoantigen-Peptidvakzine kombiniert mit verzögerter Anti-PD-1-Therapie untersuchte.",
-    result:"Vakzinierungsrate Cohort B (Rezidive): 75% (90%-KI 47–93%); keine Sicherheitssignale oder Therapieabbrüche wegen Toxizität. &gt;70% der ausgewählten Antigenziele blieben trotz 6,5 Monaten Standard-Chemotherapie durch zellfreie DNA nachweisbar. Biomarkeranalyse deutete auf biologische Aktivität bei 6 von 10 Patienten hin, assoziiert mit breiterer tumor- und impfspezifischer Immunität. Mechanismen der Tumorresistenz zeigten diverse Effekte auf Antigenrepräsentation.",
-    transfer:"USA, Dana-Farber, nur Sicherheit übertragbar – Early-Phase-Machbarkeitsstudie"
+    journal:"Blood", year:"2026", pmid:"42886676",
+    author:"Rodríguez-Arbolí E et al.", pubdate:"16.10.2026",
+    added:"16.10.2026",
+    title:"RAS-Mutationen bei AML: kontextabhängiger Prognosewert und Angriffspunkte für Therapie",
+    sum:"Zentralisierte molekulare Profilierung von 8.553 neu diagnostizierten AML-Patienten zur Charakterisierung von RAS-Mutationen, deren genomischer Kontext und klinischer Prognosewert.",
+    result:"RAS-Mutationen in 21 % (1.775/8.553), davon NRAS 13 %, KRAS 5 %; NRAS-Mutationen zeigten gegensätzliche OS-Assoziationen (ungünstig bei AML-MDS, HR=1,32, p=0,036; günstig bei NPM1, HR=0,61, p=0,036), KRAS prognostisch ungünstig (HR=1,41, p=0,003); bei Venetoclax-Therapie erheblich schlechtere OS bei NPM1 (HR=2,98) oder IDH1/2-Mutationen (HR=4,06).",
+    transfer:"Spanische Multizenterstudie, europäische Patienten, vergleichbar mit deutschem Versorgungsstandard."
   },
   {
-    journal:"J Clin Oncol", year:"2026", pmid:"42874014",
-    author:"Solanki AA et al.", pubdate:"14.10.2026",
-    added:"14.10.2026",
-    title:"Dosiseskalierende Brachytherapie bei Prostatakarzinom-Rezidiv: 3-Jahres-Lokalkonrolle 73%",
-    sum:"Multizentrische Phase-I/II-Studie mit 62 Patienten, die fokale salvage High-Dose-Rate-Brachytherapie (30 Gy in 1–2 Fraktionen) mit genomischem Klassifizierer-Risikoschichtung für intraprosteatische Rezidive nach definitiver Radiotherapie evaluierte.",
-    result:"Median Follow-up 39,4 Monate. 3-Jahres-Raten: biochemische Progressionsfreiheit 62,7%, lokale Rezidivfreiheit 73,0%, fernmetastasenfreies Überleben 85,9%. Keine akuten Grad-3-Toxizitäten, zwei (3,2%) späte Grad-3-Ereignisse. Genomischer Score &gt;0,85 (n=4) prädizierten 100% Rezidive. Lebensqualitätsänderungen erreichten keine klinisch relevanten Unterschiede.",
-    transfer:"USA-Konsortium, Verfahren technisch auf Deutschland übertragbar, klinische Validierung ausstehend"
+    journal:"Clin Cancer Res", year:"2026", pmid:"42886001",
+    author:"Cheng K et al.", pubdate:"16.10.2026",
+    added:"16.10.2026",
+    title:"Serplulimab+Chemotherapie+Radiotherapie bei metastasiertem Pankreas-Ca: 78,3 % 6-Monats-PFS",
+    sum:"Multizentrische Phase-II-Studie (ICSBR-Regime) mit Serplulimab, Gemcitabin plus Nab-Paclitaxel und stereotaktischer Körperstrahlentherapie bei 46 Patienten mit metastasiertem Pankreas-Adenokarzinom in Erstliniensetting.",
+    result:"6-Monats-PFS 78,3 % (95%-CI 67,2-91,1 %), medianes PFS 8,5 Monate (95%-CI 7,3-12,0), medianes OS 14,0 Monate (12,0–nicht erreicht), objektive Ansprechrate 73,9 % (95%-CI 58,9-85,7 %); kein Todesfälle durch Behandlung. ctDNA-Negativität bei Baseline mit besserem Überleben assoziiert; TME-Analyse zeigte Korrelation von cancer-associated-fibroblast-Status und T-Zell-Anteil mit klinischem Outcome.",
+    transfer:"China, Gesundheitssystem nicht vergleichbar; Sicherheits- und Response-Daten relevant."
   },
   {
-    journal:"Clin Cancer Res", year:"2026", pmid:"42870529",
-    author:"Pladsen AV et al.", pubdate:"14.10.2026",
-    added:"14.10.2026",
-    title:"Genomische Biomarker vorhersagen Carboplatin-Ansprechen beim Mammakarzinom",
-    sum:"Prospektive randomisierte neoadjuvante Studie mit 187 Patienten (Norwegen), die DNA-basierte Biomarker (LOH-Fraktion, HRD-Status) zur Vorhersage des Carboplatin-Ansprechens bei HR+ und triple-negativem Brustkrebs evaluierte.",
-    result:"Triple-negativ: pathologische Komplettremission (pCR) 69% mit Carboplatin vs. 43% ohne (p=0,036), ereignisfreies Überleben signifikant verlängert (p=0,017). Bei niedrigem LOH-Anteil besserte Carboplatin ereignisfreies Überleben (p=0,007). HR+: pCR 15% vs. 11% (p=0,59), aber niedriges Residualtumorvolumen stieg von 16% auf 35% (p=0,033). HRD-positive HR+-Tumoren: 5/8 pCR mit vs. 4/47 ohne Carboplatin (p=0,002).",
-    transfer:"Norwegische Universitätsklinik, vergleichbares europäisches Gesundheitssystem"
+    journal:"Cancer Discov", year:"2026", pmid:"42878664",
+    author:"García-Sancha N et al.", pubdate:"15.10.2026",
+    added:"15.10.2026",
+    title:"Cabergolin senkt postpartales Brustkrebsrisiko um 69 %: Mechanismus und Kohortenbeleg",
+    sum:"Mechanistisches Tiermodell und retrospektive Kohortenstudien zur Wirkung von Cabergolin (Dopaminagonist, senkt Prolaktin) auf postpartale Brustkrebs-Inzidenz bei BRCA1-Trägerinnen durch Mammary-Gland-Involution.",
+    result:"Bei BRCA1/p53-mutierten Mäusen verzögerte und reduzierte Cabergolin Mammakrebs-Inzidenz durch Verstärkung der Involution, Reduktion von Proliferation und Ki-67-Expression, Umkehr von T-Zell-Erschöpfung; retrospektive europäische Kohorten (2 Studien, Meta-Analyse) zeigten etwa 69 % Risikoreduktion für postpartalen Brustkrebs unter Cabergolin.",
+    transfer:"Spanische und internationale Kohorten, Grundlagen+Humanstudien kombiniert, Präventionsstrategie für Hochrisiko."
   },
   {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42872484",
-    author:"Kelly KP et al.", pubdate:"14.10.2026",
-    added:"14.10.2026",
-    title:"Geburtskohorten-Effekt erklärt Anstieg des Gebärmutterkrebses weltweit",
-    sum:"Alter-Periode-Kohortenanalyse von Inzidenztrends des Endometriumkarzinoms bei Frauen 30–84 Jahren aus 24 Ländern (1998–2017) mit Fokus auf Geburtskohorten-Effekte.",
-    result:"1998–2017 stieg Inzidenz in 13 von 24 Ländern, schnellster Anstieg Thailand (+3,58%/Jahr, 95%-KI 2,78–4,38), Belarus (+3,32%, 3,06–3,57), Türkiye (+3,01%, 2,35–3,67); sank in Österreich (-1,57%) und Finnland (-0,76%). Geburtskohorten-Effekt detektiert in 15 Ländern. Kohorten-Ratenratios: Vereinigtes Königreich 3,45-fach höher (1983 vs. 1953, 95%-KI 2,67–4,46), Thailand 3,08-fach, Belarus 3,03-fach. Steilster Anstieg bei Frauen 30–34 Jahren.",
-    transfer:"Internationale Krebsregisterdaten, Kohortenperspektive identifiziert frühe Lebenszeitfaktoren"
+    journal:"Eur J Cancer", year:"2026", pmid:"42892237",
+    author:"Serrano D et al.", pubdate:"14.10.2026",
+    added:"18.10.2026",
+    title:"Tamoxifen plus kalorische Restriktion: SHBG-Spiegel und Brustkrebsrisiko-Biomarker verbessert",
+    sum:"Randomisierte Phase-II-Studie zu Kombinationen aus Tamoxifen, lebensstiländerung und intermittierender kalorischer Restriktion bei hochgradig gefährdeten Frauen, mit SHBG-Spiegeln als primärem Endpunkt.",
+    result:"Tamoxifen ± kalorische Restriktion erhöhte signifikant SHBG und IGFBP-3 und senkte IGF-I (alle p&lt;0,01); bei hoher Adhärenz (&gt;90%) zeigte Lebensstiländerung plus kalorische Restriktion höhere SHBG als Lebensstiländerung allein (p=0,045). Kein Unterschied bei unerwünschten Ereignissen; milde Verschlechterung der Lebensqualität unter Tamoxifen.",
+    transfer:"Italienische Zentren, deutschsprachiger Raum vergleichbar, Prävention bei genetischem Risiko."
   },
   {
-    journal:"J Clin Oncol", year:"2026", pmid:"42874012",
-    author:"Shroff RT et al.", pubdate:"14.10.2026",
-    added:"14.10.2026",
-    title:"ASCO-Leitlinie Gallenwegskrebs 2026: Immuntherapie + Chemotherapie erste Linie",
-    sum:"Aktualisierte ASCO-Leitlinie mit systematischer Evidenzanalyse zu Liquid Biopsy und systemischer Therapie bei fortgeschrittenem Gallenwegskrebs (mMMR/MSS und seltene Mutationen).",
-    result:"6 Studien zu Liquid Biopsy-Konkordanz mit Gewebebiopsie analysiert. 9 RCTs erste Linie, 5 RCTs/Phase-II zweite Linie. Empfehlungen: NGS Gewebe und RNA zur Biomarker-Detektion an Diagnose; pMMR/MSS erste Linie: Immune Checkpoint Inhibitor + Chemotherapie; dMMR/MSI-H: Pembrolizumab Monotherapie; Progression ohne Biomarker: FOLFOX oder Best Supportive Care; Zweitlinie biomarkergeführt (IDH1, FGFR2, BRAF V600E, HER2, Fusionen).",
-    transfer:"USA/ASCO, internationale Evidenzsynthese, in Deutschland durch AMNOG-Bewertung und Zertifizierung anwendbar"
+    journal:"Eur J Cancer", year:"2026", pmid:"42869860",
+    author:"Carmona-Bayonas A et al.", pubdate:"08.10.2026",
+    added:"13.10.2026",
+    title:"Perioperative Chemotherapie bei GEP-NEC: Erhöhter Langzeit-Heilungsanteil, nicht nur Verzögerung",
+    sum:"Analyse von 162 Patienten mit resezierten GEP-NEC Grad 3 (GETNE-Register) zur Frage, ob perioperative Chemotherapie Langzeirheilung ermöglicht oder nur Rezidive verzögert, mittels Cox-Modellen und Bayesscher Promotion-Time-Cure-Modelle.",
+    result:"Chemotherapie (n=74, 46 %) verkürzte ereignisfreie Überlebenszeit (HR 0,61, 95%-CI 0,40-0,96) und rezidivfreie Überlebenszeit (HR 0,59, 95%-CI 0,37-0,93), nicht eindeutig OS (HR 0,73, 95%-CI 0,46-1,15); Cure-Modell deutete auf niedrigere klonogene Last (Ratio 0,67, Posterior-Wahrscheinlichkeit 94%) statt langsamerer Kinematik hin. Populationsgeheilungsanteil 22,7 % (95%-CrI 15,9-29,6).",
+    transfer:"Spanische Multizenterstudie, europäisches Versicherungssystem, Hochrisiko-Entität."
+  },
+  {
+    journal:"Eur J Cancer", year:"2026", pmid:"42892235",
+    author:"Maiorano BA et al.", pubdate:"02.10.2026",
+    added:"18.10.2026",
+    title:"Darolutamide-Triplet-Therapie: 6,3 Monate längere symptomfreie Zeit bei metastasiertem Prostatakarzinom",
+    sum:"Q-TWiST-Analyse der ARASENS-Studie zur Bewertung der Lebensqualität unter Darolutamid plus ADT plus Docetaxel versus Placebo plus ADT plus Docetaxel bei metastasiertem hormonempfindlichem Prostatakarzinom.",
+    result:"Patienten mit Darolutamid gewannen 6,3 Monate Q-TWiST gegenüber Placebo (p&lt;0,001), mit erhöhter symptomfreier Zeit (17,6 vs. 10,9 Monate) und reduzierter Progressionszeit (2,4 vs. 8,7 Monate); relative Q-TWiST-Gewinn 16,0%. Die Kombination zeigte längeres Überleben ohne Symptome oder Toxizität.",
+    transfer:"Europäische und kanadische Zentren, vergleichbare Versicherungssysteme, praxisrelevanter Endpunkt."
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -1939,7 +1948,7 @@ const RADAR_FRISTEN = [["2026-10-20", "2026-10-20", "2026-12-31"], [], ["2026-10
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "18.10.2026";
+const NEWS_STAND = "19.10.2026";
 const NEWS = [
   {titel:"Paneuropäisches Onkologie-Register: iOMEDICO und Lifen kooperieren", datum:"2026-10-07", url:"https://www.monitor-versorgungsforschung.de/news/paneuropaeisches-onkologie-register-iomedico-und-lifen-kooperieren/"},
   {titel:"Lungenkrebs in Rheinland-Pfalz: Krebsregister legt Zahlen für 2024 vor", datum:"2026-09-23", url:"https://www.monitor-versorgungsforschung.de/news/lungenkrebs-in-rheinland-pfalz-krebsregister-legt-zahlen-fuer-2024-vor/"},
