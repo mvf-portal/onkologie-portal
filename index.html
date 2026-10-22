@@ -1868,71 +1868,62 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "21. Okt. 2026, 06:25 Uhr";
+const SNAP_DATE = "22. Okt. 2026, 06:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"JCO Oncol Pract", year:"2026", pmid:"42900867",
-    author:"Saeed A et al.", pubdate:"20.10.2026",
+    journal:"J Clin Oncol", year:"2026", pmid:"42900864",
+    author:"Li ZQ et al.", pubdate:"20.10.2026",
     added:"20.10.2026",
-    title:"FLOT-Perioperative Therapie: internationales Expertenkonsens zu Patientenselektion und Toxizitätsmanagement",
-    sum:"Multidisziplinäres internationales Expertenpanel erarbeitete mittels modifizierter Delphi-Methode Konsensaussagen zur Selektion, Optimierung und Behandlung von Nebenwirkungen bei perioperativer FLOT-Chemotherapie bei resektablem Magen- und Ösophaguskarzinom.",
-    result:"Konsens wurde zu 66,3% der Statements erreicht. Experten einigten sich: Patienten &gt;70 Jahre sollten nicht routinemäßig ausgeschlossen werden; ECOG-PS 0–1 ist angemessen, PS 0–2 kann einzelfallweise erwogen werden. Universelles Screening auf Mangelernährung, strukturierte physische Aktivität und Dosismodifikation statt Weglassen von Wirkstoffen wurden unterstützt. 94–100% Konsens bei klinischer Anwendung.",
-    transfer:"Deutschsprachiger Raum mitrepräsentiert; vergleichbare Versorgungsstrukturen und Leitlinien."
+    title:"Eosinophile im Blut prognostizieren Rezidivrisiko bei HR+/HER2- Brustkrebs",
+    sum:"Studie bei 472 Patienten mit HR+/HER2- Brustkrebs zu Assoziation erhöhter zirkulierender Eosinophilen mit Therapieergebnis.",
+    result:"Höhere präoperative Eosinophilenzahl korrelierte mit signifikant verbessertem rezidivfreiem Überleben (gemessen an fernmetastasenfreiem Überleben). Erhöhte Eosinophilen zeigten additive prognostische Wertigkeit über den 21-Gen-Recurrence-Score hinaus und ließen in der hochriskanten Subgruppe bessere CDK4/6-Inhibitor-Response vorhersagen. In Validierungskohorten (N=23.170) und Tiermodellen bestätigt.",
+    transfer:"China, Multiomik-Daten transferierbar auf deutsche Praxiskonzepte zur Risikoschichtung"
   },
   {
-    journal:"ESMO Open", year:"2026", pmid:"42901050",
-    author:"Arenas A et al.", pubdate:"20.10.2026",
+    journal:"Oncologist", year:"2026", pmid:"42898011",
+    author:"Lacaze JL et al.", pubdate:"19.10.2026",
     added:"20.10.2026",
-    title:"Genetische Varianten als Risikofaktoren für Trastuzumab-Deruxtecan-bedingte Lungentoxizität",
-    sum:"Spanische multizentrische Studie untersuchte Keimbahnvarianten bei 290 Patienten mit HER2-positivem oder HER2-low metastasiertem Brustkrebs unter Trastuzumab-Deruxtecan mittels genomischer Analyse in Bezug auf interstitielle Lungenerkrankung (ILD).",
-    result:"Bei 11,4% trat ILD auf. Stärkste Assoziationen in der HLA-Region (rs9258213 near HLA-F: OR 6,8, 95%-KI 2,6–17,9, p=9,5×10⁻⁵). Zusätzliche Assoziationen in SLCO1B1 und CYP3A4-Genen. Kein definitiver pharmacogenomischer Prädiktor identifiziert, aber Mechanismus-Einblicke gewonnen.",
-    transfer:"Spanisches Gesundheitssystem, vergleichbare Dokumentation; Befund ist sicherheitsrelevant übertragbar."
+    title:"Lokal ablative Therapie bei HR+/HER2- oligometastasiertem Brustkrebs verbessert Überleben",
+    sum:"Retrospektive Kohorte (2012–2020) mit 145 Patienten mit HR+/HER2- oligometastasiertem Brustkrebs (≤5 Metastasen) zur Frage, wann lokal ablative Therapie (LAT) das Überleben verbessert.",
+    result:"Mediane OS 81,1 Monate, mediane PFS 26,5 Monate. LAT verbesserte PFS (HR=0,52; 95%-KI 0,29–0,91; p=0,023). Bei Staging mit moderner Bildgebung (18F-FDG-PET/CT oder WB-MRI) zeigte LAT signifikante Verbesserung von OS (HR=0,29; 95%-KI 0,12–0,73; p=0,008) und PFS. Nur 18% entwickelten polymetastatische Progression nach First-line-Therapie.",
+    transfer:"Französische Spezialistklinik, Therapieentscheidungen übertragbar auf deutsche Tumorzentren"
   },
   {
-    journal:"ESMO Open", year:"2026", pmid:"42901049",
-    author:"You J et al.", pubdate:"20.10.2026",
+    journal:"Oncologist", year:"2026", pmid:"42897999",
+    author:"Nakamura T et al.", pubdate:"19.10.2026",
     added:"20.10.2026",
-    title:"Protontherapie vs. Photonentherapie bei Oropharynxkarzinom: Vorteil bei Akutnebenwirkungen, nicht bei Kontrolle",
-    sum:"Metaanalyse von zwei Phase-III-Studien und einer Matched-Cohort-Studie verglich Intensität-modulierte Protontherapie (IMPT) mit konventioneller IMRT bei Oropharynxkarzinom in Bezug auf Rezidiv-, Überlebens- und Toxizitätsraten.",
-    result:"Hazard Ratio für lokoregionales Rezidiv 1,37 (95%-KI 0,56–3,36); Progression-Free Survival HR 0,90 (0,61–1,33); Overall Survival HR 0,79 (0,32–1,98). Grad-3-Dysphagie trat bei 24% (IMPT) vs. 40,9% (IMRT) auf (RR 0,65, 95%-KI 0,51–0,84). Grad-3-Xerostomie/Trockenheit bei 19,9% vs. 32,5% (RR 0,72, 95%-KI 0,54–0,95). Ernährungsoutcomes ohne definitiven Vorteil.",
-    transfer:"Internationale Daten, methodenvergleichend; Sicherheitsbefund ist systemunabhängig übertragbar."
+    title:"Baseline-Lungenabnormitäten erhöhen Risiko für T-DXd-bedingte interstitielle Lungenerkrankung",
+    sum:"Retrospektive Kohorte (156 Patienten, Juni 2020–Mai 2025) in Japan zu Baseline-CT-Befunden vor T-DXd-Therapie und deren Assoziation mit T-DXd-bedingter interstitieller Lungenerkrankung (ILD).",
+    result:"T-DXd-bedingte ILD trat in 31 Patienten auf (20%). Bei Baseline-ILAs waren es 19/50 (38%), ohne ILAs 12/106 (11%). Baseline-ILA-Status assoziiert mit erhöhter kumulativer ILD-Inzidenz (Subdistribution-Hazard-Ratio 3,56; 95%-KI 1,63–7,78; p=0,001). Kein signifikanter Unterschied zwischen equivokalen und definitiven ILAs. Kein Unterschied in PFS oder OS nach ILA-Status.",
+    transfer:"Japan, Sicherheitsmonitoring übertragbar auf deutsche Praxen mit T-DXd-Einsatz"
   },
   {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42899410",
-    author:"van den Puttelaar R et al.", pubdate:"20.10.2026",
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"42898006",
+    author:"Labaki C et al.", pubdate:"19.10.2026",
     added:"20.10.2026",
-    title:"Versicherungsschutz reduziert Kolorektalkrebs-Mortalität um 31 Prozent – Modellstudie",
-    sum:"US-Modellierungsstudie (MISCAN-Colon) quantifizierte die Auswirkungen von Versicherungszugang auf Kolorektalkrebs-Screening, Staging und Überlebensraten in der vormals unversicherten US-Population 2025–2055.",
-    result:"Bei Gewinnung von Versicherungsschutz wären 2055 pro 100.000 Einwohner 22 von 73 Todesfällen (30,7%) vermeidbar. Inzidenz sank um 8,9% (15 Fälle). Behandlungskosten sanken um 4,8% (−1,37 Mio. USD pro 100.000), Screening-Kosten stiegen um 41,7% (+2,66 Mio.). Netto-Kostensteigerung 3,7%.",
-    transfer:"USA mit grundlegend anderem System; Kausalaussage zu Zugang und Outcome ist universell, Kostengefüge nicht übertragbar."
+    title:"Real-World-PFS validiert als Surrogatendpunkt für Gesamtüberleben bei metastasiertem Brustkrebs",
+    sum:"Retrospektive US-Kohortenstudie (Flatiron Health) mit 19.164 Patienten mit metastasiertem Brustkrebs zur Validierung von Intermediate Clinical Endpoints als Surrogate für Overall Survival.",
+    result:"Mediane OS 36,3 Monate (95%-KI 35,6–37,2). Real-World-PFS, Time to Next Line und Time to Last Treatment Administration zeigten hohe Korrelation mit OS (Kendall's tau ≥0,5; R²≥0,7 bei 36-Monats-OS und 12-Monats-Raten). Nur rwPFS erfüllte beide Surrogacy-Bedingungen mit R²≥0,7 über alle Subgruppenvergleiche.",
+    transfer:"USA-Versorgungsdaten, Rahmenwerk übertragbar auf deutsche Real-World-Analysen"
   },
   {
-    journal:"Oncologist", year:"2026", pmid:"42899399",
-    author:"Voutilainen S et al.", pubdate:"20.10.2026",
-    added:"20.10.2026",
-    title:"Finnische Real-World-Daten: NATALEE/monarchE-Patienten mit HR+/HER2− Brustkrebs haben 5-Jahres-iDFS von 76,8–82,5 Prozent",
-    sum:"Finnische bevölkerungsbasierte retrospektive Kohortenstudie von 8.911 Patienten mit HR+/HER2-negativem Frühbrust krebs 2014–2023, stratifiziert nach NATALEE (40,4%) und monarchE-Eligibilität (15,0%), mit Nachverfolgung von 5,2 Jahren.",
-    result:"NATALEE-eligible: 5-Jahres-iDFS 82,5% vs. 89,6% (nicht-eligible), DDFS 88,3% vs. 94,5%, OS 90,9% vs. 95,6%. monarchE-eligible: iDFS 76,8% vs. 88,4%, DDFS 82,3% vs. 93,8%, OS 86,8% vs. 94,9%. Metastasenprogression 3- bis 6-fach häufiger in eligible-Gruppen. Leitlinien-Eligibilitätskriterien zeigten verlässlich schlechtere Prognose.",
-    transfer:"Finnland mit vergleichbarem Versicherungssystem; Real-World-Evidenz validiert Trialdaten."
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"42895287",
+    author:"Zhang X et al.", pubdate:"19.10.2026",
+    added:"19.10.2026",
+    title:"Proteom-Biomarker unterscheiden präklinisch Kolon- von Rektumkarzinom-Risiko",
+    sum:"Prospektive Kohortenstudie (3 Kohorten, 851 KRK-Fälle, Median 7 Jahre Follow-up) zu prädiagnostischen Plasma-Proteinen 1–7 Jahre vor Krebsdiagnose mittels Olink-Panel.",
+    result:"12 Proteine zeigten signifikante gepaarte Unterschiede zwischen KRK-Fällen und Kontrollen (FDR&lt;0,1) mit moderaten Effektgrößen. Protein-Profile unterschieden sich signifikant zwischen Kolon- und Rektumkarzinom (p=0,005). Für Kolonkarzinom: 11/12 Proteine niedriger, BCAN-Assoziation OR 0,83 (95%-KI 0,74–0,94) mit hoher Kohärenz (I²&lt;0,01). Für Rektumkarzinom: 25/28 Proteine höher, HDGF OR 1,75 (95%-KI 1,15–2,66; I²&lt;0,01).",
+    transfer:"USA &amp; Australien, Proteom-Klassifizierung grundlagenorientiert, Validierung in EU-Kohorten pending"
   },
   {
-    journal:"Oncologist", year:"2026", pmid:"42899395",
-    author:"Gallagher D et al.", pubdate:"20.10.2026",
-    added:"20.10.2026",
-    title:"Pankreaskrebspatienten: Expertenkonsens zu Enzymersatztherapie verbessert Therapietoleranzhaltung",
-    sum:"Multidisziplinäre US-Delphi-Konsensus-Studie mit 17 Experten (Onkologen, Ernährungsfachkräfte) zur Standardisierung von Dosierung, Patientenschulung und Langzeitmanagement der Pankreasenzymersatztherapie (PERT) bei exokriner Pankreasinsuffizienz (EPI) in Pankreaskrebs.",
-    result:"15 finale Konsensaussagen mit ≥81% Übereinstimmung erreicht; 6 Aussagen zu klinischer Anwendung mit 94–100% Konsens. Empfohlene Startdosen: 48.000–72.000 Lipase-Units pro Mahlzeit. Standardisierte Titraturprotokolle, mehrstufige Patientenschulung und Strategien zur Reduktion finanzieller und Pillen-Belastung definiert.",
-    transfer:"USA; Verfahren ist unabhängig vom Gesundheitssystem, Konsenssicherung methodisch übertragbar."
-  },
-  {
-    journal:"Nat Med", year:"2026", pmid:"42897348",
-    author:"Magrangeas F et al.", pubdate:"19.10.2026",
-    added:"20.10.2026",
-    title:"Multiomik-Klassifizierung vorhersagt MRD-Negativität bei Myelom-Induktion mit Isatuximab-Karpfilzomib-Lenalidomid (Isa-KRd) mit AUC 0,77",
-    sum:"Französisch-amerikanische Studie integrierte Genom-, Transkriptom- und Epigenomprofiling von 423 Neudiagnose-Myelom-Proben zur Vorhersage von Minimal Residual Disease (MRD) nach Quadruplet-Induktion mit Isa-KRd.",
-    result:"HP1/HP3 und MS Genexpressions-Subtypen zeigten höhere MRD-Negativitätsraten als MF und CD2. B-Zell-Differenzierung assoziiert mit MRD-Positivität; Proliferation und MYC-Programme mit MRD-Negativität. Multimodales Random-Forest-Modell mit genomischen, transkriptomischen und epigenomischen Merkmalen erreichte AUC 0,77, übertraf klinische und genomische Einzelmodelle. Driver-Gene CCND1 und MYC korreliert mit differenziellem MRD-Outcome.",
-    transfer:"Europäisch-amerikanische Kooperation, französisches Registernetzwerk; Klassifizierungssystem methodisch übertragbar."
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"42895291",
+    author:"Colace SI et al.", pubdate:"19.10.2026",
+    added:"19.10.2026",
+    title:"TACL-Konsensus: kardiotoxizitätsgerechte Dosisindividualisierung in pädiatrischen Relaps-Studien",
+    sum:"Konsensus-Task-Force des TACL-Konsortiums zu evidenzgestützten Empfehlungen für kardialen Screening, Monitoring und Cardioprotection bei Kindern mit rezidiviertem/refraktärem hämatologischem Malignom in Relaps-Studien.",
+    result:"Fünf Leitempfehlungen: (1) Therapieausschluss basierend auf individuellen Risikofaktoren und realtimem Cardiac Function statt historischen Anthrazyklin-Dosen; (2) umfassendes Monitoring vor, während und nach Therapie erforderlich; (3) liberale Cardioprotection empfohlen; (4) einheitliche, evidenzgestützte Managementprotokolle für kardiale Dysfunktion; (5) Korrelative Cardiac Aims sollten Protokolle mit kardiotoxischem Potenzial begleiten.",
+    transfer:"USA-Kinderkrebszentren, Ansätze übertragbar auf deutsche Zentren für pädiatrische Relaps-Behandlung"
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -1948,7 +1939,7 @@ const RADAR_FRISTEN = [["2026-10-20", "2026-10-20", "2026-12-31", "2027-01-07"],
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "21.10.2026";
+const NEWS_STAND = "22.10.2026";
 const NEWS = [
   {titel:"Paneuropäisches Onkologie-Register: iOMEDICO und Lifen kooperieren", datum:"2026-10-07", url:"https://www.monitor-versorgungsforschung.de/news/paneuropaeisches-onkologie-register-iomedico-und-lifen-kooperieren/"},
   {titel:"Lungenkrebs in Rheinland-Pfalz: Krebsregister legt Zahlen für 2024 vor", datum:"2026-09-23", url:"https://www.monitor-versorgungsforschung.de/news/lungenkrebs-in-rheinland-pfalz-krebsregister-legt-zahlen-fuer-2024-vor/"},
