@@ -1895,62 +1895,26 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "22. Okt. 2026, 06:01 Uhr";
+const SNAP_DATE = "23. Okt. 2026, 06:02 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"J Clin Oncol", year:"2026", pmid:"42900864",
-    author:"Li ZQ et al.", pubdate:"20.10.2026",
-    added:"20.10.2026",
-    title:"Eosinophile im Blut prognostizieren Rezidivrisiko bei HR+/HER2- Brustkrebs",
-    sum:"Studie bei 472 Patienten mit HR+/HER2- Brustkrebs zu Assoziation erhöhter zirkulierender Eosinophilen mit Therapieergebnis.",
-    result:"Höhere präoperative Eosinophilenzahl korrelierte mit signifikant verbessertem rezidivfreiem Überleben (gemessen an fernmetastasenfreiem Überleben). Erhöhte Eosinophilen zeigten additive prognostische Wertigkeit über den 21-Gen-Recurrence-Score hinaus und ließen in der hochriskanten Subgruppe bessere CDK4/6-Inhibitor-Response vorhersagen. In Validierungskohorten (N=23.170) und Tiermodellen bestätigt.",
-    transfer:"China, Multiomik-Daten transferierbar auf deutsche Praxiskonzepte zur Risikoschichtung"
+    journal:"Lancet", year:"2026", pmid:"42906564",
+    author:"Chalabi M et al.", pubdate:"21.10.2026",
+    added:"22.10.2026",
+    title:"Neoadjuvante Immunotherapie bei dMMR-Kolonkarzinom: 100% DFS und OS nach 3-5 Jahren",
+    sum:"Patienten mit lokal fortgeschrittenem Mismatch-Repair-defizientem Kolonkarzinom erhielten vor der Operation Ipilimumab und Nivolumab.",
+    result:"Von 111 auswertbaren Patienten betrug die 3-Jahres-Krankheitsfreie Überleben 100% (97,5%-KI 100-100%) und das 5-Jahres-Gesamtüberleben 100% (95%-KI 100-100%). ctDNA-Clearance zeigte sich nach dem zweiten Zyklus bei 82% der Patienten mit verfügbarem Plasma. Diese Ergebnisse unterstützen neoadjuvante Checkpoint-Inhibition als potenzieller neuer Standard für dieses Patientengut.",
+    transfer:"Niederlande, vergleichbares Versicherungssystem, Multi-Center-Studie mit europäischen Zentren"
   },
   {
-    journal:"Oncologist", year:"2026", pmid:"42898011",
-    author:"Lacaze JL et al.", pubdate:"19.10.2026",
-    added:"20.10.2026",
-    title:"Lokal ablative Therapie bei HR+/HER2- oligometastasiertem Brustkrebs verbessert Überleben",
-    sum:"Retrospektive Kohorte (2012–2020) mit 145 Patienten mit HR+/HER2- oligometastasiertem Brustkrebs (≤5 Metastasen) zur Frage, wann lokal ablative Therapie (LAT) das Überleben verbessert.",
-    result:"Mediane OS 81,1 Monate, mediane PFS 26,5 Monate. LAT verbesserte PFS (HR=0,52; 95%-KI 0,29–0,91; p=0,023). Bei Staging mit moderner Bildgebung (18F-FDG-PET/CT oder WB-MRI) zeigte LAT signifikante Verbesserung von OS (HR=0,29; 95%-KI 0,12–0,73; p=0,008) und PFS. Nur 18% entwickelten polymetastatische Progression nach First-line-Therapie.",
-    transfer:"Französische Spezialistklinik, Therapieentscheidungen übertragbar auf deutsche Tumorzentren"
-  },
-  {
-    journal:"Oncologist", year:"2026", pmid:"42897999",
-    author:"Nakamura T et al.", pubdate:"19.10.2026",
-    added:"20.10.2026",
-    title:"Baseline-Lungenabnormitäten erhöhen Risiko für T-DXd-bedingte interstitielle Lungenerkrankung",
-    sum:"Retrospektive Kohorte (156 Patienten, Juni 2020–Mai 2025) in Japan zu Baseline-CT-Befunden vor T-DXd-Therapie und deren Assoziation mit T-DXd-bedingter interstitieller Lungenerkrankung (ILD).",
-    result:"T-DXd-bedingte ILD trat in 31 Patienten auf (20%). Bei Baseline-ILAs waren es 19/50 (38%), ohne ILAs 12/106 (11%). Baseline-ILA-Status assoziiert mit erhöhter kumulativer ILD-Inzidenz (Subdistribution-Hazard-Ratio 3,56; 95%-KI 1,63–7,78; p=0,001). Kein signifikanter Unterschied zwischen equivokalen und definitiven ILAs. Kein Unterschied in PFS oder OS nach ILA-Status.",
-    transfer:"Japan, Sicherheitsmonitoring übertragbar auf deutsche Praxen mit T-DXd-Einsatz"
-  },
-  {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42898006",
-    author:"Labaki C et al.", pubdate:"19.10.2026",
-    added:"20.10.2026",
-    title:"Real-World-PFS validiert als Surrogatendpunkt für Gesamtüberleben bei metastasiertem Brustkrebs",
-    sum:"Retrospektive US-Kohortenstudie (Flatiron Health) mit 19.164 Patienten mit metastasiertem Brustkrebs zur Validierung von Intermediate Clinical Endpoints als Surrogate für Overall Survival.",
-    result:"Mediane OS 36,3 Monate (95%-KI 35,6–37,2). Real-World-PFS, Time to Next Line und Time to Last Treatment Administration zeigten hohe Korrelation mit OS (Kendall's tau ≥0,5; R²≥0,7 bei 36-Monats-OS und 12-Monats-Raten). Nur rwPFS erfüllte beide Surrogacy-Bedingungen mit R²≥0,7 über alle Subgruppenvergleiche.",
-    transfer:"USA-Versorgungsdaten, Rahmenwerk übertragbar auf deutsche Real-World-Analysen"
-  },
-  {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42895287",
-    author:"Zhang X et al.", pubdate:"19.10.2026",
-    added:"19.10.2026",
-    title:"Proteom-Biomarker unterscheiden präklinisch Kolon- von Rektumkarzinom-Risiko",
-    sum:"Prospektive Kohortenstudie (3 Kohorten, 851 KRK-Fälle, Median 7 Jahre Follow-up) zu prädiagnostischen Plasma-Proteinen 1–7 Jahre vor Krebsdiagnose mittels Olink-Panel.",
-    result:"12 Proteine zeigten signifikante gepaarte Unterschiede zwischen KRK-Fällen und Kontrollen (FDR&lt;0,1) mit moderaten Effektgrößen. Protein-Profile unterschieden sich signifikant zwischen Kolon- und Rektumkarzinom (p=0,005). Für Kolonkarzinom: 11/12 Proteine niedriger, BCAN-Assoziation OR 0,83 (95%-KI 0,74–0,94) mit hoher Kohärenz (I²&lt;0,01). Für Rektumkarzinom: 25/28 Proteine höher, HDGF OR 1,75 (95%-KI 1,15–2,66; I²&lt;0,01).",
-    transfer:"USA &amp; Australien, Proteom-Klassifizierung grundlagenorientiert, Validierung in EU-Kohorten pending"
-  },
-  {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"42895291",
-    author:"Colace SI et al.", pubdate:"19.10.2026",
-    added:"19.10.2026",
-    title:"TACL-Konsensus: kardiotoxizitätsgerechte Dosisindividualisierung in pädiatrischen Relaps-Studien",
-    sum:"Konsensus-Task-Force des TACL-Konsortiums zu evidenzgestützten Empfehlungen für kardialen Screening, Monitoring und Cardioprotection bei Kindern mit rezidiviertem/refraktärem hämatologischem Malignom in Relaps-Studien.",
-    result:"Fünf Leitempfehlungen: (1) Therapieausschluss basierend auf individuellen Risikofaktoren und realtimem Cardiac Function statt historischen Anthrazyklin-Dosen; (2) umfassendes Monitoring vor, während und nach Therapie erforderlich; (3) liberale Cardioprotection empfohlen; (4) einheitliche, evidenzgestützte Managementprotokolle für kardiale Dysfunktion; (5) Korrelative Cardiac Aims sollten Protokolle mit kardiotoxischem Potenzial begleiten.",
-    transfer:"USA-Kinderkrebszentren, Ansätze übertragbar auf deutsche Zentren für pädiatrische Relaps-Behandlung"
+    journal:"Eur J Cancer", year:"2026", pmid:"42906410",
+    author:"Kutsch N et al.", pubdate:"16.10.2026",
+    added:"22.10.2026",
+    title:"CD20-gerichtete CAR-T-Zelltherapie bei rezidivierendem B-Lymphom: responder zeigen anhaltendes Ansprechen",
+    sum:"Phase-I-Dosiseskalationsstudie in Deutschland zur CD20-gerichteten CAR-T-Zelltherapie MB-CART20.1 bei 9 schwer vorbehandelten Patienten mit therapieresistentem B-NHL.",
+    result:"Beste Ansprechrate 56%, davon 33% komplette Remissionen (CR). Ein CR blieb über 5 Jahre stabil. Eine dosislimitierende Toxizität (Grad-4-Neutropenie) bei höherer Dosis. Keine Grad ≥3 Zytokin-Freisetzungssyndrom. CAR-T-Zell-Expansion korrelierte mit klinischem Ansprechen (maximale Zellzahl höher bei Respondern, p=0,0369).",
+    transfer:"Deutschland, Universitätsklinik Köln, vergleichbare Gesundheitssysteme, CAR-T-Herstellung vor Ort"
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -1965,14 +1929,17 @@ const RADAR_FRISTEN = [["2026-12-31", "2027-01-07", "2027-01-07", "2027-01-07", 
 // === RADAR-BLOCK-ENDE ===
 
 // === ZULASSUNG-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const ZUL_STAND = "";
-const ZUL_EIGENE = 0;
-const ZUL_GUTACHTEN = 0;
+const ZUL_STAND = "22.10.2026";
+const ZUL_EIGENE = 36;
+const ZUL_GUTACHTEN = 7;
+const ZUL_ZULASSUNG = 7;
+const ZUL_FDA = 9;
+const ZUL_DIGA = 0;
 // === ZULASSUNG-BLOCK-ENDE ===
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "22.10.2026";
+const NEWS_STAND = "23.10.2026";
 const NEWS = [
   {titel:"Paneuropäisches Onkologie-Register: iOMEDICO und Lifen kooperieren", datum:"2026-10-07", url:"https://www.monitor-versorgungsforschung.de/news/paneuropaeisches-onkologie-register-iomedico-und-lifen-kooperieren/"},
   {titel:"Lungenkrebs in Rheinland-Pfalz: Krebsregister legt Zahlen für 2024 vor", datum:"2026-09-23", url:"https://www.monitor-versorgungsforschung.de/news/lungenkrebs-in-rheinland-pfalz-krebsregister-legt-zahlen-fuer-2024-vor/"},

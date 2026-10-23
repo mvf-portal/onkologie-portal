@@ -1,5 +1,31 @@
 [
  {
+  "pmid": "42906564",
+  "journal": "Lancet",
+  "year": "2026",
+  "author": "Chalabi M et al.",
+  "pubdate": "21.10.2026",
+  "added": "22.10.2026",
+  "transfer": "Niederlande, vergleichbares Versicherungssystem, Multi-Center-Studie mit europäischen Zentren",
+  "title": "Neoadjuvante Immunotherapie bei dMMR-Kolonkarzinom: 100% DFS und OS nach 3-5 Jahren",
+  "sum": "Patienten mit lokal fortgeschrittenem Mismatch-Repair-defizientem Kolonkarzinom erhielten vor der Operation Ipilimumab und Nivolumab.",
+  "result": "Von 111 auswertbaren Patienten betrug die 3-Jahres-Krankheitsfreie Überleben 100% (97,5%-KI 100-100%) und das 5-Jahres-Gesamtüberleben 100% (95%-KI 100-100%). ctDNA-Clearance zeigte sich nach dem zweiten Zyklus bei 82% der Patienten mit verfügbarem Plasma. Diese Ergebnisse unterstützen neoadjuvante Checkpoint-Inhibition als potenzieller neuer Standard für dieses Patientengut.",
+  "aufgenommen": "2026-10-23"
+ },
+ {
+  "pmid": "42906410",
+  "journal": "Eur J Cancer",
+  "year": "2026",
+  "author": "Kutsch N et al.",
+  "pubdate": "16.10.2026",
+  "added": "22.10.2026",
+  "transfer": "Deutschland, Universitätsklinik Köln, vergleichbare Gesundheitssysteme, CAR-T-Herstellung vor Ort",
+  "title": "CD20-gerichtete CAR-T-Zelltherapie bei rezidivierendem B-Lymphom: responder zeigen anhaltendes Ansprechen",
+  "sum": "Phase-I-Dosiseskalationsstudie in Deutschland zur CD20-gerichteten CAR-T-Zelltherapie MB-CART20.1 bei 9 schwer vorbehandelten Patienten mit therapieresistentem B-NHL.",
+  "result": "Beste Ansprechrate 56%, davon 33% komplette Remissionen (CR). Ein CR blieb über 5 Jahre stabil. Eine dosislimitierende Toxizität (Grad-4-Neutropenie) bei höherer Dosis. Keine Grad ≥3 Zytokin-Freisetzungssyndrom. CAR-T-Zell-Expansion korrelierte mit klinischem Ansprechen (maximale Zellzahl höher bei Respondern, p=0,0369).",
+  "aufgenommen": "2026-10-23"
+ },
+ {
   "pmid": "42900864",
   "journal": "J Clin Oncol",
   "year": "2026",
