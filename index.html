@@ -1998,26 +1998,62 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "23. Okt. 2026, 06:02 Uhr";
+const SNAP_DATE = "24. Okt. 2026, 06:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Lancet", year:"2026", pmid:"42906564",
-    author:"Chalabi M et al.", pubdate:"21.10.2026",
-    added:"22.10.2026",
-    title:"Neoadjuvante Immunotherapie bei dMMR-Kolonkarzinom: 100% DFS und OS nach 3-5 Jahren",
-    sum:"Patienten mit lokal fortgeschrittenem Mismatch-Repair-defizientem Kolonkarzinom erhielten vor der Operation Ipilimumab und Nivolumab.",
-    result:"Von 111 auswertbaren Patienten betrug die 3-Jahres-Krankheitsfreie Überleben 100% (97,5%-KI 100-100%) und das 5-Jahres-Gesamtüberleben 100% (95%-KI 100-100%). ctDNA-Clearance zeigte sich nach dem zweiten Zyklus bei 82% der Patienten mit verfügbarem Plasma. Diese Ergebnisse unterstützen neoadjuvante Checkpoint-Inhibition als potenzieller neuer Standard für dieses Patientengut.",
-    transfer:"Niederlande, vergleichbares Versicherungssystem, Multi-Center-Studie mit europäischen Zentren"
+    journal:"Ann Oncol", year:"2026", pmid:"42918420",
+    author:"Sonpavde G et al.", pubdate:"31.12.2026",
+    added:"23.10.2026",
+    title:"Neoadjuvantes Nivolumab + Chemotherapie verbessert Blasenkrebsergebnisse nicht",
+    sum:"Randomisierte Phase-III-CA017-078(ENERGIZE)-Studie zu perioperativem Nivolumab plus Gemcitabin-Cisplatin versus Gemcitabin-Cisplatin allein bei muskelinvasivem Blasenkrebs und Cisplatin-Eignung.",
+    result:"Bei 54,5 Monaten medianer Nachbeobachtung (325 vs. 328 Patienten): Pathologische komplette Response 39,1 % vs. 29,6 % (adjustierte Differenz 9,5 %; 99,91%-KI −2,6 bis 21,6). Event-Free-Survival zeigte keinen Vorteil (104 Events je Arm; HR 0,94; 95,74%-KI 0,71–1,25; P = 0,6697). Gesamtüberleben: HR 0,88 (deskriptiv, da EFS-Kriterium nicht erfüllt). ctDNA-Clearance bei Zyklus 4: 76,9 % insgesamt; ctDNA prognostisch für EFS und OS.",
+    transfer:"Europäische und internationale Zentren; Nivolumab-Kombination in dieser Indikation nicht standard."
   },
   {
-    journal:"Eur J Cancer", year:"2026", pmid:"42906410",
-    author:"Kutsch N et al.", pubdate:"16.10.2026",
-    added:"22.10.2026",
-    title:"CD20-gerichtete CAR-T-Zelltherapie bei rezidivierendem B-Lymphom: responder zeigen anhaltendes Ansprechen",
-    sum:"Phase-I-Dosiseskalationsstudie in Deutschland zur CD20-gerichteten CAR-T-Zelltherapie MB-CART20.1 bei 9 schwer vorbehandelten Patienten mit therapieresistentem B-NHL.",
-    result:"Beste Ansprechrate 56%, davon 33% komplette Remissionen (CR). Ein CR blieb über 5 Jahre stabil. Eine dosislimitierende Toxizität (Grad-4-Neutropenie) bei höherer Dosis. Keine Grad ≥3 Zytokin-Freisetzungssyndrom. CAR-T-Zell-Expansion korrelierte mit klinischem Ansprechen (maximale Zellzahl höher bei Respondern, p=0,0369).",
-    transfer:"Deutschland, Universitätsklinik Köln, vergleichbare Gesundheitssysteme, CAR-T-Herstellung vor Ort"
+    journal:"Ann Oncol", year:"2026", pmid:"42918424",
+    author:"Fizazi K et al.", pubdate:"23.10.2026",
+    added:"23.10.2026",
+    title:"Capivasertib + Abiraterone verlängert Gesamtüberleben bei PTEN-defizienten Prostatakrebsen",
+    sum:"Randomisierte Phase-III-Studie zur Wirksamkeit von Capivasertib (ein Protein-Kinase-B-Inhibitor) plus Abiraterone gegen Placebo plus Abiraterone bei Patienten mit neu diagnostiziertem metastasiertem, hormonempfindlichem Prostatakarzinom und PTEN-Mangel.",
+    result:"Bei 42 % Reife der Gesamtüberlebensdaten (Median Follow-up 39 Monate) zeigte sich ein Gesamtüberlebensvorteil für Capivasertib plus Abiraterone: Medianales Gesamtüberleben 57,4 vs. 46,5 Monate (Hazard Ratio 0,82; 95%-KI 0,68–0,99; P = 0,044). Die Progression-Free-Survival betrug 35,5 vs. 26,0 Monate (HR 0,83; 95%-KI 0,70–0,99). Das Sicherheitsprofil blieb konsistent mit früheren Analysen.",
+    transfer:"Europäische Zentren beteiligt; PTEN-Test erlaubt, Targeted Therapy verfügbar."
+  },
+  {
+    journal:"Ann Oncol", year:"2026", pmid:"42918423",
+    author:"Slamon DJ et al.", pubdate:"23.10.2026",
+    added:"23.10.2026",
+    title:"Ribociclib + Aromatasehemmer verbessert Gesamtüberleben im frühen Brustkrebs",
+    sum:"Randomisierte Phase-III-NATALEE-Studie zur Wirksamkeit von Ribociclib (CDK4/6-Inhibitor) plus Nichtsteroidal-Aromatasehemmer versus Aromatasehemmer allein in adjuvanter Therapie bei hormonrezeptor-positivem/HER2-negativem frühem Brustkrebs mit hohem Risiko über 6 Jahre.",
+    result:"Bei medianer Nachbeobachtung von 66,5 Monaten zeigte Ribociclib plus NSAI einen Gesamtüberlebensvorteil (6-Jahres-Delta 2,1 %; HR 0,809; 95%-KI 0,661–0,989; P = 0,019). Die Invasive-Disease-Free-Survival verbesserte sich (6-Jahres-Delta 5,3 %; HR 0,741; 95%-KI 0,646–0,849). Keine neuen Sicherheitssignale.",
+    transfer:"Deutsche Zentren teil der globalen Studie; CDK4/6-Inhibitor standard zertifiziert."
+  },
+  {
+    journal:"Ann Oncol", year:"2026", pmid:"42918422",
+    author:"Bedke J et al.", pubdate:"23.10.2026",
+    added:"23.10.2026",
+    title:"Perioperatives Pembrolizumab verbessert Blasenkrebs-Outcomes nicht signifikant",
+    sum:"Randomisierte Phase-III-KEYNOTE-866-Studie zur Wirksamkeit von perioperativem Pembrolizumab (Immune Checkpoint Inhibitor) versus Placebo zusätzlich zu neoadjuvanter Chemotherapie und radikaler Zystektomie bei muskelinvasivem Blasenkrebs.",
+    result:"Bei Median-Follow-up von 60,9 Monaten war die Event-Free-Survival bei 60 Monaten 63,5 % mit Pembrolizumab vs. 61,9 % mit Placebo (HR 0,88; 95%-KI 0,71–1,10; P = 0,1366; nicht signifikant). Pathologische komplette Response 44,4 % vs. 35,8 %. Mediales Gesamtüberleben wurde in beiden Gruppen nicht erreicht (HR 1,00). Grad-≥3-Nebenwirkungen: 80,2 % vs. 75,1 %.",
+    transfer:"Europäische und internationale Zentren; Checkpoint-Inhibitor in dieser Indikation nicht standard."
+  },
+  {
+    journal:"Ann Oncol", year:"2026", pmid:"42918421",
+    author:"Panday SSGG et al.", pubdate:"23.10.2026",
+    added:"23.10.2026",
+    title:"Aktive Überwachung gleichwertig zu Operation bei Speiseröhrenkrebs nach Chemoradiotherapie",
+    sum:"Multizentrische, stepped-wedge-randomisierte Nichtunterlegenheitsstudie (Niederlande) zu aktiver Überwachung versus Standard-Ösophagektomie nach neoadjuvanter Chemoradiotherapie bei 309 Patienten mit lokal fortgeschrittenem Ösophaguskrebs und kompletter klinischer Response.",
+    result:"Bei medianer Nachbeobachtung von 76 Monaten: 5-Jahres-Gesamtüberleben 50 % (95%-KI 43–57 %) aktive Überwachung vs. 54 % (95%-KI 46–64 %) Standard-OP (HR 1,17; 95%-KI 0,77–1,77), nicht signifikant unterschiedlich. Krankheitsfreies Überleben: HR 1,39 (95%-KI 0,94–2,06). Fernmetastasen bei 5 Jahren höher in aktiver Überwachung (46 % vs. 29 %; P &lt; 0,01). 43 % der Patienten unter aktiver Überwachung vermieden Ösophagektomie.",
+    transfer:"Niederländische Studie, vergleichbares Versicherungssystem; Watch-and-Wait-Strategie nach nCRT established."
+  },
+  {
+    journal:"Radiother Oncol", year:"2026", pmid:"42913944",
+    author:"Liermann J et al.", pubdate:"22.10.2026",
+    added:"23.10.2026",
+    title:"Kohlenstoff-Ionentherapie zeigt ermutigende Ergebnisse bei Pankreaskrebs",
+    sum:"Prospektive Phase-II-PACK-Studie zur Wirksamkeit und Sicherheit von Kohlenstoff-Ionenradiotherapie (CIRT) mit gleichzeitiger Gemcitabin-Chemotherapie bei 23 Patienten mit inoperablem oder lokal rezidiviertem Pankreaskrebs.",
+    result:"1- und 2-Jahres-Gesamtüberleben betrugen 78 % (95%-KI 63–97 %) und 59 % (95%-KI 41–84 %); Median 26,5 Monate. 1- und 2-Jahres-PFS: 26 % (95%-KI 13–52 %) und 10 % (95%-KI 3–37 %); Median 8,1 Monate. Toxizität: 3 Grad-3-Ereignisse (Bauchschmerzen, obere GI-Blutung, Ureterstriktuur); keine Grad-4/5-Toxizitäten.",
+    transfer:"Deutsche Studie (Heidelberg); CIRT-Kapazität in Deutschland begrenzt, erfordert Phase-III-Validation."
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -2042,7 +2078,7 @@ const ZUL_DIGA = 0;
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "23.10.2026";
+const NEWS_STAND = "24.10.2026";
 const NEWS = [
   {titel:"Paneuropäisches Onkologie-Register: iOMEDICO und Lifen kooperieren", datum:"2026-10-07", url:"https://www.monitor-versorgungsforschung.de/news/paneuropaeisches-onkologie-register-iomedico-und-lifen-kooperieren/"},
   {titel:"Lungenkrebs in Rheinland-Pfalz: Krebsregister legt Zahlen für 2024 vor", datum:"2026-09-23", url:"https://www.monitor-versorgungsforschung.de/news/lungenkrebs-in-rheinland-pfalz-krebsregister-legt-zahlen-fuer-2024-vor/"},
@@ -2052,16 +2088,16 @@ const NEWS = [
 // Fremde Pressemeldungen zum Thema — taeglich von scripts/newsfeed.py
 // === PRESSE-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
 const PRESSE = [
+  {titel:"Stoffwechsel-Schwachstelle im kleinzelligen Lungenkrebs identifiziert", datum:"2026-10-23", url:"http://idw-online.de/de/news879633", quelle:"idw"},
   {titel:"RNA-basierte Medizin gegen Krebs-, Herz-Kreislauf- und seltene Erkrankungen: Leopoldina wägt Chancen und Risiken ab", datum:"2026-10-22", url:"http://idw-online.de/de/news879516", quelle:"idw"},
-  {titel:"Stoffwechselspuren sollen Darmkrebsrisiko früher sichtbar machen", datum:"2026-10-21", url:"http://idw-online.de/de/news879446", quelle:"idw"},
 ];
 // === PRESSE-BLOCK-ENDE ===
 
 // Meldungen des G-BA — taeglich von scripts/newsfeed.py
 // === SELBST-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
 const SELBST = [
-  {titel:"Hautkrebs-Screening und Check-up: GBA berät über das aktuelle Früherkennungsangebot", datum:"2026-10-15", url:"/presse/pressemitteilungen-meldungen/1357/", quelle:"G-BA"},
-  {titel:"Überprüfung der Regelungen zur Früherkennungsuntersuchung auf Hautkrebs unter Berücksichtigung eines möglichen risikobasierten Screenings und einer möglichen Anpassung der Häufigkeit der Untersuchungen", datum:"2026-10-15", url:"/bewertungsverfahren/methodenbewertung/361/", quelle:"G-BA"},
+  {titel:"Bekanntmachung des Beratungsthemas, Einholung erster Einschätzungen sowie Ermittlung stellungnahmeberechtigter Medizinproduktehersteller: Überprüfung der Regelungen zur Früherkennungsuntersuchung auf Hautkrebs unter Berücksichtigung eines möglichen risikobasierten Screenings und einer möglichen Anpassung der Häufigkeit der Untersuchungen – Aufforderung zur Meldung –", datum:"2026-10-23", url:"/beschluesse/8008/", quelle:"G-BA"},
+  {titel:"Überprüfung der Regelungen zur Früherkennungsuntersuchung auf Hautkrebs unter Berücksichtigung eines möglichen risikobasierten Screenings und einer möglichen Anpassung der Häufigkeit der Untersuchungen", datum:"2026-10-23", url:"/bewertungsverfahren/methodenbewertung/361/", quelle:"G-BA"},
 ];
 // === SELBST-BLOCK-ENDE ===
 
