@@ -2162,62 +2162,71 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "31. Okt. 2026, 05:01 Uhr";
+const SNAP_DATE = "1. Nov. 2026, 05:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"J Clin Oncol", year:"2026", pmid:"42962158",
-    author:"Frederiksen H et al.", pubdate:"30.10.2026",
+    journal:"ESMO Open", year:"2026", pmid:"42962562",
+    author:"Zhang QT et al.", pubdate:"30.10.2026",
     added:"30.10.2026",
-    title:"Methylphenidat lindert Fatigue bei hämatologischen Krebserkrankungen signifikant",
-    sum:"Randomisierte, doppelblinde Crossover-Studie mit 152 fatiguen Patienten mit Hämatoonkologie zum Vergleich Methylphenidat vs. Placebo über je 6 Wochen.",
-    result:"FACIT-F-Score verbesserte sich unter Methylphenidat um 8,9 Punkte (95%-KI: 7,3–10,4) vs. Placebo 3,9 Punkte (95%-KI: 2,3–5,4); Differenz 5,0 Punkte (95%-KI: 2,8–7,2) zugunsten Methylphenidat. Nebenwirkungen waren mild; Sedation in 8,5% der Fälle. Mediane Dosis Pregabalin 50 mg.",
-    transfer:"Dänemark, etablierte Methodik – Fatigue-Management auch für Deutschland relevant"
+    title:"Nasopharynxkarzinom mit Metastasen: Aufgeschobene Bestrahlung nicht minderwertig bei gutem Ansprechen",
+    sum:"Retrospektive Kohortenstudie mit 439 Patientinnen und Patienten (China): Vergleich immediate locoregionaler Radiotherapie (ILRRT, n=331) vs. salvage locoregionaler Radiotherapie (SLRRT bei Lokalprogredienz, n=108) nach Chemoimmunotherapie mit anti-PD-1 bei de novo metastasiertem Nasopharynxkarzinom – primärer Endpunkt Overall Survival.",
+    result:"Nach IPTW-Anpassung: 2-Jahres-OS SLRRT 97,4 % vs. ILRRT 90,1 % (HR 0,93; 95%-CI 0,54–1,59; p=0,78 – nicht signifikant minderwertig). SLRRT assoziiert mit schlechterer Lokalkontrolle (HR 4,78; p&lt;0,001), aber besserer Fernkontrolle (HR 0,62; p=0,03). Strahlentherapie-Nebenwirkungen deutlich häufiger in ILRRT-Gruppe. Strategie der Aufschub-Bestrahlung bis Lokalprogredienz mindert Toxizität ohne OS-Nachteil.",
+    transfer:"China, vergleichbare molekulare Diagnostik; Strategie-Evidenz übertragbar, Indikation ESMO-relevant"
   },
   {
-    journal:"Int J Radiat Oncol Biol Phys", year:"2026", pmid:"42962975",
-    author:"Hande V et al.", pubdate:"30.10.2026",
-    added:"30.10.2026",
-    title:"Bildgestützte Brachytherapie beim Zervixkarzinom: Workflow-Optimierung in ressourcenlimitierten Settings",
-    sum:"Querschnittsstudie an 14 Zentren in 14 Ländern (Länder mit niedrigem/mittlerem Einkommen) zu Workflow-Zeiten und Ressourcenbedarf bei IGBT-Implementierung mit 365 analysierten Workflows.",
-    result:"Mediane Proceduretime für 2D-konventionell 2h 8min, 3D-Standard-IGBT 2h 35min, 3D-Advanced 4h 16min. Sedation statt Vollnarkose verkürzte Workflows um mediane 35 Minuten. Brachytherapie-Maschinenbedarfsquoten nach nationaler Inzidenz: 0,2–9,5; vier Länder &lt;0,5, zwei 0,5–1,0, acht &gt;1,0. Context-spezifische Implementierungsempfehlungen entwickelt.",
-    transfer:"International, IAEA-Studie – Workflow-Daten für Mitteleinkommens-Länder-Versorgung adaptierbar"
+    journal:"Leukemia", year:"2026", pmid:"42963415",
+    author:"Hupe HC et al.", pubdate:"30.10.2026",
+    added:"31.10.2026",
+    title:"FLT3-ITD-Mikroklone in älteren AML-Patienten unter Low-Intensity-Therapie: Klinische und molekulare Charakterisierung",
+    sum:"Retrospektive Kohortenanalyse von AML-Patienten (n=Subgruppe mit FLT3-ITD) aus prospektiver Studie AMLSG Biology and Outcome (NCT01252485, Deutschland): Charakterisierung von FLT3-ITD-Mikroklonen bei älteren Patienten unter Low-Intensity-Therapie hinsichtlich Auswirkung auf Therapieansprechen und Outcome.",
+    result:"Studie zeigt präklinische und klinische Charakterisierung von FLT3-ITD-Subklonen in älteren AML-Patienten; detaillierte Befunde zu Mutationsmustern, klonaler Evolution und Prädiktion unter Low-Intensity-Therapie werden analysiert. Ergebnisse deuten auf heterogene Sensitivität subtiler FLT3-ITD-Varianten hin und könnten Risk-Stratification verbessern, konkrete Überlebenszahlen nicht im Abstract genannt.",
+    transfer:"Deutschland, deutsches Patientenkollektiv; AMLSG-Daten, direkt übertragbar"
   },
   {
-    journal:"ESMO Open", year:"2026", pmid:"42962563",
-    author:"Timmer H et al.", pubdate:"30.10.2026",
-    added:"30.10.2026",
-    title:"Niederlande: 35,6% der Krebsindikationen sind Off-Label-Einsätze, aber reglementiert",
-    sum:"Cross-sectionale Beobachtungsstudie zur Off-Label-Nutzung und Erstattung von Krebsmedikamenten in den Niederlanden anhand nationaler Arzneimittel- und Erstattungsdatenbanken (Datenstand Januar 2025).",
-    result:"331 von 930 (35,6%) erstattungsfähigen Indikations-Wirksoff-Paare waren Off-Label; 90,3% (n=299) waren hochpreisige Arzneimittel. Chemotherapie machte 67,1% (n=163) der Off-Label-IDPs aus, zielgerichtete Therapien 32,9% (n=109). Bei hochpreisigen Arzneimitteln waren 24,4% (41.238 von 169.043) der Verschreibungen Off-Label, aber nur 2,3% (€30,3 Mio. von €1,3 Mrd.) der Gesamtausgaben. Häufig genutzte Off-Label-Behandlungen stützten sich auf starke Evidenz; Evidenzniveaus variierten bei selteneren Indikationen.",
-    transfer:"Niederlande, vergleichbares Versicherungssystem – Modell für deutsche Erstattungsbewertung"
+    journal:"JAMA Oncol", year:"2026", pmid:"42955021",
+    author:"Ji Y et al.", pubdate:"29.10.2026",
+    added:"29.10.2026",
+    title:"Benmelstobart + Anlotinib nach Chemoradiotherapie: PFS-Vorteil, aber Toxizität begrenzt Nutzen",
+    sum:"Phase-III-Studie mit 553 Patientinnen und Patienten (China): Vergleich von Benmelstobart + Anlotinib, Benmelstobart allein oder Placebo als Konsolidierung nach Chemoradiotherapie bei inoperablem Stadium-III-NSCLC.",
+    result:"Mediane PFS Benmelstobart + Anlotinib 15,1 Monate vs. Placebo 4,2 Monate (HR 0,49; p&lt;0,001), Benmelstobart allein 9,7 Monate (HR 0,53; p&lt;0,001). Pooled Analyse (Stadium 1+2): Benmelstobart + Anlotinib 17,4 vs. Benmelstobart 11,2 Monate (HR 0,82; p=0,12 – nicht signifikant). Grad-3-5-Nebenwirkungen: 48,8 % (Kombination), 29,4 % (Monotherapie), 19,7 % (Placebo); Grad-5-Ereignisse 7,2 %, 1,4 %, 1,5 %. Anlotinib-Addition verbesserte PFS vs. Monotherapie nicht signifikant (p=0,12), erhöhte aber schwere/tödliche AE deutlich.",
+    transfer:"China, Phase III, anderes Gesundheitssystem; Safety-Befund ist übertragbar"
   },
   {
-    journal:"Nat Med", year:"2026", pmid:"42957778",
-    author:"Pérez-García JM et al.", pubdate:"29.10.2026",
-    added:"30.10.2026",
-    title:"Chemotherapie-Reduktion bei HER2-positivem Brustkrebs: 5-Jahres-Sicherheit validiert",
-    sum:"Randomisierte Phase-2-Studie mit 267 Patientinnen zum Verzicht auf Chemotherapie unter HER2-gerichteter Therapie bei guter PET-Response und pathologischer Komplettremission.",
-    result:"5-Jahres-invasives krankheitsfreies Überleben (iDFS) in der De-Eskalationsgruppe 89,5% (95%-KI: 85,7–93,4); bei PET-Responderinnen ohne Chemotherapie 92,4% (95%-KI: 86,7–98,5). ctDNA-Clearance korrelierte mit besseren Langzeitergebnissen. Das Verfahren bleibt klinisch valide, erfordert aber weitere Prospektiv-Validierung.",
-    transfer:"Spanien, Italien, Deutschland, Belgien – europäische Zentren, vergleichbare Onkologie-Standards"
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"42954305",
+    author:"Post KE et al.", pubdate:"29.10.2026",
+    added:"29.10.2026",
+    title:"Telemedizin-Palliativmedizin bei Lungenkrebs: Besser für schwarze und hispanische Patienten mit niedrigem Einkommen",
+    sum:"Sekundäranalyse randomisierter Studie (n=1.250 mit fortgeschrittenem NSCLC an 22 US-Zentren): Stratifizierte Untersuchung, ob Lebensqualität (FACT-Lung-Score) unter früher Palliativmedizin per Videovisit vs. Präsenzvisit nach Rasse/Ethnizität, Einkommen und anderen Faktoren variiert.",
+    result:"Schwarze Patienten, hispanische/lateinamerikanische Patienten und solche mit Einkommen &lt;50.000 $ berichteten bessere Lebensqualität in der Videovisit-Gruppe. Asiatische Patienten zeigten schlechtere Werte in der Videovisit. Early Palliative Care via Video kann für schwarze und hispanische Patienten und solche mit niedrigerem Einkommen größeren Lebensqualitäts-Gewinn bringen als Präsenzvisit.",
+    transfer:"USA, aber Equity-Befund in Versorgung übertragbar; deutsches Sozialversicherungssystem anderes, Outcome-Relevanz bleibt"
   },
   {
-    journal:"Eur J Cancer", year:"2026", pmid:"42962410",
-    author:"Chang J et al.", pubdate:"22.10.2026",
-    added:"30.10.2026",
-    title:"ctDNA steuert Therapie bei kleinen Lungenmetastasen des Kolonkarzinoms",
-    sum:"Prospektive Kohortenstudie mit 70 mCRC-Patienten mit Lungenknoten ≤2 cm zur ctDNA-gesteuerten Therapieentscheidung (lokal oder systemisch).",
-    result:"ctDNA-Positivität bei Baseline korrelierte mit verkürztem progressionsfreiem Überleben (PFS) in Kohort 1 (≤1 cm): 3,2 vs. 9,2 Monate (p=0,013). Systemische Chemotherapie erreichte 5× höhere ctDNA-Clearance als lokale Therapie (63,2% vs. 12,5%, p=0,033). Patienten mit anhaltend negativer ctDNA hatten besseres PFS (nicht erreicht vs. 9,2 Monate, p=0,012). ctDNA detektierte extrapulmonale Metastasen mit 5,5 Monaten Vorlauf vor Bildgebung.",
-    transfer:"China – Befunde zur ctDNA-Stratifizierung sind technologie-unabhängig übertragbar"
+    journal:"Radiother Oncol", year:"2026", pmid:"42951256",
+    author:"Dragan T et al.", pubdate:"28.10.2026",
+    added:"28.10.2026",
+    title:"Prophylaktische vs. reaktive PEG bei HNO-Krebs: Kein Unterschied in Schluckqualität",
+    sum:"Phase-III-RCT mit 57 Patientinnen und Patienten (Belgien, Niederlande): Vergleich prophylaktischer PEG-Anlage vor Chemoradiotherapie vs. reaktiver PEG nach definierten Kriterien bezüglich Schluckqualität nach 6 Monaten (primärer Endpunkt).",
+    result:"Median MDADI-Score (Dysphagia-Inventar) nach 6 Monaten 69,5 (prophylaktisch) vs. 74,7 (reaktiv); p=0,595 (nicht signifikant). Gewichtsverlust nach 6 Monaten -7,0 % vs. -9,0 % (p=0,67). Keine signifikanten Unterschiede in Behandlungstoxizität, PEG-Komplikationen, Chemotherapie-Adhärenz oder Frühergebnissen. Studie wegen Slow Accrual nach Interim-Analyse vorzeitig geschlossen (n=57 statt geplant größer).",
+    transfer:"Belgisch-niederländische Studie, vergleichbare europäische Strukturen; Methodische Limitation durch Early Closure"
   },
   {
-    journal:"Oncologist", year:"2026", pmid:"42898002",
-    author:"Bhadri V et al.", pubdate:"07.10.2026",
-    added:"20.10.2026",
-    title:"Vimseltinib zeigt dauerhafte Remissionen beim Tenosynovialen Riesenzelltumor",
-    sum:"Phase-3-Studie MOTION mit 118 Patienten (83 randomisiert, 35 Crossover) zum CSF1R-Inhibitor Vimseltinib bei nicht-operablem TGCT mit &gt;2 Jahren Follow-up-Daten.",
-    result:"Objektive Ansprechrate (RECIST v1.1) 48% (40/83) in der randomisierten Vimseltinib-Gruppe, 54% (19/35) in der Crossover-Gruppe; 51% (60/118) noch unter Therapie. Langfristige Verbesserungen in Clinical Outcome Assessments. Sicherheitsprofil konsistent, kein choleastisches Leberversagen oder arzneimittelinduzierte Leberschädigung.",
-    transfer:"Niederlande, Deutschland, Italien, Frankreich – europäische Zentren, vergleichbare Regulierung"
+    journal:"Ann Oncol", year:"2026", pmid:"42946309",
+    author:"Cunningham N et al.", pubdate:"27.10.2026",
+    added:"27.10.2026",
+    title:"ctDNA-Überwachung in HR+/HER2- Brustkrebs: Frühe Detektion prognostiziert Rezidiv",
+    sum:"Prospektive Studie mit 912 Patientinnen mit hochrisiko-HR+/HER2- Brustkrebs während Hormontherapie: Zirkuläre Tumor-DNA wurde bei 12 % der Patientinnen während Nachsorge detektiert.",
+    result:"ctDNA-Detektionsrate 5,0 % im ersten Test, dann 1,3 % in Folgetests. Bei ctDNA-Detektion entwickelten 65,9 % der Patientinnen mit früher Detektion (erstes Teilergebnis) radiologisches Rezidiv, aber nur 26,6 % der später detektierten (p&lt;0,001). Kumulativer Detektionsanteil über 5 Jahre: 23,7 %. Die Methode identifiziert molekulare Rezidive durchschnittlich Wochen bis Monate vor klinischem Rezidiv.",
+    transfer:"UK-französische Studie, Liquid Biopsy; ctDNA-Assays verfügbar, Nachsorge-Strategie überführbar"
+  },
+  {
+    journal:"Eur J Cancer", year:"2026", pmid:"42962412",
+    author:"Caltavituro A et al.", pubdate:"23.10.2026",
+    added:"30.10.2026",
+    title:"HR+/HER2- metastasierter Brustkrebs: Biomarker-gesteuerte Blockade der ER-Signalachse",
+    sum:"Narrative Review europäischer und amerikanischer Experten zur Therapielandschaft von HR+/HER2- metastasiertem Brustkrebs – Synthese neuer Wirkstoffklassen (SERDs, PROTAC-Degrader, KAT6-Inhibitoren, selektive PI3K/CDK-Inhibitoren) und Biomarker-gesteuerter Therapieentscheidung.",
+    result:"Review zeigt: (1) ER-Pharmakologie hat sich in mechanistisch unterschiedliche Klassen diversifiziert, aber ESR1-Mutanten-Set ist klinisch konsistentestes Signal für Wirkstoff-Selektion; (2) Hauptproblem ist Toxizitätsobergrenze bei chronischer Multi-Node-Blockade – selektive Inhibitoren heben diese; (3) Patientenauswahl verschiebt sich von Klinikopathologie zu genomischen Subgruppen, ctDNA ermöglicht dynamisches Monitoring. Vertical Blockade des Luminal-Axis als konzeptionelle Basis für durables, tolerierbares Therapieregime.",
+    transfer:"Europäisch-amerikanische Expertise, internationale Datenbasis; Strategien überführbar, Zugang Wirkstoff abhängig von Zulassung"
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -2242,7 +2251,7 @@ const ZUL_DIGA = 0;
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "31.10.2026";
+const NEWS_STAND = "01.11.2026";
 const NEWS = [
   {titel:"DGTI: Ein Fünftel der Blutkonserven geht an Krebskranke", datum:"2026-10-29", url:"https://www.monitor-versorgungsforschung.de/news/dgti-ein-fuenftel-der-blutkonserven-geht-an-krebskranke/"},
   {titel:"Paneuropäisches Onkologie-Register: iOMEDICO und Lifen kooperieren", datum:"2026-10-07", url:"https://www.monitor-versorgungsforschung.de/news/paneuropaeisches-onkologie-register-iomedico-und-lifen-kooperieren/"},
