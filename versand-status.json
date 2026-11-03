@@ -1,48 +1,37 @@
 {
  "hub": "Knowledge-Hub Onkologie",
  "domain": "onkologie.m-vf.de",
- "datum": "2026-11-02",
+ "datum": "2026-11-03",
  "stand": "terminiert",
- "titel": "MVF Onkologie-Newsletter 02.11.2026",
- "betreff": "Neueste Studien - Onkologie – 31. Oktober 2026 bis 2. November 2026",
- "anzahl": 19,
+ "titel": "MVF Onkologie-Newsletter 03.11.2026",
+ "betreff": "Neueste Studien - Onkologie – 3. November 2026",
+ "anzahl": 6,
  "pmids": [
-  "42956692",
-  "42954935",
-  "42954282",
-  "42945960",
-  "42945508",
-  "42869861",
-  "42963415",
-  "42962562",
-  "42962412",
-  "42955021",
-  "42954305",
-  "42951256",
-  "42946309",
-  "42962975",
-  "42962563",
-  "42962410",
-  "42962158",
-  "42957778",
-  "42898002"
+  "42970744",
+  "42970669",
+  "42970668",
+  "42968372",
+  "42962157",
+  "42957752"
  ],
- "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9099661",
- "termin_utc": "2026-11-02T09:00:00+00:00",
+ "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9099682",
+ "termin_utc": "2026-11-03T09:00:00+00:00",
  "empfaenger": 5,
- "listengroesse": 5882,
+ "listengroesse": 5883,
  "beanstandungen": [],
- "aussortiert": [],
+ "aussortiert": [
+  "Studie 7 (PMID 42927857): Feld beginnt mit einer Klammerbemerkung statt mit Inhalt"
+ ],
  "pool": {
   "geholt": 220,
-  "bekannt": 97,
-  "pool": 45,
-  "gewaehlt": 6,
-  "neu": 6
+  "bekannt": 98,
+  "pool": 44,
+  "gewaehlt": 7,
+  "neu": 7
  },
  "rubriken": {
-  "news": "518f4f6970b6c65d",
-  "radar": "034783ef18feb4dc",
+  "news": "c57057ed86b24180",
+  "radar": "567fc5884f2b8d7b",
   "zulassungen": "b083de9554d45fdd"
  }
 }
