@@ -1,30 +1,29 @@
 {
  "hub": "Knowledge-Hub Onkologie",
  "domain": "onkologie.m-vf.de",
- "datum": "2026-11-04",
+ "datum": "2026-11-05",
  "stand": "terminiert",
- "titel": "MVF Onkologie-Newsletter 04.11.2026",
- "betreff": "Neueste Studien - Onkologie – 4. November 2026",
- "anzahl": 5,
+ "titel": "MVF Onkologie-Newsletter 05.11.2026",
+ "betreff": "Neueste Studien - Onkologie – 5. November 2026",
+ "anzahl": 6,
  "pmids": [
-  "42976303",
-  "42975650",
-  "42974945",
-  "42972108",
-  "42970859"
+  "42982064",
+  "42981561",
+  "42979992",
+  "42976418",
+  "42976417",
+  "42976409"
  ],
- "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9099716",
- "termin_utc": "2026-11-04T09:00:00+00:00",
- "empfaenger": 5,
- "listengroesse": 5879,
+ "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9099735",
+ "termin_utc": "2026-11-06T09:00:00+00:00",
+ "empfaenger": 6,
+ "listengroesse": 5878,
  "beanstandungen": [],
- "aussortiert": [
-  "Studie 6 (PMID 42967455): Feld beginnt mit einer Klammerbemerkung statt mit Inhalt"
- ],
+ "aussortiert": [],
  "pool": {
   "geholt": 220,
-  "bekannt": 95,
-  "pool": 43,
+  "bekannt": 94,
+  "pool": 45,
   "gewaehlt": 6,
   "neu": 6
  },
