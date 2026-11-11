@@ -2162,62 +2162,53 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "10. Nov. 2026, 05:01 Uhr";
+const SNAP_DATE = "11. Nov. 2026, 05:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"J Clin Oncol", year:"2026", pmid:"43002730",
-    author:"Sonneveld P et al.", pubdate:"09.11.2026",
+    journal:"Blood", year:"2026", pmid:"43008231",
+    author:"Kotrova M et al.", pubdate:"10.11.2026",
+    added:"10.11.2026",
+    title:"MRD-Standardisierung bei akuter lymphoblastischer Leukämie - internationale Konsensus-Leitlinie",
+    sum:"Internationale Expertengruppe entwickelt Konsensus-Empfehlungen zur Standardisierung der MRD-Diagnostik in der ALL mittels strukturierter Delphi-Methode.",
+    result:"Konsens zu 38 von 41 Statements. Knochenmark als Referenzmaterial, MRD bevorzugt vor Zytomorphologie bei Diskordanz. Standardisierte Nomenklatur für MRD-Assays und Kriterien für risikoadaptiertes Monitoring definiert. Bereiche ohne Konsens: Antikoagulanzienauswahl für PCR-basierte MRD, Interpretation isolierter BCR::ABL1-Rekonversion.",
+    transfer:"Europäische Studiengruppen führend beteiligt, vergleichbare Hochleistungslabore"
+  },
+  {
+    journal:"J Clin Oncol", year:"2026", pmid:"43008245",
+    author:"Jiang W et al.", pubdate:"10.11.2026",
+    added:"10.11.2026",
+    title:"Platin plus PD-1-Inhibitor erste Linie bei rezidivem/metastasiertem Nasopharynxkarzinom",
+    sum:"CSCO-ASCO-Konsensus-Leitlinie zu Systemtherapie, Erhaltungstherapie und lokaler Konsolidierung bei rezidivem oder metastasiertem Nasopharynxkarzinom.",
+    result:"Empfehlung: Platin-basierte Chemotherapie plus PD-1-Inhibitor (präferiert für medizinisch geeignete Patienten). Erhaltungs-PD-1-Inhibition bis 2 Jahre. Lokoregionale Konsolidierungs-Radiotherapie oder orale Erhaltungschemotherapie nach Ansprechen erwogen. Salvage-Chirurgie oder Re-Bestrahlung für isolierte lokoregionäre Rezidive. Nachfolgelinien: Chemotherapie, PD-1-Inhibitoren, Antikörper-Wirkstoff-Konjugate.",
+    transfer:"Asien-dominierte Studien und Versorgung, begrenzte europäische Übertragbarkeit der Ergebnisse"
+  },
+  {
+    journal:"JCO Oncol Pract", year:"2026", pmid:"43008246",
+    author:"Rosenberg C et al.", pubdate:"10.11.2026",
+    added:"10.11.2026",
+    title:"Patient-reported Outcomes verbessern Nachsorge-Planung bei Brustkrebs-Überlebenden",
+    sum:"Implementierungsstudie zu strukturierter Erfassung von Patientenbefunden vor Nachsorge-Visiten bei 2558 Brustkrebs-Überlebenden zwischen 2019 und 2025 im US-amerikanischen Gesundheitssystem.",
+    result:"2558 Überlebende absolvierten Previsit-Assessment. Konsistente physische, psychosoziale und lebensstiländernde Anliegen über Studienzeitraum. Patient-identifizierte Bedenken leiteten Überweisungen an Spezialisten und strukturierten Nachsorge-Edukation. Muster-Analyse ermöglichte Ausrichtung von Diensten auf evolutionierende Prioritäten. Durchführbarkeit durch Integration in Routine-Workflows ohne Unterbrechung dokumentiert.",
+    transfer:"US-System mit Limitierungen für deutsche Dokumentationspflichten, Modell adaptierbar"
+  },
+  {
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"43006917",
+    author:"Mohamed M et al.", pubdate:"10.11.2026",
+    added:"10.11.2026",
+    title:"Kognitive Störungen bei älteren Tumorpatienten verbunden mit höherer Hospitalisierung und Frühtod",
+    sum:"Sekundäranalyse der GAP70+-Studie (n=368, Durchschnittsalter 77,2 Jahre) zu Assoziation zwischen Mini-Cog-basiertem kognitiven Screening und Therapie-Verträglichkeit, ungeplanter Hospitalisierung und Mortalität.",
+    result:"32% zeigten abnormales kognitives Screening. Abnormales Screening assoziiert mit höherer ungeplanter Hospitalisierung (OR 1,79, 95% KI 1,04–3,10); stärker in 70–79 Jahren (OR 3,16, 1,57–6,46), nicht ≥80 Jahren (OR 0,72, 0,25–1,99). Erhöhte Mortalität 6 Monate (HR 1,94, 1,24–3,03) und 1 Jahr (HR 1,61, 1,16–2,24). Keine Assoziation mit Toxizität oder frühem Abbruch. Routine-Screening empfohlen zur Risikostratifizierung.",
+    transfer:"USA-System, Risikostratifizierungs-Ansatz für Senioreninterventionen übertragbar"
+  },
+  {
+    journal:"Cancer Cell", year:"2026", pmid:"43003078",
+    author:"Xu YZ et al.", pubdate:"09.11.2026",
     added:"09.11.2026",
-    title:"DVRd verlängert progressionsfreies Überleben bei Myelom erheblich",
-    sum:"Extrapolation der Progressionsfreien-Überlebens-Daten aus zwei Phase-III-Studien (PERSEUS und CEPHEUS) zur Schätzung von Langzeitoutcomes bei neu diagnostiziertem Myelom mit und ohne Transplantationseignung.",
-    result:"Bei transplantationsgeeigneten Patienten betrug das projizierte mediane PFS mit DVRd 205 Monate (17,1 Jahre) gegenüber 87 Monaten (7,3 Jahre) mit VRd – ein Unterschied von 118 Monaten (9,8 Jahren). Bei nicht-transplantationsgeeigneten Patienten: 100 Monate (8,3 Jahre) versus 53 Monate (4,4 Jahre), Differenz 47 Monate (3,9 Jahre). Diese Extrapolationen bekräftigen DVRd als Standard in beiden Populationen.",
-    transfer:"Europäische Zentren (Niederlande, Frankreich, Deutschland), vergleichbare Versorgungsstrukturen"
-  },
-  {
-    journal:"Clin Cancer Res", year:"2026", pmid:"43002139",
-    author:"Yang SP et al.", pubdate:"09.11.2026",
-    added:"09.11.2026",
-    title:"Kurze BRAF/MEK-Inhibition reaktiviert Jodaufnahme innerhalb 2 Wochen",
-    sum:"Phase-II-Studie zur Frage, ob kurzes Dabrafenib plus Trametinib die Jodaufnahme bei MAPK-aktiviertem, radioiodrefraktärem Schilddrüsenkrebs wiederherstellt; primär: Dosimetrie-Kriterien für nachfolgende Radioiodtherapie.",
-    result:"9 von 14 Patienten (64 %) erfüllten Dosimetrie-Kriterien; 6 von 9 (67 %) zeigten Jodaufnahme-Wiederherstellung innerhalb 2 Wochen. Objektive Ansprechrate nach 6 Monaten: 75 % nach RECIST. Medianes PFS: 10,8 Monate. RAS-mutante Tumoren zeigten stärkere Regression als BRAFV600E-Mutanten.",
-    transfer:"Multizentrisch (Singapur), mechanistische Erkenntnisse sind tumorunabhängig übertragbar"
-  },
-  {
-    journal:"JCO Oncol Pract", year:"2026", pmid:"43002724",
-    author:"Crowley RJ et al.", pubdate:"09.11.2026",
-    added:"09.11.2026",
-    title:"Geografische Versorgungslücken: 5.578 fehlende Onkologen in den USA",
-    sum:"Nationale Geospatialanalyse (2015–2025) zur Identifikation optimaler Onkologen-Platzierungen und Cluster ungedeckter Bedarfs sowie Faktoren für neue Fellowship-Programme.",
-    result:"Maximal-Coverage-Modell mit 40-km-Radius identifizierte 5.578 zusätzliche Onkologen-Positionen zur Versorgung von 26,1 Millionen Patienten ≥55 Jahren; 52,2 % der Platzierungen sollten in ländlichen Landkreisen erfolgen. 910 Cluster mit ungedecktem Bedarf (v.a. Nevada, Kalifornien, Florida). Fellowship-Programme stiegen 2015–2025 von 140 auf 180; ländliches Wachstum nur 0,6–1,7 %. Höheres Einkommen, höhere Onkologen-Dichte und Medicaid-Expansion prädiktiv für neue Programme; Ländlichkeit stark negativ assoziiert.",
-    transfer:"USA-System mit anderen Finanzierungsbedingungen; Versorgungsdisparität-Messungen auf Deutschland nicht direkt übertragbar"
-  },
-  {
-    journal:"Oncologist", year:"2026", pmid:"42992955",
-    author:"Giudice GC et al.", pubdate:"06.11.2026",
-    added:"06.11.2026",
-    title:"Hohe ABCA1/ABCG1-Expression korreliert mit schlechterem Outcome unter ICI-Kombinationen",
-    sum:"Retrospektive Biomarker-Studie (CHOMET) bei mRCC-Patienten unter First-Line-ICI-Kombinationen; Assoziation von Tumor-ABCA1/ABCG1-Expression mit systemischen Lipid-Parametern, Ernährungsstatus und Überlebensergebnissen.",
-    result:"Hohe ABCA1/ABCG1-Expression assoziiert mit verkürztem OS (p=0,003 bzw. p=0,01) und PFS (p=0,05 bzw. p=0,08). Nephrektomie-Cholesterin-Score und niedriger CONUT-Score signifikant mit verbessertem PFS und OS assoziiert. Bulk-RNA-Seq deutet auf Immunosuppression hin: hohe ABCA1-Expression korreliert mit M2-Makrophagen und CD8+-T-Zell-Mangel; hohe ABCG1 mit erhöhten regulatorischen T-Zellen.",
-    transfer:"Italien, Grundlagenerkenntnisse zu Immunsuppression sind mechanismusbasiert übertragbar"
-  },
-  {
-    journal:"JAMA Oncol", year:"2026", pmid:"42986615",
-    author:"Zhou F et al.", pubdate:"05.11.2026",
-    added:"05.11.2026",
-    title:"Bisspezifischer VEGF/PD-L1-Inhibitor zeigt Ansprechrate &gt;60 % bei fortgeschrittenem NSCLC",
-    sum:"Phase-II-Studie (offen, multizentrisch, China) zu HB0025 (PD-L1/VEGF-Trap-Bisspezifischer Antikörper) plus Chemotherapie bei fortgeschrittenem, driver-negativ-freiem NSCLC (nicht-plattenepithel und plattenepithel).",
-    result:"Nicht-plattenepithel (n=85): ORR 36,4 % (10 mg/kg) bzw. 57,1 % (20 mg/kg); Plattenepithel (n=84): 68,2 % bzw. 74,2 %. Medianes PFS: 12,52 Monate (nicht-plattenepithel), 14,78 Monate (plattenepithel). 12-Monats-OS-Raten: 75,8 % bzw. 85,5 %. Grad ≥3 Nebenwirkungen: 65,9 % bzw. 60,7 %, vorwiegend hämatologisch. Immune-bedingte Nebenwirkungen 23,5–25 %.",
-    transfer:"China-Studie, Standard-Chemotherapie weltweit vergleichbar, aber finale Zulassung in Deutschland ausstehend"
-  },
-  {
-    journal:"Nature", year:"2026", pmid:"42983086",
-    author:"de Jong G et al.", pubdate:"04.11.2026",
-    added:"04.11.2026",
-    title:"Kartierung von Zellzustand und räumlichem Ort erklärt Glioblastom-Heterogenität",
-    sum:"Multiomik-Atlas (Transkriptomik, Epigenomik, Genomik) von 12 menschlichen Glioblastomen mit räumlicher Auflösung; Identifikation einer konservierten Zellzustands-Trajektorie von Entwicklungs-ähnlichen Zuständen zu Glial-Injury- und Hypoxie-Zuständen.",
-    result:"Zellzustands-Trajektorie regionalisiert Tumoren in unterschiedliche Mikroumgebungen und manifestiert sich molekular konserviert über Tumoren hinweg sowie in genetisch unterschiedlichen Subklonen. Deep-Learning-Framework zeigt räumlich fein durchmischte Subklone. Organisoid-Experimente und In-vivo-Validierung bestätigen die Trajektorie; enge Kopplung an Myeloid-Heterogenität.",
-    transfer:"UK/deutsches Konsortium (Sanger, DKFZ, Cambridge), Grundlagenarbeit mit klinischem Weg"
+    title:"Neutrophil-Spatial-Muster in triple-negativem Brustkrebs prägen Prognose und Immuntherapie-Ansprechen",
+    sum:"Groß angelegte Studie (n=1113 Computerpathologie, n=104 räumliche Omics) zur klinischen Bedeutung von Neutrophil-Raummustern in Brustkrebs-Mikroumgebung mittels KI-gestützter Bildanalyse und funktioneller Validierung.",
+    result:"Triple-negativ-Brustkrebs (TNBC): Tumor-proximale Neutrophile assoziiert mit günstiger Prognose; Neutrophile neben Immunzellen prädiktiv für Immuntherapie-Ansprechen. Kombinierte räumliche Muster verbesserten TNBC-Stratifizierung. Räumliche Omics: tumor-proximale Neutrophile erhöhten MHC-I auf Tumorzellen über Entzündungs-Crosstalk. Neutrophile neben Immunzellen zeigten Antigen-Präsentations-Phänotyp (verstärkt durch Polyamin-Metabolismus-Targeting).",
+    transfer:"Chinesische Klinik mit etablierten Pathologie-Workflows, Modell mit Routinepathologie adaptierbar"
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -2242,7 +2233,7 @@ const ZUL_DIGA = 0;
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "10.11.2026";
+const NEWS_STAND = "11.11.2026";
 const NEWS = [
   {titel:"Tarlatamab beim kleinzelligen Lungenkarzinom: AkdÄ sieht Zusatznutzen", datum:"2026-11-10", url:"https://www.monitor-versorgungsforschung.de/news/tarlatamab-beim-kleinzelligen-lungenkarzinom-akdae-sieht-zusatznutzen/"},
   {titel:"Adjuvante Immuntherapie bei dMMR-Darmkrebs: FDA lässt Atezolizumab zu", datum:"2026-11-09", url:"https://www.monitor-versorgungsforschung.de/news/adjuvante-immuntherapie-bei-dmmr-darmkrebs-fda-laesst-atezolizumab-zu/"},
