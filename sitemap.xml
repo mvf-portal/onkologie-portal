@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- erzeugt von hub-scripts/studienseiten.py -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://onkologie.m-vf.de/</loc><lastmod>2026-11-11</lastmod></url>
-<url><loc>https://onkologie.m-vf.de/studie/</loc><lastmod>2026-11-11</lastmod></url>
+<url><loc>https://onkologie.m-vf.de/</loc><lastmod>2026-11-12</lastmod></url>
+<url><loc>https://onkologie.m-vf.de/studie/</loc><lastmod>2026-11-12</lastmod></url>
 <url><loc>https://onkologie.m-vf.de/neue-studien.html</loc></url>
 <url><loc>https://onkologie.m-vf.de/newsletter.html</loc></url>
 <url><loc>https://onkologie.m-vf.de/themen-quellen.html</loc></url>
+<url><loc>https://onkologie.m-vf.de/studie/43013351/</loc><lastmod>2026-11-12</lastmod></url>
+<url><loc>https://onkologie.m-vf.de/studie/43013345/</loc><lastmod>2026-11-12</lastmod></url>
+<url><loc>https://onkologie.m-vf.de/studie/43009642/</loc><lastmod>2026-11-12</lastmod></url>
+<url><loc>https://onkologie.m-vf.de/studie/43008831/</loc><lastmod>2026-11-12</lastmod></url>
+<url><loc>https://onkologie.m-vf.de/studie/43008753/</loc><lastmod>2026-11-12</lastmod></url>
 <url><loc>https://onkologie.m-vf.de/studie/43008246/</loc><lastmod>2026-11-11</lastmod></url>
 <url><loc>https://onkologie.m-vf.de/studie/43008245/</loc><lastmod>2026-11-11</lastmod></url>
 <url><loc>https://onkologie.m-vf.de/studie/43008231/</loc><lastmod>2026-11-11</lastmod></url>
