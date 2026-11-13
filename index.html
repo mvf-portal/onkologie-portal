@@ -2229,53 +2229,62 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "12. Nov. 2026, 05:25 Uhr";
+const SNAP_DATE = "13. Nov. 2026, 05:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Clin Cancer Res", year:"2026", pmid:"43013351",
-    author:"Chen D et al.", pubdate:"11.11.2026",
+    journal:"Oncologist", year:"2026", pmid:"43016339",
+    author:"Punie K et al.", pubdate:"12.11.2026",
+    added:"12.11.2026",
+    title:"Sacituzumab govitecan verbessert Lebensqualität bei metastasierem triple-negativem Brustkrebs",
+    sum:"Randomisierte Phase-III-Studie (ASCENT-03) verglich Sacituzumab govitecan mit Standardchemotherapie bei 558 Patientinnen mit metastasierem triple-negativem Brustkrebs, die nicht für PD-(L)1-Inhibitoren geeignet waren, anhand von Patient-Reported Outcomes über 25 Wochen.",
+    result:"Sacituzumab govitecan führte zu signifikanten Verbesserungen der Lebensqualität: Vorteil bei körperlicher Funktionsfähigkeit (Differenz 6,89 Punkte; 95%-KI 3,50–10,28), besserem Allgemeinzustand und Fatigue sowie schnellerer Verbesserung kognitiver, sozialer und emotionaler Funktionen. Gastrointestinale Nebenwirkungen waren zwar häufiger, aber handhabbar. Gesamtueberleben-Daten werden in separaten Analysen berichtet.",
+    transfer:"Belgien (Antwerpen), Deutschland (Heidelberg), Spanien, Italien beteiligt; Sozialversicherungssystem vergleichbar."
+  },
+  {
+    journal:"JAMA Oncol", year:"2026", pmid:"43018988",
+    author:"Su L et al.", pubdate:"12.11.2026",
+    added:"12.11.2026",
+    title:"Frühe Ernährungssupplementierung reduziert Gewichtsverlust bei Nasopharynxkarzinom",
+    sum:"Randomisierte Phase-III-Studie an 216 Patienten mit Nasopharynxkarzinom (Stadium II–IVA), die frühe vs. verzögerte orale Ernährungssupplementierung (ONS) während simultaner Radiochemotherapie verglich; Endpunkt: Gewichtsverlust &gt;5% bis Therapieende.",
+    result:"Frühe ONS reduzierte Gewichtsverlust &gt;5% von 80,7% auf 65,4% (RR 0,81; 95%-KI 0,68–0,96; p = 0,01). Schwere radiogene Mukositis (Grad ≥3) trat in 14,0% unter früher vs. 26,6% unter verzögerter Supplementierung auf (RR 0,53; 95%-KI 0,30–0,93). Kosten-Nutzen-Analyse zeigte ähnliche Gesamtkosten bei besserer Lebensqualität.",
+    transfer:"Sechs chinesische Universitätskliniken; Versorgungsmodell für multizentrische deutsche Zentren adaptierbar."
+  },
+  {
+    journal:"JAMA Oncol", year:"2026", pmid:"43018983",
+    author:"Liu F et al.", pubdate:"12.11.2026",
+    added:"12.11.2026",
+    title:"Neoadjuvante Immunchemotherapie verbessert Rezidivfreiheit bei lokalem HNSCC",
+    sum:"CAMORAL-Studie: 125 Patienten mit resektablem Stadium-III/IVB-HNSCC wurden randomisiert zu neoadjuvanter Immunchemotherapie (Camrelizumab + Paclitaxel/Carboplatin) gefolgt von Operation und adjuvanter Therapie vs. Standard-OP allein; Endpunkt: 2-Jahres-ereignisfreies Überleben.",
+    result:"Neoadjuvante Gruppe erreichte 2-Jahres-EFS von 77,8% vs. 46,1% in Kontrollgruppe (HR 0,34; 95%-KI 0,17–0,68; p = 0,001). 2-Jahres-Gesamtueberleben: 92,0% vs. 69,1% (HR 0,25; 95%-KI 0,10–0,64). Majorpathologische Response 47,6%, komplette pathologische Response 25,4%. Grad-≥3-Nebenwirkungen in 79,4% vs. 56,5%.",
+    transfer:"China-Studie; Immune-Checkpoint-Inhibitor-Namen sind in Deutschland vertraut, Perioperativkonzept ist zentrenübergreifend übertragbar."
+  },
+  {
+    journal:"JAMA", year:"2026", pmid:"43018949",
+    author:"Lu Z et al.", pubdate:"12.11.2026",
+    added:"12.11.2026",
+    title:"Bispezifisches Antikörper-Konjugat verbessert Überleben bei metastasiertem Ösophaguskarzinom",
+    sum:"Phase-III-Studie (PANKU-Esophagus01) mit 497 Patienten aus 80 chinesischen Zentren zur Wirksamkeit von Izalontamab brengitecan (EGFR/HER3-Bispecific-ADC) vs. Chemotherapie bei PD-1/PD-L1-refraktärem metastasiertem Plattenepithelkarzinom der Speiseröhre.",
+    result:"Izalontamab brengitecan: Median-PFS 4,17 Monate vs. 1,97 Monate Chemotherapie (HR 0,50; 95%-KI 0,40–0,63; p &lt; 0,001); Median-Gesamtueberleben 9,79 vs. 7,20 Monate (HR 0,63; 95%-KI 0,48–0,82; p &lt; 0,001). Grad-≥3-Nebenwirkungen in 85,1% (überwiegend hämatologisch) vs. 59,3%. Substanz ist in China zugelassen, europaweite Zulassung ausstehend.",
+    transfer:"Chinesische Phase-III-Studie; Zulassungspfad für Deutschland über EMA läuft oder steht bevor."
+  },
+  {
+    journal:"Nat Med", year:"2026", pmid:"43015400",
+    author:"Garassino MC et al.", pubdate:"11.11.2026",
     added:"11.11.2026",
-    title:"CDK4/6-Inhibitor plus Dual-HER2-Blockade erreicht Hirnmetastasen-Ansprechrate 58,6%",
-    sum:"Chinesische multizentrische Phase-II-Studie an 32 Patienten mit HR+/HER2+ fortgeschrittenem Mammakarzinom und messbaren Hirnmetastasen; chemotherapiefrei: Palbociclib + Fulvestrant + Trastuzumab + Pyrotinib bis Progression.",
-    result:"Bei 29 auswertbaren Patienten: bestätigte ZNS-Ansprechrate 58,6% (95%-KI 40,7–74,5), Gesamt-ORR 62,1%. Mediane ZNS-PFS 9,6 Monate (95%-KI 5,3–13,9), mediane Gesamt-PFS 12,3 Monate. 24-Monats-OS-Rate 80,7% (5 Todesfälle, unreif). Grad ≥3: Diarrhöe 37,5%, Neutropenie 28,1%, kein Todesfall.",
-    transfer:"China, HER2+ Systemauswahl; Hirnmetastasen-Datenlage in Deutschland begrenzt, Chemotherapiefreiheit relevant für Lebensqualität."
+    title:"TROP2-Membranexpression sagt Erfolg von Datopotamab deruxtecan voraus",
+    sum:"Biomarker-Studie mit rechnergestützter Pathologie zur Quantifizierung von TROP2 an Tumorzellen: In der TROPION-Lung01-Studie wurde eine normalisierte Membranratio (NMR) entwickelt und validiert, um Patientinnen und Patienten mit NSCLC für Datopotamab deruxtecan zu stratifizieren.",
+    result:"TROP2-NMR-positive Patientinnen und Patienten unter Datopotamab deruxtecan zeigten signifikant längeres progressionsfreies Überleben (Median 7,2 vs. 4,0 Monate; HR 0,40; 95%-KI 0,25–0,64), während NMR-negative Patienten nicht profitierten (HR 0,94). Interaktion zwischen Biomarker und Behandlung: p = 0,0098. Konventionelle Immunohistochemie hatte keinen prädiktiven Wert.",
+    transfer:"Französische, niederländische, deutsche Zentren beteiligt; prädiktiver Biomarker für klinische Versorgung übertragbar."
   },
   {
-    journal:"Clin Cancer Res", year:"2026", pmid:"43013345",
-    author:"Gestrich C et al.", pubdate:"11.11.2026",
+    journal:"Eur J Cancer", year:"2026", pmid:"43014140",
+    author:"Wang Y et al.", pubdate:"05.11.2026",
     added:"11.11.2026",
-    title:"SPROUT-Leitlinie: DNA/RNA-Sequenzierung und Methylierung bei pädiatrischen Solidtumoren standardisieren",
-    sum:"US-amerikanische Konsens-Leitlinie der AACR zur standardisierten Molekularen Diagnostik bei pädiatrischen Solidtumoren; Literaturanalyse (41 von 361 gescreenten Publikationen), Expertenabstimmung zu Timing und Methoden (DNA-/RNA-NGS, Methylierungsprofiling) bei Diagnose sowie Rezidiv.",
-    result:"Empfehlungen für DNA- und RNA-Next-Generation-Sequenzierung sowie Methylierungsprofiling bei pädiatrischen Soliden entwickelt. Framework zur standardisierten Implementierung molekularer Diagnostik. Breite Anwendung soll diagnostische Präzision erhöhen, Testvariabilität senken und Chancen für biomarker-gerichtete Therapie und klinische Prüfungen verbessern.",
-    transfer:"USA, aber internationale Relevanz: Leitlinien-Empfehlungen informieren globale Standards; Anpassung an deutsche Zertifizierungsanforderungen erforderlich."
-  },
-  {
-    journal:"Nat Med", year:"2026", pmid:"43009642",
-    author:"Wilhelm J et al.", pubdate:"10.11.2026",
-    added:"10.11.2026",
-    title:"Tu-stroma-RNA in Blut erkennt Ovarialkarzinom-Vorstufen sicher",
-    sum:"Internationale Studie an 506 Personen zur Validierung von Tu-stroma, einer lncRNA in Blut-Exosomen, als Biomarker für Serosa tubal intraepitheliale Carcinome (STIC) und frühes high-grade seröses Ovarial­karzinom.",
-    result:"Tu-stroma zeigte in ROC-Analysen überlegene Diskriminanz gegenüber CA125: AUC 0,99 vs. 0,59 (p&lt;0,001) für STIC gegen Kontrollen, AUC 0,99 vs. 0,96 (p=0,001) für HGSC gegen Kontrollen. Spezifität bestätigt durch Negativität bei 116 entzündlichen Vergleichern und 160 Nicht-Ovarial­malignomen. Prospektive Validierung in Real-World-Kohorten erforderlich.",
-    transfer:"Deutschland und europäisches System: große europäische Beteiligung (Deutschland, UK, Schweiz, Schweden, Dänemark), Pathologiebefunde vergleichbar."
-  },
-  {
-    journal:"Int J Radiat Oncol Biol Phys", year:"2026", pmid:"43008831",
-    author:"Sakanaka K et al.", pubdate:"10.11.2026",
-    added:"10.11.2026",
-    title:"IMRT mit Darmschutz senkt akute Diarrhöe bei Neoadjuvanz von 26% auf 7,3%",
-    sum:"Japanische Phase-II-Studie an 55 Patienten mit lokalfortgeschrittenem Rektumkarzinom, die moderne IMRT mit Bowel-Sparing-Technik (Zielwert V15Gy &lt;200 cc) und Kapecitabin erhielten, versus historisches 3DCRT-Benchmark.",
-    result:"Grad ≥2 akute Diarrhöe trat in 4 von 54 Patienten auf (7,3%; 90%-KI 2,5–15,9; p&lt;0,001 vs. Benchmark 26%). Mediane V15Gy 85 cc. Nach Chirurgie: pathologische Komplettremission 6,0%, R0-Rate 88%, Grad ≥2 Komplikationen 14%. Nach 14 Monaten Follow-up: 12-Monats-lokoregionäre Progressionsfreiheit 95%, Gesamtüberleben 98,2%.",
-    transfer:"Japan: vergleichbare Behandlungsstandards, IMRT-Technik international; Bowel-Sparing-Prinzipien übertragbar auf deutsche Zentren."
-  },
-  {
-    journal:"Lancet Oncol", year:"2026", pmid:"43008753",
-    author:"Li J et al.", pubdate:"10.11.2026",
-    added:"10.11.2026",
-    title:"PI3K-α-Inhibitor Risovalisib bei PIK3CA-mutiertem Ovarialklarzellkarzinom: ORR 35%",
-    sum:"Multizentrische Phase-II-Studie (39 Zentren China/Japan, 93 Patienten) zum PI3K-α-Inhibitor Risovalisib (40 mg/Tag) bei rezidiviertem/persistierendem PIK3CA-mutiertem Ovarialklarzellkarzinom nach 1–3 Vortherapien.",
-    result:"Bei 84 Patienten in Efficacy-Analyse: objektive Ansprechrate 35% (95%-KI 25–46). Häufigste Grad ≥3 Nebenwirkungen: Exanthem (32%), Hyperglykämie (30%). Schwerwiegende unerwünschte Ereignisse bei 39%, kein Todesfall. Mediane Nachverfolgung 14,5 Monate. Studie laufend, keine neuen Patienten mehr aufgenommen.",
-    transfer:"China/Japan: seltene Tumorentität, globales Interesse; Übertragbarkeit zu PIK3CA-Mutationstesting in deutschen Zentren gegeben."
+    title:"Vitamin-D-Supplementation senkt Krebssterblichkeit bei defizitären Personen",
+    sum:"Sekundäranalyse UK-Biobank-Daten (informiert durch VITAL- und D-Health-Designs) zur Frage, ob die in Großstudien beobachtete Sterblichkeitsreduktion bei Vitamin-D-Mangel in Randomisierungen erscheint, wenn man gezielt insuffiziente oder defiziente Populationen betrachtet.",
+    result:"Bei Vitamin-D-insuffizienten (25(OH)D &lt; 50 nmol/L) und -defizienten (&lt; 30 nmol/L) Personen zeigte sich inverse Assoziation mit Krebssterblichkeit: HR 0,93 (95%-KI 0,86–1,02) bzw. 0,87 (95%-KI 0,77–0,97) pro 30 nmol/L höhere Baseline-Konzentration. Bei Vitamin-D-replete Populationen (wie in VITAL und D-Health) keine Assoziation. Nulleffekte der Großstudien waren somit zu erwarten.",
+    transfer:"Deutsche Krebsregister und Präventionsforschung könnten Vitamin-D-Mangel als modifizierbaren Risikofaktor gezielt untersuchen."
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -2300,18 +2309,18 @@ const ZUL_DIGA = 0;
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "12.11.2026";
+const NEWS_STAND = "13.11.2026";
 const NEWS = [
+  {titel:"Polygene Risiko-Scores im Brustkrebs-Screening: Estland startet landesweit", datum:"2026-11-12", url:"https://www.monitor-versorgungsforschung.de/news/polygene-risiko-scores-im-brustkrebs-screening-estland-startet-landesweit/"},
   {titel:"Tarlatamab beim kleinzelligen Lungenkarzinom: AkdÄ sieht Zusatznutzen", datum:"2026-11-10", url:"https://www.monitor-versorgungsforschung.de/news/tarlatamab-beim-kleinzelligen-lungenkarzinom-akdae-sieht-zusatznutzen/"},
-  {titel:"Adjuvante Immuntherapie bei dMMR-Darmkrebs: FDA lässt Atezolizumab zu", datum:"2026-11-09", url:"https://www.monitor-versorgungsforschung.de/news/adjuvante-immuntherapie-bei-dmmr-darmkrebs-fda-laesst-atezolizumab-zu/"},
 ];
 // === NEWS-BLOCK-ENDE ===
 
 // Fremde Pressemeldungen zum Thema — taeglich von scripts/newsfeed.py
 // === PRESSE-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
 const PRESSE = [
+  {titel:"Der Kinderonkologe Matthias Fischer und der Physiker Martin Peifer erhalten ERC Synergy Grant", datum:"2026-11-12", url:"http://idw-online.de/de/news880805", quelle:"idw"},
   {titel:"Neuer Lungenkrebs-Atlas: Das Risiko von Metastasen messen", datum:"2026-11-12", url:"http://idw-online.de/de/news880779", quelle:"idw"},
-  {titel:"Ungewöhnlicher Erreger: Tödliche Virusinfektion unter moderner Krebsimmuntherapie", datum:"2026-11-12", url:"http://idw-online.de/de/news880770", quelle:"idw"},
 ];
 // === PRESSE-BLOCK-ENDE ===
 
