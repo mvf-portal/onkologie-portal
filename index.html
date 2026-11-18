@@ -2250,62 +2250,53 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "17. Nov. 2026, 05:01 Uhr";
+const SNAP_DATE = "18. Nov. 2026, 05:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Blood", year:"2026", pmid:"43038173",
-    author:"Baljevic M et al.", pubdate:"16.11.2026",
+    journal:"J Clin Oncol", year:"2026", pmid:"43044095",
+    author:"Meduri B et al.", pubdate:"17.11.2026",
+    added:"17.11.2026",
+    title:"Teilbrustbestrahlung gleichwerttig zur Ganzbrusbestrahlung bei Niedrigrisiko-Brustkrebs",
+    sum:"Randomisierte Phase-III-Studie mit 3.225 Patientinnen (1.652 beschleunigte Teilbrustbestrahlung, 1.657 Ganzbrusbestrahlung) zum Vergleich von isolierter Teilbrustbestrahlung versus konventioneller Ganzbrusbestrahlung bei frühem Brustkrebs.",
+    result:"Nach 97,5 Monaten medianes Follow-up betrug die 5-Jahres-Inzidenz ipsilateraler Brusttumorrezidive 1,0% (95%-KI 0,6–1,6) für Teilbestrahlung versus 0,8% (95%-KI 0,5–1,4) für Ganzbrusbestrahlung (HR 1,18; 90%-KI 0,63–2,20). Formal wurde Nicht-Unterlegenheit nicht erreicht, da die obere Konfidenzgrenze die Nicht-Unterlegenheitsmarge überschritt, doch der absolute Unterschied betrug &lt;0,2%. Beide Verfahren zeigten außergewöhnlich niedrige Rezidivquoten ≤1%.",
+    transfer:"Europäische Multizenterstudie (Italien, Niederlande, Belgien, Schweiz), vergleichbare Versorgungsstandards."
+  },
+  {
+    journal:"Clin Cancer Res", year:"2026", pmid:"43043002",
+    author:"Bruixola G et al.", pubdate:"17.11.2026",
+    added:"17.11.2026",
+    title:"Plasma-ctDNA nach Chemoradiation bei HNO-Krebs vorhersagekräftig für Rezidiv",
+    sum:"Prospektive Studie mit 74 Patienten mit lokal fortgeschrittenem Kopf-Hals-Plattenepithelkarzinom, bei denen zirkuläre Tumor-DNA (ctDNA) mittels methylierungsbasiertem Plasma-Assay vor Therapie, nach 8 und 12 Wochen sowie im Follow-up gemessen wurde.",
+    result:"Baseline-ctDNA war bei 85,1% nachweisbar. ctDNA in Woche 12 zeigte höchste diagnostische Genauigkeit: Sensitivität 69%, Spezifität 100%, positiv-prädiktiver Wert 100%, negativ-prädiktiver Wert 76%. Nachweisbare ctDNA Woche 12 war assoziiert mit kürzerem progressionsfreiem Überleben (HR 6,44; 95%-KI 2,73–16,74; p&lt;0,001) und kürzerem Gesamtüberleben (HR 7,31; 95%-KI 2,80–22,31; p&lt;0,001). Kombination mit PET/CT verbesserte Risikostratifikation, besonders bei PET-Teilresponsivität.",
+    transfer:"Spanische Studie (Valencia), Methodik übertragbar auf deutsche Nachsorgestrukturen."
+  },
+  {
+    journal:"JCO Oncol Pract", year:"2026", pmid:"43044086",
+    author:"Cooley ME et al.", pubdate:"17.11.2026",
+    added:"17.11.2026",
+    title:"Patient-reported Outcomes in US-Krebspraxen selten, Distress häufiger als Symptomatik gemessen",
+    sum:"Deskriptive Analyse von Erhebungsdaten aus dem National Cancer Institute Community Oncology Research Program (NCORP) von 2017 und 2022 zur Implementierung von Patient-Reported Outcome Measures (PROMs) in 70 Community-Praxen.",
+    result:"2022 führten 91,1% der Praxen routinierte Distress-Screenings durch (2017: 87,8%), aber nur 23,2% nutzten PROMs für gesundheitsbezogene Lebensqualität oder Symptomatik (2017: 32,1%). Praxen im Westen der USA und mit niedrigerem Patientenvolumen waren weniger wahrscheinlich, Lebensqualitäts-/Symptom-PROMs zu nutzen. Teilnahme am Oncology Care Model war einziger signifikanter Faktor für Dokumentation von Lebensqualitäts-/Symptom-PROMs in der Elektronischen Gesundheitsakte. Große Variabilität bei verwendeten Messinstrumenten.",
+    transfer:"USA-Studie (Community-Praxen), Implementierungs-Hürden relevant auch für Deutschland."
+  },
+  {
+    journal:"Int J Radiat Oncol Biol Phys", year:"2026", pmid:"43039250",
+    author:"Cheung P et al.", pubdate:"16.11.2026",
     added:"16.11.2026",
-    title:"Etentamig: BCMA-Bispecific senkt Cytokine-Release-Syndrom bei refraktärem Myelom",
-    sum:"Poolanalyse von Phase-1-Daten zum BCMA×CD3-Bispecific-Antikörper Etentamig bei dreifach-vorbehandeltem, refraktärem multiplem Myelom (146 Patienten, Median 4 Vortherapien).",
-    result:"Objective Response Rate 66%, ≥sehr gutes partielles Remission 54%. Grad-3/4-Neutropenie 38%, Infektionen 23%, Cytokin-Freisetzungs-Syndrom Gesamtrate 30% (davon 26% Grad 1, 4% Grad 2) mit modifizierter Dexamethason-Prämedikation; mittlere Dauer bis Onset 22,3 Stunden, Auflösung in 20,7 Stunden. Die niedrig-affine CD3-Bindungsdomäne assoziiert mit verbessertem Toxizitätsprofil.",
-    transfer:"USA/internationale Studiengruppe, vergleichbare Zulassungsstandards"
+    title:"SBRT und intermittierende Androgenentzugstherapie bei oligometastasiertem Prostatakarzinom wirksam",
+    sum:"Prospektive Phase-I/II-Studie mit 89 Patienten mit oligometastasiertem hormonempfindlichem Prostatakarzinom (≤5 Metastasen), die Stereotactic-Body-Radiotherapy (SBRT) zu allen Tumoren plus ein Jahr intermittierende Androgenentzugstherapie (ADT) erhielten.",
+    result:"Mediales Follow-up 74,7 Monate: 6,7% (6/89) Patienten erlebten Grad-3-Nebenwirkungen (5 Wirbelkörperfrakturen, 1 Harnwegsbehinderung). 5-Jahres-Progressionsfreies Überleben 15,2%, Gesamtüberleben 78,2%. 59,7% der Patienten brauchten Neustart von ADT, 22,8% entwickelten kastrationsresistentes Prostatakarzinom, 39,3% waren ohne ADT bei Letztkontakt noch am Leben. Höheres PSA-Nadir nach SBRT + 1 Jahr ADT korrelierte mit kürzerer Zeit bis Kastrationsresistenz und schlechterem Überleben.",
+    transfer:"Kanadische Studie (Toronto, Ontario), vergleichbare Versorgungsinfrastruktur mit deutschen Zentren."
   },
   {
-    journal:"J Natl Cancer Inst", year:"2026", pmid:"43037074",
-    author:"Shkurti J et al.", pubdate:"16.11.2026",
+    journal:"Lancet Oncol", year:"2026", pmid:"43039016",
+    author:"Black D et al.", pubdate:"16.11.2026",
     added:"16.11.2026",
-    title:"Adjuvante Chemotherapie beim Kolonkarzinom: Leitlinien-Adhärenz in Niederlanden nur 57,8%",
-    sum:"Niederländische populationsbasierte Kohortenstudie anhand des Krebsregisters (2005–2020) zur Adhärenz gegenüber Leitlinien-Empfehlungen für adjuvante Chemotherapie bei 44.471 Patienten nach kurativer Resektion von Kolonkarzinom.",
-    result:"Von 22.050 (49,6%) leitlinien-berechtigen Patienten erhielten nur 12.748 (57,8%) adjuvante Chemotherapie; 2,6% nicht-berechtigter Patienten wurden dennoch behandelt. Nicht-Adhärenz korrelierte mit Alter ≥75 Jahren (29,9% erhielten Therapie), weiblichem Geschlecht, Komorbiditäten, rechtsseitigen Tumoren und elektiver Surgery (alle p&lt;0,001). Variabilität auch zwischen Krankenhaustypen: Lehrhaus- und Unikliniken zeigten niedrigere Adhärenz als Allgemeinkrankenhäuser (p&lt;0,001).",
-    transfer:"Niederländisches Versicherungssystem ähnlich Deutschland, vollständige Registerdaten"
-  },
-  {
-    journal:"Blood", year:"2026", pmid:"43038178",
-    author:"Bertuglia G et al.", pubdate:"16.11.2026",
-    added:"16.11.2026",
-    title:"KRd-ASCT verlängert PFS beim Myelom über 7 Jahre – Langzeit-FORTE-Ergebnisse",
-    sum:"Italienische Phase-2-FORTE-Studie mit 7-jähriger Nachbeobachtung zu Carfilzomib-haltigen Strategien bei transplant-tauglichem, neudiagnostiziertem multiplem Myelom (Alter ≤65 Jahre, Randomisierung in KRd-ASCT vs. KRd12 vs. KCd-ASCT, dann zu Maintenance KR vs. R).",
-    result:"KRd-ASCT erhöhte Progression-Free Survival (Median 98 Monate) gegenüber KRd12 (70 Monate; HR 0,71, p=0,027) und KCd-ASCT (67 Monate; HR 0,66, p=0,006). KR-Maintenance verbesserte PFS vs. R-allein (HR 0,67, p=0,02) und senkte MRD-Resurgenz (sHR 0,53, p=0,001). Mediane MRD-Negativitätsdauer KR 50,5 vs. R 38 Monate. Kumulative Zweittumor-Inzidenz 6%. 8-Jahres-OS KRd-ASCT vs. KCd-ASCT 76% vs. 68% (HR 0,65, p=0,04).",
-    transfer:"Italien, europäische Versorgung, Registerstandardisierung vergleichbar"
-  },
-  {
-    journal:"Radiother Oncol", year:"2026", pmid:"43035150",
-    author:"Umezawa R et al.", pubdate:"15.11.2026",
-    added:"15.11.2026",
-    title:"SBRT+Elective-Nodal-Bestrahlung beim lokal fortgeschrittenen Pankreaskarzinom erreichbar",
-    sum:"Japanische Phase-I-Dosiseskalationsstudie zu 5-Fraktions-SBRT mit prophylaktischer Elective-Nodal-Irradiation (ENI 30 Gy) beim borderline-resezierbaren oder unresektablen Pankreaskarzinom (12 Patienten, Primärendpunkt: akute Dosis-limitierende Toxizität innerhalb 14 Tagen).",
-    result:"Ein Patient Level-1-Dosis (35 Gy primär) zeigte akute Grad-3-Anorexie/Übelkeit; keine DLTs Levels 2–3, Maximum-Tolerated-Dose nicht erreicht. Drei Patienten mit vorgelegtem Gallengang-Stent entwickelten subakute Grad-3-Cholangitis. Keine Grad-≥3-Spättoxizität. Medianes Gesamt-Überleben 17,3 Monate, 1-Jahres-lokoregionale Kontrolle 75%.",
-    transfer:"Japan, aber technisches Verfahren universal, kleine unkontrollierte Kohorte"
-  },
-  {
-    journal:"ESMO Open", year:"2026", pmid:"43035066",
-    author:"Gogishvili M et al.", pubdate:"15.11.2026",
-    added:"15.11.2026",
-    title:"Cemiplimab+Chemotherapie verdoppelt OS beim NSCLC mit PD-L1≥1% – 5-Jahres-Daten",
-    sum:"Phase-3-Studie EMPOWER-Lung 3 Part 2 mit 5-Jahres-Follow-up (median 60,5 Monate) zur First-Line-Kombination aus Cemiplimab (350 mg) oder Placebo plus histologie-spezifischer Platin-Duplet bei vorbehandelten NSCLC ohne EGFR/ALK/ROS1-Alterationen, Subgruppe PD-L1≥1% (327 von 466 Patienten, 217 Cemiplimab, 110 Placebo).",
-    result:"Medianes Gesamt-Überleben Cemiplimab+Chemotherapie 24,0 Monate (95%-KI 20,9–28,4) vs. Placebo+Chemotherapie 12,1 Monate (95%-KI 10,1–15,7, HR 0,54, 95%-KI 0,41–0,70, p&lt;0,0001); Progression-Free Survival 8,3 vs. 5,5 Monate (HR 0,50, p&lt;0,0001); ORR 48,4% vs. 22,7%. Grad-≥3 Treatment-Emergent Adverse Events 48,8% vs. 27,5%; keine neuen Toxizitäten. Vorteil über alle Subgruppen konsistent.",
-    transfer:"Internationale Studie, USA-Gesundheitssystem, aber Immunonkologie-Standards universal"
-  },
-  {
-    journal:"J Clin Oncol", year:"2026", pmid:"43019503",
-    author:"Macklin-Doherty A et al.", pubdate:"12.11.2026",
-    added:"12.11.2026",
-    title:"Zweittumor-Risiko bei Hodgkin-Frauen: 25% Reduktion durch moderne Therapie",
-    sum:"Britische populationsbasierte Kohortenstudie an 7.428 Frauen mit Hodgkin-Lymphom vor Alter 36 (1954–2010) mit Nachbeobachtung bis 2018 zu Zweittumoren mittels nationaler Krebsregister-Verknüpfung über 60 Jahre.",
-    result:"Während Median 20,2 Jahren Follow-up 1.200 Frauen mit 1.467 invasiven Karzinomen (SIR 3,3, 95%-KI 3,1–3,5), häufigst Brust-, Lungen-, Schilddrüsenkarzinom. Feststoff-Tumorrisiken höchst nach Strahlentherapie mit dosisabhängiger Reaktion. Risiko-Reduktion 25% zwischen Ära 1954–1989 und 2000–2010, durch reduzierte Strahlen-Dosis/-Umfang bedingt. Kumulative Inzidenz Zweittumoren 36% bei 50 Jahren Follow-up.",
-    transfer:"England und Wales, Krebsregister-Vollerfassung, Strahlentherapie-Trends relevant"
+    title:"Häufige therapeutische Targets in unerwarteten Tumortypen - Plädoyer für Genom-Sequenzierung aller Tumore",
+    sum:"Retrospektive pan-solide Tumor-Analyse von 11.013 Primär- und 6.016 metastasierungsfähigen Tumoren aus UK (100.000 Genomes Project) und Niederlande (Hartwig Medical Foundation) zur Häufigkeit sofort verwertbarer und investigationeller genomischer Zielstrukturen.",
+    result:"Unmittelbar verwertbare Alterationen identifiziert in 18,9% (2.081/11.013) Primär- und 25,9% (1.559/6.016) metastatischen Tumoren; weitere 10,9% (1.204) bzw. 14,4% (867) trugen investigationelle Alterationen oder Mutationssignatur-Features. Von 5.706 unmittelbar verwertbaren Varianten waren 2.914 (51,1%) in Tumortypen, in denen die Biomarker nicht von der FDA zugelassen sind. HER2-Amplifikation, RAS-RAF-Alterationen, IDH1-Mutationen und DNA-Reparaturdefekte kamen häufig über mehrere Tumortypen hinweg vor. Metastatische und seltene Tumore zeigten höhere Prävalenz targetabler Events.",
+    transfer:"Großbritannien und Niederlande, europäische Datenqualität, Argument für breite Genomsequenzierung."
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -2330,7 +2321,7 @@ const ZUL_DIGA = 0;
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "17.11.2026";
+const NEWS_STAND = "18.11.2026";
 const NEWS = [
   {titel:"DGVS: S3-Leitlinie zu Leberkrebs und Gallenwegskrebs aktualisiert", datum:"2026-11-16", url:"https://www.monitor-versorgungsforschung.de/news/dgvs-s3-leitlinie-zu-leberkrebs-und-gallenwegskrebs-aktualisiert/"},
   {titel:"Polygene Risiko-Scores im Brustkrebs-Screening: Estland startet landesweit", datum:"2026-11-12", url:"https://www.monitor-versorgungsforschung.de/news/polygene-risiko-scores-im-brustkrebs-screening-estland-startet-landesweit/"},
