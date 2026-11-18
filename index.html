@@ -2250,7 +2250,7 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "18. Nov. 2026, 05:01 Uhr";
+const SNAP_DATE = "18. Nov. 2026, 05:25 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
@@ -2263,15 +2263,6 @@ const STUDIES = [
     transfer:"Europäische Multizenterstudie (Italien, Niederlande, Belgien, Schweiz), vergleichbare Versorgungsstandards."
   },
   {
-    journal:"Clin Cancer Res", year:"2026", pmid:"43043002",
-    author:"Bruixola G et al.", pubdate:"17.11.2026",
-    added:"17.11.2026",
-    title:"Plasma-ctDNA nach Chemoradiation bei HNO-Krebs vorhersagekräftig für Rezidiv",
-    sum:"Prospektive Studie mit 74 Patienten mit lokal fortgeschrittenem Kopf-Hals-Plattenepithelkarzinom, bei denen zirkuläre Tumor-DNA (ctDNA) mittels methylierungsbasiertem Plasma-Assay vor Therapie, nach 8 und 12 Wochen sowie im Follow-up gemessen wurde.",
-    result:"Baseline-ctDNA war bei 85,1% nachweisbar. ctDNA in Woche 12 zeigte höchste diagnostische Genauigkeit: Sensitivität 69%, Spezifität 100%, positiv-prädiktiver Wert 100%, negativ-prädiktiver Wert 76%. Nachweisbare ctDNA Woche 12 war assoziiert mit kürzerem progressionsfreiem Überleben (HR 6,44; 95%-KI 2,73–16,74; p&lt;0,001) und kürzerem Gesamtüberleben (HR 7,31; 95%-KI 2,80–22,31; p&lt;0,001). Kombination mit PET/CT verbesserte Risikostratifikation, besonders bei PET-Teilresponsivität.",
-    transfer:"Spanische Studie (Valencia), Methodik übertragbar auf deutsche Nachsorgestrukturen."
-  },
-  {
     journal:"JCO Oncol Pract", year:"2026", pmid:"43044086",
     author:"Cooley ME et al.", pubdate:"17.11.2026",
     added:"17.11.2026",
@@ -2279,6 +2270,15 @@ const STUDIES = [
     sum:"Deskriptive Analyse von Erhebungsdaten aus dem National Cancer Institute Community Oncology Research Program (NCORP) von 2017 und 2022 zur Implementierung von Patient-Reported Outcome Measures (PROMs) in 70 Community-Praxen.",
     result:"2022 führten 91,1% der Praxen routinierte Distress-Screenings durch (2017: 87,8%), aber nur 23,2% nutzten PROMs für gesundheitsbezogene Lebensqualität oder Symptomatik (2017: 32,1%). Praxen im Westen der USA und mit niedrigerem Patientenvolumen waren weniger wahrscheinlich, Lebensqualitäts-/Symptom-PROMs zu nutzen. Teilnahme am Oncology Care Model war einziger signifikanter Faktor für Dokumentation von Lebensqualitäts-/Symptom-PROMs in der Elektronischen Gesundheitsakte. Große Variabilität bei verwendeten Messinstrumenten.",
     transfer:"USA-Studie (Community-Praxen), Implementierungs-Hürden relevant auch für Deutschland."
+  },
+  {
+    journal:"Clin Cancer Res", year:"2026", pmid:"43043002",
+    author:"Bruixola G et al.", pubdate:"17.11.2026",
+    added:"17.11.2026",
+    title:"Plasma-ctDNA nach Chemoradiation bei HNO-Krebs vorhersagekräftig für Rezidiv",
+    sum:"Prospektive Studie mit 74 Patienten mit lokal fortgeschrittenem Kopf-Hals-Plattenepithelkarzinom, bei denen zirkuläre Tumor-DNA (ctDNA) mittels methylierungsbasiertem Plasma-Assay vor Therapie, nach 8 und 12 Wochen sowie im Follow-up gemessen wurde.",
+    result:"Baseline-ctDNA war bei 85,1% nachweisbar. ctDNA in Woche 12 zeigte höchste diagnostische Genauigkeit: Sensitivität 69%, Spezifität 100%, positiv-prädiktiver Wert 100%, negativ-prädiktiver Wert 76%. Nachweisbare ctDNA Woche 12 war assoziiert mit kürzerem progressionsfreiem Überleben (HR 6,44; 95%-KI 2,73–16,74; p&lt;0,001) und kürzerem Gesamtüberleben (HR 7,31; 95%-KI 2,80–22,31; p&lt;0,001). Kombination mit PET/CT verbesserte Risikostratifikation, besonders bei PET-Teilresponsivität.",
+    transfer:"Spanische Studie (Valencia), Methodik übertragbar auf deutsche Nachsorgestrukturen."
   },
   {
     journal:"Int J Radiat Oncol Biol Phys", year:"2026", pmid:"43039250",
@@ -2298,6 +2298,15 @@ const STUDIES = [
     result:"Unmittelbar verwertbare Alterationen identifiziert in 18,9% (2.081/11.013) Primär- und 25,9% (1.559/6.016) metastatischen Tumoren; weitere 10,9% (1.204) bzw. 14,4% (867) trugen investigationelle Alterationen oder Mutationssignatur-Features. Von 5.706 unmittelbar verwertbaren Varianten waren 2.914 (51,1%) in Tumortypen, in denen die Biomarker nicht von der FDA zugelassen sind. HER2-Amplifikation, RAS-RAF-Alterationen, IDH1-Mutationen und DNA-Reparaturdefekte kamen häufig über mehrere Tumortypen hinweg vor. Metastatische und seltene Tumore zeigten höhere Prävalenz targetabler Events.",
     transfer:"Großbritannien und Niederlande, europäische Datenqualität, Argument für breite Genomsequenzierung."
   },
+  {
+    journal:"JAMA Oncol", year:"2026", pmid:"43018948",
+    author:"Jagsi R et al.", pubdate:"12.11.2026",
+    added:"12.11.2026",
+    title:"Radiotherapie-Verzicht bei jungen postmenopausalen Patientinnen: späte Rezidive in IDEA-Studie",
+    sum:"Nichtrandominisierte IDEA-Studie zu Radiotherapie-Verzicht bei ER+-Brustkrebs nach Mastektomie bei jungen postmenopausalen Frauen.",
+    result:"Späte lokale Rezidive traten signifikant gehäuft auf, wenn Radiotherapie nach Mastektomie bei Frauen unter 70 Jahren mit Hormonrezeptor-positivem Brustkrebs verzichtet wurde, was die Notwendigkeit differenzierter Indikationen unterstreicht.",
+    transfer:"US-Daten, aber Therapieparadigma direkt auf deutsches System übertragbar."
+  },
 ];
 // === STUDIES-BLOCK-ENDE ===
 
@@ -2311,7 +2320,7 @@ const RADAR_FRISTEN = [["2026-12-31"], [], ["2027-01-07"], [], [], [], [], ["202
 // === RADAR-BLOCK-ENDE ===
 
 // === ZULASSUNG-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const ZUL_STAND = "17.11.2026";
+const ZUL_STAND = "18.11.2026";
 const ZUL_EIGENE = 37;
 const ZUL_GUTACHTEN = 8;
 const ZUL_ZULASSUNG = 8;
