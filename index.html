@@ -2250,62 +2250,71 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "20. Nov. 2026, 05:01 Uhr";
+const SNAP_DATE = "21. Nov. 2026, 05:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"Ann Oncol", year:"2026", pmid:"43051368",
-    author:"Hendriks LEL et al.", pubdate:"31.12.2026",
+    journal:"J Clin Oncol", year:"2026", pmid:"43063368",
+    author:"Leonetti A et al.", pubdate:"20.11.2026",
+    added:"20.11.2026",
+    title:"Neoadjuvantes Alectinib bei resektablem ALK-positivem Lungenkarzinom: 42% major pathologic response",
+    sum:"Phase-II-Studie zu perioperativem Alectinib bei Patienten mit potenziell resektablem Stadium-III ALK-positivem nicht-kleinzelligem Lungenkarzinom in Italien.",
+    result:"Major pathologic response (MPR) wurde in 14/33 Patienten erreicht (42%, 95%-KI 26–61), davon 4 komplette pathologische Remissionen (pCR 12%). Objektive Ansprechrate 67%. R0-Resektionen in 86% (24/28 operierten Patienten). Nach medianer Nachbeobachtung von 26,8 Monaten Rezidive in 18% (6/33). Mediane ereignisfreie Überlebenszeit, rezidivfreie Überlebenszeit und Gesamtüberlebenszeit wurden nicht erreicht. Grad ≥3 unerwünschte Ereignisse 9% während neoadjuvanter Therapie, 27% während adjuvanter Therapie.",
+    transfer:"Italienische Multicenter-Studie, europäische Versorgungsstandards und Dokumentation."
+  },
+  {
+    journal:"J Clin Oncol", year:"2026", pmid:"43063370",
+    author:"Bøhn SH et al.", pubdate:"20.11.2026",
+    added:"20.11.2026",
+    title:"Multidisziplinäre Intervention senkt Müdigkeit bei Lymphom-Überlebenden um 3,5 Punkte",
+    sum:"Randomisierte kontrollierte Studie, die eine 12-wöchige Multidisziplinär-Intervention (Patientenschulung, körperliches Training, kognitive Verhaltenstherapie, Ernährungsberatung) versus übliche Versorgung bei 150 Lymphom-Überlebenden mit persistenter Müdigkeit testete.",
+    result:"Chalder Fatigue Questionnaire (Spannweite 0–33): Intervention senkte Müdigkeit primär nach 3 Monaten um 3,5 Punkte mehr als Kontrolle (Differenz −3,5; 95%-KI −5,4 bis −1,6; p&lt;0,001). Sekundäre Ergebnisse nach 3 Monaten: physische Funktionsfähigkeit +3,8 Punkte, Rollenfunktion +9,2 Punkte, Lebensqualität +9,5 Punkte. Effekt persistierte nach 6 Monaten, dissipierte aber nach 9 Monaten.",
+    transfer:"Norwegische Studie, europäisches Versicherungs- und Versorgungssystem."
+  },
+  {
+    journal:"J Clin Oncol", year:"2026", pmid:"43063371",
+    author:"Chacón KM et al.", pubdate:"20.11.2026",
+    added:"20.11.2026",
+    title:"Nur 18% von 903 Krebspatienten erfüllen Anspruch auf Versicherungsschutz für Fertilitätserhalt",
+    sum:"Retrospektive Kohortenstudie zur Reichweite von Californias Versicherungsmandaten für Fertilitätserhalt bei jungen Krebspatienten (Frauen ≤42 Jahre, Männer ≤49 Jahre) in 2021–2024 an einem NCI-Comprehensive Cancer Center.",
+    result:"Von 903 Patienten hatten nur 162 (18%) Anspruch auf staatlich mandatierten Fertilitätsschutz. Ineligibilität: Medicaid 49%, inkompatible kommerzielle Versicherungen 37%, Militärpläne 9%, Bundesangestelltenpläne 2%, unversichert 3%. Nicht-englischsprachige Patienten 64% weniger wahrscheinlich anspruchsberechtigt (adjustiertes relatives Risiko 0,36; 95%-KI 0,17–0,75). Unter anspruchsberechtigten Patienten berichteten Versicherer in 28% fälschlicherweise keine Leistungen.",
+    transfer:"USA-Studie zu Versicherungsbarrieren; nicht übertragbar auf deutsches System."
+  },
+  {
+    journal:"J Natl Cancer Inst", year:"2026", pmid:"43062195",
+    author:"Han X et al.", pubdate:"20.11.2026",
+    added:"20.11.2026",
+    title:"Drei oder mehr soziale Versorgungsdefizite erhöhen Sterblichkeit von Krebsüberlebenden um Faktor 3,12",
+    sum:"Kohortenstudie mit nationaler Repräsentativität aus der NHANES 1999–2010 mit Mortalitäts-Nachverfolgung bis Dezember 2022; untersucht Zusammenhang zwischen Gesundheit-bezogenen sozialen Versorgungsdefiziten (HRNS wie Lebensmittelunsicherheit, Armut, fehlende Versicherung) und Mortalität sowie biologischem Altern bei 715 Krebsüberlebenden.",
+    result:"Drei oder mehr HRNS (vs. null) waren assoziiert mit Hazard Ratio 3,12 (95%-KI 1,57–6,21) für Gesamtmortalität und 0,46 Jahren beschleunigtem biologischem Altern (95%-KI 0,07–0,85). Bei ≥12 Jahren Nachverfolgung: 315 Todesfälle (103 krebsspezifisch) von 715 Patienten. Einzelne HRNS ebenfalls mit erhöhtem Risiko assoziiert.",
+    transfer:"USA-nationale Daten; Konzept und Messbarkeit durch deutsche Versorgungsforschung prüfbar."
+  },
+  {
+    journal:"Int J Radiat Oncol Biol Phys", year:"2026", pmid:"43051602",
+    author:"Molitoris JK et al.", pubdate:"18.11.2026",
     added:"18.11.2026",
-    title:"ESMO-Leitlinie: Systemische Therapie bei NSCLC mit Treibermutationen",
-    sum:"Europäische Fachgesellschaft aktualisiert ihre Leitlinie für die Behandlung von metastasiertem NSCLC mit Treibermutationen (EGFR, ALK, ROS1 etc.) kontinuierlich.",
-    result:"Die aktualisierte Leitlinie ist ein Living Guideline und berücksichtigt die neuesten Daten zu Targeted Therapy und Immune Checkpoint Inhibitoren im Kontext von Treibermutationen; konkrete Empfehlungen werden laufend angepasst.",
-    transfer:"Europäische Leitlinie, direkt anwendbar in Deutschland"
+    title:"Selektive Reduktion der kontralateralen Halslymphnodal-Bestrahlung: null Rezidive bei 52 p16+-Oropharynx-Patienten",
+    sum:"Phase-II-Studie zur Sicherheit von reduziertem kontralateralem Hals-Zielvolumen (SAVER enCTV) bei 52 Patienten mit p16-positivem Oropharynxkarzinom ohne kontralaterale Lymphknotenmetastasen, aber klinischen/pathologischen Faktoren für elektive Bestrahlung.",
+    result:"Mit medianem Follow-up von 31 Monaten: null kontralaterale Halslymphknoten-Rezidive (obere Grenze 95%-KI 2,7%). 2-Jahres-Gesamtüberleben 92,2% (95%-KI 88,5–95,9%), Progressionsfreies Überleben 86,2% (95%-KI 81,4–91,0%). Dosimetrische Reduktion: mittlere Dosis zur kontralateralen Speicheldrüse von 18,3 Gy auf 14,1 Gy (p=0,001), V30 Gy von 20,8% auf 11,6% (p=0,003). Akute Grad-3-Toxizität in 25% (13/52), davon Gastrostomie 15,4%. Keine Grad-4-5-Toxizität.",
+    transfer:"USA-Studie, aber radioonkologische Behandlungsstandardisierung international anwendbar."
   },
   {
-    journal:"JAMA Oncol", year:"2026", pmid:"43056125",
-    author:"Yoon DW et al.", pubdate:"19.11.2026",
-    added:"19.11.2026",
-    title:"CT-Überwachung über 5 Jahre hinaus bei Lungenkrebsüberlebenden senkt Sterblichkeit",
-    sum:"Südkoreanische Kohortenstudie mit nationaler Datenbank untersucht den Nutzen von CT-Nachsorge bei Lungenkrebspatienten, die mindestens 5 Jahre rezidivfrei überlebt haben.",
-    result:"Unter 55.694 Langzeitüberlebenden: CT-Überwachung führte zu 1,28-fach höherer Detektion von Lungenkrebsereignissen (2,49 vs. 1,97 % pro Jahr; HR 1,28), aber zu 34 % niedrigerer Gesamtsterblichkeit (HR 0,66). Bei Lungenkrebsereignissen war operatives Resektionsrisiko mit CT um 46 % höher, Mortalität dann 37 % niedriger (HR 0,63). Effekt war stärker bei Frauen, älteren Patienten und Nichtrauchern.",
-    transfer:"Südkorea, nationales Versicherungssystem; strukturell ähnlich Deutschland, aber real-world Faustregel prüfbar"
+    journal:"Lancet", year:"2026", pmid:"43044617",
+    author:"Puliafito BR et al.", pubdate:"17.11.2026",
+    added:"17.11.2026",
+    title:"Duales CAR-T (BCMA/TACI) bei rezidiviertem Myelom: 87% Zytokinfreisetzungssyndrom, 0% limitierende Toxizitäten",
+    sum:"First-in-human Phase-1-Studie zu TriPRIL, einem CAR-T-Präparat mit engineertem APRIL-Liganden zur Doppel-Zielsteuerung von BCMA und TACI, bei 15 infundierten Patienten mit rezidiviertem/refraktärem multiplem Myelom (60% vorherig BCMA-CAR-T-behandelt).",
+    result:"15 Patienten infundiert (6 mit 1,0×10⁸, 9 mit 3,0×10⁸ CAR-T-Zellen). Null dosislimitierende Toxizitäten. Häufigste unerwünschte Ereignisse: Neutropenie 93%, Übelkeit 80%, Hypogammaglobulinämie 53%, Ermüdung 47%, Fieber 47%. Grad ≥3 Non-Hämatologie-Toxizität in 33% (5/15), alle gelöst. Cytokine Release Syndrome (Grad 1–2 nur) in 87% (13/15). Grade-2 ICANS in 7% (1/15), Grade-2 HLH-ähnliches Syndrom in 7% (1/15); beide aufgelöst mit Kortikosteroiden. Keine behandlungsbezogenen Todesfälle.",
+    transfer:"USA-Studie (Boston); dual-target CAR-T-Prinzip unabhängig von Versorgungssystem übertragbar."
   },
   {
-    journal:"JAMA Oncol", year:"2026", pmid:"43056109",
-    author:"Potter AL et al.", pubdate:"19.11.2026",
-    added:"19.11.2026",
-    title:"SCLC-Früherkennung durch CT erhöht Überlebenschance deutlich",
-    sum:"US-Kohortenstudie bei Medicare-Patienten untersucht, ob Lungen-CT-Screening in den 12 Monaten vor SCLC-Diagnose zu früherem Stadium und besserem Überleben führt.",
-    result:"Unter 17.099 SCLC-Patienten (Alter 65–78): Gescreente Patienten (n=949, 5,5%) hatten weniger Fernmetastasen (44,2 vs. 70,4 %; p&lt;0,001) und besseres 3-Jahres-Überleben (28,0 % vs. 10,8 %; p&lt;0,001). Befund blieb in propensity-score-angepassten Analysen stabil.",
-    transfer:"USA, Medicare; klinischer Befund universell, aber US-Screeningpraxis nicht direkt übertragbar"
-  },
-  {
-    journal:"Nature", year:"2026", pmid:"43052444",
-    author:"Ramsauer L et al.", pubdate:"18.11.2026",
-    added:"18.11.2026",
-    title:"Ferroptose setzt PGE2 frei und fördert Tumor-Immunflucht",
-    sum:"Deutsche Grundlagenforschung zeigt, dass Ferroptose in Krebszellen Prostaglandin E2 produziert, das die Immunantwort blockiert; die gleichzeitige Hemmung dieser PGE2-Produktion könnte die Effizienz von Ferroptose-Therapien steigern.",
-    result:"Ferroptotische Krebszellen aktivieren einen p38-MAPK-Signalweg, der aberrant PGE2 produziert. Diese PGE2-Produktion lässt sich gezielt blockieren, ohne die Ferroptose selbst zu beeinträchtigen. In Mausmodellen führte die kombinierte Inhibition von PGE2-Produktion oder -Signalisierung zur effektiven Tumorvernichtung durch wiederhergestellte CD8+ T-Zell-Antworten.",
-    transfer:"Deutsche Autoren und Institutionen (Tübingen, München, Köln), grundlagennah aber klinisch orientiert"
-  },
-  {
-    journal:"JCO Oncol Pract", year:"2026", pmid:"43050622",
-    author:"Zeng D et al.", pubdate:"18.11.2026",
-    added:"18.11.2026",
-    title:"Soziale Isolation und Depression erhöhen Sterblichkeit unabhängig voneinander",
-    sum:"Kanadische Kohortenstudie untersucht, ob spezifische Domänen sozialer Isolation und psychische Belastung unabhängig mit Gesamtsterblichkeit bei Krebspatienten assoziiert sind.",
-    result:"45.651 Krebspatienten mit psychosozialen Screeningdaten: 32,5 % hatten ≥1 Isolationsmerkmal. Alleinwohnen (HR 1,18; 95%-KI 1,13–1,22), fehlende regelmäßige soziale Kontakte (HR 1,29; 1,17–1,41), Depression (HR 1,43; 1,37–1,48) und Angststörung (HR 1,23; 1,19–1,28) waren nach Adjustierung unabhängig mit erhöhter Mortalität assoziiert. Jede zusätzliche Isolationsdomäne erhöhte Sterblichkeitsrisiko um etwa 9 %.",
-    transfer:"Kanada, öffentliches Versicherungssystem, psychosoziales Screening in Oncology Standard"
-  },
-  {
-    journal:"Eur J Cancer", year:"2026", pmid:"43050720",
-    author:"Mauri G et al.", pubdate:"14.11.2026",
-    added:"18.11.2026",
-    title:"ctDNA-gesteuerte EGFR-Reherausforderung beim CRC verdoppelt Ansprechrate",
-    sum:"Europäische Real-World-Studie (Italien, Spanien) zur ctDNA-basierten Auswahl für EGFR-Inhibitor-Reherausforderung bei RAS/BRAF wild-type metastasiertem kolorektalem Karzinom.",
-    result:"Von 104 Patienten: 69 mit ctDNA wild-type RAS/BRAF. EGFR-Reherausforderung vs. Standard-of-Care führte zu höherer Ansprechrate (29 % vs. 0 %; p=0,003), besserer Krankheitskontrolle (68 % vs. 42 %; p=0,049), längerer PFS (Trend: 4,7 vs. 2,9 Monate) und besserem OS (21,9 vs. 11,1 Monate; p=0,04). Hyperselektive Population (ctDNA wild-type + Gewebeprofil bestätigt): ORR 34,4 vs. 0 %, OS 22,20 vs. 11,18 Monate.",
-    transfer:"Europäische Zentren, vergleichbare Versorgungssysteme, ctDNA-Routinetesting etabliert"
+    journal:"Eur J Cancer", year:"2026", pmid:"42962411",
+    author:"Weber K et al.", pubdate:"23.10.2026",
+    added:"30.10.2026",
+    title:"Kombinierte Therapie bei leptomeningealer Rezidiv mit BRAF-Mutation und Mismatch-Repair-Mangel",
+    sum:"Fallbericht aus München zu multimodaler Behandlung einer isolierten leptomeningealen Metastase (Hirnhautbefall) bei kolorektalem Karzinom mit BRAF-Mutation und Defekt-Mismatch-Repair.",
+    result:"Patient mit Mismatch-Repair-defizientem kolorektalem Karzinom und BRAF-V600E-Mutation entwickelte isolierte leptomeningeale Rezidiv. Multimodale Therapie: intrathekale Methotrexat-Kombinationen, systemische Therapie (unklar aus Abstract welche genau), intrakranielle Radiotherapie. Präzise Outcome-Daten nicht im Abstract berichtet; Fallbericht demonstriert Behandelbarkeit dieser seltenen Komplikation.",
+    transfer:"Deutsche Kliniken (München), europäische Standards für seltene Metastasenmuster."
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -2330,7 +2339,7 @@ const ZUL_DIGA = 0;
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "20.11.2026";
+const NEWS_STAND = "21.11.2026";
 const NEWS = [
   {titel:"S3-Leitlinie Hautkrebsprävention aktualisiert: Fokus auf Sonnenschutz", datum:"2026-11-19", url:"https://www.monitor-versorgungsforschung.de/news/s3-leitlinie-hautkrebspraevention-aktualisiert-fokus-auf-sonnenschutz/"},
   {titel:"KI-Portal zu Krebstherapien: IMMUMEDIC startet Medical Evidence AI", datum:"2026-11-19", url:"https://www.monitor-versorgungsforschung.de/news/ki-portal-zu-krebstherapien-immumedic-startet-medical-evidence-ai/"},
