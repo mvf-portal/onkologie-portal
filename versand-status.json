@@ -1,35 +1,35 @@
 {
  "hub": "Knowledge-Hub Onkologie",
  "domain": "onkologie.m-vf.de",
- "datum": "2026-11-26",
+ "datum": "2026-11-27",
  "stand": "terminiert",
- "titel": "MVF Onkologie-Newsletter 26.11.2026",
- "betreff": "Neueste Studien - Onkologie – 26. November 2026",
+ "titel": "MVF Onkologie-Newsletter 27.11.2026",
+ "betreff": "Neueste Studien - Onkologie – 27. November 2026",
  "anzahl": 6,
  "pmids": [
-  "43084277",
-  "43077437",
-  "43019709",
-  "43019708",
-  "43002828",
-  "42994247"
+  "43085380",
+  "43085179",
+  "43083910",
+  "42994245",
+  "42982017",
+  "42977635"
  ],
- "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9100161",
- "termin_utc": "2026-11-26T09:00:00+00:00",
+ "kampagne": "https://us6.admin.mailchimp.com/campaigns/edit?id=9100186",
+ "termin_utc": "2026-11-27T09:00:00+00:00",
  "empfaenger": 5,
- "listengroesse": 5838,
+ "listengroesse": 5837,
  "beanstandungen": [],
  "aussortiert": [],
  "pool": {
   "geholt": 220,
-  "bekannt": 105,
-  "pool": 52,
+  "bekannt": 108,
+  "pool": 49,
   "gewaehlt": 6,
   "neu": 6
  },
  "rubriken": {
   "news": "008acbcdd9561a4d",
   "radar": "567fc5884f2b8d7b",
-  "zulassungen": "0693ab0b31e4baee"
+  "zulassungen": "978316a791495433"
  }
 }
