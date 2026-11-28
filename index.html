@@ -2402,62 +2402,62 @@ const DB = [
 
 // Momentaufnahme neuester Studien (PubMed, nach Datum sortiert) — deutsche Zusammenfassungen
 // === STUDIES-BLOCK-START (taeglich 06:00 Uhr von GitHub Actions ersetzt) ===
-const SNAP_DATE = "27. Nov. 2026, 05:01 Uhr";
+const SNAP_DATE = "28. Nov. 2026, 05:01 Uhr";
 const SNAP_STATUS = "neu";
 const STUDIES = [
   {
-    journal:"ESMO Open", year:"2026", pmid:"43085179",
-    author:"Lu ZJ et al.", pubdate:"25.11.2026",
+    journal:"Ann Oncol", year:"2026", pmid:"43098296",
+    author:"Bryce AH et al.", pubdate:"26.11.2026",
+    added:"26.11.2026",
+    title:"Rucaparib bei BRCA-mutiertem Prostatakrebs: Gleiche Überlebensraten wie Vergleichstherapien",
+    sum:"Phase-III-Studie zu Rucaparib (PARP-Inhibitor) versus Docetaxel oder Androgen-Rezeptor-Pathway-Inhibitoren bei BRCA/ATM-mutierten metastasierten kastrationsresistenten Prostatakrebspatienten mit Progression nach vorheriger ARPI-Therapie.",
+    result:"Mediane Gesamtüberlebensrate: Rucaparib 23,2 Monate versus Vergleichstherapie 21,2 Monate (HR 0,91; 95% CI 0,68–1,20). PSA-Ansprechrate (BRCA-Gruppe) 54,7% unter Rucaparib versus 26,7% in Vergleichsgruppe. Trotz signifikanter radiographischer Progressionsfreier-Überlebens-Verbesserung keine OS-Differenz; AML/MDS-Inzidenz 1% bei Langzeit-Follow-up.",
+    transfer:"Europa und Kanada - vergleichbare Versorgungssysteme; Zulassung in Deutschland vorausgesetzt"
+  },
+  {
+    journal:"Lancet", year:"2026", pmid:"43098155",
+    author:"Fisher DJ et al.", pubdate:"26.11.2026",
+    added:"26.11.2026",
+    title:"Androgen-Pathway-Inhibitoren bei hormonempfindlichem Metastasen-Prostatakrebs: Altersabhängiger Nutzen",
+    sum:"Systematische Übersichtsarbeit und Metaanalyse mit Individualdaten aus 7 randomisierten Studien (6467 Teilnehmende, 3322 Ereignisse) zu Effektivität und Responderschaft von ARPI-Zusatz zur Standard-Therapie bei metastasiertem hormonempfindlichem Prostatakrebs.",
+    result:"Gesamtüberlebensvorteil für ARPI-Zusatz: HR 0,66 (95% CI 0,62–0,71; p&lt;0,0001), absoluter 5-Jahres-Vorteil +13%. Altersabhängiger Effekt bei Abirateron: 5-Jahres-OS-Vorteil +15% bei &lt;75 Jahren, aber nur +1% bei ≥75 Jahren; paradox erhöhte Non-Cancer-Mortalität (+12%) bei älteren Patienten unter Abirateron. Keine Effekt-Unterschiede nach ARPI-Klasse, Docetaxel-Einsatz, Metastasenlast oder Performance-Status.",
+    transfer:"Internationale Studien, europäische Zentren teilnehmend; Altersaspekt entscheidend für deutsches Versorgungssystem"
+  },
+  {
+    journal:"Int J Radiat Oncol Biol Phys", year:"2026", pmid:"43098276",
+    author:"Zhang X et al.", pubdate:"26.11.2026",
+    added:"26.11.2026",
+    title:"SBRT bei Oligometastasen-Nierenzellkarzinom verlängert progressionsfreie Zeit um 6 Monate",
+    sum:"Phase-II-Studie zu stereotaktischer Körperbestrahlung (SBRT) bei bis zu 3 progredienten Läsionen während First-Line-Systemtherapie bei oligometastasiertem Nierenzellkarzinom; Erhalt der Erhaltungstherapie während SBRT.",
+    result:"6-Monats-Progressionsfreier Überleben (Primärendpunkt) 89,7% (95% CI 80,7–99,8), deutlich besser als historischer Benchmark ≤50% (p&lt;0,001). 12-Monats-PFS 59,0%, 2-Jahres-OS 76,8%. Lokales Kontroll-Rate 1-Jahr/2-Jahr 97,9%/84,6%. Keine Grade-≥3-SBRT-assoziierte Nebenwirkungen. Mediane Zeit bis Second-Line 12-Monate 35,9%.",
+    transfer:"China (Sun Yat-sen-Zentrum), aber SBRT-Technik international übertragbar; randomisierte Bestätigung geplant"
+  },
+  {
+    journal:"Lancet Oncol", year:"2026", pmid:"43098165",
+    author:"Qin S et al.", pubdate:"26.11.2026",
+    added:"26.11.2026",
+    title:"Rafutrombopag verbessert Blutplättchen-Erholung bei Chemo-induzierter Thrombozytopenie um 36 Prozentpunkte",
+    sum:"Phase-III-Studie zu Rafutrombopag (oraler TPO-Rezeptor-Agonist) versus Placebo bei soliden Tumoren mit etablierter Chemo-induzierter Thrombozytopenie (&lt;75×10⁹/L) und mindestens 7-tägiger Behandlungsverzögerung durch Platin-Chemotherapie; 213 Patienten in China randomisiert.",
+    result:"Composite Primary Endpoint (Blutplattenreaktion &lt;100×10⁹/L + erneute erste Chemo-Runde mit gleichem Schema + Blutplättchen ≥75×10⁹/L + keine Rescue-Therapie bis Zyklus-Tag 21) erfüllt: kontinuierlich Rafutrombopag 76% vs. Switch-Rafutrombopag 49% vs. Placebo 39% (kontinuierlich vs. Placebo: Absolutdifferenz 36,2%-Punkte, 95% CI 21,0–51,3; p&lt;0,0001). Sicherheitsprofil vergleichbar zwischen Gruppen; keine Todesfälle in der Doppelblind-Phase.",
+    transfer:"China - andere Ressourcenlage und Sozialversicherung; Sicherheitsdaten übertragbar, Effektivität in europäischen Settings zu prüfen"
+  },
+  {
+    journal:"Nature", year:"2026", pmid:"43086445",
+    author:"Bertillot F et al.", pubdate:"25.11.2026",
     added:"25.11.2026",
-    title:"Paclitaxel plus Cisplatin nicht überlegen beim Nasopharynxkarzinom",
-    sum:"Randomisierte Phase-II-Studie mit 184 Patienten mit Stadium-IV lokoregionär fortgeschrittenem Nasopharynxkarzinom, die Paclitaxel-Cisplatin (niedrigere kumulierte Cisplatin-Dosis) versus Standard-Hochdosis-Cisplatin während Chemoradiotherapie erhielten.",
-    result:"Die 3-Jahres-Progressionsfreie-Überlebens-Raten waren 68,2 % (95%-KI 58,6–77,8) mit Paclitaxel-Cisplatin vs. 72,8 % (95%-KI 63,8–81,8) mit Cisplatin (stratifiziertes HR 1,16; 95%-KI 0,71–1,90; p = 0,56). Das Cisplatin-Arm zeigte höhere Raten von Übelkeit, Erbrechen, Appetitlosigkeit und Thrombozytopenie (alle p &lt; 0,05), während Grad-3/4-Neutropenie numerisch höher mit Paclitaxel war (22,0 % vs. 13,5 %).",
-    transfer:"China-Studie, aber Ergebnis unabhängig von Versorgungssystem übertragbar"
+    title:"Tumorarchitektur und Zellzustände co-evolvieren und bestimmen Darmkrebs-Prognose",
+    sum:"Integrative Studie (Deep Learning, räumliche Transcriptomics, Multiplex-Immunofluoreszenz, Patient-derived Organoids) an Patienten-Darmkrebsproben zur Rolle von Tumorarchitektur bei Zellzustands-Diversifizierung und Outcome-Prognose; Daten teilweise aus finnischen Zentren.",
+    result:"Tissue-Fragmentierung erzeugt Kompressionskräfte, aktiviert YAP, unterdrückt klassische Stammzell-Programme und induziert fetal/regenerative Stammzell-Zustände mit partiellen EMT-Merkmalen; TGFβ-vermittelte Tumor-Stroma-Kommunikation diversifiziert diese weiter. Machine-Learning-basierte Architektur- und Morphologie-Analyse sagt Patienten-Outcome unabhängig von Mutations-Status oder Krebs-Stadium voraus. β-Catenin-Aktivität moduliert Zellresponsivität auf architektonische Signale.",
+    transfer:"Europa und Kanada teilnehmend; Methode entwickelt, Validierung in EU-Zentren ausstehend"
   },
   {
-    journal:"Lancet Oncol", year:"2026", pmid:"43085380",
-    author:"Zhang T et al.", pubdate:"25.11.2026",
-    added:"25.11.2026",
-    title:"Ipilimumab plus Nivolumab sicher in größter Real-World-Kohorte bei mRCC",
-    sum:"Adaptive Phase-3-Studie PDIGREE mit 1.093 Patienten mit metastasiertem klarzelligem Nierenzellkarzinom unter Ipilimumab-Nivolumab mit Response-adaptierter Strategie; Fokus auf Nebenwirkungen und Behandlungsabbruch.",
-    result:"Während Schritt 1 mit Ipilimumab-Nivolumab traten häufigste Grad-3-oder-höher-assoziierte Nebenwirkungen auf: Diarrhö (4,8 %), erhöhte Alanin-Aminotransferase (3,6 %). 365 Patienten setzten während Schritt 1 ab, 746 progredierten zu Schritt 2. 44 Todesfälle traten auf, 15 (34,1 %) möglicherweise therapieassoziiert. Keine neuen Sicherheitssignale.",
-    transfer:"USA-Studie, aber Sicherheitsdaten in vergleichbaren Systemen anwendbar"
-  },
-  {
-    journal:"Strahlenther Onkol", year:"2026", pmid:"43083910",
-    author:"Tan Q et al.", pubdate:"25.11.2026",
-    added:"25.11.2026",
-    title:"Radiotherapie mit Chemo-Immunotherapie beim kleinzelligen Lungenkarzinom: besseres Überleben",
-    sum:"Metaanalyse von 23 Studien mit 4.601 Patienten mit extensive-stage kleinzelligem Lungenkarzinom zum Vergleich von Chemo-Immunotherapie kombiniert mit Radiotherapie versus Chemo-Immunotherapie allein.",
-    result:"Kombinierte Radiotherapie war mit signifikant besserem progressionsfreiem Überleben assoziiert (HR 0,63; 95%-KI 0,53–0,74; p &lt; 0,001) und Gesamtüberleben (HR 0,64; 95%-KI 0,58–0,71; p &lt; 0,001). Gepoolte 6-, 12- und 24-Monats-PFS-Raten: 71 %, 35 %, 18 %; OS-Raten: 93 %, 77 %, 39 %. Kein signifikanter Unterschied in Grad-≥3-Nebenwirkungen (RR 1,22; 95%-KI 0,96–1,55; p = 0,11); Grad-≥3-Pneumonitis 5 %.",
-    transfer:"Globale Metaanalyse, Effektivitätsaussagen für Deutschland übertragbar"
-  },
-  {
-    journal:"Eur J Cancer", year:"2026", pmid:"42994245",
-    author:"Sabo AA et al.", pubdate:"09.12.2026",
-    added:"06.11.2026",
-    title:"Komplette Remission verlängert Überleben bei Osteosarkom als Zweittumor",
-    sum:"Die Studie analysierte 198 Patienten mit Osteosarkom als Zweittumor aus der Cooperative Osteosarcoma Study Group und untersuchte prognostische Faktoren für Gesamtüberleben und Rezidivrisiko.",
-    result:"Die 5- und 10-Jahres-Überlebensraten betrugen 52,6 % (95%-KI 45,3–61,1) und 40,5 % (95%-KI 32,7–50,2). Komplette Remission war mit deutlich niedrigerer Mortalität assoziiert (HR 0,33; 95%-KI 0,19–0,56; p &lt; 0,001), Extremitätenlokalisierung günstiger als Rumpf (HR 0,49; p = 0,009), metastasierte Erkrankung ungünstiger (HR 2,17; p = 0,008). Unter CR-Erreichern betrug die kumulative Rezidivrate 41,4 % nach 3 Jahren und 47,0 % nach 5 Jahren.",
-    transfer:"Deutsche Daten aus COSS-Register, vergleichbare Zentrumsstandards in Europa"
-  },
-  {
-    journal:"Eur J Cancer", year:"2026", pmid:"42982017",
-    author:"Rieger C et al.", pubdate:"09.12.2026",
-    added:"04.11.2026",
-    title:"Enfortumab vedotin plus Pembrolizumab bei Zystitis: kosteneffektiv trotz höherer Kosten",
-    sum:"Markov-Modell basierend auf KEYNOTE-905-Daten, das perioperatives Enfortumab vedotin plus Pembrolizumab versus radikale Zystektomie bei zisplatin-ineligiblen Patienten mit muskelinvasivem Blasenkrebs aus deutscher Perspektive bewertet.",
-    result:"Enfortumab vedotin plus Pembrolizumab führte zu höheren Kosten (€157.831 vs. €118.299, Differenz €39.532) bei verbesserter Effektivität (3,24 vs. 2,75 QALYs, Gewinn 0,49 QALYs). Die inkrementelle Kosteneffektivität betrug €80.433 pro QALY. Bei einer Zahlungsbereitschaftsschwelle von €100.000 pro QALY war Enfortumab vedotin plus Pembrolizumab in 78,74 % der Simulationen kosteneffektiv.",
-    transfer:"Deutsche Perspektive, Krankenkassendaten und AMNOG-relevante Schwellenwerte"
-  },
-  {
-    journal:"Eur J Cancer", year:"2026", pmid:"42977635",
-    author:"Jurlander RS et al.", pubdate:"09.12.2026",
-    added:"03.11.2026",
-    title:"Frühe Behandlungsunterbrechung bei Melanom-Respons: 3-Jahres-Überleben sicher",
-    sum:"Dänische Studie an 163 Melanom-Patienten, die Immune-Checkpoint-Inhibitoren nach objektivem Ansprechen (komplette oder partielle Remission) vor der üblichen 2-Jahres-Marke diskontinuierten; Nachverfolgung mediastinal und ökonomische Effekte.",
-    result:"Nach medianer 48-Monats-Nachverfolgung betrug die melanomspezifische Überlebenrate nach 3 Jahren 99 % (komplette Remission) und 93 % (partielle Remission). Progressionsfreies Überleben nach 36 Monaten: 87 % (CR) und 81 % (PR). Mediane Behandlungsdauer 8,1 Monate (CR) bzw. 11,1 Monate (PR). Frühe Diskontinuation war mit erheblichen Kosteneinsparungen assoziiert.",
-    transfer:"Dänisches Gesundheitssystem, vergleichbare ICI-Versorgungsstrukturen mit Deutschland"
+    journal:"ESMO Open", year:"2026", pmid:"43072084",
+    author:"Sánchez-Bayona R et al.", pubdate:"23.11.2026",
+    added:"23.11.2026",
+    title:"Genomischer HER2DX-Score sagt ZNS-Metastasen bei HER2+ Brustkrebs voraus",
+    sum:"Entwicklung und externe Validierung eines Genomik-basierten Scores zur Risiko-Stratifizierung für ZNS-Progression bei fortgeschrittenem HER2-positivem Brustkrebs unter First-Line-Trastuzumab, Pertuzumab und Chemotherapie; spanische Kohorte (n=92) Training, polnische (n=122) Validierung.",
+    result:"Nach 37,1 Monaten medianer Nachverfolgung: 24,8% (53/214) entwickelten ZNS-Progression. HER2DX CNS-Progressions-Score im Validierungs-Kohort stratifiziert Risiko: 3-Jahres-ZNS-Progressionsraten High-Risk 36,9%, Intermediate 12,1%, Low-Risk 6,9% (High vs. Low: sHR=6,07, 95% CI 1,37–27,0, p=0,018). Score nicht assoziiert mit PFS oder OS. Klinische Faktoren: jüngeres Alter, HER2 IHC 3+, ≥3 Metastasenlokalisationen erhöhen ZNS-Risiko.",
+    transfer:"Europa (Spanien, Polen) - vergleichbare Systeme; kommerzielle Verfügbarkeit des HER2DX-Tests relevant für Deutschland"
   },
 ];
 // === STUDIES-BLOCK-ENDE ===
@@ -2482,7 +2482,7 @@ const ZUL_DIGA = 0;
 
 // Beitraege aus dem MVF-Archiv zum Thema — taeglich von scripts/newsfeed.py
 // === NEWS-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
-const NEWS_STAND = "27.11.2026";
+const NEWS_STAND = "28.11.2026";
 const NEWS = [
   {titel:"S3-Leitlinie Hautkrebsprävention aktualisiert: Fokus auf Sonnenschutz", datum:"2026-11-19", url:"https://www.monitor-versorgungsforschung.de/news/s3-leitlinie-hautkrebspraevention-aktualisiert-fokus-auf-sonnenschutz/"},
   {titel:"KI-Portal zu Krebstherapien: IMMUMEDIC startet Medical Evidence AI", datum:"2026-11-19", url:"https://www.monitor-versorgungsforschung.de/news/ki-portal-zu-krebstherapien-immumedic-startet-medical-evidence-ai/"},
@@ -2492,8 +2492,8 @@ const NEWS = [
 // Fremde Pressemeldungen zum Thema — taeglich von scripts/newsfeed.py
 // === PRESSE-BLOCK-START (taeglich von GitHub Actions ersetzt) ===
 const PRESSE = [
-  {titel:"Die Form ist entscheidend: Die Tumorarchitektur sagt den Verlauf von Darmkrebs voraus", datum:"2026-11-25", url:"http://idw-online.de/de/news881430", quelle:"idw"},
-  {titel:"Preis für geschlechtersensible Medizin: Geschlechtsunterschiede in der Immunabwehr gegen Bauchspeicheldrüsenkrebs", datum:"2026-11-25", url:"http://idw-online.de/de/news881508", quelle:"idw"},
+  {titel:"Innovative zelluläre Immuntherapie zielt erfolgreich auf besonders widerstandsfähige Tumorzellen im Gehirn", datum:"2026-11-27", url:"http://idw-online.de/de/news881705", quelle:"idw"},
+  {titel:"CancerQualityHub 2026: Krebsregister machen Qualität der Darmkrebsversorgung bundesweit vergleichbar", datum:"2026-11-27", url:"http://idw-online.de/de/news881652", quelle:"idw"},
 ];
 // === PRESSE-BLOCK-ENDE ===
 
